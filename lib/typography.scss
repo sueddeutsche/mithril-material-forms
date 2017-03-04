@@ -1,0 +1,20 @@
+$mmf-font: "Roboto" !default;
+
+$mmf-button__text-size: 0.9rem !default;
+$mmf-select__text-size: 0.7rem !default;
+
+
+@mixin font-light() {
+    font-family: $mmf-font;
+    font-weight: 300;
+}
+
+@mixin font-regular() {
+    font-family: $mmf-font;
+    font-weight: 400;
+}
+
+@mixin font-bold() {
+    font-family: $mmf-font;
+    font-weight: 700;
+}

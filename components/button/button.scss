@@ -1,0 +1,25 @@
+@import "../../lib/typography";
+@import "../../lib/units";
+@import "../../lib/reset";
+@import "../../lib/colors";
+
+button.mmf-button {
+    @include reset-button();
+    @include font-regular();
+    height: 0.75 * $block;
+    margin: 0.125 * $block;
+    padding: 0 $unit;
+    font-size: $mmf-button__text-size;
+    line-height: 1em;
+    border-radius: $radius;
+
+    color: $mmf-button__text-color;
+    cursor: pointer;
+
+    animation: all 0.25s linear;
+    background-color: $mmf-button__background-color;
+
+    &:hover {
+        background-color: $mmf-button__background-color--focus;
+    }
+}

@@ -1,0 +1,32 @@
+@import "../../lib/reset";
+@import "../../lib/units";
+@import "../../lib/typography";
+@import "../../lib/colors";
+
+
+select.mmf-select {
+    @include reset-select();
+
+    font-size: $mmf-select__text-size;
+
+    // layout
+    margin-right: $block;
+    // behaviour
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    // select styling
+    padding: 4px (0.5 * $block + 4px) 4px 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid $mmf-input__border-color;
+
+    // icon
+    // background-image: url(~lib/components/form/select/triangle.png);
+    background-repeat: no-repeat;
+    background-color: inherit;
+    background-size: 0.7em;
+    background-position: right;
+    // padding icon left (to text)
+    padding-right: 4 * 8px !important;
+}
