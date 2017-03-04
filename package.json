@@ -1,0 +1,35 @@
+{
+  "name": "mithril-material-forms",
+  "version": "1.0.0",
+  "description": "Basic input form elements using mithril components",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sueddeutsche/mithril-material-forms.git"
+  },
+  "keywords": [
+    "mithril",
+    "material-design",
+    "html",
+    "form",
+    "input",
+    "sz",
+    "Süddeutsche",
+    "Zeitung"
+  ],
+  "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sueddeutsche/mithril-material-forms/issues"
+  },
+  "homepage": "https://github.com/sueddeutsche/mithril-material-forms#readme",
+  "dependencies": {
+    "mithril": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2"
+  }
+}
