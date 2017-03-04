@@ -1,7 +1,8 @@
 $mmf-font: "Roboto" !default;
 
-$mmf-button__text-size: 0.9rem !default;
-$mmf-select__text-size: 0.7rem !default;
+$mmf-input__text-size: 0.9rem !default;
+$mmf-button__text-size: $mmf-input__text-size !default;
+$mmf-select__text-size: $mmf-input__text-size !default;
 
 
 @mixin font-light() {

@@ -10,7 +10,7 @@ select.mmf-select {
     font-size: $mmf-select__text-size;
 
     // layout
-    margin-right: $block;
+    margin-right: $mmf-block;
     // behaviour
     cursor: pointer;
     outline: none;
@@ -22,7 +22,7 @@ select.mmf-select {
     border-bottom: 2px solid $mmf-input__border-color;
 
     // icon
-    // background-image: url(~lib/components/form/select/triangle.png);
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC AK7OHOkAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAndFJOUwABh+ocAzckD9IK+ZaxvaT+BkLjeMgV9dtp LVvwTvxe3JnzU7+n3hhRNDkAAADlSURBVEjHtdXXEoIwFIThBQELINgBwV7e/w11rKSA2TB+95ur f3IA99pBBMBJ7Pexf38Ak7HtfjHCw2Bot8+WePEuNvteHx/9Hr9fBagJVux+U0FQbcgHckhybu9C QQWVOOoDzt58P55Aw49N98MBtEYLs/3MQ4NlZrIvCzQyCSqcokVw+PnAFq2mIR+AaJ3SAUjmfACS iA/ANKjmAKSgTnwAIv0f1x6AyJup+3QNQlEqD8xBUYKKQJKCep4QSq47IRRXd0IY36NZPyGM99EU TwjjGVR6hDVvxweg/HEROgnOPv7rBrKmo0yVaaKY");
     background-repeat: no-repeat;
     background-color: inherit;
     background-size: 0.7em;

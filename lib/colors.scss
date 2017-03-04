@@ -1,9 +1,13 @@
+$mmf-color--background: #EBEBEB !default;
 $mmf-color--primary: #009688 !default;
+$mmf-color--text: #333 !default;
 
 // general input
-$mmf-input__border-color: #EBEBEB !default;
+$mmf-input__border-color: $mmf-color--background !default;
+$mmf-input__border-color--primary: $mmf-color--primary !default;
+$mmf-input__text-color: $mmf-color--text !default;
 
 // buttons
 $mmf-button__text-color: $mmf-color--primary !default;
 $mmf-button__background-color: transparent !default;
-$mmf-button__background-color--focus: #EBEBEB !default;
+$mmf-button__background-color--focus: $mmf-color--background !default;
