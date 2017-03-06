@@ -1,11 +1,16 @@
 $mmf-color--background: #EBEBEB !default;
 $mmf-color--primary: #009688 !default;
 $mmf-color--text: #333 !default;
+$mmf-color--error: #D0011B !default;
+$mmf-color--secondary-text: #9B9B9B !default;
 
 // general input
 $mmf-input__border-color: $mmf-color--background !default;
 $mmf-input__border-color--primary: $mmf-color--primary !default;
 $mmf-input__text-color: $mmf-color--text !default;
+
+// form
+$mmf-form__text-color: $mmf-color--secondary-text !default;
 
 // buttons
 $mmf-button__text-color: $mmf-color--primary !default;

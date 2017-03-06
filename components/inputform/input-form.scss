@@ -1,0 +1,55 @@
+@import "../../lib/colors";
+@import "../../lib/typography";
+
+
+.mmf-input-form {
+    $height-label: 1.1rem;
+
+    position: relative;
+    color: $mmf-form__text-color;
+    font-size: $mmf-form__text-size;
+
+    input {
+        margin: $height-label 0 0 0;
+    }
+
+    label {
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        transition: all 0.2s;
+    }
+
+    ul {
+        margin-top: 4px;
+
+        li {
+            font-size: inherit;
+            color: $mmf-color--error;
+        }
+    }
+
+    &.hasNoError {}
+    &.isNotEmpty {}
+    &.hasFocus {}
+
+    &.hasError {
+        input {
+            border-color: $mmf-color--error;
+        }
+    }
+
+    &.hasError.hasFocus {
+        label {
+            color: $mmf-color--error;
+        }
+    }
+
+    &.isEmpty.hasNoFocus {
+        label {
+            color: inherit;
+            font-size: $mmf-input__text-size;
+            transform: translateY($height-label);
+        }
+    }
+}

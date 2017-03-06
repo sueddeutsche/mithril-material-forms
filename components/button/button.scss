@@ -9,8 +9,8 @@ button.mmf-button {
     @include reset-button();
     @include clickable();
     @include font-regular();
-    height: 0.75 * $block;
-    margin: 0.125 * $block;
+    height: 0.75 * $mmf-block;
+    margin: 0.125 * $mmf-block;
     padding: 0 $mmf-unit;
     font-size: $mmf-button__text-size;
     line-height: 1em;

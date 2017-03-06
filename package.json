@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/sueddeutsche/mithril-material-forms#readme",
   "dependencies": {
+    "autosize": "^3.0.20",
     "mithril": "^1.0.1"
   },
   "devDependencies": {

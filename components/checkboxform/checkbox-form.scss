@@ -1,0 +1,31 @@
+@import "../../lib/colors";
+@import "../../lib/typography";
+@import "../../lib/units";
+
+
+.mmf-checkbox-form {
+    $size-column: $mmf-block;
+    $size-checkbox: 2em;
+
+    color: $mmf-form__text-color;
+    font-size: $mmf-form__text-size;
+
+    label {
+        color: inherit;
+        font-size: inherit;
+    }
+
+    ul {
+        margin-top: 4px;
+
+        li {
+            font-size: inherit;
+            color: $mmf-color--error;
+        }
+    }
+
+    .mmf-meta {
+        color: inherit;
+        font-size: inherit;
+    }
+}
