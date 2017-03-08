@@ -1,11 +1,14 @@
-$mmf-color--background: #EBEBEB !default;
+// material design colors https://www.materialui.co/flatuicolors
+$mmf-color--border: #ECF0F1 !default;
+$mmf-color--error: #C0392B !default;
+$mmf-color--warning: #F39C12 !default;
 $mmf-color--primary: #009688 !default;
-$mmf-color--text: #333 !default;
-$mmf-color--error: #D0011B !default;
+$mmf-color--ok: #2ECC71 !default;
 $mmf-color--secondary-text: #9B9B9B !default;
+$mmf-color--text: #333 !default;
 
 // general input
-$mmf-input__border-color: $mmf-color--background !default;
+$mmf-input__border-color: $mmf-color--border !default;
 $mmf-input__border-color--primary: $mmf-color--primary !default;
 $mmf-input__text-color: $mmf-color--text !default;
 
@@ -15,4 +18,4 @@ $mmf-form__text-color: $mmf-color--secondary-text !default;
 // buttons
 $mmf-button__text-color: $mmf-color--primary !default;
 $mmf-button__background-color: transparent !default;
-$mmf-button__background-color--focus: $mmf-color--background !default;
+$mmf-button__background-color--focus: $mmf-color--border !default;

@@ -32,10 +32,11 @@ module.exports = {
             id: null,
             title: "",
             value: "",
-            options: [{ title: "Keine Optionen angegeben", value: false }],
             errors: [],
             description: "",
             placeholder: "",
+            onblur: Function.prototype,
+            onfocus: Function.prototype,
             onchange: Function.prototype
         }, vnode.attrs);
 
@@ -43,10 +44,16 @@ module.exports = {
             m(Label, attrs),
             m("textarea", {
                 id: vnode.attrs.id,
-                onchange: m.withAttr("value", vnode.attrs.onchange),
                 value: vnode.attrs.value,
-                onblur: m.withAttr("value", (value) => this.onblur(value)),
-                onfocus: () => this.onfocus(),
+                onchange: m.withAttr("value", vnode.attrs.onchange),
+                onblur: (e) => {
+                    this.onblur(e.target.value);
+                    attrs.onblur(e);
+                },
+                onfocus: (e) => {
+                    this.onfocus();
+                    attrs.onfocus(e);
+                },
                 oncreate: (node) => autosize(node.dom),
                 onupdate: (node) => autosize.update(node.dom),
                 onbeforeremove: (node) => autosize.destroy(node.dom)

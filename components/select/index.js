@@ -7,6 +7,8 @@ module.exports = {
             {
                 id: vnode.attrs.id,
                 value: vnode.attrs.value,
+                onfocus: vnode.attrs.onfocus,
+                onblur: vnode.attrs.onblur,
                 onchange: m.withAttr("value", vnode.attrs.onchange)
             },
             vnode.attrs.options.map((value) => {

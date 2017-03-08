@@ -43,6 +43,8 @@ module.exports = {
             errors: [],
             description: "",
             placeholder: "",
+            onblur: Function.prototype,
+            onfocus: Function.prototype,
             onchange: Function.prototype
         }, vnode.attrs);
         const view = m(".mmf-input-form",
@@ -56,8 +58,14 @@ module.exports = {
                     id: attrs.id,
                     onChange: (value) => (attrs.onchange && attrs.onchange(sanitizeValue(inputType, value))),
                     value: attrs.value,
-                    onFocus: () => this.onfocus(),
-                    onBlur: (e) => this.onblur(e.target.value)
+                    onfocus: (e) => {
+                        this.onfocus();
+                        attrs.onfocus && attrs.onfocus(e);
+                    },
+                    onblur: (e) => {
+                        this.onblur(e.target.value);
+                        attrs.onblur && attrs.onblur(e);
+                    }
                 }
             ),
             m("ul", attrs.errors.map((error) =>

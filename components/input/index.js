@@ -9,8 +9,8 @@ module.exports = {
                 type: vnode.attrs.type,
                 value: vnode.attrs.value,
                 onchange: m.withAttr("value", vnode.attrs.onChange),
-                onfocus: vnode.attrs.onFocus,
-                onblur: vnode.attrs.onBlur
+                onfocus: vnode.attrs.onfocus,
+                onblur: vnode.attrs.onblur
             }
         );
     }
