@@ -13,8 +13,6 @@ const TYPES = {
 module.exports = {
     oncreate(vnode) {
         this.$form = vnode.dom;
-        this.updateClasses(vnode.attrs.value || "");
-        this.onblur(vnode.attrs.value);
     },
 
     updateClasses(value) {
@@ -49,7 +47,8 @@ module.exports = {
         }, vnode.attrs);
         const view = m(".mmf-input-form",
             {
-                "class": attrs.errors.length > 0 ? "hasError" : "hasNoError"
+                "class": "hasNoFocus " + (attrs.errors.length > 0 ? "hasError" : "hasNoError") + " " +
+                    (attrs.value === "" ? "isEmpty" : "isNotEmpty")
             },
             m(Label, attrs),
             m(Input,
