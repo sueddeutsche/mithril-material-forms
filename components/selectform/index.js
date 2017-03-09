@@ -17,8 +17,10 @@ module.exports = {
         }, vnode.attrs);
 
         return m(".mmf-select-form", {},
-            m(Select, attrs),
-            m(Label, attrs),
+            m(".mmf-row",
+                m(Label, Object.assign({ class: "mmf-grow-2" }, attrs)),
+                m(Select, attrs)
+            ),
             m("ul", attrs.errors.map((error) =>
                 m("li", error)
             )),

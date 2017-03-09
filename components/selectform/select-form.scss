@@ -22,4 +22,17 @@
         color: inherit;
         font-size: inherit;
     }
+
+    .mmf-row {
+        display: flex;
+        flex-direction: row;
+
+        label {
+            line-height: 29px;
+        }
+
+        .mmf-grow-2 {
+            flex-grow: 2;
+        }
+    }
 }

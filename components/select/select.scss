@@ -9,8 +9,6 @@ select.mmf-select {
 
     font-size: $mmf-select__text-size;
 
-    // layout
-    margin-right: $mmf-block;
     // behaviour
     cursor: pointer;
     outline: none;
@@ -29,4 +27,10 @@ select.mmf-select {
     background-position: right;
     // padding icon left (to text)
     padding-right: 4 * 8px !important;
+
+    transition: border-color 0.25s linear;
+
+    &:focus {
+        border-color: $mmf-color--primary;
+    }
 }

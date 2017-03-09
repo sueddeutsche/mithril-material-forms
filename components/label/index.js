@@ -5,7 +5,8 @@ module.exports = {
     view(vnode) {
         return m("label.mmf-label",
             {
-                "for": vnode.attrs.id
+                "for": vnode.attrs.id,
+                "class": vnode.attrs.class
             },
             vnode.attrs.title
         );
