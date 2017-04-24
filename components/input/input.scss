@@ -1,12 +1,13 @@
 @import "../../lib/colors";
 @import "../../lib/typography";
+@import "../../lib/input";
 
 
 input.mmf-input {
     color: $mmf-input__text-color;
     font-size: $mmf-input__text-size;
     border: none;
-    border-bottom: 2px solid $mmf-input__border-color;
+    border-bottom: $mmf-input-border--width solid $mmf-input__border-color;
     width: 100%;
     box-sizing: border-box;
     background: transparent;

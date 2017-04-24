@@ -1,5 +1,6 @@
 @import "../../lib/colors";
 @import "../../lib/typography";
+@import "../../lib/input";
 
 
 .mmf-textarea-form {
@@ -24,7 +25,7 @@
 
         border-sizing: border-box;
         border: none;
-        border-bottom: 2px solid $mmf-input__border-color;
+        border-bottom: $mmf-input-border--width solid $mmf-input__border-color;
         font-size: $mmf-input__text-size;
         line-height: 1.4em;
         background: transparent;
