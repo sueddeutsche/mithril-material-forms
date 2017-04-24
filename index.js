@@ -7,5 +7,6 @@ module.exports = {
     label: require("./components/label"),
     select: require("./components/select"),
     selectForm: require("./components/selectform"),
-    textareaForm: require("./components/textareaform")
+    textareaForm: require("./components/textareaform"),
+    imagePreview: require("./components/imagepreview")
 };
