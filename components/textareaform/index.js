@@ -45,6 +45,7 @@ module.exports = {
             m("textarea", {
                 id: vnode.attrs.id,
                 value: vnode.attrs.value,
+                rows: 1,
                 onchange: m.withAttr("value", vnode.attrs.onchange),
                 onblur: (e) => {
                     this.onblur(e.target.value);
