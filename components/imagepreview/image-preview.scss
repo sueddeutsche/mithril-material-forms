@@ -1,0 +1,74 @@
+@import "../../lib/colors";
+@import "../../lib/typography";
+@import "../../lib/units";
+
+
+.mmf-preview {
+    $padding-inset: 0; //$mmf-unit;
+    $padding-inset-image: 0; //$mmf-unit;
+
+    position: relative;
+    min-height: 2 * $mmf-block;
+    box-sizing: border-box;
+    padding: $padding-inset;
+    overflow: hidden; /* hide overflowing image after padding-border for visual feedback */
+    background-color: $mmf-color--border;
+
+    &.with-image {
+        padding: $padding-inset-image;
+
+        .mmf-preview__content {
+            height: 0;
+
+            img {
+                width: 100%;
+            }
+
+            .mmf--preview__placeholder {
+                display: none;
+            }
+        }
+    }
+
+    .mmf-preview__placeholder {
+
+        width: 100%;
+        height: 2 * $mmf-block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 160%;
+        color: $mmf-color--secondary-text;
+        background-color: $mmf-color--secondary-bg;
+    }
+
+    .with-overflow .mmf-preview__overflow-indicator {
+        position: absolute;
+        bottom: 0;
+        left: $padding-inset-image;
+        right: $padding-inset-image;
+        height: $mmf-unit;
+
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    }
+
+    .mmf-preview__description {
+        position: absolute;
+        box-sizing: border-box;
+        bottom: $mmf-unit;
+        padding: $mmf-unit;
+        left: $mmf-unit;
+        right: $mmf-unit;
+
+        font-size: $mmf-text-size--meta;
+        color: $color-text;
+        background: rgba(255, 255, 255, 0.8)
+    }
+
+    .mmf-meta {
+        color: inherit;
+        font-size: $mmf-text-size--meta;
+    }
+}
