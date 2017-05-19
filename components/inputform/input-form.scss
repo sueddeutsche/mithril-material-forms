@@ -1,16 +1,15 @@
+@import "../../lib/units";
 @import "../../lib/colors";
 @import "../../lib/typography";
 
 
 .mmf-input-form {
-    $height-label: 1.1rem;
-
     position: relative;
     color: $mmf-form__text-color;
     font-size: $mmf-form__text-size;
 
     input {
-        margin: $height-label 0 0 0;
+        margin: $mmf-height-label 0 0 0;
     }
 
     label {
@@ -31,7 +30,12 @@
 
     &.hasNoError {}
     &.isNotEmpty {}
-    &.hasFocus {}
+
+    &.hasFocus {
+        label {
+            color: $mmf-input__text-color--primary;
+        }
+    }
 
     &.hasError {
         input {
@@ -49,7 +53,7 @@
         label {
             color: inherit;
             font-size: $mmf-input__text-size;
-            transform: translateY($height-label);
+            transform: translateY($mmf-height-label);
         }
     }
 }
