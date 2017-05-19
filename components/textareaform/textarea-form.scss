@@ -38,6 +38,12 @@
         }
    }
 
+    &.hasFocus {
+        label {
+            color: $mmf-input__text-color--primary;
+        }
+    }
+
    &.isEmpty.hasNoFocus {
        label {
            color: inherit;

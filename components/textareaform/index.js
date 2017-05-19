@@ -1,5 +1,5 @@
 const m = require("mithril");
-const autosize = require("autosize");
+const Textarea = require("../textarea");
 const Label = require("../label");
 
 
@@ -42,10 +42,9 @@ module.exports = {
 
         return m(".mmf-textarea-form",
             m(Label, attrs),
-            m("textarea", {
+            m(Textarea, {
                 id: vnode.attrs.id,
                 value: vnode.attrs.value,
-                rows: 1,
                 onchange: m.withAttr("value", vnode.attrs.onchange),
                 onblur: (e) => {
                     this.onblur(e.target.value);
@@ -54,10 +53,7 @@ module.exports = {
                 onfocus: (e) => {
                     this.onfocus();
                     attrs.onfocus(e);
-                },
-                oncreate: (node) => autosize(node.dom),
-                onupdate: (node) => autosize.update(node.dom),
-                onbeforeremove: (node) => autosize.destroy(node.dom)
+                }
             }),
             m("ul", attrs.errors.map((error) =>
                 m("li", error)
