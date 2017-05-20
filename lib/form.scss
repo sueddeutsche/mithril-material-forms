@@ -1,0 +1,63 @@
+@import "./colors";
+@import "./units";
+@import "./typography";
+@import "./input";
+
+
+/**
+ * Default form styles, controlling label position by classnames. The Markup should look like
+ *
+ *  <my-form extends with-moving-label>
+ *      <label>Moving Title</label>
+ *      <input-type>
+ *      ...
+ * @param {string} input-type   - associated input selector
+ */
+@mixin with-moving-label($input-type:"input") {
+    position: relative;
+    color: $mmf-form__text-color;
+    font-size: $mmf-form__text-size;
+
+    #{$input-type} {
+        // move input down by label height
+        padding: $mmf-height-label 0 0 0;
+    }
+
+    label {
+        // set label to top
+        width: 100%;
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        transition: all 0.2s;
+    }
+
+    &.hasNoError {}
+    &.isNotEmpty {}
+
+    &.hasFocus {
+        label {
+            color: $mmf-input__text-color--primary;
+        }
+    }
+
+    &.hasError {
+        input {
+            border-color: $mmf-color--error;
+        }
+    }
+
+    &.hasError.hasFocus {
+        label {
+            color: $mmf-color--error;
+        }
+    }
+
+    &.isEmpty.hasNoFocus {
+        label {
+            color: inherit;
+            font-size: $mmf-input__text-size;
+            transform: translateY($mmf-height-label);
+        }
+    }
+}

@@ -1,26 +1,14 @@
 @import "../../lib/colors";
+@import "../../lib/units";
 @import "../../lib/typography";
 @import "../../lib/input";
 
 
 .mmf-textarea-form {
-    $height-label: 1.1rem;
-
-    position: relative;
-    color: $mmf-form__text-color;
-    font-size: $mmf-form__text-size;
-
-    label {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        font-size: inherit;
-        transition: all 0.2s;
-    }
+    @include with-moving-label("textarea");
 
     textarea {
         width: 100%;
-        margin: $height-label 0 0 0;
         resize: vertical;
 
         border-sizing: border-box;
@@ -36,31 +24,5 @@
         &:focus {
             border-color: $mmf-input__border-color--primary;
         }
-   }
-
-    &.hasFocus {
-        label {
-            color: $mmf-input__text-color--primary;
-        }
-    }
-
-   &.isEmpty.hasNoFocus {
-       label {
-           color: inherit;
-           font-size: $mmf-input__text-size;
-           transform: translateY($height-label);
-       }
-   }
-
-   &.hasError.hasFocus {
-       label {
-           color: $mmf-color--error;
-       }
-   }
-
-   &.hasError {
-       input {
-           border-color: $mmf-color--error;
-       }
    }
 }
