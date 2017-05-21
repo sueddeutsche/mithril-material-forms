@@ -4,7 +4,7 @@
 @import "../../lib/input";
 
 
-.mmf-textarea-form {
+.mmf-form--textarea {
     @include with-moving-label("textarea");
 
     textarea {

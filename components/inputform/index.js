@@ -50,7 +50,7 @@ module.exports = {
             console.log("ERRORS FOUND", attrs.errors);
         }
 
-        const view = m(".mmf-form.mmf-input-form",
+        const view = m(".mmf-form.mmf-form--input",
             {
                 "class": "hasNoFocus " + (attrs.errors.length > 0 ? "hasError" : "hasNoError") + " " +
                     (attrs.value === "" ? "isEmpty" : "isNotEmpty")

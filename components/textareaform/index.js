@@ -40,7 +40,7 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-textarea-form",
+        return m(".mmf-form.mmf-form--textarea",
             m(Label, attrs),
             m(Textarea, {
                 id: vnode.attrs.id,
