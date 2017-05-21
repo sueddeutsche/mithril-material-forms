@@ -4,6 +4,12 @@
 @import "./input";
 
 
+@mixin with-form() {
+    position: relative;
+    color: $mmf-form__text-color;
+    font-size: $mmf-form__text-size;
+}
+
 /**
  * Default form styles, controlling label position by classnames. The Markup should look like
  *
@@ -14,9 +20,7 @@
  * @param {string} input-type   - associated input selector
  */
 @mixin with-moving-label($input-type:"input") {
-    position: relative;
-    color: $mmf-form__text-color;
-    font-size: $mmf-form__text-size;
+    @include with-form();
 
     #{$input-type} {
         // move input down by label height
