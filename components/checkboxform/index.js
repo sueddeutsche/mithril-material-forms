@@ -15,7 +15,7 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-checkbox-form",
+        return m(".mmf-form.mmf-checkbox-form",
             {
                 "class": attrs.errors.length > 0 ? "hasError" : "hasNoError"
             },

@@ -1,0 +1,14 @@
+@import "../lib/colors";
+
+
+.mmf-form {
+
+    ul {
+        margin-top: 4px;
+
+        li {
+            font-size: inherit;
+            color: $mmf-color--error;
+        }
+    }
+}

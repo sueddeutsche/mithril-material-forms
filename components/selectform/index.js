@@ -16,9 +16,9 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-select-form", {},
+        return m(".mmf-form.mmf-select-form", {},
             m(".mmf-row",
-                m(Label, Object.assign({ class: "mmf-grow-2" }, attrs)),
+                m(Label, Object.assign({ "class": "mmf-grow-2" }, attrs)),
                 m(Select, attrs)
             ),
             m("ul", attrs.errors.map((error) =>

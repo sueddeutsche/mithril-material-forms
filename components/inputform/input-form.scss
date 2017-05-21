@@ -1,18 +1,6 @@
-@import "../../lib/units";
-@import "../../lib/colors";
-@import "../../lib/typography";
 @import "../../lib/form";
 
 
 .mmf-input-form {
     @include with-moving-label("input");
-
-    ul {
-        margin-top: 4px;
-
-        li {
-            font-size: inherit;
-            color: $mmf-color--error;
-        }
-    }
 }
