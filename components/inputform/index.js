@@ -46,10 +46,6 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        if (attrs.errors.length) {
-            console.log("ERRORS FOUND", attrs.errors);
-        }
-
         const view = m(".mmf-form.mmf-form--input",
             {
                 "class": "hasNoFocus " + (attrs.errors.length > 0 ? "hasError" : "hasNoError") + " " +
