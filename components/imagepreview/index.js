@@ -49,7 +49,6 @@ const ImagePreview = {
             {
                 "class": isEmpty(attrs.url) ? "" : "with-image"
             },
-            attrs.description ? m(".mmf-meta", attrs.description) : null,
             m(".mmf-preview__content",
                 {
                     style: isEmpty(attrs.url) ? "" : `padding-bottom: ${getRatioStyle(attrs.maxRatio)};`,
@@ -61,7 +60,7 @@ const ImagePreview = {
                             src: attrs.url,
                             onload: (event) => this.updateRatio(attrs.maxRatio, event.path[0])
                         }),
-                        m(".mmf-preview__description", attrs.description),
+                        attrs.description ? m(".mmf-preview__description", attrs.description) : "",
                         m(".mmf-preview__overflow-indicator")
                     ],
                 vnode.children
