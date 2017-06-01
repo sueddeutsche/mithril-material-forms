@@ -6,6 +6,8 @@
 
 input.mmf-checkbox {
     @include clickable();
+    display: inline-block;
+    width: $mmf-block;
     border-radius: $mmf-radius;
     border: $mmf-input-border--width solid $mmf-input__border-color;
 }
