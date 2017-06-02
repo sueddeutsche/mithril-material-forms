@@ -14,7 +14,7 @@ module.exports = {
             },
             vnode.attrs.options.map((value) => {
                 const title = value.title || value;
-                value = value.value == null ? value : value.value;
+                value = `${value.value == null ? value : value.value}`; // value must be a string or else is discarded
                 return m("option", { value }, title);
             })
         );

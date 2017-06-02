@@ -8,6 +8,7 @@
 select.mmf-select {
     @include reset-select();
 
+    color: $mmf-color--text;
     font-size: $mmf-select__text-size;
 
     // behaviour
