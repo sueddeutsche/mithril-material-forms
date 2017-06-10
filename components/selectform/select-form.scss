@@ -9,21 +9,25 @@
     color: $mmf-form__text-color;
     font-size: $mmf-form__text-size;
 
+    select {
+        margin-right: $mmf-block;
+    }
+
+    label {
+        line-height: 29px;
+    }
+
     .mmf-meta {
         color: inherit;
         font-size: inherit;
     }
 
-    .mmf-row {
-        display: flex;
-        flex-direction: row;
+    // .mmf-row {
+    //     display: flex;
+    //     flex-direction: row;
 
-        label {
-            line-height: 29px;
-        }
-
-        .mmf-grow-2 {
-            flex-grow: 2;
-        }
-    }
+    //     .mmf-grow-2 {
+    //         flex-grow: 2;
+    //     }
+    // }
 }
