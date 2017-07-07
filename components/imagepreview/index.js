@@ -15,6 +15,45 @@ function getRatio(ratio) {
     return (100 * dim[1] / dim[0]);
 }
 
+
+const MetaDescription = {
+    view(vnode) {
+        const attrs = vnode.attrs;
+        return [
+            isEmpty(attrs.url) ?
+                m(".mmf-preview__placeholder", attrs.placeholder) : [
+                    attrs.description ? m(".mmf-preview__description", attrs.description) : "",
+                    m(".mmf-preview__overflow-indicator")
+                ],
+            vnode.children
+        ];
+    }
+};
+
+
+const InlineImage = {
+    view(vnode) {
+        const attrs = vnode.attrs;
+        return m(".mmf-preview__content",
+            {
+                style: isEmpty(attrs.url) ? "" : `padding-bottom: ${getRatioStyle(attrs.maxRatio)};`,
+                oncreate: attrs.oncreate
+            },
+            isEmpty(attrs.url) ?
+                m(".mmf-preview__placeholder", attrs.placeholder) : [
+                    m("img", {
+                        src: attrs.url,
+                        onload: attrs.onload
+                    }),
+                    attrs.description ? m(".mmf-preview__description", attrs.description) : "",
+                    m(".mmf-preview__overflow-indicator")
+                ],
+            vnode.children
+        );
+    }
+};
+
+
 const ImagePreview = {
 
     overflowContainer: null,
@@ -39,32 +78,24 @@ const ImagePreview = {
     view(vnode) {
         const attrs = Object.assign({
             url: null,
+            "class": "",
+            asBackgroundImage: false,
             description: null,
             placeholder: null,
             onclick: null,
-            maxRatio: "16:9"
+            maxRatio: "16:9",
+            // "private"
+            onload: (event) => this.updateRatio(attrs.maxRatio, event.currentTarget),
+            oncreate: (content) => { this.overflowContainer = content.dom; }
         }, vnode.attrs);
 
         return m(".mmf-preview.mmf-preview--image",
             {
-                "class": isEmpty(attrs.url) ? "" : "with-image"
+                "class": attrs.class + (isEmpty(attrs.url) ? "" : " with-image"),
+                style: (attrs.asBackgroundImage && !isEmpty(attrs.url)) ?
+                    `background-image: url(${attrs.url});` : ""
             },
-            m(".mmf-preview__content",
-                {
-                    style: isEmpty(attrs.url) ? "" : `padding-bottom: ${getRatioStyle(attrs.maxRatio)};`,
-                    oncreate: (content) => { this.overflowContainer = content.dom; }
-                },
-                isEmpty(attrs.url) ?
-                    m(".mmf-preview__placeholder", attrs.placeholder) : [
-                        m("img", {
-                            src: attrs.url,
-                            onload: (event) => this.updateRatio(attrs.maxRatio, event.path[0])
-                        }),
-                        attrs.description ? m(".mmf-preview__description", attrs.description) : "",
-                        m(".mmf-preview__overflow-indicator")
-                    ],
-                vnode.children
-            )
+            attrs.asBackgroundImage ? m(MetaDescription, attrs, vnode.children) : m(InlineImage, attrs, vnode.children)
         );
     }
 };
