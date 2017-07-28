@@ -56,7 +56,7 @@ module.exports = {
                 {
                     type: inputType,
                     id: attrs.id,
-                    onChange: (value) => (attrs.onchange && attrs.onchange(sanitizeValue(inputType, value))),
+                    onChange: (value) => attrs.onchange(sanitizeValue(inputType, value)),
                     value: attrs.value,
                     onfocus: (e) => {
                         this.onfocus();
