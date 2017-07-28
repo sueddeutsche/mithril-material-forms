@@ -5,10 +5,6 @@ module.exports = {
     value: null,
     hasFocus: false,
 
-    updateValue(value) {
-        this.value = value;
-    },
-
     onupdate(vnode) {
         // @prevent redraw of input
         // updating the pointer dependend attributes outside of mithril
