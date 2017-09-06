@@ -12,7 +12,6 @@
     box-sizing: border-box;
     padding: $padding-inset;
     overflow: hidden; /* hide overflowing image after padding-border for visual feedback */
-    background-color: $mmf-color--border;
 
     &.with-image {
         padding: $padding-inset-image;
