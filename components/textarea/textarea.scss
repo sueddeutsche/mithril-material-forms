@@ -3,9 +3,14 @@
 
 
 textarea.mmf-textarea {
-     @include with-input();
+    @include with-input();
 
-     width: 100%;
-     margin: $mmf-height-label 0 0 0;
-     resize: vertical;
+    width: 100%;
+    margin: $mmf-height-label 0 0 0;
+    resize: vertical;
+
+    &:focus {
+        outline-style: none;
+        outline-width: 0;
+    }
 }

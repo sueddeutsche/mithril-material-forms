@@ -23,9 +23,15 @@
 @mixin with-moving-label($input-type:"input") {
     @include with-form();
 
-    #{$input-type} {
-        // move input down by label height
-        padding: $mmf-height-label 0 0 0;
+    // move input down by label height
+    @if $input-type == "textarea" {
+        #{$input-type} {
+            margin: $mmf-height-label 0 0 0;
+        }
+    } @else {
+        #{$input-type} {
+            padding: $mmf-height-label 0 0 0;
+        }
     }
 
     label {
