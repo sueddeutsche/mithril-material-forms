@@ -1,0 +1,13 @@
+@import "../../lib/units";
+@import "../../lib/colors";
+@import "../../lib/interface";
+@import "../../lib/input";
+
+
+input.mmf-checkbox {
+    @include clickable();
+    display: inline-block;
+    width: $mmf-block;
+    border-radius: $mmf-radius;
+    border: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+}

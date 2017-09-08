@@ -1,0 +1,8 @@
+@import "../../lib/colors";
+@import "../../lib/typography";
+@import "../../lib/input";
+
+
+input.mmf-input {
+    @include with-input();
+}
