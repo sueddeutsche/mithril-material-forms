@@ -8,7 +8,7 @@ $mmf-input-border--width: 1px;
     color: $mmf-input__text-color;
     font-size: $mmf-input__text-size;
     border: none;
-    border-bottom: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
     width: 100%;
     box-sizing: border-box;
     background: transparent;

@@ -9,5 +9,5 @@ input.mmf-checkbox {
     display: inline-block;
     width: $mmf-block;
     border-radius: $mmf-radius;
-    border: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+    border: $mmf-input-border--width $mmf-style--border $mmf-color--border;
 }

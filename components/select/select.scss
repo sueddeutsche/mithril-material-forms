@@ -19,7 +19,7 @@ select.mmf-select {
     padding: 4px (0.5 * $mmf-block + 4px) 4px 0;
     border: none;
     border-radius: 0;
-    border-bottom: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
 
     // icon
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC AK7OHOkAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAndFJOUwABh+ocAzckD9IK+ZaxvaT+BkLjeMgV9dtp LVvwTvxe3JnzU7+n3hhRNDkAAADlSURBVEjHtdXXEoIwFIThBQELINgBwV7e/w11rKSA2TB+95ur f3IA99pBBMBJ7Pexf38Ak7HtfjHCw2Bot8+WePEuNvteHx/9Hr9fBagJVux+U0FQbcgHckhybu9C QQWVOOoDzt58P55Aw49N98MBtEYLs/3MQ4NlZrIvCzQyCSqcokVw+PnAFq2mIR+AaJ3SAUjmfACS iA/ANKjmAKSgTnwAIv0f1x6AyJup+3QNQlEqD8xBUYKKQJKCep4QSq47IRRXd0IY36NZPyGM99EU TwjjGVR6hDVvxweg/HEROgnOPv7rBrKmo0yVaaKY");
