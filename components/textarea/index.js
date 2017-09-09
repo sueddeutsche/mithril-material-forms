@@ -16,7 +16,7 @@ module.exports = {
             onbeforeremove: Function.prototype
         }, vnode.attrs);
 
-        return m("textarea", {
+        return m("textarea.mmf-textarea", {
             id: attrs.id,
             value: attrs.value,
             rows: attrs.rows,
