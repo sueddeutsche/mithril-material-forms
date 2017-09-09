@@ -8,19 +8,9 @@ $mmf-color--text: #333 !default;
 $mmf-color--secondary-text: #9B9B9B !default;
 $mmf-color--secondary-bg: #616161 !default;
 
-// general input
-$mmf-input__border-color: $mmf-color--border !default;
-$mmf-input__border-color--primary: $mmf-color--primary !default;
-$mmf-input__text-color: $mmf-color--text !default;
-
 // form
 $mmf-form__text-color: $mmf-color--secondary-text !default;
-$mmf-form__background-color: #fff;
-
-// buttons
-$mmf-button__background-color: transparent !default;
-$mmf-button__background-color--focus: $mmf-color--border !default;
-
+$mmf-form__background-color: #fff !default;
 
 // styling - no colors
-$mmf-style--border: solid;
+$mmf-style--border: solid !default;

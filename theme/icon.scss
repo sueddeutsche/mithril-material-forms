@@ -32,4 +32,8 @@
     line-height: $mmf-block;
 
     transition: color 0.1s linear;
+
+    &:hover {
+        color: $mmf-color--primary;
+    }
 }

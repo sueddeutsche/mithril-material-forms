@@ -5,7 +5,7 @@ $mmf-input-border--width: 1px;
 
 
 @mixin with-input() {
-    color: $mmf-input__text-color;
+    color: $mmf-color--text;
     font-size: $mmf-input__text-size;
     border: none;
     border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
@@ -20,6 +20,6 @@ $mmf-input-border--width: 1px;
     transition: border-color 0.25s linear;
 
     &:focus {
-        border-color: $mmf-input__border-color--primary;
+        border-color: $mmf-color--primary;
     }
 }
