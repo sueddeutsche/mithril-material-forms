@@ -6,17 +6,15 @@
 @if export-once("mithril-material-forms/components/select-form") {
 
     .mmf-form--select {
-        $size-column: 4 * 8px;
-        $size-icon: 2 * 8px;
-
         color: $mmf-form__text-color;
-        font-size: $mmf-form__text-size;
+        font-size: $mmf-input__text-size; // use input text size for missing floating labels
 
         select {
-            margin-right: $mmf-block;
+
         }
 
         label {
+            padding-left: $mmf-block-padding;
             line-height: 29px;
         }
 

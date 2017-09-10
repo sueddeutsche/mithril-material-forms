@@ -31,7 +31,7 @@
         background-size: 0.7em;
         background-position: right;
         // padding icon left (to text)
-        padding-right: 4 * 8px !important;
+        padding-right: $mmf-block-padding !important;
 
         transition: border-color 0.25s linear;
 
