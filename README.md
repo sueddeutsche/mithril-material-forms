@@ -1,6 +1,6 @@
 # mithril-material-forms
 
-Basic input form components using mithril. Requires material-icon font to work correctly (checkbox)
+Basic input form components using mithril. Requires material-icon font to work correctly (checkbox, select)
 
 ```html
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
