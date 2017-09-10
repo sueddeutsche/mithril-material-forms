@@ -14,19 +14,20 @@
     div.mmf-select__wrapper {
         position: relative;
         display: inline-block;
+        font-size: $mmf-select__text-size;
 
         &:after {
             content: "keyboard_arrow_down";
             @include material-icon();
             color: $mmf-color--text;
             position: absolute;
+            font-size: 1.25em;
             right: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 0.25em;
             transition: color $animation;
         }
 
-        &:hover:after
+        &:hover:after,
         &.has-focus:after {
             color: $mmf-color--primary;
         }
@@ -36,7 +37,7 @@
         @include reset-select();
 
         color: $mmf-color--text;
-        font-size: $mmf-select__text-size;
+        font-size: inherit;
 
         // behaviour
         cursor: pointer;

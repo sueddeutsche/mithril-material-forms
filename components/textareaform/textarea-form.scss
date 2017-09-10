@@ -10,6 +10,7 @@
 
     .mmf-form--textarea {
         @include with-moving-label("textarea");
+        font-size: $mmf-input__text-size;
 
         textarea {
             width: 100%;
@@ -18,7 +19,6 @@
             border-sizing: border-box;
             border: none;
             border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
-            font-size: $mmf-input__text-size;
             line-height: 1.4em;
             background: transparent;
 

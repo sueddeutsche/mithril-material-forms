@@ -7,7 +7,6 @@ module.exports = {
     view(vnode) {
         const attrs = Object.assign({
             id: null,
-            title: "",
             value: "",
             options: [{ title: "-", value: false }],
             errors: [],

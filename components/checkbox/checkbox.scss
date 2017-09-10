@@ -37,6 +37,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            transition: color 0.25s linear;
+        }
+
+        &:hover:after {
+            color: $mmf-color--primary;
         }
     }
 }

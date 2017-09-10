@@ -2,6 +2,9 @@ const m = require("mithril");
 const Textarea = require("../textarea");
 const Label = require("../label");
 
+function isEmpty(value) {
+    return value == null || value === "";
+}
 
 module.exports = {
 
@@ -22,7 +25,7 @@ module.exports = {
     },
 
     updateClasses(value) {
-        const hasValue = value !== "";
+        const hasValue = isEmpty(value) === false;
         this.$form.classList.remove(hasValue ? "isEmpty" : "isNotEmpty");
         this.$form.classList.add(hasValue === false ? "isEmpty" : "isNotEmpty");
     },
