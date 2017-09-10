@@ -23,13 +23,13 @@
         transform: translateY(0.25em); // center to baseline
 
         &:checked:after {
-            content: 'check_box';
+            content: "check_box";
         }
 
         &:after {
             @include clickable();
             @include material-icon();
-            content: 'check_box_outline_blank';
+            content: "check_box_outline_blank";
             position: absolute;
             color: $mmf-color--text;
             font-size: inherit;
