@@ -1,10 +1,14 @@
 @import "../lib/units";
 @import "../lib/elevation";
+@import "../lib/export-once";
 
 
-.mmf-card {
-    @include elevation(2);
-    width: 100%;
-    background: #eee;
-    border-radius: $mmf-radius;
+@if export-once("mithril-material-forms/theme/card") {
+
+    .mmf-card {
+        @include elevation(2);
+        width: 100%;
+        background: #eee;
+        border-radius: $mmf-radius;
+    }
 }

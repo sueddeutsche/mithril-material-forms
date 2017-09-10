@@ -3,36 +3,40 @@
 @import "../../lib/typography";
 @import "../../lib/colors";
 @import "../../lib/input";
+@import "../../lib/export-once";
 
 
-select.mmf-select {
-    @include reset-select();
+@if export-once("mithril-material-forms/components/select") {
 
-    color: $mmf-color--text;
-    font-size: $mmf-select__text-size;
+    select.mmf-select {
+        @include reset-select();
 
-    // behaviour
-    cursor: pointer;
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    // select styling
-    padding: 4px (0.5 * $mmf-block + 4px) 4px 0;
-    border: none;
-    border-radius: 0;
-    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+        color: $mmf-color--text;
+        font-size: $mmf-select__text-size;
 
-    // icon
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC AK7OHOkAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAndFJOUwABh+ocAzckD9IK+ZaxvaT+BkLjeMgV9dtp LVvwTvxe3JnzU7+n3hhRNDkAAADlSURBVEjHtdXXEoIwFIThBQELINgBwV7e/w11rKSA2TB+95ur f3IA99pBBMBJ7Pexf38Ak7HtfjHCw2Bot8+WePEuNvteHx/9Hr9fBagJVux+U0FQbcgHckhybu9C QQWVOOoDzt58P55Aw49N98MBtEYLs/3MQ4NlZrIvCzQyCSqcokVw+PnAFq2mIR+AaJ3SAUjmfACS iA/ANKjmAKSgTnwAIv0f1x6AyJup+3QNQlEqD8xBUYKKQJKCep4QSq47IRRXd0IY36NZPyGM99EU TwjjGVR6hDVvxweg/HEROgnOPv7rBrKmo0yVaaKY");
-    background-repeat: no-repeat;
-    background-color: inherit;
-    background-size: 0.7em;
-    background-position: right;
-    // padding icon left (to text)
-    padding-right: 4 * 8px !important;
+        // behaviour
+        cursor: pointer;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        // select styling
+        padding: 4px (0.5 * $mmf-block + 4px) 4px 0;
+        border: none;
+        border-radius: 0;
+        border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
 
-    transition: border-color 0.25s linear;
+        // icon
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC AK7OHOkAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAndFJOUwABh+ocAzckD9IK+ZaxvaT+BkLjeMgV9dtp LVvwTvxe3JnzU7+n3hhRNDkAAADlSURBVEjHtdXXEoIwFIThBQELINgBwV7e/w11rKSA2TB+95ur f3IA99pBBMBJ7Pexf38Ak7HtfjHCw2Bot8+WePEuNvteHx/9Hr9fBagJVux+U0FQbcgHckhybu9C QQWVOOoDzt58P55Aw49N98MBtEYLs/3MQ4NlZrIvCzQyCSqcokVw+PnAFq2mIR+AaJ3SAUjmfACS iA/ANKjmAKSgTnwAIv0f1x6AyJup+3QNQlEqD8xBUYKKQJKCep4QSq47IRRXd0IY36NZPyGM99EU TwjjGVR6hDVvxweg/HEROgnOPv7rBrKmo0yVaaKY");
+        background-repeat: no-repeat;
+        background-color: inherit;
+        background-size: 0.7em;
+        background-position: right;
+        // padding icon left (to text)
+        padding-right: 4 * 8px !important;
 
-    &:focus {
-        border-color: $mmf-color--primary;
+        transition: border-color 0.25s linear;
+
+        &:focus {
+            border-color: $mmf-color--primary;
+        }
     }
 }

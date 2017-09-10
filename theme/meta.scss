@@ -1,3 +1,9 @@
-.mmf-meta {
-    font-style: italic;
+@import "../lib/export-once";
+
+
+@if export-once("mithril-material-forms/theme/meta") {
+
+    .mmf-meta {
+        font-style: italic;
+    }
 }

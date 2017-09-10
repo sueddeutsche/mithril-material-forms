@@ -1,7 +1,11 @@
 @import "../../lib/colors";
+@import "../../lib/export-once";
 
 
-.mmf-label {
-    color: inherit;
-    font-size: inherit;
+@if export-once("mithril-material-forms/components/label") {
+
+    .mmf-label {
+        color: inherit;
+        font-size: inherit;
+    }
 }
