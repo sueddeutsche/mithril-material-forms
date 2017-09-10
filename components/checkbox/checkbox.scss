@@ -20,7 +20,7 @@
         width: 1em;
         height: 1em;
 
-        transform: translateY(0.25em); // center to baseline
+        transform: translateY(0.2em); // center to baseline
 
         &:checked:after {
             content: "check_box";
