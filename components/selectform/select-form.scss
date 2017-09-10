@@ -6,8 +6,6 @@
 @if export-once("mithril-material-forms/components/select-form") {
 
     .mmf-form--select {
-        color: $mmf-form__text-color;
-        font-size: $mmf-input__text-size; // use input text size for missing floating labels
 
         select {
         }

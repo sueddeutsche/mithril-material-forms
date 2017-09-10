@@ -5,6 +5,8 @@
 @if export-once("mithril-material-forms/theme/form") {
 
     .mmf-form {
+        color: $mmf-form__text-color;
+        font-size: $mmf-input__text-size; // use input text size for missing floating labels
 
         ul {
             margin-top: 4px;

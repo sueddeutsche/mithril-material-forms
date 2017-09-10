@@ -7,8 +7,6 @@
 @if export-once("mithril-material-forms/components/checkbox-form") {
 
     .mmf-form--checkbox {
-        color: $mmf-form__text-color;
-        font-size: $mmf-input__text-size; // use input text size for label, since checkbox does not have a floating label
 
         label {
             color: inherit;

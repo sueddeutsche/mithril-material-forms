@@ -6,6 +6,5 @@
 
     .mmf-form--input {
         @include with-moving-label("input");
-        font-size: $mmf-input__text-size; // use input text size for missing floating labels
     }
 }
