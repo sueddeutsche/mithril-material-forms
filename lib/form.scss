@@ -23,6 +23,8 @@
 @mixin with-moving-label($input-type:"input") {
     @include with-form();
 
+    $font-label--small: 0.8em;
+
     // move input down by label height
     @if $input-type == "textarea" {
         #{$input-type} {
@@ -34,20 +36,22 @@
         }
     }
 
-    label {
+    label.mmf-label {
         // set label to top
         width: 100%;
         position: absolute;
         top: 0;
         display: inline-block;
         transition: all 0.2s;
+
+        font-size: $font-label--small; // small font-size if not currently a placeholder (but title)
     }
 
     &.hasNoError {}
     &.isNotEmpty {}
 
     &.hasFocus {
-        label {
+        label.mmf-label {
             color: $mmf-color--primary;
         }
     }
@@ -59,16 +63,16 @@
     }
 
     &.hasError.hasFocus {
-        label {
+        label.mmf-label {
             color: $mmf-color--error;
         }
     }
 
     &.isEmpty.hasNoFocus {
-        label {
+        label.mmf-label {
             color: inherit;
-            font-size: $mmf-input__text-size;
             transform: translateY($mmf-height-label);
+            font-size: inherit;
         }
     }
 }
