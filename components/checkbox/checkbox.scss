@@ -1,13 +1,47 @@
+@import "../../lib/reset";
 @import "../../lib/units";
 @import "../../lib/colors";
 @import "../../lib/interface";
 @import "../../lib/input";
+@import "../../lib/export-once";
+@import "../../theme/icon";
 
 
-input.mmf-checkbox {
-    @include clickable();
-    display: inline-block;
-    width: $mmf-block;
-    border-radius: $mmf-radius;
-    border: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+@if export-once("mithril-material-forms/components/checkbox") {
+
+    input.mmf-checkbox {
+        @include reset-box();
+        @include reset-input();
+        @include clickable();
+
+        position: relative;
+        display: inline-block;
+        font-size: 1.25em;
+        width: 1em;
+        height: 1em;
+
+        transform: translateY(0.2em); // center to baseline
+
+        &:checked:after {
+            content: "check_box";
+        }
+
+        &:after {
+            @include clickable();
+            @include material-icon();
+            content: "check_box_outline_blank";
+            position: absolute;
+            color: $mmf-color--text;
+            font-size: inherit;
+            // center above input
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: color 0.25s linear;
+        }
+
+        &:hover:after {
+            color: $mmf-color--primary;
+        }
+    }
 }

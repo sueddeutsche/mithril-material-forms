@@ -2,6 +2,9 @@ const m = require("mithril");
 const Textarea = require("../textarea");
 const Label = require("../label");
 
+function isEmpty(value) {
+    return value == null || value === "";
+}
 
 module.exports = {
 
@@ -22,7 +25,7 @@ module.exports = {
     },
 
     updateClasses(value) {
-        const hasValue = value !== "";
+        const hasValue = isEmpty(value) === false;
         this.$form.classList.remove(hasValue ? "isEmpty" : "isNotEmpty");
         this.$form.classList.add(hasValue === false ? "isEmpty" : "isNotEmpty");
     },
@@ -41,11 +44,14 @@ module.exports = {
         }, vnode.attrs);
 
         return m(".mmf-form.mmf-form--textarea",
+            {
+                "class": (attrs.errors && attrs.errors.length > 0) ? "hasError" : "hasNoError"
+            },
             m(Label, attrs),
             m(Textarea, {
-                id: vnode.attrs.id,
-                value: vnode.attrs.value,
-                onchange: m.withAttr("value", vnode.attrs.onchange),
+                id: attrs.id,
+                value: attrs.value,
+                onchange: m.withAttr("value", attrs.onchange),
                 onblur: (e) => {
                     this.onblur(e.target.value);
                     attrs.onblur(e);
@@ -55,7 +61,7 @@ module.exports = {
                     attrs.onfocus(e);
                 }
             }),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",

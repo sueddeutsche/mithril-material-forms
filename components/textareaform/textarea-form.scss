@@ -2,27 +2,31 @@
 @import "../../lib/units";
 @import "../../lib/typography";
 @import "../../lib/input";
+@import "../textarea/textarea";
+@import "../../lib/export-once";
 
 
-.mmf-form--textarea {
-    @include with-moving-label("textarea");
+@if export-once("mithril-material-forms/components/textarea-form") {
 
-    textarea {
-        width: 100%;
-        resize: vertical;
+    .mmf-form--textarea {
+        @include with-moving-label("textarea");
 
-        border-sizing: border-box;
-        border: none;
-        border-bottom: $mmf-input-border--width solid $mmf-input__border-color;
-        font-size: $mmf-input__text-size;
-        line-height: 1.4em;
-        background: transparent;
+        textarea {
+            width: 100%;
+            resize: vertical;
 
-        outline: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            border-sizing: border-box;
+            border: none;
+            border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+            line-height: 1.4em;
+            background: transparent;
 
-        &:focus {
-            border-color: $mmf-input__border-color--primary;
-        }
-   }
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+            &:focus {
+                border-color: $mmf-color--primary;
+            }
+       }
+    }
 }

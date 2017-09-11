@@ -1,6 +1,10 @@
 @import "../../lib/form";
+@import "../../lib/export-once";
 
 
-.mmf-form--input {
-    @include with-moving-label("input");
+@if export-once("mithril-material-forms/components/input-form") {
+
+    .mmf-form--input {
+        @include with-moving-label("input");
+    }
 }

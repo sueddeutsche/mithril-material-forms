@@ -1,5 +1,6 @@
 @import "../lib/units";
 @import "../lib/interface";
+@import "../lib/export-once";
 
 
 @mixin material-icon() {
@@ -20,16 +21,23 @@
 }
 
 
-.mmf-icon {
-    @include clickable();
-    @include material-icon();
+@if export-once("mithril-material-forms/theme/icon") {
 
-    color: inherit;
+    .mmf-icon {
+        @include clickable();
+        @include material-icon();
 
-    text-align: center;
-    width: $mmf-block;
-    height: $mmf-block;
-    line-height: $mmf-block;
+        color: inherit;
 
-    transition: color 0.1s linear;
+        text-align: center;
+        width: $mmf-block;
+        height: $mmf-block;
+        line-height: $mmf-block;
+
+        transition: color 0.1s linear;
+
+        &:hover {
+            color: $mmf-color--primary;
+        }
+    }
 }

@@ -1,8 +1,12 @@
 @import "../../lib/colors";
 @import "../../lib/typography";
 @import "../../lib/input";
+@import "../../lib/export-once";
 
 
-input.mmf-input {
-    @include with-input();
+@if export-once("mithril-material-forms/components/input") {
+
+    input.mmf-input {
+        @include with-input();
+    }
 }

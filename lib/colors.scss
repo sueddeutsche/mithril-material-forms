@@ -3,25 +3,19 @@ $mmf-color--border: #9E9E9E !default;
 $mmf-color--error: #C0392B !default;
 $mmf-color--warning: #F39C12 !default;
 $mmf-color--primary: #009688 !default;
+$mmf-color--primary--alternative: #16a085 !default;
 $mmf-color--ok: #2ECC71 !default;
 $mmf-color--text: #333 !default;
 $mmf-color--secondary-text: #9B9B9B !default;
 $mmf-color--secondary-bg: #616161 !default;
 
-// general input
-$mmf-input__border-color: $mmf-color--border !default;
-$mmf-input__border-color--primary: $mmf-color--primary !default;
-$mmf-input__text-color: $mmf-color--text !default;
-$mmf-input__text-color--primary: $mmf-color--primary !default;
-
 // form
 $mmf-form__text-color: $mmf-color--secondary-text !default;
-
-// buttons
-$mmf-button__text-color: $mmf-color--primary !default;
-$mmf-button__background-color: transparent !default;
-$mmf-button__background-color--focus: $mmf-color--border !default;
-
+$mmf-form__background-color: #fff !default;
 
 // styling - no colors
-$mmf-input__border-style: solid;
+$mmf-style--border: solid !default;
+
+$mmf-color__background: #fff !default;
+$mmf-color__background--focus: #ecf0f1 !default;
+$mmf-color__background--pressed: #ecf0f1 !default;

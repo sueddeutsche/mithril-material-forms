@@ -3,36 +3,61 @@
 @import "../../lib/typography";
 @import "../../lib/colors";
 @import "../../lib/input";
+@import "../../lib/export-once";
+@import "../../theme/icon";
 
 
-select.mmf-select {
-    @include reset-select();
+@if export-once("mithril-material-forms/components/select") {
 
-    color: $mmf-color--text;
-    font-size: $mmf-select__text-size;
+    $animation: 0.25s linear;
 
-    // behaviour
-    cursor: pointer;
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    // select styling
-    padding: 4px (0.5 * $mmf-block + 4px) 4px 0;
-    border: none;
-    border-radius: 0;
-    border-bottom: $mmf-input-border--width $mmf-input__border-style $mmf-input__border-color;
+    div.mmf-select__wrapper {
+        position: relative;
+        display: inline-block;
+        font-size: $mmf-select__text-size;
 
-    // icon
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC AK7OHOkAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz MzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAndFJOUwABh+ocAzckD9IK+ZaxvaT+BkLjeMgV9dtp LVvwTvxe3JnzU7+n3hhRNDkAAADlSURBVEjHtdXXEoIwFIThBQELINgBwV7e/w11rKSA2TB+95ur f3IA99pBBMBJ7Pexf38Ak7HtfjHCw2Bot8+WePEuNvteHx/9Hr9fBagJVux+U0FQbcgHckhybu9C QQWVOOoDzt58P55Aw49N98MBtEYLs/3MQ4NlZrIvCzQyCSqcokVw+PnAFq2mIR+AaJ3SAUjmfACS iA/ANKjmAKSgTnwAIv0f1x6AyJup+3QNQlEqD8xBUYKKQJKCep4QSq47IRRXd0IY36NZPyGM99EU TwjjGVR6hDVvxweg/HEROgnOPv7rBrKmo0yVaaKY");
-    background-repeat: no-repeat;
-    background-color: inherit;
-    background-size: 0.7em;
-    background-position: right;
-    // padding icon left (to text)
-    padding-right: 4 * 8px !important;
+        &:after {
+            content: "keyboard_arrow_down";
+            @include material-icon();
+            color: $mmf-color--text;
+            position: absolute;
+            font-size: 1.25em;
+            right: 0;
+            bottom: 0;
+            transition: color $animation;
+        }
 
-    transition: border-color 0.25s linear;
+        &:hover:after,
+        &.has-focus:after {
+            color: $mmf-color--primary;
+        }
+    }
 
-    &:focus {
-        border-color: $mmf-color--primary;
+    select.mmf-select {
+        @include reset-select();
+
+        color: $mmf-color--text;
+        font-size: inherit;
+
+        // behaviour
+        cursor: pointer;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        // select styling
+        padding: 4px (0.5 * $mmf-block + 4px) 0 0;
+        border: none;
+        border-radius: 0;
+        border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+        background-color: inherit;
+
+        transition: border-color $animation;
+
+        &:focus {
+            border-color: $mmf-color--primary;
+        }
+
+        &:hover {
+            border-color: $mmf-color--primary;
+        }
     }
 }

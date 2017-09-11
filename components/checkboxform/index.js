@@ -27,7 +27,7 @@ module.exports = {
                 }
             ),
             m(Label, attrs),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",

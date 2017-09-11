@@ -3,25 +3,41 @@
 @import "../../lib/reset";
 @import "../../lib/colors";
 @import "../../lib/interface";
+@import "../../lib/export-once";
+@import "../../lib/elevation";
 
 
-button.mmf-button {
-    @include reset-button();
-    @include clickable();
-    @include font-regular();
-    height: 0.75 * $mmf-block;
-    margin: 0.125 * $mmf-block;
-    padding: 0 $mmf-unit;
-    font-size: $mmf-button__text-size;
-    line-height: 1em;
-    border-radius: $mmf-radius;
+@if export-once("mithril-material-forms/components/button") {
 
-    color: $mmf-button__text-color;
+    button.mmf-button {
+        @include reset-button();
+        @include clickable();
+        @include font-regular();
+        height: 0.75 * $mmf-block;
+        margin: 0.125 * $mmf-block;
+        padding: 0 $mmf-block-padding;
+        font-size: $mmf-button__text-size;
+        font-weight: medium;
+        line-height: 1em;
+        border-radius: $mmf-radius;
 
-    transition: background-color 0.25s linear;
-    background-color: $mmf-button__background-color;
+        color: $mmf-color--primary;
 
-    &:hover {
-        background-color: $mmf-button__background-color--focus;
+        transition: background-color 0.25s linear;
+        background-color: inherit;
+
+        &:hover {
+            background-color: $mmf-color__background--focus;
+        }
+    }
+
+    button.mmf-button--raised {
+        @include elevation(1);
+        color: $mmf-color__background--focus;
+        background-color: $mmf-color--primary;
+
+        &:hover {
+            background-color: $mmf-color--primary--alternative;
+        }
     }
 }

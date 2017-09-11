@@ -1,16 +1,24 @@
 @import "../../lib/input";
 @import "../../lib/units";
+@import "../../lib/export-once";
 
 
-textarea.mmf-textarea {
-    @include with-input();
+@if export-once("mithril-material-forms/components/textarea") {
 
-    width: 100%;
-    margin: $mmf-height-label 0 0 0;
-    resize: vertical;
+    textarea.mmf-textarea {
+        @include with-input();
 
-    &:focus {
-        outline-style: none;
-        outline-width: 0;
+        width: 100%;
+        margin: $mmf-height-label 0 0 0;
+        resize: vertical;
+
+        &:focus {
+            outline-style: none;
+            outline-width: 0;
+        }
+    }
+
+    .hasError textarea.mmf-textarea {
+        border-color: $mmf-color--error;
     }
 }
