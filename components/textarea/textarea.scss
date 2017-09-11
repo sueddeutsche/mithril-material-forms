@@ -17,4 +17,8 @@
             outline-width: 0;
         }
     }
+
+    .hasError textarea.mmf-textarea {
+        border-color: $mmf-color--error;
+    }
 }

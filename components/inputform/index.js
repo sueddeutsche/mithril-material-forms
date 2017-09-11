@@ -68,7 +68,7 @@ module.exports = {
                     }
                 }
             ),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",

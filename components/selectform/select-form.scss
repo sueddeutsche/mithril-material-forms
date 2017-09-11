@@ -7,8 +7,7 @@
 
     .mmf-form--select {
 
-        select {
-        }
+        select {}
 
         label {
             padding-left: $mmf-block-padding;
@@ -17,6 +16,10 @@
 
         .mmf-meta {
             color: inherit;
+        }
+
+        &.hasError select {
+            border-color: $mmf-color--error;
         }
     }
 }

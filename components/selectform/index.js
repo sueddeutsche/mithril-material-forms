@@ -15,10 +15,13 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-form.mmf-form--select", {},
+        return m(".mmf-form.mmf-form--select",
+            {
+                "class": (attrs.errors && attrs.errors.length > 0) ? "hasError" : "hasNoError"
+            },
             m(Select, attrs),
             m(Label, Object.assign({ "class": "mmf-grow-2" }, attrs)),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",

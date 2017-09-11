@@ -98,6 +98,21 @@
                     );
                 </script>
 
+                <h2>checkboxForm.errors</h2>
+                <div id="mCheckboxFormErrors"></div>
+                <script type="text/javascript">
+                    m.render(window.mCheckboxFormErrors,
+                        m(MMF.checkboxForm, {
+                            id: "mmf-checkbox-form",
+                            title: "Checkbox-Form Title",
+                            errors: ["This checkbox has an invalid type"],
+                            description: "Checkbox-Form description text...",
+                            value: false,
+                            onChange: Function.prototype
+                        })
+                    );
+                </script>
+
                 <h2>select</h2>
                 <div id="mSelect"></div>
                 <script type="text/javascript">
@@ -122,6 +137,25 @@
                             id: "mmf-select-form",
                             title: "Select-Form Title",
                             description: "Select-Form description text...",
+                            options: [
+                                "a very nice selection",
+                                "ignore any niceness"
+                            ],
+                            value: "a very nice selection",
+                            onChange: Function.prototype
+                        })
+                    );
+                </script>
+
+                <h2>selectForm.errors</h2>
+                <div id="mSelectFormErrors"></div>
+                <script type="text/javascript">
+                    m.render(window.mSelectFormErrors,
+                        m(MMF.selectForm, {
+                            id: "mmf-select-form",
+                            title: "Select-Form Title",
+                            description: "Select-Form description text...",
+                            errors: ["This selection is invalid"],
                             options: [
                                 "a very nice selection",
                                 "ignore any niceness"
@@ -160,6 +194,21 @@
                     );
                 </script>
 
+                <h2>inputForm.errors</h2>
+                <div id="mInputFormErrors"></div>
+                <script type="text/javascript">
+                    m.render(window.mInputFormErrors,
+                        m(MMF.inputForm, {
+                            id: "mmf-input-form",
+                            title: "Input-Form Title",
+                            errors: ["This text could be a little longer"],
+                            description: "Input-Form description text...",
+                            type: "text",
+                            onChange: Function.prototype
+                        })
+                    );
+                </script>
+
                 <h2>textarea</h2>
                 <div id="mTextarea"></div>
                 <script type="text/javascript">
@@ -181,6 +230,21 @@
                             id: "mmf-input-textarea",
                             type: "text",
                             title: "Textarea-Form Title",
+                            description: "Textarea-Form description text...",
+                            onChange: Function.prototype
+                        })
+                    );
+                </script>
+
+                <h2>textareaForm.errors</h2>
+                <div id="mTextareaFormErrors"></div>
+                <script type="text/javascript">
+                    m.render(window.mTextareaFormErrors,
+                        m(MMF.textareaForm, {
+                            id: "mmf-input-textarea",
+                            type: "text",
+                            title: "Textarea-Form Title",
+                            errors: ["An input is required"],
                             description: "Textarea-Form description text...",
                             onChange: Function.prototype
                         })
