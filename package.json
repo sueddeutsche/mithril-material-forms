@@ -21,6 +21,9 @@
     "Süddeutsche",
     "Zeitung"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
   "license": "ISC",
   "bugs": {
