@@ -1,6 +1,4 @@
 @mixin reset-button() {
-    @include reset-box();
-
     background: none repeat scroll 0 0 transparent;
     border: medium none;
     border-radius: 0;
@@ -17,20 +15,21 @@
 
 @mixin reset-select() {
     @include reset-input();
-    option {
+    * {
         @include reset-input();
     }
 }
 
 @mixin reset-input() {
-    & {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        &::-ms-expand { // IE 11
-            display: none;
-        }
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    &::-ms-expand { // IE 11
+        display: none;
     }
+    border-radius: 0;
+    border: medium none;
+    font-size: inherit;
 }
 
 @mixin reset-box() {

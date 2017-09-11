@@ -7,19 +7,19 @@
 
     .mmf-form {
         color: $mmf-form__text-color;
-        font-size: $mmf-input__text-size; // use input text size for missing floating labels
-
-        ul {
-            margin-top: 4px;
-
-            li {
-                font-size: inherit;
-                color: $mmf-color--error;
-            }
-        }
     }
 
     ul.mmf-form__errors {
+        font-size: $mmf-text-size--errors;
         list-style: none;
+        color: $mmf-color--error;
+
+        li {
+            margin-top: 0.5 * $mmf-unit;
+        }
+    }
+
+    .mmf-meta {
+        margin-top: 0.5 * $mmf-unit;
     }
 }

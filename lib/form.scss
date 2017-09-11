@@ -7,7 +7,6 @@
 @mixin with-form() {
     position: relative;
     color: $mmf-form__text-color;
-    font-size: $mmf-form__text-size;
     background: $mmf-form__background-color;
 }
 
@@ -22,8 +21,6 @@
  */
 @mixin with-moving-label($input-type:"input") {
     @include with-form();
-
-    $font-label--small: 0.8em;
 
     // move input down by label height
     @if $input-type == "textarea" {
@@ -42,9 +39,9 @@
         position: absolute;
         top: 0;
         display: inline-block;
-        transition: all 0.2s;
+        transition: all 0.2s ease-in-out;
 
-        font-size: $font-label--small; // small font-size if not currently a placeholder (but title)
+        font-size: $mmf-text-size--label; // small font-size if not currently a placeholder (but title)
     }
 
     &.hasNoError {}
@@ -72,7 +69,7 @@
         label.mmf-label {
             color: inherit;
             transform: translateY($mmf-height-label);
-            font-size: inherit;
+            font-size: 1em;
         }
     }
 }

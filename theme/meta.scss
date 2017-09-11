@@ -1,10 +1,11 @@
 @import "../lib/export-once";
+@import "../lib/typography";
 
 
 @if export-once("mithril-material-forms/theme/meta") {
 
     .mmf-meta {
         font-style: italic;
-        font-size: 0.9em;
+        font-size: $mmf-text-size--meta;
     }
 }

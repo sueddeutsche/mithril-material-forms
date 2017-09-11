@@ -14,7 +14,6 @@
     div.mmf-select__wrapper {
         position: relative;
         display: inline-block;
-        font-size: $mmf-select__text-size;
 
         &:after {
             content: "keyboard_arrow_down";
@@ -35,29 +34,23 @@
 
     select.mmf-select {
         @include reset-select();
+        @include with-input();
 
-        color: $mmf-color--text;
         font-size: inherit;
+        color: $mmf-color--text;
 
         // behaviour
         cursor: pointer;
         outline: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         // select styling
-        padding: 4px (0.5 * $mmf-block + 4px) 0 0;
-        border: none;
-        border-radius: 0;
-        border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+        padding-top: 4px;
+        padding-right: (0.5 * $mmf-block + 4px);
         background-color: inherit;
+    }
 
-        transition: border-color $animation;
-
-        &:focus {
-            border-color: $mmf-color--primary;
-        }
-
-        &:hover {
-            border-color: $mmf-color--primary;
-        }
+    select.mmf-select option {
+        font-size: inherit;
+        color: $mmf-color--text;
     }
 }

@@ -1,15 +1,8 @@
 $mmf-font: "Roboto" !default;
-$mmf-font-size: 16px;
 
-$mmf-text-size--base: 1rem;
-$mmf-text-size--title: 1rem;
-$mmf-text-size--list: 0.85rem;
-$mmf-text-size--meta: 0.7rem;
-
-$mmf-form__text-size: 0.7rem;
-$mmf-input__text-size: 0.9rem !default;
-$mmf-button__text-size: $mmf-input__text-size !default;
-$mmf-select__text-size: $mmf-input__text-size !default;
+$mmf-text-size--meta: 0.8em !default;
+$mmf-text-size--errors: $mmf-text-size--meta !default;
+$mmf-text-size--label: $mmf-text-size--meta !default;
 
 
 @mixin font-light() {

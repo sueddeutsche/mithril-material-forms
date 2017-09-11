@@ -13,12 +13,14 @@
         @include reset-box();
         @include reset-input();
         @include clickable();
+        @include with-input();
 
         position: relative;
         display: inline-block;
         font-size: 1.25em;
         width: 1em;
         height: 1em;
+        border-bottom: none;
 
         transform: translateY(0.2em); // center to baseline
 

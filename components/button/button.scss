@@ -16,8 +16,8 @@
         height: 0.75 * $mmf-block;
         margin: 0.125 * $mmf-block;
         padding: 0 $mmf-block-padding;
-        font-size: $mmf-button__text-size;
         font-weight: medium;
+        font-size: inherit;
         line-height: 1em;
         border-radius: $mmf-radius;
 
