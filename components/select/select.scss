@@ -18,7 +18,7 @@
         &:after {
             content: "keyboard_arrow_down";
             @include material-icon();
-            color: $mmf-color--text;
+            color: $mmf-color;
             position: absolute;
             font-size: 1.25em;
             right: 0;
@@ -28,7 +28,7 @@
 
         &:hover:after,
         &.has-focus:after {
-            color: $mmf-color--primary;
+            color: $mmf-color-primary;
         }
     }
 
@@ -37,7 +37,6 @@
         @include with-input();
 
         font-size: inherit;
-        color: $mmf-color--text;
 
         // behaviour
         cursor: pointer;
@@ -51,6 +50,6 @@
 
     select.mmf-select option {
         font-size: inherit;
-        color: $mmf-color--text;
+        color: $mmf-color;
     }
 }

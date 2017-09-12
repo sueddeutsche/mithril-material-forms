@@ -3,10 +3,10 @@
 
 
 @mixin with-input() {
-    color: $mmf-color--text;
+    color: $mmf-color;
     border: none;
     border-radius: 0;
-    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--lighter;
     width: 100%;
     font-size: inherit;
     box-sizing: border-box;
@@ -19,10 +19,10 @@
     transition: border-color 0.25s linear;
 
     &:focus {
-        border-color: $mmf-color--primary;
+        border-color: $mmf-color-primary;
     }
 
     &:hover {
-        border-color: $mmf-color--primary;
+        border-color: $mmf-color-primary;
     }
 }

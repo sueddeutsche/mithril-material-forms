@@ -5,6 +5,7 @@
 @if export-once("mithril-material-forms/theme/meta") {
 
     .mmf-meta {
+        color: $mmf-color--hint;
         font-style: italic;
         font-size: $mmf-text-size--meta;
     }

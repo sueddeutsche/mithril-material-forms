@@ -41,8 +41,8 @@
             align-items: center;
             justify-content: center;
             font-size: 160%;
-            color: $mmf-color--secondary-text;
-            background-color: $mmf-color--secondary-bg;
+            color: $mmf-color--secondary;
+            background-color: $mmf-color__contrast--darker;
         }
 
         .with-overflow .mmf-preview__overflow-indicator {
@@ -65,13 +65,8 @@
             right: $mmf-unit;
 
             font-size: $mmf-text-size--meta;
-            color: $mmf-color--text;
+            color: $mmf-color;
             background: rgba(255, 255, 255, 0.8)
-        }
-
-        .mmf-meta {
-            color: inherit;
-            font-size: $mmf-text-size--meta;
         }
     }
 }

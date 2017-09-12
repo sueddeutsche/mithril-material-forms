@@ -6,7 +6,8 @@
 @if export-once("mithril-material-forms/theme/form") {
 
     .mmf-form {
-        color: $mmf-form__text-color;
+        @include with-form();
+
     }
 
     ul.mmf-form__errors {

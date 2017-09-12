@@ -17,7 +17,7 @@
 
             border-sizing: border-box;
             border: none;
-            border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+            border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color;
             line-height: 1.4em;
             background: transparent;
 
@@ -25,7 +25,7 @@
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
             &:focus {
-                border-color: $mmf-color--primary;
+                border-color: $mmf-color-primary;
             }
        }
     }
