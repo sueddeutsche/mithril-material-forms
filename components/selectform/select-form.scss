@@ -13,13 +13,5 @@
             padding-left: $mmf-block-padding;
             line-height: 29px;
         }
-
-        .mmf-meta {
-            color: inherit;
-        }
-
-        &.hasError select {
-            border-color: $mmf-color--error;
-        }
     }
 }

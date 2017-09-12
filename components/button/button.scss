@@ -40,6 +40,7 @@
         background-color: $mmf-color-secondary;
 
         &:hover {
+            color: $mmf-color-secondary__contrast--lighter;
             background-color: $mmf-color-secondary--darker;
         }
     }
