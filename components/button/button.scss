@@ -29,7 +29,7 @@
         transition: background-color 0.25s linear;
 
         &:hover {
-            color: $mmf-color-secondary--lighter;
+            color: $mmf-color-secondary--darker;
             background-color: $mmf-color-secondary__contrast;
         }
     }
@@ -40,7 +40,7 @@
         background-color: $mmf-color-secondary;
 
         &:hover {
-            color: $mmf-color-secondary__contrast--lighter;
+            color: $mmf-color-secondary__contrast--darker;
             background-color: $mmf-color-secondary--darker;
         }
     }

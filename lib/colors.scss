@@ -1,9 +1,11 @@
 @import "./color-palettes";
 
 // material design colors https://www.materialui.co/flatuicolors
+// https://material.io/color/#!/?view.left=0&view.right=1&secondary.color=90CAF9&primary.color=ECEFF1
+
 // default colors (mainly text)
 $mmf-color: #000 !default; // opacity: 1;
-$mmf-color--primary: #1A1A1A !default;// opacity--primary: 0.87;
+$mmf-color--primary: #1A1A1A !default; // opacity--primary: 0.87;
 $mmf-color--secondary: #757575 !default; // opacity--secondary: 0.54;
 $mmf-color--hint: #9E9E9E !default; // opacity--hint: 0.38;
 $mmf-color--divider: #E1E1E1 !default; // opacity--divider: 0.12;
@@ -11,30 +13,34 @@ $mmf-color--divider: #E1E1E1 !default; // opacity--divider: 0.12;
 $mmf-color--lighter: #5c5c5c !default;
 $mmf-color--darker: #0c0c0c !default;
 $mmf-color--ok: #2ECC71 !default;
-$mmf-color--error: #C0392B !default;
+$mmf-color--error: red(700) !default;
 $mmf-color--warning: #F39C12 !default;
 
-$mmf-color__contrast: #f5f5f5 !default;
-$mmf-color__contrast--lighter: #ffffff !default;
-$mmf-color__contrast--darker: #c2c2c2 !default;
+$mmf-color__contrast: grey(3) !default; // #ECEFF1
+$mmf-color__contrast--lighter: grey(5) !default; // #ffffff
+$mmf-color__contrast--darker: grey(1) !default; // #babdbe
 
+// PRIMARY COLOR
 // In Material Design, a primary color refers to a color that appears most frequently in your app
-$mmf-color-primary: #1976d2 !default;
-$mmf-color-primary--lighter: #004ba0 !default;
-$mmf-color-primary--darker: #63a4ff !default;
+$mmf-color-primary: lightblue(2) !default;
+$mmf-color-primary--lighter: lightblue(4) !default;
+$mmf-color-primary--darker: lightblue(0) !default;
 
-$mmf-color-primary__contrast: #fafafa !default;
-$mmf-color-primary__contrast--darker: #c7c7c7 !default;
-$mmf-color-primary__contrast--lighter: #ffffff !default;
+$mmf-color-primary__contrast: grey(3) !default;
+$mmf-color-primary__contrast--lighter: grey(5) !default;
+$mmf-color-primary__contrast--darker: grey(1) !default;
 
+
+// SECONDARY COLOR
 // A secondary color refers to a color used to accent key parts of your UI
-$mmf-color-secondary: #16a085 !default;
-$mmf-color-secondary--lighter: #5ad2b5 !default;
-$mmf-color-secondary--darker: #007158 !default;
+$mmf-color-secondary: lightblue(2) !default;
+$mmf-color-secondary--lighter: lightblue(4) !default;
+$mmf-color-secondary--darker: lightblue(0) !default;
 
-$mmf-color-secondary__contrast: #fafafa !default;
-$mmf-color-secondary__contrast--lighter: #ffffff !default;
-$mmf-color-secondary__contrast--darker: #c7c7c7 !default;
+$mmf-color-secondary__contrast: grey(3) !default;
+$mmf-color-secondary__contrast--lighter: grey(5) !default;
+$mmf-color-secondary__contrast--darker: grey(1) !default;
+
 
 // layers
 // @todo refactor
