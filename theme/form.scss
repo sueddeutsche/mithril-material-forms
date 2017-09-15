@@ -8,6 +8,10 @@
 
     .mmf-form {
         @include with-form();
+
+        .mmf-meta {
+            margin-top: 0.5 * $mmf-unit;
+        }
     }
 
     ul.mmf-form__errors {
@@ -18,10 +22,5 @@
         li {
             margin-top: 0.5 * $mmf-unit;
         }
-    }
-
-    .mmf-meta {
-        color: $mmf-color--secondary;
-        margin-top: 0.5 * $mmf-unit;
     }
 }

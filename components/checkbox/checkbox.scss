@@ -33,7 +33,7 @@
             @include material-icon();
             content: "check_box_outline_blank";
             position: absolute;
-            color: $mmf-color;
+            color: $mmf-color--dark;
             font-size: inherit;
             // center above input
             top: 50%;
@@ -43,7 +43,7 @@
         }
 
         &:hover:after {
-            color: $mmf-color-primary;
+            color: $mmf-color--secondary;
         }
     }
 }

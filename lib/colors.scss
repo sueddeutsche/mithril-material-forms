@@ -1,52 +1,43 @@
 @import "./color-palettes";
-
 // material design colors https://www.materialui.co/flatuicolors
 // https://material.io/color/#!/?view.left=0&view.right=1&secondary.color=90CAF9&primary.color=ECEFF1
 
-// default colors (mainly text)
-$mmf-color: #000 !default; // opacity: 1;
-$mmf-color--primary: #1A1A1A !default; // opacity--primary: 0.87;
-$mmf-color--secondary: #757575 !default; // opacity--secondary: 0.54;
-$mmf-color--hint: #9E9E9E !default; // opacity--hint: 0.38;
-$mmf-color--divider: #E1E1E1 !default; // opacity--divider: 0.12;
+// control variables: darken, lighten
+$mmf-color-distance: 20%;
+$mmf-color-distance--focus: 10%;
+// control variables: text
+$mmf-opacity--primary: 0.87 !default;
+$mmf-opacity--secondary: 0.54 !default;
+$mmf-opacity--hint: 0.38 !default;
+$mmf-opacity--disabled: $mmf-opacity--hint !default;
+$mmf-opacity--divider: 0.12 !default;
 
-$mmf-color--lighter: #5c5c5c !default;
-$mmf-color--darker: #0c0c0c !default;
+// base text colors
+$mmf-color--dark: #333 !default;
+$mmf-color--light: #fff !default;
 $mmf-color--ok: #2ECC71 !default;
 $mmf-color--error: red(700) !default;
 $mmf-color--warning: #F39C12 !default;
 
-$mmf-color__contrast: grey(3) !default; // #ECEFF1
-$mmf-color__contrast--lighter: grey(5) !default; // #ffffff
-$mmf-color__contrast--darker: grey(1) !default; // #babdbe
+// strange variable, used often as card background and light-alternative...
+// this could also be sort if highest elevation (besides 100% bright: #fff)
+$mmf-color--contrast: #ECEFF1 !default;
 
 // PRIMARY COLOR
 // In Material Design, a primary color refers to a color that appears most frequently in your app
-$mmf-color-primary: green(2) !default;
-$mmf-color-primary--lighter: green(4) !default;
-$mmf-color-primary--darker: green(0) !default;
-
-$mmf-color-primary__contrast: grey(3) !default;
-$mmf-color-primary__contrast--lighter: grey(5) !default;
-$mmf-color-primary__contrast--darker: grey(1) !default;
-
+$mmf-color--primary: green(2) !default;
 
 // SECONDARY COLOR
 // A secondary color refers to a color used to accent key parts of your UI
-$mmf-color-secondary: green(2) !default;
-$mmf-color-secondary--lighter: green(4) !default;
-$mmf-color-secondary--darker: green(0) !default;
-
-$mmf-color-secondary__contrast: grey(3) !default;
-$mmf-color-secondary__contrast--lighter: grey(5) !default;
-$mmf-color-secondary__contrast--darker: grey(1) !default;
-
+$mmf-color--secondary: green(700) !default;
 
 // layers
 // @todo refactor
-$color-elevation-0: bluegrey(-4); // application background
-$color-elevation-4: bluegrey(-3); // first layer above background (header-bar)
-$color-elevation-8: bluegrey(-2); // second layer above background (navigation-bar)
+$color-elevation: #37474F;
+$color-elevation-0: $color-elevation; // application background
+// $color-elevation-2: #1c313a; // first layer above background (header-bar)
+$color-elevation-4: darken($color-elevation, 0.25 * $mmf-color-distance); // first layer above background (header-bar)
+$color-elevation-8: darken($color-elevation, 0.125 * $mmf-color-distance); // second layer above background (navigation-bar)
 
 // styling - no colors
 $mmf-style--border: solid !default;

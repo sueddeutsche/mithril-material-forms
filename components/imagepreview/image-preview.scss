@@ -41,8 +41,8 @@
             align-items: center;
             justify-content: center;
             font-size: 160%;
-            color: $mmf-color--secondary;
-            background-color: $mmf-color__contrast--darker;
+            color: rgba($mmf-color--light, $mmf-opacity--primary);
+            background-color: rgba($mmf-color--dark, $mmf-opacity--secondary);
         }
 
         .with-overflow .mmf-preview__overflow-indicator {
@@ -65,8 +65,8 @@
             right: $mmf-unit;
 
             font-size: $mmf-text-size--meta;
-            color: $mmf-color;
-            background: rgba(255, 255, 255, 0.8)
+            color: rgba($mmf-color--light, $mmf-opacity--primary);
+            background: rgba(darken($mmf-color--dark, $mmf-color-distance), $mmf-opacity--hint);
         }
     }
 }
