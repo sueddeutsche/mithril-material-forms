@@ -33,7 +33,7 @@
             @include material-icon();
             content: "check_box_outline_blank";
             position: absolute;
-            color: $mmf-color--dark;
+            color: rgba($mmf-color--dark, $mmf-opacity--primary);
             font-size: inherit;
             // center above input
             top: 50%;
