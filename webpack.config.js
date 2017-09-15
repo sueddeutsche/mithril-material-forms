@@ -50,11 +50,17 @@ const config = {
                 use: [
                     "file-loader?name=[name].css",
                     "extract-loader",
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: !PRODUCTION
+                        }
+                    },
                     {
                         loader: "sass-loader",
                         options: {
-                            includePaths: [path.join(__dirname, "node_modules")]
+                            includePaths: [path.join(__dirname, "node_modules")],
+                            sourceMap: !PRODUCTION
                         }
                     }
                 ]

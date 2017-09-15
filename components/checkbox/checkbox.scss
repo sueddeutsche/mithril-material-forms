@@ -13,14 +13,16 @@
         @include reset-box();
         @include reset-input();
         @include clickable();
+        @include with-input();
 
         position: relative;
         display: inline-block;
-        font-size: 1.25em;
+        font-size: $mmf-text-size--checkbox;
         width: 1em;
         height: 1em;
+        border-bottom: none;
 
-        transform: translateY(0.2em); // center to baseline
+        transform: translateY(25%); // center to baseline
 
         &:checked:after {
             content: "check_box";
@@ -31,7 +33,7 @@
             @include material-icon();
             content: "check_box_outline_blank";
             position: absolute;
-            color: $mmf-color--text;
+            color: rgba($mmf-color--dark, $mmf-opacity--primary);
             font-size: inherit;
             // center above input
             top: 50%;
@@ -41,7 +43,7 @@
         }
 
         &:hover:after {
-            color: $mmf-color--primary;
+            color: $mmf-color--secondary;
         }
     }
 }

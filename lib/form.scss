@@ -6,10 +6,13 @@
 
 @mixin with-form() {
     position: relative;
-    color: $mmf-form__text-color;
-    font-size: $mmf-form__text-size;
-    background: $mmf-form__background-color;
+
+    label {
+        color: $mmf-color--dark;
+        opacity: $mmf-opacity--secondary;
+    }
 }
+
 
 /**
  * Default form styles, controlling label position by classnames. The Markup should look like
@@ -21,9 +24,6 @@
  * @param {string} input-type   - associated input selector
  */
 @mixin with-moving-label($input-type:"input") {
-    @include with-form();
-
-    $font-label--small: 0.8em;
 
     // move input down by label height
     @if $input-type == "textarea" {
@@ -42,9 +42,11 @@
         position: absolute;
         top: 0;
         display: inline-block;
-        transition: all 0.2s;
+        transition: all 0.2s ease-in-out;
 
-        font-size: $font-label--small; // small font-size if not currently a placeholder (but title)
+        color: $mmf-color--dark;
+        opacity: $mmf-opacity--secondary;
+        font-size: $mmf-text-size--label; // small font-size if not currently a placeholder (but title)
     }
 
     &.hasNoError {}
@@ -53,10 +55,12 @@
     &.hasFocus {
         label.mmf-label {
             color: $mmf-color--primary;
+            opacity: $mmf-opacity--primary;
         }
     }
 
     &.hasError {
+        select,
         input {
             border-color: $mmf-color--error;
         }
@@ -70,9 +74,8 @@
 
     &.isEmpty.hasNoFocus {
         label.mmf-label {
-            color: inherit;
             transform: translateY($mmf-height-label);
-            font-size: inherit;
+            font-size: 1em;
         }
     }
 }

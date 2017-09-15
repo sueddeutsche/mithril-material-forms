@@ -17,7 +17,7 @@
 
             border-sizing: border-box;
             border: none;
-            border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+            border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
             line-height: 1.4em;
             background: transparent;
 

@@ -1,15 +1,14 @@
 @import "./colors";
 @import "./typography";
 
-$mmf-input-border--width: 1px;
-
 
 @mixin with-input() {
-    color: $mmf-color--text;
-    font-size: $mmf-input__text-size;
+    color: rgba($mmf-color--dark, $mmf-opacity--primary);
     border: none;
-    border-bottom: $mmf-input-border--width $mmf-style--border $mmf-color--border;
+    border-radius: 0;
+    border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
     width: 100%;
+    font-size: inherit;
     box-sizing: border-box;
     background: transparent;
     transform: translateZ(0);
@@ -20,6 +19,10 @@ $mmf-input-border--width: 1px;
     transition: border-color 0.25s linear;
 
     &:focus {
-        border-color: $mmf-color--primary;
+        border-color: rgba($mmf-color--secondary, 1);
+    }
+
+    &:hover {
+        border-color: $mmf-color--secondary;
     }
 }

@@ -1,0 +1,54 @@
+// https://material.io/guidelines/style/color.html#color-color-palette
+// https://www.materialpalette.com/colors
+// range from -4: dark to 5: bright
+$map-color-bluegrey: (-4: #263238, -3: #37474F, -2: #455A64, -1: #546E7A, 0: #607D8B, 1: #78909C, 2: #90A4AE, 3: #B0BEC5, 4: #CFD8DC, 5: #ECEFF1);
+$map-color-cyan: (-4: #006064, -3: #00838F, -2: #0097A7, -1: #00ACC1, 0: #00BCD4, 1: #26C6DA, 2: #4DD0E1, 3: #80DEEA, 4: #B2EBF2, 5: #E0F7FA);
+$map-color-deeporange: (-4: #bf360c, -3: #d84315, -2: #e64a19, -1: #f4511e, 0: #ff5722, 1: #ff7043, 2: #ff8a65, 3: #ffab91, 4: #ffccbc, 5: #fbe9e7, 100: #ff9e80, 200: #ff6e40, 400: #ff3d00, 700: #dd2c00);
+$map-color-grey: (-4: #212121, -3: #424242, -2: #616161, -1: #757575, 0: #9E9E9E, 1: #BDBDBD, 2: #E0E0E0, 3: #EEEEEE, 4: #F5F5F5, 5: #FAFAFA );
+$map-color-lightblue: (-4: #01579b, -3: #0277bd, -2: #0288d1, -1: #039be5, 0: #03a9f4, 1: #29b6f6, 2: #4fc3f7, 3: #81d4fa, 4: #b3e5fc, 5: #e1f5fe, 100: #80d8ff, 200: #40c4ff, 400: #00b0ff, 700: #0091ea);
+$map-color-lightgreen: (-4: #33691E, -3: #558B2F, -2: #689F38, -1: #7CB342, 0: #8BC34A, 1: #9CCC65, 2: #AED581, 3: #C5E1A5, 4: #DCEDC8, 5: #F1F8E9);
+$map-color-green: (5: #e8f5e9, 4: #c8e6c9, 3: #a5d6a7, 2: #81c784, 1: #66bb6a, 0: #4caf50, -1: #43a047, -2: #388e3c, -3: #2e7d32, -4: #1b5e20, 100: #b9f6ca, 200: #69f0ae, 400: #00e676, 700: #00c853);
+$map-color-lime: (5: #f9fbe7, 4: #f0f4c3, 3: #e6ee9c, 2: #dce775, 1: #d4e157, 0: #cddc39, -1: #c0ca33, -2: #afb42b, -3: #9e9d24, -4: #827717, 100: #f4ff81, 200: #eeff41, 400: #c6ff00, 700: #aeea00);
+$map-color-red: (5: #ffebee, 4: #ffcdd2, 3: #ef9a9a, 2: #e57373, 1: #ef5350, 0: #f44336, -1: #e53935, -2: #d32f2f, -3: #c62828, -4: #b71c1c, 100: #ff8a80, 200: #ff5252, 400: #ff1744, 700: #d50000);
+$map-color-yellow: (5: #fffde7, 4: #fff9c4, 3: #fff59d, 2: #fff176, 1: #ffee58, 0: #ffeb3b, -1: #fdd835, -2: #fbc02d, -3: #f9a825, -4: #f57f17, 100: #ffff8d, 200: #ffff00, 400: #ffea00, 700: #ffd600);
+
+@function bluegrey($index: 0) {
+    @return map-get($map-color-bluegrey, $index);
+}
+
+@function cyan($index: 0) {
+    @return map-get($map-color-cyan, $index);
+}
+
+@function deeporange($index: 0) {
+    @return map-get($map-color-deeporange, $index);
+}
+
+@function green($index: 0) {
+    @return map-get($map-color-green, $index);
+}
+
+@function grey($index: 0) {
+    @return map-get($map-color-grey, $index);
+}
+
+@function lightblue($index: 0) {
+    @return map-get($map-color-lightblue, $index);
+}
+
+@function lightgreen($index: 0) {
+    @return map-get($map-color-lightgreen, $index);
+}
+
+@function lime($index: 0) {
+    @return map-get($map-color-lime, $index);
+}
+
+@function red($index: 0) {
+    @return map-get($map-color-red, $index);
+}
+
+@function yellow($index: 0) {
+    @return map-get($map-color-yellow, $index);
+}
+

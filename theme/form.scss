@@ -1,3 +1,4 @@
+@import "../lib/form";
 @import "../lib/colors";
 @import "../lib/typography";
 @import "../lib/export-once";
@@ -6,20 +7,20 @@
 @if export-once("mithril-material-forms/theme/form") {
 
     .mmf-form {
-        color: $mmf-form__text-color;
-        font-size: $mmf-input__text-size; // use input text size for missing floating labels
+        @include with-form();
 
-        ul {
-            margin-top: 4px;
-
-            li {
-                font-size: inherit;
-                color: $mmf-color--error;
-            }
+        .mmf-meta {
+            margin-top: 0.5 * $mmf-unit;
         }
     }
 
     ul.mmf-form__errors {
+        font-size: $mmf-text-size--errors;
         list-style: none;
+        color: $mmf-color--error;
+
+        li {
+            margin-top: 0.5 * $mmf-unit;
+        }
     }
 }

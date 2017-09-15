@@ -61,12 +61,8 @@ module.exports = {
                     attrs.onfocus(e);
                 }
             }),
-            m("ul.mmf-form__errors", attrs.errors.map((error) =>
-                m("li", error)
-            )),
-            m(".mmf-meta",
-                attrs.description
-            )
+            attrs.errors.length > 0 ? m("ul.mmf-form__errors", attrs.errors.map((error) => m("li", error))) : "",
+            attrs.description ? m(".mmf-meta", attrs.description) : ""
         );
     }
 };
