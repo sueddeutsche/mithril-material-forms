@@ -2,6 +2,8 @@ const m = require("mithril");
 const Input = require("../input");
 const Label = require("../label");
 const sanitizeValue = require("./sanitizeValue");
+const Errors = require("../errors");
+
 
 const TYPES = {
     string: "text",
@@ -48,8 +50,8 @@ module.exports = {
 
         const view = m(".mmf-form.mmf-form--input",
             {
-                "class": "hasNoFocus " + (attrs.errors.length > 0 ? "hasError" : "hasNoError") + " " +
-                    (attrs.value === "" ? "isEmpty" : "isNotEmpty")
+                "class": "hasNoFocus " + (Errors.getErrorClass(attrs.errors)) +
+                    (attrs.value === "" ? " isEmpty" : " isNotEmpty")
             },
             m(Label, attrs),
             m(Input,
@@ -68,7 +70,7 @@ module.exports = {
                     }
                 }
             ),
-            attrs.errors.length > 0 ? m("ul.mmf-form__errors", attrs.errors.map((error) => m("li", error))) : "",
+            m(Errors, attrs),
             attrs.description ? m(".mmf-meta", attrs.description) : ""
         );
 

@@ -49,7 +49,7 @@
         font-size: $mmf-text-size--label; // small font-size if not currently a placeholder (but title)
     }
 
-    &.hasNoError {}
+    &.no-error {}
     &.isNotEmpty {}
 
     &.hasFocus {
@@ -59,16 +59,27 @@
         }
     }
 
-    &.hasError {
+    &.has-error {
         select,
         input {
             border-color: $mmf-color--error;
         }
+        &.hasFocus {
+            label.mmf-label {
+                color: $mmf-color--error;
+            }
+        }
     }
 
-    &.hasError.hasFocus {
-        label.mmf-label {
-            color: $mmf-color--error;
+    &.has-warning {
+        select,
+        input {
+            border-color: $mmf-color--warning;
+        }
+        &.hasFocus {
+            label.mmf-label {
+                color: $mmf-color--warning;
+            }
         }
     }
 
