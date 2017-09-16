@@ -1,6 +1,7 @@
 const m = require("mithril");
 const Checkbox = require("../checkbox");
 const Label = require("../label");
+const Errors = require("../errors");
 
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
 
         return m(".mmf-form.mmf-form--checkbox",
             {
-                "class": attrs.errors.length > 0 ? "hasError" : "hasNoError"
+                "class": Errors.getErrorClass(attrs.errors)
             },
             m(Checkbox,
                 {
@@ -27,7 +28,7 @@ module.exports = {
                 }
             ),
             m(Label, attrs),
-            attrs.errors.length > 0 ? m("ul.mmf-form__errors", attrs.errors.map((error) => m("li", error))) : "",
+            m(Errors, attrs),
             attrs.description ? m(".mmf-meta", attrs.description) : ""
         );
     }

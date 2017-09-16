@@ -1,6 +1,8 @@
 const m = require("mithril");
 const Textarea = require("../textarea");
 const Label = require("../label");
+const Errors = require("../errors");
+
 
 function isEmpty(value) {
     return value == null || value === "";
@@ -45,7 +47,7 @@ module.exports = {
 
         return m(".mmf-form.mmf-form--textarea",
             {
-                "class": (attrs.errors && attrs.errors.length > 0) ? "hasError" : "hasNoError"
+                "class": Errors.getErrorClass(attrs.errors)
             },
             m(Label, attrs),
             m(Textarea, {
@@ -61,7 +63,7 @@ module.exports = {
                     attrs.onfocus(e);
                 }
             }),
-            attrs.errors.length > 0 ? m("ul.mmf-form__errors", attrs.errors.map((error) => m("li", error))) : "",
+            m(Errors, attrs),
             attrs.description ? m(".mmf-meta", attrs.description) : ""
         );
     }
