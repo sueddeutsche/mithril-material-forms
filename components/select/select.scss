@@ -18,12 +18,13 @@
         &:after {
             content: "keyboard_arrow_down";
             @include material-icon();
-            color: $mmf-color--dark;
             position: absolute;
             font-size: 1.25em;
             right: 0;
             bottom: 0;
+            color: $mmf-color--dark;
             transition: color $animation;
+            pointer-events: none; // remove icon to be clickable (select receives input-event)
         }
 
         &:hover:after,
