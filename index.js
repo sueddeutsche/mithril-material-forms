@@ -2,6 +2,7 @@ module.exports = {
     button: require("./components/button"),
     checkbox: require("./components/checkbox"),
     checkboxForm: require("./components/checkboxform"),
+    errors: require("./components/errors"),
     input: require("./components/input"),
     inputForm: require("./components/inputform"),
     label: require("./components/label"),

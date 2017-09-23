@@ -22,7 +22,7 @@ const MetaDescription = {
         return [
             isEmpty(attrs.url) ?
                 m(".mmf-preview__placeholder", attrs.placeholder) : [
-                    attrs.description ? m(".mmf-preview__description", attrs.description) : "",
+                    attrs.description ? m(".mmf-preview__description", m.trust(attrs.description)) : "",
                     m(".mmf-preview__overflow-indicator")
                 ],
             vnode.children
@@ -45,7 +45,7 @@ const InlineImage = {
                         src: attrs.url,
                         onload: attrs.onload
                     }),
-                    attrs.description ? m(".mmf-preview__description", attrs.description) : "",
+                    attrs.description ? m(".mmf-preview__description", m.trust(attrs.description)) : "",
                     m(".mmf-preview__overflow-indicator")
                 ],
             vnode.children
