@@ -28,8 +28,17 @@
 
         transition: background-color 0.25s linear;
 
-        &:hover {
+        &.is-enabled:hover {
             background-color: $mmf-color--contrast;
+        }
+
+        &.is-disabled {
+            color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+            &:hover {
+                background-color: inherit;
+                color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+                cursor: default;
+            }
         }
     }
 
@@ -38,8 +47,17 @@
         color: $mmf-color--contrast;
         background-color: $mmf-color--secondary;
 
-        &:hover {
+        &.is-enabled:hover {
             background-color: darken($mmf-color--secondary, $mmf-color-distance--focus);
+        }
+
+        &.is-disabled {
+            color: rgba($mmf-color--contrast, $mmf-opacity--disabled);
+            background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+            &:hover {
+                background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+                cursor: default;
+            }
         }
     }
 }
