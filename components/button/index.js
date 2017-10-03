@@ -19,8 +19,6 @@ module.exports = {
             onclick: (event) => vnode.attrs.disabled !== true && vnode.attrs.onClick(event)
         }, vnode.attrs);
 
-        console.log("Button attrs", attrs);
-
         attrs.class = this.getClassNames(vnode.attrs);
 
         return m("button.mmf-button", attrs, vnode.children);
