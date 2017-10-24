@@ -4,6 +4,11 @@ const autosize = require("autosize");
 
 module.exports = {
 
+    onupdate(vnode) {
+        console.log("UPDATE", vnode.dom);
+        autosize.update(vnode.dom);
+    },
+
     view(vnode) {
         const attrs = Object.assign({
             id: null,
@@ -27,6 +32,7 @@ module.exports = {
             oncreate: (node) => {
                 attrs.oncreate(node);
                 autosize(node.dom);
+                autosize.update(vnode.dom);
             },
             onbeforeremove: (node) => {
                 attrs.onbeforeremove(node);
