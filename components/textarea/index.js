@@ -5,7 +5,6 @@ const autosize = require("autosize");
 module.exports = {
 
     onupdate(vnode) {
-        console.log("UPDATE", vnode.dom);
         autosize.update(vnode.dom);
     },
 
