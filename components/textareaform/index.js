@@ -32,6 +32,10 @@ module.exports = {
         this.$form.classList.add(hasValue === false ? "isEmpty" : "isNotEmpty");
     },
 
+    onupdate(vnode) {
+        this.updateClasses(vnode.attrs.value);
+    },
+
     view(vnode) {
         const attrs = Object.assign({
             id: null,
