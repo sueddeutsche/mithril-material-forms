@@ -1,6 +1,6 @@
 {
   "name": "mithril-material-forms",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "Basic input form elements as mithril components",
   "main": "index.js",
   "scripts": {
