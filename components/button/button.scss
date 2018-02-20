@@ -28,12 +28,16 @@
 
         transition: background-color 0.25s linear;
 
-        &.is-enabled:hover {
-            background-color: $mmf-color--contrast;
+        &.is-enabled {
+            &:hover,
+            &:focus {
+                background-color: $mmf-color--contrast;
+            }
         }
 
         &.is-disabled {
             color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+            &:focus,
             &:hover {
                 background-color: inherit;
                 color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
@@ -47,14 +51,18 @@
         color: $mmf-color--contrast;
         background-color: $mmf-color--secondary;
 
-        &.is-enabled:hover {
-            background-color: darken($mmf-color--secondary, $mmf-color-distance--focus);
+        &.is-enabled {
+            &:hover,
+            &:focus {
+                background-color: darken($mmf-color--secondary, $mmf-color-distance--focus);
+            }
         }
 
         &.is-disabled {
             color: rgba($mmf-color--contrast, $mmf-opacity--disabled);
             background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
                 cursor: default;
             }

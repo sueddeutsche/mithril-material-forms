@@ -42,6 +42,7 @@
             transition: color 0.25s linear;
         }
 
+        &:focus:after,
         &:hover:after {
             color: $mmf-color--secondary;
         }
