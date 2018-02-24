@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "watch": "watch 'npm run build' components lib theme",
     "dist": "NODE_ENV=production webpack"
   },
   "repository": {
@@ -56,6 +57,7 @@
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "url-loader": "^0.5.7",
+    "watch": "^1.0.2",
     "webpack": "^3.5.5",
     "webpack-bundle-size-analyzer": "^2.6.0",
     "webpack-dev-server": "^2.7.1"
