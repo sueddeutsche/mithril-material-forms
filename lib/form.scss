@@ -47,6 +47,10 @@
         color: $mmf-color--dark;
         opacity: $mmf-opacity--secondary;
         font-size: $mmf-text-size--label; // small font-size if not currently a placeholder (but title)
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     &.no-error {}
