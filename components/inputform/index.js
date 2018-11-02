@@ -34,6 +34,10 @@ module.exports = {
         this.updateClasses(value);
     },
 
+    hasFocus() {
+        return this.$form && this.$form.classList.contains("hasFocus");
+    },
+
     view(vnode) {
         const inputType = TYPES[vnode.attrs.type] || "text";
         const attrs = Object.assign({
@@ -48,10 +52,13 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
+        const focusClass = this.hasFocus() ? "hasFocus" : "hasNoFocus";
+        const errorClass = Errors.getErrorClass(attrs.errors);
+        const emptyClass = attrs.value === "" ? "isEmpty" : "isNotEmpty";
+
         const view = m(".mmf-form.mmf-form--input",
             {
-                "class": "hasNoFocus " + (Errors.getErrorClass(attrs.errors)) +
-                    (attrs.value === "" ? " isEmpty" : " isNotEmpty")
+                "class": `${focusClass} ${errorClass} ${emptyClass}`
             },
             m(Label, attrs),
             m(Input,
