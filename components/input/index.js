@@ -11,7 +11,6 @@ module.exports = {
     },
 
     view({ attrs }) {
-        console.log("%cSUPER NEW INPUT", "color: gold;");
         let value = attrs.value;
         if (this.hasFocus & this.value != null) {
             value = this.value; // this will remove any changes applied to this data from "outside"
