@@ -44,6 +44,7 @@ module.exports = {
             errors: [],
             description: "",
             placeholder: "",
+            instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
             onchange: Function.prototype

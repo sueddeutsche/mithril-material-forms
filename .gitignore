@@ -39,3 +39,4 @@ manifest.json
 app/assets/videos
 assetdata
 debug.html
+/package-lock.json

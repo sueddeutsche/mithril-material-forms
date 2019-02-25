@@ -13,6 +13,7 @@ module.exports = {
             id: null,
             value: "",
             rows: 1,
+            instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
             onchange: Function.prototype,
@@ -20,11 +21,10 @@ module.exports = {
             onbeforeremove: Function.prototype
         }, vnode.attrs);
 
-        return m("textarea.mmf-textarea", {
+        const textareaAttributes = {
             id: attrs.id,
             value: attrs.value,
             rows: attrs.rows,
-            onchange: attrs.onchange,
             onblur: attrs.onblur,
             onfocus: attrs.onfocus,
             onupdate: (node) => autosize.update(node.dom),
@@ -37,6 +37,11 @@ module.exports = {
                 attrs.onbeforeremove(node);
                 autosize.destroy(node.dom);
             }
-        });
+        };
+
+        const updateEvent = attrs.instantUpdate === true ? "onkeyup" : "onchange";
+        textareaAttributes[updateEvent] = attrs.onchange;
+
+        return m("textarea.mmf-textarea", textareaAttributes);
     }
 };
