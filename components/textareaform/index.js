@@ -58,6 +58,7 @@ module.exports = {
             m(Textarea, {
                 id: attrs.id,
                 value: attrs.value,
+                instantUpdate: attrs.instantUpdate,
                 onchange: m.withAttr("value", attrs.onchange),
                 onblur: (e) => {
                     this.onblur(e.target.value);
