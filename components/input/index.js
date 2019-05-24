@@ -23,6 +23,8 @@ module.exports = {
             type: attrs.type,
             value,
             oninput: m.withAttr("value", (currentValue) => (this.value = currentValue)),
+            // @fixme this might trigger updates, but ensures the property is always set (on initial rendering)
+            oncreate: (vnode) => (vnode.dom.id = attrs.id),
             onfocus: (event) => {
                 this.hasFocus = true;
                 attrs.onfocus && attrs.onfocus(event);
