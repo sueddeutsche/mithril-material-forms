@@ -47,6 +47,7 @@ module.exports = {
             errors: [],
             description: "",
             placeholder: "",
+            instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
             onchange: Function.prototype
@@ -65,6 +66,7 @@ module.exports = {
                 {
                     type: inputType,
                     id: attrs.id,
+                    instantUpdate: attrs.instantUpdate,
                     onChange: (value) => attrs.onchange(sanitizeValue(inputType, value)),
                     value: attrs.value,
                     onfocus: (e) => {

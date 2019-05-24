@@ -1,12 +1,14 @@
 {
   "name": "mithril-material-forms",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "Basic input form elements as mithril components",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "watch": "watch 'npm run build' components lib theme",
-    "dist": "NODE_ENV=production webpack"
+    "dist": "NODE_ENV=production webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,10 @@
     "mithril": "^1.0.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^4.0.4",
+    "@storybook/addon-links": "^4.0.4",
+    "@storybook/addons": "^4.0.4",
+    "@storybook/mithril": "^4.0.4",
     "ava": "^0.22.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -58,8 +64,8 @@
     "uglifyjs-webpack-plugin": "^0.4.3",
     "url-loader": "^0.5.7",
     "watch": "^1.0.2",
-    "webpack": "^3.5.5",
+    "webpack": "4.25.1",
     "webpack-bundle-size-analyzer": "^2.6.0",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "3.1.10"
   }
 }
