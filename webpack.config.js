@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
 
@@ -30,17 +31,18 @@ const config = {
     module: {
         rules: [
             {
-                test: /.*.js$/,
+                test: /\.js$/,
                 loader: require.resolve("babel-loader"),
                 include: [
-                    path.resolve(__dirname, "app"),
-                    path.resolve(__dirname, "lib")
+                    path.resolve(__dirname, "components")
                 ],
                 options: {
-                    presets: [require.resolve("babel-preset-es2015")],
+                    presets: [
+                        require.resolve("@babel/preset-env")
+                    ],
                     plugins: [
-                        require.resolve("babel-plugin-transform-object-assign"),
-                        require.resolve("babel-plugin-transform-object-rest-spread") // redux-undo
+                        require.resolve("@babel/plugin-transform-object-assign"),
+                        require.resolve("@babel/plugin-proposal-object-rest-spread") // redux-undo
                     ],
                     babelrc: false,
                     cacheDirectory: true
@@ -99,16 +101,17 @@ const config = {
         port: 8080
     },
 
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin()
+        ]
+    },
+
     plugins: [
         new webpack.DefinePlugin({
-            DEBUG: true
+            DEBUG: !PRODUCTION
         })
-    ].concat(PRODUCTION ? [
-        new (require("uglifyjs-webpack-plugin"))({
-            sourceMap: false,
-            compress: { drop_console: true }
-        })
-    ] : [])
+    ]
 };
 
 
