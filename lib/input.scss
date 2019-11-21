@@ -16,7 +16,7 @@
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    transition: border-color 0.25s linear;
+    transition: border-color 0.2s linear;
 
     &:focus {
         border-color: rgba($mmf-color--secondary, 1);
