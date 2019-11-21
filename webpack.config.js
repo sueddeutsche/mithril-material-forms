@@ -4,12 +4,12 @@ const PRODUCTION = process.env.NODE_ENV === "production";
 
 
 const config = {
-    entry: [
-        path.join(__dirname, "index.js"),
-        path.join(__dirname, "material-forms.scss")
-    ],
+    entry: {
+        mmf: path.join(__dirname, "index.js"),
+        styles: path.join(__dirname, "material-forms.scss")
+    },
     output: {
-        filename: "mmf.js",
+        filename: "[name].js",
         library: ["MMF"],
         path: path.resolve(__dirname, PRODUCTION ? "dist" : "build")
     },
