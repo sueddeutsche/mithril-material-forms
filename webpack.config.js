@@ -4,12 +4,12 @@ const PRODUCTION = process.env.NODE_ENV === "production";
 
 
 const config = {
-    entry: {
-        mmf: path.join(__dirname, "index.js"),
-        styles: path.join(__dirname, "styles.js")
-    },
+    entry: [
+        path.join(__dirname, "index.js"),
+        path.join(__dirname, "material-forms.scss")
+    ],
     output: {
-        filename: "[name].js",
+        filename: "mmf.js",
         library: ["MMF"],
         path: path.resolve(__dirname, PRODUCTION ? "dist" : "build")
     },
@@ -17,6 +17,7 @@ const config = {
     context: __dirname,
     target: "web",
     devtool: PRODUCTION ? false : "source-map",
+    mode: PRODUCTION ? "production" : "development",
 
     resolve: {
         modules: [".", "node_modules"]
@@ -59,8 +60,12 @@ const config = {
                     {
                         loader: "sass-loader",
                         options: {
-                            includePaths: [path.join(__dirname, "node_modules")],
-                            sourceMap: !PRODUCTION
+                            sourceMap: !PRODUCTION,
+                            sassOptions: {
+                                includePaths: [
+                                    path.join(__dirname, "node_modules")
+                                ]
+                            }
                         }
                     }
                 ]

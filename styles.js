@@ -1,1 +1,0 @@
-require("./material-forms.scss");
