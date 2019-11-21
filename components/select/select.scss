@@ -9,8 +9,6 @@
 
 @if export-once("mithril-material-forms/components/select") {
 
-    $animation: 0.25s linear;
-
     div.mmf-select__wrapper {
         position: relative;
         display: inline-block;
@@ -23,13 +21,20 @@
             right: 0;
             bottom: 0;
             color: $mmf-color--dark;
-            transition: color $animation;
+            transition: color $mmf-transition;
             pointer-events: none; // remove icon to be clickable (select receives input-event)
         }
 
-        &:hover:after,
-        &.has-focus:after {
-            color: $mmf-color--primary;
+        &:not(.is-disabled) {
+            &:hover:after,
+            &.has-focus:after {
+                color: $mmf-color--primary;
+            }
+        }
+
+        &.is-disabled {
+            opacity: $mmf-opacity--disabled;
+            cursor: default;
         }
     }
 
@@ -39,14 +44,19 @@
 
         font-size: inherit;
 
-        // behaviour
-        cursor: pointer;
         outline: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         // select styling
         padding-top: 4px;
         padding-right: (0.5 * $mmf-block + 4px);
         background-color: inherit;
+
+        &:not([disabled]) {
+            cursor: pointer;
+        }
+        &[disabled] {
+            opacity: 1; // reset opacity class, since browser already applies opacity
+        }
     }
 
     select.mmf-select option {

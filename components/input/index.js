@@ -12,7 +12,7 @@ module.exports = {
 
     view({ attrs }) {
         let value = attrs.value;
-        if (this.hasFocus & this.value != null) {
+        if (this.hasFocus && this.value != null) {
             value = this.value; // this will remove any changes applied to this data from "outside"
         }
 
@@ -22,21 +22,22 @@ module.exports = {
             // id: attrs.id, // if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
             type: attrs.type,
             value,
-            oninput: m.withAttr("value", (currentValue) => (this.value = currentValue)),
+            disabled: attrs.disabled === true,
+            oninput: e => (this.value = e.target.value),
             // @fixme this might trigger updates, but ensures the property is always set (on initial rendering)
-            oncreate: (vnode) => (vnode.dom.id = attrs.id),
-            onfocus: (event) => {
+            oncreate: vnode => (vnode.dom.id = attrs.id),
+            onfocus: event => {
                 this.hasFocus = true;
                 attrs.onfocus && attrs.onfocus(event);
             },
-            onblur: (event) => {
+            onblur: event => {
                 this.hasFocus = false;
                 attrs.onblur && attrs.onblur(event);
             }
         };
 
         const updateEvent = attrs.instantUpdate === true ? "onkeyup" : "onchange";
-        inputAttributes[updateEvent] = () => attrs.onChange(this.value);
+        inputAttributes[updateEvent] = () => attrs.onchange(this.value);
 
         return m("input.mmf-input", inputAttributes);
     }

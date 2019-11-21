@@ -16,13 +16,18 @@
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    transition: border-color 0.2s linear;
+    transition: border-color $mmf-transition;
 
-    &:focus {
+    &:not([disabled]):focus {
         border-color: rgba($mmf-color--secondary, 1);
     }
 
-    &:hover {
+    &:not([disabled]):hover {
         border-color: $mmf-color--secondary;
+    }
+
+    &[disabled] {
+        color: $mmf-color--dark; // on deactivated state, set color to match labels
+        opacity: $mmf-opacity--disabled;
     }
 }

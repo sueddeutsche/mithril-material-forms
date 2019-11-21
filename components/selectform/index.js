@@ -16,7 +16,7 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-form.mmf-form--select",
+        return m(`.mmf-form.mmf-form--select.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
             {
                 "class": Errors.getErrorClass(attrs.errors)
             },

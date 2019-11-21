@@ -26,7 +26,7 @@
         // default, since the button should not have any visible background er default
         background-color: inherit;
 
-        transition: background-color 0.25s linear;
+        transition: background-color $mmf-transition;
 
         &.is-enabled {
             &:hover,
@@ -58,14 +58,12 @@
             }
         }
 
-        &.is-disabled {
+        &.is-disabled,
+        &.is-disabled:hover,
+        &.is-disabled:focus {
             color: rgba($mmf-color--contrast, $mmf-opacity--disabled);
-            background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
-            &:hover,
-            &:focus {
-                background-color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
-                cursor: default;
-            }
+            background-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            cursor: default;
         }
     }
 }

@@ -16,7 +16,7 @@ module.exports = {
     view(vnode) {
         const attrs = Object.assign({
             disabled: false,
-            onclick: (event) => vnode.attrs.disabled !== true && vnode.attrs.onClick(event)
+            onclick: event => vnode.attrs.onclick(event)
         }, vnode.attrs);
 
         attrs.class = this.getClassNames(vnode.attrs);

@@ -42,6 +42,7 @@ module.exports = {
             title: "",
             value: "",
             errors: [],
+            disabled: false,
             description: "",
             placeholder: "",
             instantUpdate: false,
@@ -50,7 +51,9 @@ module.exports = {
             onchange: Function.prototype
         }, vnode.attrs);
 
-        return m(".mmf-form.mmf-form--textarea",
+        const disabled = attrs.disabled === true;
+
+        return m(`.mmf-form.mmf-form--textarea.mmf-form--${disabled ? "disabled" : "enabled"}`,
             {
                 "class": Errors.getErrorClass(attrs.errors)
             },
@@ -58,13 +61,15 @@ module.exports = {
             m(Textarea, {
                 id: attrs.id,
                 value: attrs.value,
+                disabled,
                 instantUpdate: attrs.instantUpdate,
-                onchange: m.withAttr("value", attrs.onchange),
-                onblur: (e) => {
+                // onchange: m.withAttr("value", attrs.onchange),
+                onchange: attrs.onchange,
+                onblur: e => {
                     this.onblur(e.target.value);
                     attrs.onblur(e);
                 },
-                onfocus: (e) => {
+                onfocus: e => {
                     this.onfocus();
                     attrs.onfocus(e);
                 }

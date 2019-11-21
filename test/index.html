@@ -38,7 +38,7 @@
 
         </style>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mithril/1.1.3/mithril.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mithril/2.0.4/mithril.js"></script>
         <script type="text/javascript" src="../build/mmf.js"></script>
 
     </head>
@@ -60,8 +60,21 @@
                     m.render(window.mButton,
                         m(MMF.button, {
                             id: "mmf-button",
-                            onClick: Function.prototype
+                            onclick: () => console.log("click")
                         }, "A clickable Button")
+                    );
+                </script>
+
+                <h2>button.disabled</h2>
+                <div id="mButtonDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mButtonDisabled,
+                        m(MMF.button, {
+                            id: "mmf-button--raised",
+                            disabled: true,
+                            raised: false,
+                            onclick: () => console.error("should not log this message")
+                        }, "A disabled Button")
                     );
                 </script>
 
@@ -72,8 +85,21 @@
                         m(MMF.button, {
                             id: "mmf-button--raised",
                             raised: true,
-                            onClick: Function.prototype
+                            onclick: () => console.log("click")
                         }, "A clickable Button")
+                    );
+                </script>
+
+                <h2>button.raised.disabled</h2>
+                <div id="mButtonRaisedDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mButtonRaisedDisabled,
+                        m(MMF.button, {
+                            disabled: true,
+                            id: "mmf-button--raised",
+                            raised: true,
+                            onclick: () => console.log("click")
+                        }, "A non-clickable Button")
                     );
                 </script>
 
@@ -84,7 +110,7 @@
                         m(MMF.checkbox, {
                             id: "mmf-checkbox",
                             value: false,
-                            onChange: Function.prototype
+                            onchange: value => console.log("value", value)
                         })
                     );
                 </script>
@@ -98,7 +124,7 @@
                             title: "Checkbox-Form Title",
                             description: "Checkbox-Form description text...",
                             value: true,
-                            onChange: Function.prototype
+                            onchange: (value) => console.log("value", value)
                         })
                     );
                 </script>
@@ -113,10 +139,29 @@
                             errors: ["This checkbox has an invalid type"],
                             description: "Checkbox-Form description text...",
                             value: false,
-                            onChange: Function.prototype
+                            onchange: (value) => console.log("value", value)
                         })
                     );
                 </script>
+
+                <h2>checkboxForm.disabled</h2>
+                <div id="mCheckboxFormDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mCheckboxFormDisabled,
+                        m(MMF.checkboxForm, {
+                            id: "mmf-checkbox-form-disabled",
+                            disabled: true,
+                            title: "Disabled Checkbox-Form",
+                            errors: ["This checkbox has an invalid type"],
+                            description: "Checkbox-Form description text...",
+                            value: false,
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
+
+<!-- SELECT -->
 
                 <h2>select</h2>
                 <div id="mSelect"></div>
@@ -129,7 +174,24 @@
                                 "ignore any niceness"
                             ],
                             value: "a very nice selection",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
+                        })
+                    );
+                </script>
+
+                <h2>select.disabled</h2>
+                <div id="mSelectDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mSelectDisabled,
+                        m(MMF.select, {
+                            disabled: true,
+                            id: "mmf-select",
+                            options: [
+                                "a very nice selection",
+                                "ignore any niceness"
+                            ],
+                            value: "a very nice selection",
+                            onchange: () => console.error("should not log this message")
                         })
                     );
                 </script>
@@ -147,7 +209,7 @@
                                 "ignore any niceness"
                             ],
                             value: "a very nice selection",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
@@ -166,10 +228,33 @@
                                 "ignore any niceness"
                             ],
                             value: "a very nice selection",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
+
+                <h2>selectForm.disabled</h2>
+                <div id="mSelectFormDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mSelectFormDisabled,
+                        m(MMF.selectForm, {
+                            disabled: true,
+                            id: "mmf-select-form",
+                            title: "Select-Form Title",
+                            description: "Select-Form description text...",
+                            errors: ["This selection is invalid"],
+                            options: [
+                                "a very nice selection",
+                                "ignore any niceness"
+                            ],
+                            value: "a very nice selection",
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
+
+<!-- INPUT -->
 
                 <h2>input</h2>
                 <div id="mInput"></div>
@@ -179,7 +264,22 @@
                             id: "mmf-input",
                             type: "text",
                             value: "input initial text value",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
+                        })
+                    );
+                </script>
+
+
+                <h2>input.disabled</h2>
+                <div id="mInputDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mInputDisabled,
+                        m(MMF.input, {
+                            disabled: true,
+                            id: "mmf-input",
+                            type: "text",
+                            value: "input initial text value",
+                            onchange: () => console.error("should not log this message")
                         })
                     );
                 </script>
@@ -192,9 +292,10 @@
                         m(MMF.inputForm, {
                             id: "mmf-input-form",
                             title: "Input-Form Title",
-                            description: "Input-Form description text...",
+                            description: "Input-Form with instantUpdate=true...",
                             type: "text",
-                            onChange: Function.prototype
+                            instantUpdate: true,
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
@@ -209,10 +310,29 @@
                             errors: ["This text could be a little longer"],
                             description: "Input-Form description text...",
                             type: "text",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
+
+                <h2>inputForm.disabled</h2>
+                <div id="mInputFormErrorsDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mInputFormErrorsDisabled,
+                        m(MMF.inputForm, {
+                            disabled: true,
+                            id: "mmf-input-form",
+                            title: "Input-Form Title",
+                            errors: ["This text could be a little longer"],
+                            description: "Input-Form description text...",
+                            type: "text",
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
+
+<!-- TEXTAREA -->
 
                 <h2>textarea</h2>
                 <div id="mTextarea"></div>
@@ -222,10 +342,25 @@
                             id: "mmf-input-textarea",
                             type: "text",
                             value: "textarea initial text value",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
+
+                <h2>textarea.disabled</h2>
+                <div id="mTextareaDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mTextareaDisabled,
+                        m(MMF.textarea, {
+                            disabled: true,
+                            id: "mmf-input-textarea",
+                            type: "text",
+                            value: "textarea initial text value",
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
 
                 <h2>textareaForm</h2>
                 <div id="mTextareaForm"></div>
@@ -236,7 +371,7 @@
                             type: "text",
                             title: "Textarea-Form Title",
                             description: "Textarea-Form description text...",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
@@ -251,7 +386,23 @@
                             title: "Long Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatus autem esse in maximarum rerum timore nemo potest.",
                             errors: ["An input is required"],
                             description: "Textarea-Form description text...",
-                            onChange: Function.prototype
+                            onchange: value => console.log(`change value to '${value}'`)
+                        })
+                    );
+                </script>
+
+                <h2>textareaForm.disabled</h2>
+                <div id="mTextareaFormErrorsDisabled"></div>
+                <script type="text/javascript">
+                    m.render(window.mTextareaFormErrorsDisabled,
+                        m(MMF.textareaForm, {
+                            disabled: true,
+                            id: "mmf-input-textarea",
+                            type: "text",
+                            title: "Long Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatus autem esse in maximarum rerum timore nemo potest.",
+                            errors: ["An input is required"],
+                            description: "Textarea-Form description text...",
+                            onchange: () => console.error("should not log this message")
                         })
                     );
                 </script>

@@ -7,8 +7,9 @@ module.exports = {
             {
                 id: vnode.attrs.id,
                 type: "checkbox",
+                disabled: vnode.attrs.disabled === true,
                 checked: vnode.attrs.value,
-                onchange: m.withAttr("checked", vnode.attrs.onChange || Function.prototype)
+                onchange: e => vnode.attrs.onchange(e.target.checked)
             }
         );
     }

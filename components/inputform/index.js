@@ -57,7 +57,7 @@ module.exports = {
         const errorClass = Errors.getErrorClass(attrs.errors);
         const emptyClass = attrs.value === "" ? "isEmpty" : "isNotEmpty";
 
-        const view = m(".mmf-form.mmf-form--input",
+        const view = m(`.mmf-form.mmf-form--input.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
             {
                 "class": `${focusClass} ${errorClass} ${emptyClass}`
             },
@@ -66,14 +66,15 @@ module.exports = {
                 {
                     type: inputType,
                     id: attrs.id,
+                    disabled: attrs.disabled,
                     instantUpdate: attrs.instantUpdate,
-                    onChange: (value) => attrs.onchange(sanitizeValue(inputType, value)),
+                    onchange: value => attrs.onchange(sanitizeValue(inputType, value)),
                     value: attrs.value,
-                    onfocus: (e) => {
+                    onfocus: e => {
                         this.onfocus();
                         attrs.onfocus && attrs.onfocus(e);
                     },
-                    onblur: (e) => {
+                    onblur: e => {
                         this.onblur(e.target.value);
                         attrs.onblur && attrs.onblur(e);
                     }

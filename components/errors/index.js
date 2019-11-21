@@ -15,7 +15,7 @@ module.exports = {
         }
 
         return m("ul.mmf-form__errors",
-            vnode.attrs.errors.map((error) => {
+            vnode.attrs.errors.map(error => {
                 if (isVNode(error)) {
                     return m(`li.mmf-form__error.mmf-form__error--${error.attrs.severity}`, error);
                 }

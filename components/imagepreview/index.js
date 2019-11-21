@@ -85,8 +85,8 @@ const ImagePreview = {
             onclick: null,
             maxRatio: "16:9",
             // "private"
-            onload: (event) => this.updateRatio(attrs.maxRatio, event.currentTarget),
-            oncreate: (content) => { this.overflowContainer = content.dom; }
+            onload: event => this.updateRatio(attrs.maxRatio, event.currentTarget),
+            oncreate: content => { this.overflowContainer = content.dom; }
         }, vnode.attrs);
 
         return m(".mmf-preview.mmf-preview--image",

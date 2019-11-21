@@ -4,27 +4,32 @@ const Label = require("../label");
 const Errors = require("../errors");
 
 
+const defaultOptions = {
+    id: null,
+    title: "",
+    disabled: false,
+    value: "",
+    errors: [],
+    description: "",
+    placeholder: "",
+    onchange: Function.prototype
+};
+
+
 module.exports = {
     view(vnode) {
-        const attrs = Object.assign({
-            id: null,
-            title: "",
-            value: "",
-            errors: [],
-            description: "",
-            placeholder: "",
-            onchange: Function.prototype
-        }, vnode.attrs);
+        const attrs = Object.assign({}, defaultOptions, vnode.attrs);
 
-        return m(".mmf-form.mmf-form--checkbox",
+        return m(`.mmf-form.mmf-form--checkbox.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
             {
                 "class": Errors.getErrorClass(attrs.errors)
             },
             m(Checkbox,
                 {
                     id: vnode.attrs.id,
+                    disabled: attrs.disabled,
                     value: vnode.attrs.value,
-                    onChange: vnode.attrs.onchange
+                    onchange: vnode.attrs.onchange
                 }
             ),
             m(Label, attrs),
