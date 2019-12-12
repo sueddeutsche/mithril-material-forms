@@ -45,6 +45,7 @@ module.exports = {
             disabled: false,
             description: "",
             placeholder: "",
+            rows: 1,
             instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
@@ -63,6 +64,7 @@ module.exports = {
                 value: attrs.value,
                 disabled,
                 instantUpdate: attrs.instantUpdate,
+                rows: attrs.rows,
                 // onchange: m.withAttr("value", attrs.onchange),
                 onchange: attrs.onchange,
                 onblur: e => {
