@@ -2,14 +2,16 @@ const m = require("mithril");
 
 
 module.exports = {
-    view(vnode) {
+    view({ attrs }) {
         return m("input.mmf-checkbox",
             {
-                id: vnode.attrs.id,
+                id: attrs.id,
                 type: "checkbox",
-                disabled: vnode.attrs.disabled === true,
-                checked: vnode.attrs.value,
-                onchange: e => vnode.attrs.onchange(e.target.checked)
+                disabled: attrs.disabled === true,
+                checked: attrs.value,
+                onchange: e => attrs.onchange(e.target.checked),
+                onfocus: attrs.onfocus,
+                onblur: attrs.onblur
             }
         );
     }

@@ -29,7 +29,9 @@ module.exports = {
                     id: vnode.attrs.id,
                     disabled: attrs.disabled,
                     value: vnode.attrs.value,
-                    onchange: vnode.attrs.onchange
+                    onchange: vnode.attrs.onchange,
+                    onfocus: vnode.attrs.onfocus,
+                    onblur: vnode.attrs.onblur
                 }
             ),
             m(Label, attrs),
