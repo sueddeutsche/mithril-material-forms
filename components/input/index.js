@@ -22,6 +22,7 @@ module.exports = {
             // id: attrs.id, // if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
             type: attrs.type,
             value,
+            placeholder: attrs.placeholder,
             disabled: attrs.disabled === true,
             oninput: e => (this.value = e.target.value),
             // @fixme this might trigger updates, but ensures the property is always set (on initial rendering)

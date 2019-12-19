@@ -68,6 +68,7 @@ module.exports = {
                     id: attrs.id,
                     disabled: attrs.disabled,
                     instantUpdate: attrs.instantUpdate,
+                    placeholder: attrs.placeholder,
                     onchange: value => attrs.onchange(sanitizeValue(inputType, value)),
                     value: attrs.value,
                     onfocus: e => {

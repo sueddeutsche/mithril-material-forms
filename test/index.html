@@ -270,6 +270,19 @@
                 </script>
 
 
+                <h2>input.placeholder</h2>
+                <div id="mInputPlaceholder"></div>
+                <script type="text/javascript">
+                    m.render(window.mInputPlaceholder,
+                        m(MMF.input, {
+                            id: "mmf-input",
+                            type: "text",
+                            placeholder: "field placeholder"
+                        })
+                    );
+                </script>
+
+
                 <h2>input.disabled</h2>
                 <div id="mInputDisabled"></div>
                 <script type="text/javascript">
@@ -343,6 +356,18 @@
                             type: "text",
                             value: "textarea initial text value",
                             onchange: value => console.log(`change value to '${value}'`)
+                        })
+                    );
+                </script>
+
+                <h2>textarea.placeholder</h2>
+                <div id="mTextareaPlaceholder"></div>
+                <script type="text/javascript">
+                    m.render(window.mTextareaPlaceholder,
+                        m(MMF.textarea, {
+                            id: "mmf-input-placeholder",
+                            type: "text",
+                            placeholder: "textarea placeholder"
                         })
                     );
                 </script>
