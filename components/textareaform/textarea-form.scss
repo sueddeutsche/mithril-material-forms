@@ -15,7 +15,7 @@
             width: 100%;
             resize: vertical;
 
-            border-sizing: border-box;
+            box-sizing: border-box;
             border: none;
             border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
             line-height: 1.4em;
