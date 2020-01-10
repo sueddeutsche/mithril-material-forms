@@ -64,6 +64,7 @@ module.exports = {
                 value: attrs.value,
                 disabled,
                 instantUpdate: attrs.instantUpdate,
+                placeholder: attrs.placeholder,
                 rows: attrs.rows,
                 // onchange: m.withAttr("value", attrs.onchange),
                 onchange: attrs.onchange,
