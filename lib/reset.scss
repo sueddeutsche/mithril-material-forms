@@ -5,16 +5,24 @@
     border-spacing: 0;
     outline: 0;
     user-select: none;
-
     &::-moz-focus-inner,
     &::-moz-focus-inner {
         border: 0;
         padding: 0;
     }
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
 }
 
 @mixin reset-select() {
     @include reset-input();
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+
     * {
         @include reset-input();
     }
