@@ -23,7 +23,8 @@ module.exports = {
             m(Select, attrs),
             m(Label, Object.assign({ "class": "mmf-grow-2" }, attrs)),
             m(Errors, attrs),
-            attrs.description ? m(".mmf-meta", attrs.description) : ""
+            attrs.description ? m(".mmf-meta", attrs.description) : "",
+            vnode.children
         );
     }
 };
