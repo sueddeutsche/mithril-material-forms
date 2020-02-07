@@ -36,7 +36,8 @@ module.exports = {
             ),
             m(Label, attrs),
             m(Errors, attrs),
-            attrs.description ? m(".mmf-meta", attrs.description) : ""
+            attrs.description ? m(".mmf-meta", attrs.description) : "",
+            vnode.children
         );
     }
 };

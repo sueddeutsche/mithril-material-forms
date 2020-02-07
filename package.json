@@ -1,13 +1,14 @@
 {
   "name": "mithril-material-forms",
-  "version": "3.1.3",
+  "version": "3.2.0",
   "description": "Basic input form elements as mithril components",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib theme",
-    "dist": "NODE_ENV=production webpack"
+    "dist": "NODE_ENV=production webpack",
+    "release": "npm run dist"
   },
   "repository": {
     "type": "git",
