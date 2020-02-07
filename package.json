@@ -7,7 +7,8 @@
     "build": "webpack",
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib theme",
-    "dist": "NODE_ENV=production webpack"
+    "dist": "NODE_ENV=production webpack",
+    "release": "npm run dist"
   },
   "repository": {
     "type": "git",
