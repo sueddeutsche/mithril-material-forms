@@ -1,11 +1,12 @@
 const m = require("mithril");
 const autosize = require("autosize");
+const raf = window.requestAnimationFrame;
 
 
 module.exports = {
 
     onupdate(vnode) {
-        autosize.update(vnode.dom);
+        raf(() => autosize.update(vnode.dom));
     },
 
     view(vnode) {
