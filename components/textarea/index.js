@@ -5,6 +5,9 @@ const raf = window.requestAnimationFrame;
 
 module.exports = {
 
+    textarea: null,
+    focus: false,
+
     onupdate(vnode) {
         raf(() => autosize.update(vnode.dom));
     },
@@ -26,16 +29,30 @@ module.exports = {
 
         const disabled = attrs.disabled === true;
 
+        if (this.focus) {
+            // keep current value, while input is being active this prevents
+            // jumps in cursor, caused by race conditions
+            // @attention - this may produce other problems
+            attrs.value = this.textarea.value;
+        }
+
         const textareaAttributes = {
             id: attrs.id,
             value: attrs.value,
             rows: attrs.rows,
             disabled,
             placeholder: attrs.placeholder,
-            onblur: attrs.onblur,
-            onfocus: attrs.onfocus,
+            onblur: () => {
+                this.focus = false;
+                attrs.onblur && attrs.onblur();
+            },
+            onfocus: () => {
+                this.focus = true;
+                attrs.onfocus && attrs.onfocus();
+            },
             onupdate: node => autosize.update(node.dom),
             oncreate: node => {
+                this.textarea = node.dom;
                 attrs.oncreate(node);
                 autosize(node.dom);
                 autosize.update(vnode.dom);
