@@ -42,13 +42,13 @@ module.exports = {
             rows: attrs.rows,
             disabled,
             placeholder: attrs.placeholder,
-            onblur: () => {
+            onblur: e => {
                 this.focus = false;
-                attrs.onblur && attrs.onblur();
+                attrs.onblur && attrs.onblur(e);
             },
-            onfocus: () => {
+            onfocus: e => {
                 this.focus = true;
-                attrs.onfocus && attrs.onfocus();
+                attrs.onfocus && attrs.onfocus(e);
             },
             onupdate: node => autosize.update(node.dom),
             oncreate: node => {
