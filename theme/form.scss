@@ -18,6 +18,7 @@
         font-size: $mmf-text-size--errors;
         list-style: none;
         color: $mmf-color--error;
+        padding-left: 0;
 
         li {
             margin-top: 0.5 * $mmf-unit;
