@@ -5,7 +5,7 @@ export type Attrs = {
     disabled?: boolean;
     raised?: boolean;
     class?: string;
-    onclick(event: Event): void;
+    onclick?(event: Event): void;
 }
 
 export type State = {
@@ -28,7 +28,7 @@ export default {
     view(vnode) {
         const attrs = {
             disabled: false,
-            onclick: event => vnode.attrs.onclick(event),
+            // onclick is assigned via mithril
             ...vnode.attrs,
             class: this.getClassNames(vnode.attrs)
         };

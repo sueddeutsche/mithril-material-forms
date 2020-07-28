@@ -9,9 +9,16 @@
 
         select {}
 
-        label {
-            padding-left: $mmf-block-padding;
+        .mmf-label {
             line-height: 29px;
+        }
+
+        .order--label-first .mmf-label {
+            padding-right: $mmf-block-padding;
+        }
+
+        .order--label-last .mmf-label {
+            padding-left: $mmf-block-padding;
         }
     }
 }

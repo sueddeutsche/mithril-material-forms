@@ -1,18 +1,11 @@
 import m from "mithril";
-import Select, { Option } from "../select";
+import Select, { Attrs as SelecAttrs } from "../select";
 import Label from "../label";
 import Errors, { getErrorClass } from "../errors";
+import { DefaultFormAttrs } from "../types";
 
 
-export type Attrs = {
-    description?: string;
-    disabled?: boolean;
-    id?: string;
-    placeholder?: string;
-    options: Array<string|Option>;
-    value?: string|number;
-    onchange: (event) => void;
-}
+export type Attrs = DefaultFormAttrs & SelecAttrs;
 
 
 export default {
@@ -32,10 +25,15 @@ export default {
             {
                 "class": getErrorClass(attrs.errors)
             },
-            m(Select, attrs),
-            m(Label, Object.assign({ "class": "mmf-grow-2" }, attrs)),
+            m(Label,
+                {
+                    "class": "mmf-grow-2",
+                    ...attrs
+                },
+                m(Select, attrs)
+            ),
             m(Errors, attrs),
-            attrs.description ? m(".mmf-meta", attrs.description) : "",
+            attrs.description && m(".mmf-meta", attrs.description),
             vnode.children
         );
     }

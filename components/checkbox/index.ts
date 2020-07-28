@@ -1,10 +1,9 @@
 import m from "mithril";
+import { DefaultInputAttrs } from "../types";
 
 
-export type Attrs = {
-    id?: string;
+export type Attrs = DefaultInputAttrs & {
     value?: boolean;
-    disabled?: boolean;
     checked?: boolean;
     onchange(checked: boolean): void;
     onfocus? (event: Event): void;

@@ -1,22 +1,22 @@
 import m from "mithril";
+import { DefaultInputAttrs } from "../types";
 
-const isOption = (option): option is Option => option && option.value !== undefined;
+
+const isOptionValue = (option): option is OptionValue => option && option.value !== undefined;
 
 
-export type Option = {
+export type OptionValue = {
     title?: string;
     value?: string|number;
 }
 
-export type Attrs = {
-    class?: string;
-    title?: string;
-    disabled?: boolean;
-    id?: string;
+export type Option = string|OptionValue;
+
+export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
-    onchange: (event) => void;
+    onchange: (value: string) => void;
     onfocus?: (event) => void;
-    options: Array<string|Option>;
+    options: Array<Option>;
     value?: string|number;
 }
 
@@ -52,7 +52,7 @@ export default {
                 },
 
                 vnode.attrs.options.map(value => {
-                    if (isOption(value)) {
+                    if (isOptionValue(value)) {
                         // value must be a string or else is discarded
                         return m("option", { value: `${value.value}` }, value.title || value.value);
                     }

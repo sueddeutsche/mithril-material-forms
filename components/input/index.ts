@@ -1,19 +1,17 @@
 import m from "mithril";
+import { DefaultInputAttrs } from "../types"
 
 
 export type InputType = "button"|"checkbox"|"color"|"date"|"datetime-local"|"email"|"file"|"hidden"|"image"|"month"|
     "number"|"password"|"radio"|"range"|"reset"|"search"|"submit"|"tel"|"text"|"time"|"url"|"week";
 
 
-export type Attrs = {
+export type Attrs = DefaultInputAttrs & {
     onchange: (value: string) => void;
-    disabled?: boolean;
-    id?: string;
     /** set to true, if each keystroke should trigger a change event */
     instantUpdate?: boolean;
     onblur?: (event) => void;
     onfocus?: (event) => void;
-    placeholder?: string;
     type?: InputType;
     value?: string;
 }
@@ -33,7 +31,7 @@ export default {
     },
 
     view({ attrs }) {
-        let value = attrs.value;
+        let { value } = attrs;
         if (this.hasFocus && this.value != null) {
             value = this.value; // this will remove any changes applied to this data from "outside"
         }
@@ -42,8 +40,9 @@ export default {
 
         const inputAttributes = {
             // id: attrs.id -- if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
-            type: attrs.type,
             value,
+            type: attrs.type,
+            class: attrs.class,
             placeholder: attrs.placeholder,
             disabled: attrs.disabled === true,
             oninput: e => (this.value = e.target.value),

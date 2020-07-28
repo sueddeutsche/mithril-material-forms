@@ -7,7 +7,7 @@
 @mixin with-form() {
     position: relative;
 
-    label {
+    .mmf-label {
         color: $mmf-color--dark;
         opacity: $mmf-opacity--secondary;
     }
@@ -34,7 +34,7 @@
  *      ...
  * @param {string} input-type   - associated input selector
  */
-@mixin with-moving-label($input-type:"input") {
+@mixin with-moving-label($input-type: "input") {
 
     // move input down by label height
     @if $input-type == "textarea" {
@@ -47,7 +47,7 @@
         }
     }
 
-    label.mmf-label {
+    .mmf-label {
         // set label to top
         width: 100%;
         position: absolute;
@@ -68,7 +68,7 @@
     &.isNotEmpty {}
 
     &.hasFocus {
-        label.mmf-label {
+        .mmf-label {
             color: $mmf-color--primary;
             opacity: $mmf-opacity--primary;
         }
@@ -80,7 +80,7 @@
             border-color: $mmf-color--error;
         }
         &.hasFocus {
-            label.mmf-label {
+            .mmf-label {
                 color: $mmf-color--error;
             }
         }
@@ -92,14 +92,14 @@
             border-color: $mmf-color--warning;
         }
         &.hasFocus {
-            label.mmf-label {
+            .mmf-label {
                 color: $mmf-color--warning;
             }
         }
     }
 
     &.isEmpty.hasNoFocus {
-        label.mmf-label {
+        .mmf-label {
             transform: translateY($mmf-height-label);
             font-size: 1em;
         }

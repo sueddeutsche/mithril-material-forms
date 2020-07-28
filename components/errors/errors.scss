@@ -1,8 +1,7 @@
-.mmf-form__error {
-    &--warning {
-        color: $mmf-color--warning;
-    }
-    &--error {
-        color: $mmf-color--error;
-    }
+.mmf-form__error--warning {
+    color: $mmf-color--warning;
+}
+
+.mmf-form__error--error {
+    color: $mmf-color--error;
 }

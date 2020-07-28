@@ -16,6 +16,7 @@ export declare type Attrs = CheckboxAttrs & {
     description?: string;
     errors: Array<Error>;
     children?: m.Children;
+    invertOrder?: boolean;
 };
 declare const _default: m.Component<Attrs, {}>;
 export default _default;

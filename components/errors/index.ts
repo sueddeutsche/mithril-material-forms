@@ -1,5 +1,6 @@
 import m from "mithril";
 import getErrorClass from "./getErrorClass";
+import { Error } from "../types";
 
 
 function isVNode(object): object is m.Vnode<Error> {
@@ -12,13 +13,6 @@ function isError(object): object is Error {
 
 
 export { getErrorClass };
-
-
-export type Error = {
-    /** error or warning */
-    severity?: string;
-    message: string
-}
 
 
 export type Attrs = {

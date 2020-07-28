@@ -17,22 +17,22 @@ export default {
     view(vnode) {
         const { invertOrder, id, title, class: classNames } = vnode.attrs;
         if (invertOrder === true) {
-            return m("label.mmf-label",
+            return m("label.order--label-last",
                 {
                     "for": id,
                     "class": classNames
                 },
                 vnode.children,
-                m("span", title)
+                m("span.mmf-label", title)
             );
         }
 
-        return m("label.mmf-label",
+        return m("label.order--label-first",
             {
                 "for": id,
                 "class": classNames
             },
-            m("span", title),
+            m("span.mmf-label", title),
             vnode.children
         );
     }

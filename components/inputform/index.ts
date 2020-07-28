@@ -1,8 +1,9 @@
 import m from "mithril";
-import Input from "../input";
+import Input, { Attrs as InputAttrs } from "../input";
 import Label from "../label";
 import sanitizeValue from "./sanitizeValue";
 import Errors, { getErrorClass } from "../errors";
+import { DefaultFormAttrs } from "../types";
 
 
 const TYPES = {
@@ -12,12 +13,12 @@ const TYPES = {
 };
 
 
-export type Attrs = {
+export type Attrs = DefaultFormAttrs & InputAttrs & {
     /** input type */
     type: string;
-    disabled?: boolean;
     onchange(value): void;
 }
+
 
 export type State = {
     $form: HTMLElement;
@@ -77,28 +78,30 @@ const InputForm = {
             {
                 "class": `${focusClass} ${errorClass} ${emptyClass}`
             },
-            m(Label, attrs),
-            m(Input,
-                {
-                    type: inputType,
-                    id: attrs.id,
-                    disabled: attrs.disabled,
-                    instantUpdate: attrs.instantUpdate,
-                    placeholder: attrs.placeholder,
-                    onchange: value => attrs.onchange(sanitizeValue(inputType, value)),
-                    value: attrs.value,
-                    onfocus: e => {
-                        this.onfocus();
-                        attrs.onfocus && attrs.onfocus(e);
-                    },
-                    onblur: e => {
-                        this.onblur(e.target.value);
-                        attrs.onblur && attrs.onblur(e);
+            m(Label,
+                attrs,
+                m(Input,
+                    {
+                        type: inputType,
+                        id: attrs.id,
+                        disabled: attrs.disabled,
+                        instantUpdate: attrs.instantUpdate,
+                        placeholder: attrs.placeholder,
+                        onchange: value => attrs.onchange(sanitizeValue(inputType, value)),
+                        value: attrs.value,
+                        onfocus: e => {
+                            this.onfocus();
+                            attrs.onfocus && attrs.onfocus(e);
+                        },
+                        onblur: e => {
+                            this.onblur(e.target.value);
+                            attrs.onblur && attrs.onblur(e);
+                        }
                     }
-                }
+                )
             ),
             m(Errors, attrs),
-            attrs.description ? m(".mmf-meta", attrs.description) : "",
+            attrs.description && m(".mmf-meta", attrs.description),
             vnode.children
         );
 

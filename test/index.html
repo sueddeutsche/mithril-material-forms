@@ -163,6 +163,21 @@
                     );
                 </script>
 
+                <h2>checkboxForm.invertOrder</h2>
+                <div id="mCheckboxFormInvertOrder"></div>
+                <script type="text/javascript">
+                    m.render(window.mCheckboxFormInvertOrder,
+                        m(MMF.CheckboxForm, {
+                            id: "mmf-checkbox-form",
+                            title: "Checkbox-Form Title",
+                            invertOrder: true,
+                            description: "Checkbox-Form description text...",
+                            value: true,
+                            onchange: (value) => console.log("value", value)
+                        })
+                    );
+                </script>
+
 
 <!-- SELECT -->
 
@@ -242,6 +257,27 @@
                     m.render(window.mSelectFormDisabled,
                         m(MMF.SelectForm, {
                             disabled: true,
+                            id: "mmf-select-form",
+                            title: "Select-Form Title",
+                            description: "Select-Form description text...",
+                            errors: ["This selection is invalid"],
+                            options: [
+                                "a very nice selection",
+                                "ignore any niceness"
+                            ],
+                            value: "a very nice selection",
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
+                <h2>selectForm.invertOrder</h2>
+                <div id="mSelectFormInverted"></div>
+                <script type="text/javascript">
+                    m.render(window.mSelectFormInverted,
+                        m(MMF.SelectForm, {
+                            disabled: false,
+                            invertOrder: true,
                             id: "mmf-select-form",
                             title: "Select-Form Title",
                             description: "Select-Form description text...",

@@ -16,9 +16,19 @@ For attribute details check each component implementation in _index.js_. For a l
 `npm run build` and checkout the examples page in `/test/index.html`
 
 
-## 
+## Usage
 
-`v3` Breaking Changes
+- per convention, an attribute `onchange(value): void` is used to register to change events
+
+
+## Breaking Changes
+
+`v4`
+
+- mithril is now written in typescript and uses no babel transpilation. There may be a need for polyfills
+- components are exported separately
+
+`v3` 
 
 - required mithril-dependency `>= v2`
 - all callbacks have mithil-lowercase names `onchange` instead of _onChange_

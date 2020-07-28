@@ -25,7 +25,7 @@ const MetaDescription: m.Component<MetaDescriptionAttrs> = {
         return [
             isEmpty(attrs.url) ?
                 m(".mmf-preview__placeholder", attrs.placeholder) : [
-                    attrs.description ? m(".mmf-preview__description", m.trust(attrs.description)) : "",
+                    attrs.description && m(".mmf-preview__description", m.trust(attrs.description)),
                     m(".mmf-preview__overflow-indicator")
                 ],
             vnode.children
@@ -48,7 +48,7 @@ const InlineImage: m.Component<InlineImageAttrs> = {
         const { attrs } = vnode;
         return m(".mmf-preview__content",
             {
-                style: isEmpty(attrs.url) ? "" : getRatioStyleProperty(attrs.maxRatio),
+                style: !isEmpty(attrs.url) && getRatioStyleProperty(attrs.maxRatio),
                 oncreate: attrs.oncreate
             },
             isEmpty(attrs.url) ?
@@ -57,7 +57,7 @@ const InlineImage: m.Component<InlineImageAttrs> = {
                         src: attrs.url,
                         onload: attrs.onload
                     }),
-                    attrs.description ? m(".mmf-preview__description", m.trust(attrs.description)) : "",
+                    attrs.description && m(".mmf-preview__description", m.trust(attrs.description)),
                     m(".mmf-preview__overflow-indicator")
                 ],
             vnode.children
@@ -127,8 +127,8 @@ const ImagePreview = {
         return m(".mmf-preview.mmf-preview--image",
             {
                 "class": attrs.class + (isEmpty(attrs.url) ? "" : " with-image"),
-                style: (attrs.asBackgroundImage && !isEmpty(attrs.url)) ?
-                    `background-image: url(${attrs.url});` : ""
+                style: (attrs.asBackgroundImage && !isEmpty(attrs.url)) &&
+                    `background-image: url(${attrs.url});`
             },
             attrs.asBackgroundImage ? m(MetaDescription, attrs, vnode.children) : m(InlineImage, attrs, vnode.children)
         );

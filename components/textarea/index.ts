@@ -1,16 +1,14 @@
 import m from "mithril";
 import autosize from "autosize";
+import { DefaultInputAttrs } from "../types";
 const raf = window.requestAnimationFrame;
 
 
 const emptyFunction = Function.prototype;
 
 
-export type Attrs = {
+export type Attrs = DefaultInputAttrs & {
     value?: string;
-    description?: string;
-    disabled?: boolean;
-    id?: string;
     instantUpdate?: boolean;
     placeholder?: string;
     rows?: number;
@@ -35,7 +33,7 @@ export default {
     },
 
     view(vnode) {
-        const attrs = Object.assign({
+        const attrs = {
             id: null,
             value: "",
             rows: 1,
@@ -46,8 +44,9 @@ export default {
             onfocus: emptyFunction,
             onchange: emptyFunction,
             oncreate: emptyFunction,
-            onbeforeremove: emptyFunction
-        }, vnode.attrs);
+            onbeforeremove: emptyFunction,
+            ...vnode.attrs
+        };
 
         const disabled = attrs.disabled === true;
 
@@ -61,6 +60,7 @@ export default {
         const textareaAttributes = {
             id: attrs.id,
             value: attrs.value,
+            class: attrs.class,
             rows: attrs.rows,
             disabled,
             placeholder: attrs.placeholder,

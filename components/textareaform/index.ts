@@ -2,15 +2,16 @@ import Errors, { getErrorClass } from "../errors";
 import isEmpty from "../isEmpty";
 import Label from "../label";
 import m from "mithril";
-import Textarea from "../textarea";
+import Textarea, { Attrs as TextareaAttrs } from "../textarea";
+import { DefaultFormAttrs } from "../types";
 
 
-export type Attrs = {
+export type Attrs = DefaultFormAttrs & TextareaAttrs & {
     value?: string;
-    onchange?: (event) => void;
     onblur?: (event) => void;
     onfocus?: (event) => void;
 }
+
 
 export type State = {
     $form: HTMLElement;
@@ -70,26 +71,28 @@ export default {
             {
                 "class": getErrorClass(attrs.errors)
             },
-            m(Label, attrs),
-            m(Textarea, {
-                id: attrs.id,
-                value: attrs.value,
-                disabled,
-                instantUpdate: attrs.instantUpdate,
-                placeholder: attrs.placeholder,
-                rows: attrs.rows,
-                onchange: attrs.onchange,
-                onblur: e => {
-                    this.onblur(e.target.value);
-                    attrs.onblur(e);
-                },
-                onfocus: e => {
-                    this.onfocus();
-                    attrs.onfocus(e);
-                }
-            }),
+            m(Label,
+                attrs,
+                m(Textarea, {
+                    id: attrs.id,
+                    value: attrs.value,
+                    disabled,
+                    instantUpdate: attrs.instantUpdate,
+                    placeholder: attrs.placeholder,
+                    rows: attrs.rows,
+                    onchange: attrs.onchange,
+                    onblur: e => {
+                        this.onblur(e.target.value);
+                        attrs.onblur(e);
+                    },
+                    onfocus: e => {
+                        this.onfocus();
+                        attrs.onfocus(e);
+                    }
+                })
+            ),
             m(Errors, attrs),
-            attrs.description ? m(".mmf-meta", attrs.description) : "",
+            attrs.description && m(".mmf-meta", attrs.description),
             vnode.children
         );
     }
