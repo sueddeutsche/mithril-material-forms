@@ -8,7 +8,7 @@ function isVNode(object): object is m.Vnode<Error> {
 }
 
 function isError(object): object is Error {
-    return object && object.message && object.severity;
+    return object && object.message;
 }
 
 
