@@ -1,10 +1,10 @@
-const m = require("mithril");
-const Checkbox = require("../checkbox");
-const Label = require("../label");
-const Errors = require("../errors");
+import m from "mithril";
+import Checkbox, { Attrs as CheckboxAttrs } from "../checkbox";
+import Label from "../label";
+import Errors, { Error, getErrorClass } from "../errors";
 
 
-const defaultOptions = {
+export const defaultOptions = {
     id: null,
     title: "",
     disabled: false,
@@ -16,13 +16,22 @@ const defaultOptions = {
 };
 
 
-module.exports = {
+export type Attrs = CheckboxAttrs & {
+    title?: string;
+    description?: string;
+    errors: Array<Error>;
+    children?: m.Children
+}
+
+
+export default {
+
     view(vnode) {
-        const attrs = Object.assign({}, defaultOptions, vnode.attrs);
+        const attrs = { ...defaultOptions, ...vnode.attrs };
 
         return m(`.mmf-form.mmf-form--checkbox.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
             {
-                "class": Errors.getErrorClass(attrs.errors)
+                "class": getErrorClass(attrs.errors)
             },
             m(Checkbox,
                 {
@@ -40,4 +49,5 @@ module.exports = {
             vnode.children
         );
     }
-};
+
+} as m.Component<Attrs>;

@@ -1,8 +1,8 @@
-const m = require("mithril");
-const Input = require("../input");
-const Label = require("../label");
-const sanitizeValue = require("./sanitizeValue");
-const Errors = require("../errors");
+import m from "mithril";
+import Input from "../input";
+import Label from "../label";
+import sanitizeValue from "./sanitizeValue";
+import Errors, { getErrorClass } from "../errors";
 
 
 const TYPES = {
@@ -12,9 +12,25 @@ const TYPES = {
 };
 
 
-module.exports = {
+export type Attrs = {
+    /** input type */
+    type: string;
+    disabled?: boolean;
+    onchange(value): void;
+}
+
+export type State = {
+    $form: HTMLElement;
+    onfocus(): void;
+    onblur(value: string): void;
+    hasFocus(): boolean;
+}
+
+
+const InputForm = {
+
     oncreate(vnode) {
-        this.$form = vnode.dom;
+        this.$form = vnode.dom as HTMLElement;
     },
 
     updateClasses(value) {
@@ -39,7 +55,7 @@ module.exports = {
     },
 
     view(vnode) {
-        const inputType = TYPES[vnode.attrs.type] || "text";
+        const inputType = TYPES[vnode.attrs.type] || vnode.attrs.type || "text";
         const attrs = Object.assign({
             id: null,
             title: "",
@@ -54,7 +70,7 @@ module.exports = {
         }, vnode.attrs);
 
         const focusClass = this.hasFocus() ? "hasFocus" : "hasNoFocus";
-        const errorClass = Errors.getErrorClass(attrs.errors);
+        const errorClass = getErrorClass(attrs.errors);
         const emptyClass = attrs.value === "" ? "isEmpty" : "isNotEmpty";
 
         const view = m(`.mmf-form.mmf-form--input.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
@@ -88,4 +104,8 @@ module.exports = {
 
         return view;
     }
-};
+
+} as m.Component<Attrs, State>;
+
+
+export default InputForm;

@@ -1,7 +1,29 @@
-const m = require("mithril");
+import m from "mithril";
 
 
-module.exports = {
+export type InputType = "button"|"checkbox"|"color"|"date"|"datetime-local"|"email"|"file"|"hidden"|"image"|"month"|
+    "number"|"password"|"radio"|"range"|"reset"|"search"|"submit"|"tel"|"text"|"time"|"url"|"week";
+
+
+export type Attrs = {
+    onchange: (value: string) => void;
+    disabled?: boolean;
+    id?: string;
+    /** set to true, if each keystroke should trigger a change event */
+    instantUpdate?: boolean;
+    onblur?: (event) => void;
+    onfocus?: (event) => void;
+    placeholder?: string;
+    type?: InputType;
+    value?: string;
+}
+
+export type State = {
+    value: string;
+    hasFocus: boolean;
+}
+
+export default {
     value: null,
     hasFocus: false,
 
@@ -19,7 +41,7 @@ module.exports = {
         this.value = value;
 
         const inputAttributes = {
-            // id: attrs.id, // if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
+            // id: attrs.id -- if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
             type: attrs.type,
             value,
             placeholder: attrs.placeholder,
@@ -42,4 +64,5 @@ module.exports = {
 
         return m("input.mmf-input", inputAttributes);
     }
-};
+
+} as m.Component<Attrs, State>;

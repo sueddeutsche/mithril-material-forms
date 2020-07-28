@@ -1,24 +1,27 @@
-const m = require("mithril");
+import m from "mithril";
+import isEmpty from "../isEmpty";
 const RATIO_DEFAULT = [16, 9];
 
-function isEmpty(value) {
-    return value == null || value === "";
-}
+/** returns ratio as css-property */
+const getRatioStyleProperty = (ratio: string): string => `padding-bottom: ${getRatio(ratio).toFixed(2)}%;`;
 
-function getRatioStyle(ratio) {
-    return `${getRatio(ratio).toFixed(2)}%`;
-}
 
-function getRatio(ratio) {
+function getRatio(ratio: string): number {
     let dim = ratio.split(":").map(parseFloat);
     dim = dim.length === 2 ? dim : RATIO_DEFAULT;
     return (100 * dim[1] / dim[0]);
 }
 
 
-const MetaDescription = {
+type MetaDescriptionAttrs = {
+    url?: string;
+    placeholder?: string;
+    description?: string;
+}
+
+const MetaDescription: m.Component<MetaDescriptionAttrs> = {
     view(vnode) {
-        const attrs = vnode.attrs;
+        const { attrs } = vnode;
         return [
             isEmpty(attrs.url) ?
                 m(".mmf-preview__placeholder", attrs.placeholder) : [
@@ -31,12 +34,21 @@ const MetaDescription = {
 };
 
 
-const InlineImage = {
+type InlineImageAttrs = {
+    maxRatio: string;
+    url?: string;
+    placeholder?: string;
+    description?: string;
+    oncreate?: (vnode: m.Vnode) => void;
+    onload?: (vnode: m.Vnode) => void;
+}
+
+const InlineImage: m.Component<InlineImageAttrs> = {
     view(vnode) {
-        const attrs = vnode.attrs;
+        const { attrs } = vnode;
         return m(".mmf-preview__content",
             {
-                style: isEmpty(attrs.url) ? "" : `padding-bottom: ${getRatioStyle(attrs.maxRatio)};`,
+                style: isEmpty(attrs.url) ? "" : getRatioStyleProperty(attrs.maxRatio),
                 oncreate: attrs.oncreate
             },
             isEmpty(attrs.url) ?
@@ -54,9 +66,30 @@ const InlineImage = {
 };
 
 
-const ImagePreview = {
+export type Attrs = {
+    /** image url */
+    url?: string;
+    /** additional classname for module */
+    class?: string;
+    /** show image as background image - default to false */
+    asBackgroundImage?: boolean;
+    /** additional description placed under image */
+    description?: string
+    /** image max-ratio, given as string like "16:9" */
+    maxRatio?: string;
+    /** optional click eventHandler on image and image-preview */
+    onclick?: (event: Event) => void;
+    /** placeholder text on image preview */
+    placeholder?: string;
+}
 
-    overflowContainer: null,
+export type State = {
+    overflowContainer: HTMLElement;
+    updateRatio(maxRatio: string, image: HTMLImageElement): void;
+}
+
+
+const ImagePreview = {
 
     updateRatio(maxRatio, image) {
         if (this.overflowContainer != null && image.naturalWidth) {
@@ -76,7 +109,7 @@ const ImagePreview = {
     },
 
     view(vnode) {
-        const attrs = Object.assign({
+        const attrs = {
             url: null,
             "class": "",
             asBackgroundImage: false,
@@ -85,9 +118,11 @@ const ImagePreview = {
             onclick: null,
             maxRatio: "16:9",
             // "private"
-            onload: event => this.updateRatio(attrs.maxRatio, event.currentTarget),
-            oncreate: content => { this.overflowContainer = content.dom; }
-        }, vnode.attrs);
+            onload: event => this.updateRatio(vnode.attrs.maxRatio, event.currentTarget),
+            oncreate: content => { this.overflowContainer = content.dom as HTMLElement; },
+
+            ...vnode.attrs
+        };
 
         return m(".mmf-preview.mmf-preview--image",
             {
@@ -98,7 +133,8 @@ const ImagePreview = {
             attrs.asBackgroundImage ? m(MetaDescription, attrs, vnode.children) : m(InlineImage, attrs, vnode.children)
         );
     }
-};
+
+} as m.Component<Attrs, State>;
 
 
-module.exports = ImagePreview;
+export default ImagePreview;

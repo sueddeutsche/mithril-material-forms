@@ -1,8 +1,21 @@
-const m = require("mithril");
+import m from "mithril";
 
 
-module.exports = {
+export type Attrs = {
+    id?: string;
+    value?: boolean;
+    disabled?: boolean;
+    checked?: boolean;
+    onchange(checked: boolean): void;
+    onfocus? (event: Event): void;
+    onblur? (event: Event): void;
+}
+
+
+export default {
+
     view({ attrs }) {
+
         return m("input.mmf-checkbox",
             {
                 id: attrs.id,
@@ -15,4 +28,5 @@ module.exports = {
             }
         );
     }
-};
+
+} as m.Component<Attrs>;

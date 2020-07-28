@@ -1,12 +1,34 @@
-const m = require("mithril");
-const autosize = require("autosize");
+import m from "mithril";
+import autosize from "autosize";
 const raf = window.requestAnimationFrame;
 
 
-module.exports = {
+const emptyFunction = Function.prototype;
 
-    textarea: null,
-    focus: false,
+
+export type Attrs = {
+    value?: string;
+    description?: string;
+    disabled?: boolean;
+    id?: string;
+    instantUpdate?: boolean;
+    placeholder?: string;
+    rows?: number;
+    onblur?: (event) => void;
+    onfocus?: (event) => void;
+    onchange?: (event) => void;
+    oncreate?: (event) => void;
+    onbeforeremove?: (event) => void;
+}
+
+export type State = {
+    textarea: HTMLTextAreaElement;
+    focus: boolean;
+}
+
+export default {
+
+    boolean: false,
 
     onupdate(vnode) {
         raf(() => autosize.update(vnode.dom));
@@ -20,11 +42,11 @@ module.exports = {
             placeholder: "",
             disabled: false,
             instantUpdate: false,
-            onblur: Function.prototype,
-            onfocus: Function.prototype,
-            onchange: Function.prototype,
-            oncreate: Function.prototype,
-            onbeforeremove: Function.prototype
+            onblur: emptyFunction,
+            onfocus: emptyFunction,
+            onchange: emptyFunction,
+            oncreate: emptyFunction,
+            onbeforeremove: emptyFunction
         }, vnode.attrs);
 
         const disabled = attrs.disabled === true;
@@ -55,7 +77,7 @@ module.exports = {
                 this.textarea = node.dom;
                 attrs.oncreate(node);
                 autosize(node.dom);
-                autosize.update(vnode.dom);
+                autosize.update(node.dom);
             },
             onbeforeremove: node => {
                 attrs.onbeforeremove(node);
@@ -68,4 +90,5 @@ module.exports = {
 
         return m("textarea.mmf-textarea", textareaAttributes);
     }
-};
+
+} as m.Component<Attrs, State>;

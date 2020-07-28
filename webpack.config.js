@@ -1,14 +1,17 @@
+/* eslint-env node */
 const path = require("path");
 const webpack = require("webpack");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
 
 const config = {
+
     entry: {
-        mmf: path.join(__dirname, "index.js"),
+        mmf: path.join(__dirname, "index.ts"),
         styles: path.join(__dirname, "material-forms.scss")
     },
+
     output: {
         filename: "[name].js",
         library: ["MMF"],
@@ -21,6 +24,7 @@ const config = {
     mode: PRODUCTION ? "production" : "development",
 
     resolve: {
+        extensions: [".tsx", ".ts", ".js"],
         modules: [".", "node_modules"]
     },
 
@@ -31,23 +35,36 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loader: require.resolve("babel-loader"),
-                include: [
-                    path.resolve(__dirname, "components")
-                ],
-                options: {
-                    presets: [
-                        require.resolve("@babel/preset-env")
-                    ],
-                    plugins: [
-                        require.resolve("@babel/plugin-transform-object-assign"),
-                        require.resolve("@babel/plugin-proposal-object-rest-spread") // redux-undo
-                    ],
-                    babelrc: false,
-                    cacheDirectory: true
+                test: /\.tsx?$/,
+                use: {
+                    loader: "ts-loader",
+                    options: {
+                        configFile: path.resolve(__dirname, "tsconfig.json"),
+                        compilerOptions: {
+                            sourceMap: !PRODUCTION,
+                            declaration: PRODUCTION
+                        }
+                    }
                 }
             },
+            // {
+            //     test: /\.js$/,
+            //     loader: require.resolve("babel-loader"),
+            //     include: [
+            //         path.resolve(__dirname, "components")
+            //     ],
+            //     options: {
+            //         presets: [
+            //             require.resolve("@babel/preset-env")
+            //         ],
+            //         plugins: [
+            //             require.resolve("@babel/plugin-transform-object-assign"),
+            //             require.resolve("@babel/plugin-proposal-object-rest-spread") // redux-undo
+            //         ],
+            //         babelrc: false,
+            //         cacheDirectory: true
+            //     }
+            // },
             {
                 test: [/material-forms.scss$/],
                 use: [
@@ -87,10 +104,6 @@ const config = {
                     "html-loader"
                 ],
                 include: [path.join(__dirname, "app", "index.html")]
-            },
-            {
-                loaders: "json-loader",
-                test: /\.json$/
             }
         ]
     },
@@ -102,9 +115,7 @@ const config = {
     },
 
     optimization: {
-        minimizer: [
-            new UglifyJsPlugin()
-        ]
+        minimizer: PRODUCTION ? [new TerserPlugin()] : []
     },
 
     plugins: [

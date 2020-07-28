@@ -1,17 +1,29 @@
-const m = require("mithril");
-const Textarea = require("../textarea");
-const Label = require("../label");
-const Errors = require("../errors");
+import Errors, { getErrorClass } from "../errors";
+import isEmpty from "../isEmpty";
+import Label from "../label";
+import m from "mithril";
+import Textarea from "../textarea";
 
 
-function isEmpty(value) {
-    return value == null || value === "";
+export type Attrs = {
+    value?: string;
+    onchange?: (event) => void;
+    onblur?: (event) => void;
+    onfocus?: (event) => void;
 }
 
-module.exports = {
+export type State = {
+    $form: HTMLElement;
+    onblur(value): void;
+    onfocus(): void;
+    updateClasses(value): void;
+}
+
+
+export default {
 
     oncreate(vnode) {
-        this.$form = vnode.dom;
+        this.$form = vnode.dom as HTMLElement;
         this.onblur(vnode.attrs.value);
     },
 
@@ -56,7 +68,7 @@ module.exports = {
 
         return m(`.mmf-form.mmf-form--textarea.mmf-form--${disabled ? "disabled" : "enabled"}`,
             {
-                "class": Errors.getErrorClass(attrs.errors)
+                "class": getErrorClass(attrs.errors)
             },
             m(Label, attrs),
             m(Textarea, {
@@ -66,7 +78,6 @@ module.exports = {
                 instantUpdate: attrs.instantUpdate,
                 placeholder: attrs.placeholder,
                 rows: attrs.rows,
-                // onchange: m.withAttr("value", attrs.onchange),
                 onchange: attrs.onchange,
                 onblur: e => {
                     this.onblur(e.target.value);
@@ -82,4 +93,5 @@ module.exports = {
             vnode.children
         );
     }
-};
+
+} as m.Component<Attrs, State>;

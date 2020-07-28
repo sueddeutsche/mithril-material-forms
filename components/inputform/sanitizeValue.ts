@@ -1,4 +1,4 @@
-module.exports = function sanitizeValue(type, value) {
+export default function sanitizeValue(type: string, value) {
     if (type === "number") {
         const intValue = parseInt(value);
         const floatValue = parseFloat(value);
@@ -10,4 +10,4 @@ module.exports = function sanitizeValue(type, value) {
         return intValue;
     }
     return value;
-};
+}

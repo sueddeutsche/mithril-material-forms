@@ -1,12 +1,36 @@
-const m = require("mithril");
+import m from "mithril";
+
+const isOption = (option): option is Option => option && option.value !== undefined;
 
 
-module.exports = {
+export type Option = {
+    title?: string;
+    value?: string|number;
+}
+
+export type Attrs = {
+    class?: string;
+    title?: string;
+    disabled?: boolean;
+    id?: string;
+    onblur?: (event) => void;
+    onchange: (event) => void;
+    onfocus?: (event) => void;
+    options: Array<string|Option>;
+    value?: string|number;
+}
+
+export type State = {
+    $wrapper: HTMLElement;
+}
+
+
+export default {
     view(vnode) {
         return m("div.mmf-select__wrapper",
             {
                 "class": vnode.attrs.disabled === true ? "is-disabled" : "is-enabled",
-                oncreate: _vnode => (this.$wrapper = _vnode.dom)
+                oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
             m("select.mmf-select",
                 {
@@ -26,13 +50,16 @@ module.exports = {
                     // be passed to select-component
                     onchange: e => vnode.attrs.onchange(e.target.value)
                 },
+
                 vnode.attrs.options.map(value => {
-                    const title = value.title || value;
-                    // value must be a string or else is discarded
-                    value = `${value.value == null ? value : value.value}`;
-                    return m("option", { value }, title);
+                    if (isOption(value)) {
+                        // value must be a string or else is discarded
+                        return m("option", { value: `${value.value}` }, value.title || value.value);
+                    }
+                    return m("option", { value: `${value}` }, value);
                 })
             )
         );
     }
-};
+
+} as m.Component<Attrs, State>;
