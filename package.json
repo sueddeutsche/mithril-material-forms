@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf build; webpack",
     "lint": "eslint components",
-    "watch": "watch 'npm run build' components lib theme",
+    "watch": "watch 'npm run build' components lib styles",
     "dist": "rm -rf dist; NODE_ENV=production webpack",
     "release": "npm run dist"
   },
@@ -56,6 +56,7 @@
     "jsdom": "16.3.0",
     "mocha": "8.0.1",
     "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "5.0.3",
     "sass-loader": "^9.0.2",
     "sinon": "^9.0.2",
     "style-loader": "^1.2.1",

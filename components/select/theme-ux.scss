@@ -6,6 +6,7 @@
     color: rgba($mmf-color--dark, $mmf-opacity--primary);
     border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
     border-radius: $mmf-radius;
+    overflow: hidden; // fix capped borders
 
     &.is-enabled {
         &:hover,

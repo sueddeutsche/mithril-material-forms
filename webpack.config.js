@@ -2,6 +2,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
 
@@ -10,10 +11,10 @@ const config = {
     entry: {
         mmf: path.join(__dirname, "index.ts"),
         all: path.join(__dirname, "material-forms.scss"),
-        layout: path.join(__dirname, "theme/layout.scss"),
-        typography: path.join(__dirname, "theme/typography.scss"),
-        "theme-material": path.join(__dirname, "theme/theme-material.scss"),
-        "theme-ux": path.join(__dirname, "theme/theme-ux.scss"),
+        layout: path.join(__dirname, "styles/layout.scss"),
+        typography: path.join(__dirname, "styles/typography.scss"),
+        "theme-material": path.join(__dirname, "styles/theme-material.scss"),
+        "theme-ux": path.join(__dirname, "styles/theme-ux.scss"),
     },
 
     output: {
@@ -51,24 +52,6 @@ const config = {
                     }
                 }
             },
-            // {
-            //     test: /\.js$/,
-            //     loader: require.resolve("babel-loader"),
-            //     include: [
-            //         path.resolve(__dirname, "components")
-            //     ],
-            //     options: {
-            //         presets: [
-            //             require.resolve("@babel/preset-env")
-            //         ],
-            //         plugins: [
-            //             require.resolve("@babel/plugin-transform-object-assign"),
-            //             require.resolve("@babel/plugin-proposal-object-rest-spread") // redux-undo
-            //         ],
-            //         babelrc: false,
-            //         cacheDirectory: true
-            //     }
-            // },
             {
                 test: [/\.scss$/],
                 use: [
@@ -125,7 +108,16 @@ const config = {
     plugins: [
         new webpack.DefinePlugin({
             DEBUG: !PRODUCTION
-        })
+        }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessorPluginOptions: {
+                preset: ["default", {
+                    discardComments: { removeAll: true }
+                }]
+            },
+            canPrint: true
+        }),
     ]
 };
 
