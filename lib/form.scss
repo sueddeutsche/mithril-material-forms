@@ -11,17 +11,6 @@
         color: $mmf-color--dark;
         opacity: $mmf-opacity--secondary;
     }
-
-    &.mmf-form--disabled {
-        .mmf-meta,
-        .mmf-form__errors,
-        label {
-            opacity: $mmf-opacity--disabled !important;
-            &:hover {
-                cursor: default;
-            }
-        }
-    }
 }
 
 

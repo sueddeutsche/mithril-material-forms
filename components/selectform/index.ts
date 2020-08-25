@@ -1,11 +1,11 @@
 import m from "mithril";
 import Select, { Attrs as SelecAttrs } from "../select";
-import Label from "../label";
+import Label, { Attrs as LabelAttrs } from "../label";
 import Errors, { getErrorClass } from "../errors";
 import { DefaultFormAttrs } from "../types";
 
 
-export type Attrs = DefaultFormAttrs & SelecAttrs;
+export type Attrs = DefaultFormAttrs & SelecAttrs & LabelAttrs;
 
 
 export default {
@@ -15,6 +15,7 @@ export default {
             value: "",
             options: [{ title: "-", value: false }],
             errors: [],
+            invertOrder: false,
             description: "",
             placeholder: "",
             onchange: Function.prototype,
@@ -28,7 +29,8 @@ export default {
             m(Label,
                 {
                     "class": "mmf-grow-2",
-                    ...attrs
+                    ...attrs,
+                    invertOrder: attrs.invertOrder !== true
                 },
                 m(Select, attrs)
             ),

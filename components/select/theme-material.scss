@@ -1,0 +1,37 @@
+@import "../../lib/reset";
+@import "../../lib/units";
+@import "../../lib/typography";
+@import "../../lib/colors";
+@import "../../lib/input";
+
+
+.mmf-select__wrapper {
+    &:after {
+        transition: color $mmf-transition;
+        right: 0;
+    }
+
+    &.is-enabled {
+        &:hover:after,
+        &.has-focus:after {
+            color: $mmf-color--primary;
+        }
+    }
+}
+
+.mmf-select {
+    @include reset-select();
+    outline: none;
+    padding: 0;
+    padding-right: (0.5 * $mmf-block);
+
+    &:not([disabled]) {
+        // keep native disabled styles
+        @include with-input();
+    }
+
+    &[disabled] {
+        // copied border from with-input, to have border also when disabled
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+    }
+}

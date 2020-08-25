@@ -1,0 +1,9 @@
+.mmf-textarea {
+    width: 100%;
+    resize: vertical;
+
+    &:focus {
+        outline-style: none;
+        outline-width: 0;
+    }
+}

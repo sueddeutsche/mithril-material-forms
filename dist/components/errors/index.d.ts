@@ -1,11 +1,7 @@
 import m from "mithril";
 import getErrorClass from "./getErrorClass";
+import { Error } from "../types";
 export { getErrorClass };
-export declare type Error = {
-    /** error or warning */
-    severity?: string;
-    message: string;
-};
 export declare type Attrs = {
     errors: Array<m.Vnode | Error | string>;
 };

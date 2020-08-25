@@ -1,15 +1,6 @@
-@import "./components/button/button";
-@import "./components/select/select";
-@import "./components/selectform/select-form";
-@import "./components/errors/errors";
-@import "./components/input/input";
-@import "./components/checkbox/checkbox";
-@import "./components/checkboxform/checkbox-form";
-@import "./components/inputform/input-form";
-@import "./components/label/label";
-@import "./components/textareaform/textarea-form";
+@import "./theme/layout";
+@import "./theme/typography";
 
 @import "./theme/card";
 @import "./theme/form";
 @import "./theme/icon";
-@import "./theme/meta";

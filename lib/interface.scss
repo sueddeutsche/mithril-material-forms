@@ -1,7 +1,10 @@
 @mixin clickable() {
-    cursor: pointer;
-    pointer-events: all;
-    outline: none !important; // overrides focus
+    &:not([disabled]) {
+        cursor: pointer;
+        pointer-events: all;
+    }
+    // outline: none !important; // overrides focus
+    // outline: none; // overrides focus
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
 }

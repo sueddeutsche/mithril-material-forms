@@ -45,7 +45,7 @@ export default {
                         onfocus: vnode.attrs.onfocus,
                         onblur: vnode.attrs.onblur
                     }
-                ),
+                )
             ),
             m(Errors, attrs),
             attrs.description && m(".mmf-meta", attrs.description),

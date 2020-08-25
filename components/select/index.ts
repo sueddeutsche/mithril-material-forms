@@ -27,14 +27,14 @@ export type State = {
 
 export default {
     view(vnode) {
-        return m("div.mmf-select__wrapper",
+        return m(".mmf-select__wrapper",
             {
                 "class": vnode.attrs.disabled === true ? "is-disabled" : "is-enabled",
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
             m("select.mmf-select",
                 {
-                    id: vnode.attrs.id,
+                    "data-id": vnode.attrs.id,
                     value: vnode.attrs.value,
                     disabled: vnode.attrs.disabled,
                     "class": vnode.attrs.class,

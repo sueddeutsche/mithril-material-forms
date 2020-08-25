@@ -9,7 +9,10 @@ const config = {
 
     entry: {
         mmf: path.join(__dirname, "index.ts"),
-        styles: path.join(__dirname, "material-forms.scss")
+        all: path.join(__dirname, "material-forms.scss"),
+        layout: path.join(__dirname, "theme/layout.scss"),
+        typography: path.join(__dirname, "theme/typography.scss"),
+        material: path.join(__dirname, "theme/theme-material.scss"),
     },
 
     output: {
@@ -66,7 +69,7 @@ const config = {
             //     }
             // },
             {
-                test: [/material-forms.scss$/],
+                test: [/\.scss$/],
                 use: [
                     "file-loader?name=[name].css",
                     "extract-loader",

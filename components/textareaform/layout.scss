@@ -1,0 +1,10 @@
+.mmf-form--textarea {
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    textarea {
+        box-sizing: border-box;
+    }
+}

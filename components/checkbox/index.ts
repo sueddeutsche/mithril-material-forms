@@ -17,7 +17,7 @@ export default {
 
         return m("input.mmf-checkbox",
             {
-                id: attrs.id,
+                "data-id": attrs.id,
                 type: "checkbox",
                 disabled: attrs.disabled === true,
                 checked: attrs.value,

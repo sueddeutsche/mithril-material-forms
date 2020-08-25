@@ -1,7 +1,8 @@
 import m from "mithril";
-export declare type Attrs = {
+import { Attrs as TextareaAttrs } from "../textarea";
+import { DefaultFormAttrs } from "../types";
+export declare type Attrs = DefaultFormAttrs & TextareaAttrs & {
     value?: string;
-    onchange?: (event: any) => void;
     onblur?: (event: any) => void;
     onfocus?: (event: any) => void;
 };

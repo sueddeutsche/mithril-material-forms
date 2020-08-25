@@ -19,20 +19,18 @@ export default {
         if (invertOrder === true) {
             return m("label.order--label-last",
                 {
-                    "for": id,
                     "class": classNames
                 },
                 vnode.children,
-                m("span.mmf-label", title)
+                title && m("span.mmf-label", title)
             );
         }
 
         return m("label.order--label-first",
             {
-                "for": id,
                 "class": classNames
             },
-            m("span.mmf-label", title),
+            title && m("span.mmf-label", title),
             vnode.children
         );
     }

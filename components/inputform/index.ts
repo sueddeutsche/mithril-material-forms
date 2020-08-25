@@ -1,9 +1,13 @@
 import m from "mithril";
-import Input, { Attrs as InputAttrs } from "../input";
+import Input, { Attrs as InputAttrs, InputType } from "../input";
 import Label from "../label";
 import sanitizeValue from "./sanitizeValue";
 import Errors, { getErrorClass } from "../errors";
 import { DefaultFormAttrs } from "../types";
+
+
+
+export { InputType };
 
 
 const TYPES = {
@@ -57,7 +61,7 @@ const InputForm = {
 
     view(vnode) {
         const inputType = TYPES[vnode.attrs.type] || vnode.attrs.type || "text";
-        const attrs = Object.assign({
+        const attrs = {
             id: null,
             title: "",
             value: "",
@@ -67,8 +71,9 @@ const InputForm = {
             instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
-            onchange: Function.prototype
-        }, vnode.attrs);
+            onchange: Function.prototype,
+            ...vnode.attrs
+        };
 
         const focusClass = this.hasFocus() ? "hasFocus" : "hasNoFocus";
         const errorClass = getErrorClass(attrs.errors);

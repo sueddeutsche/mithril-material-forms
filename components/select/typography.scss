@@ -1,0 +1,20 @@
+@import "../../lib/colors";
+@import "../../lib/typography";
+
+
+.mmf-select__wrapper {
+    &:after {
+        font-size: 1.25em;
+        color: $mmf-color--dark;
+    }
+}
+
+.mmf-select {
+    @include font-regular();
+    font-size: inherit;
+
+    option {
+        font-size: inherit;
+        color: $mmf-color--dark;
+    }
+}

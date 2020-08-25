@@ -1,0 +1,42 @@
+@import "../../lib/reset";
+@import "../../lib/icon";
+@import "../../lib/colors";
+
+
+.mmf-select__wrapper {
+    position: relative;
+    display: inline-block;
+
+    &:after {
+        content: "keyboard_arrow_down";
+        @include material-icon();
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        pointer-events: none; // remove icon to be clickable (select receives input-event)
+        position: absolute;
+        right: 4px;
+        top: 0;
+    }
+
+    &.is-disabled:after {
+        opacity: $mmf-opacity--disabled;
+    }
+}
+
+.mmf-select {
+    // hide select arrow-icon
+    -moz-appearance: window;
+    -webkit-appearance: none;
+
+    // hide touch borders
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    // select layout
+    padding: $mmf-unit; // sane base padding, which conflicts with theme-material
+    padding-right: (0.5 * $mmf-block + 4px);
+
+    &:not([disabled]) {
+        cursor: pointer;
+    }
+}

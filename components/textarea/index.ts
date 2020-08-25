@@ -34,7 +34,6 @@ export default {
 
     view(vnode) {
         const attrs = {
-            id: null,
             value: "",
             rows: 1,
             placeholder: "",
@@ -58,7 +57,7 @@ export default {
         }
 
         const textareaAttributes = {
-            id: attrs.id,
+            "data-id": attrs.id,
             value: attrs.value,
             class: attrs.class,
             rows: attrs.rows,

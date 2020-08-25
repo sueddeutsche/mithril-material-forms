@@ -1,0 +1,18 @@
+@import "../../lib/interface";
+@import "../../lib/units";
+
+
+.mmf-button {
+    @include clickable();
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 0.75 * $mmf-block;
+    margin: 0.125 * $mmf-block;
+    padding: 0 $mmf-block-padding;
+
+    .mmf-icon {
+        padding-right: $mmf-unit;
+    }
+}

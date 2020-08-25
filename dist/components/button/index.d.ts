@@ -3,7 +3,7 @@ export declare type Attrs = {
     disabled?: boolean;
     raised?: boolean;
     class?: string;
-    onclick(event: Event): void;
+    onclick?(event: Event): void;
 };
 export declare type State = {
     getClassNames(attrs: Attrs): string;

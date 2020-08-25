@@ -1,9 +1,7 @@
 import m from "mithril";
-export declare type Attrs = {
+import { DefaultInputAttrs } from "../types";
+export declare type Attrs = DefaultInputAttrs & {
     value?: string;
-    description?: string;
-    disabled?: boolean;
-    id?: string;
     instantUpdate?: boolean;
     placeholder?: string;
     rows?: number;

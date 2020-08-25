@@ -8,10 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- <link href="../build/material-forms.css" rel="stylesheet"> -->
-        <link href="../build/layout.css" rel="stylesheet">
-        <link href="../build/typography.css" rel="stylesheet">
-        <link href="../build/theme-material.css" rel="stylesheet">
+        <link href="../dist/material-forms.css" rel="stylesheet">
 
         <style type="text/css">
 
@@ -78,7 +75,7 @@
                         m(MMF.Button, {
                             id: "mmf-button",
                             onclick: () => console.log("click")
-                        }, m("span.mmf-icon", "delete"), "A clickable Button")
+                        }, m(".mmf-icon", "delete"), "A clickable Button")
                     );
                 </script>
 
@@ -91,7 +88,7 @@
                             disabled: true,
                             raised: false,
                             onclick: () => console.error("should not log this message")
-                        }, m("span.mmf-icon", "delete"), "A disabled Button")
+                        }, "A disabled Button")
                     );
                 </script>
 
@@ -115,7 +112,7 @@
                             id: "mmf-button--raised",
                             raised: true,
                             onclick: () => console.log("click")
-                        }, m("span.mmf-icon", "delete"), "A clickable Button")
+                        }, m(".mmf-icon", "delete"), "A clickable Button")
                     );
                 </script>
 
@@ -342,8 +339,7 @@
                         m(MMF.Input, {
                             id: "mmf-input",
                             type: "text",
-                            placeholder: "field placeholder",
-                            onchange: value => console.log(`change value to '${value}'`)
+                            placeholder: "field placeholder"
                         })
                     );
                 </script>
@@ -433,8 +429,7 @@
                         m(MMF.Textarea, {
                             id: "mmf-input-placeholder",
                             type: "text",
-                            placeholder: "textarea placeholder",
-                            onchange: value => console.log(`change value to '${value}'`)
+                            placeholder: "textarea placeholder"
                         })
                     );
                 </script>

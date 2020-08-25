@@ -1,0 +1,27 @@
+@import "../../lib/reset";
+@import "../../lib/units";
+@import "../../lib/colors";
+@import "../../lib/interface";
+@import "../../lib/input";
+@import "../../lib/icon";
+
+
+.mmf-checkbox {
+    @include with-input();
+    border-bottom: 0; // reset-bottom border from input-mixin
+    width: 1em; // reset block-style from input-mixin
+    font-size: $mmf-text-size--checkbox;
+
+    &:after {
+        color: rgba($mmf-color--dark, $mmf-opacity--primary);
+        font-size: inherit;
+        transition: color $mmf-transition;
+    }
+
+    &:not([disabled]) {
+        &:focus:after,
+        &:hover:after {
+            color: $mmf-color--secondary;
+        }
+    }
+}

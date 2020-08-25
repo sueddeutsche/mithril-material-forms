@@ -1,8 +1,10 @@
 import m from "mithril";
-export declare type Attrs = {
+import { Attrs as InputAttrs, InputType } from "../input";
+import { DefaultFormAttrs } from "../types";
+export { InputType };
+export declare type Attrs = DefaultFormAttrs & InputAttrs & {
     /** input type */
     type: string;
-    disabled?: boolean;
     onchange(value: any): void;
 };
 export declare type State = {

@@ -25,11 +25,6 @@ export default {
     value: null,
     hasFocus: false,
 
-    onupdate(vnode) {
-        // @prevent redraw of input
-        vnode.dom.id = vnode.attrs.id; // updating the pointer dependend attributes outside of mithril
-    },
-
     view({ attrs }) {
         let { value } = attrs;
         if (this.hasFocus && this.value != null) {
@@ -39,15 +34,14 @@ export default {
         this.value = value;
 
         const inputAttributes = {
-            // id: attrs.id -- if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
             value,
             type: attrs.type,
             class: attrs.class,
+            // id: attrs.id -- if the element is pointer sensitive it will be rebuild on pointer updates, loosing focus
+            "data-id": attrs.id,
             placeholder: attrs.placeholder,
             disabled: attrs.disabled === true,
             oninput: e => (this.value = e.target.value),
-            // @fixme this might trigger updates, but ensures the property is always set (on initial rendering)
-            oncreate: vnode => (vnode.dom.id = attrs.id),
             onfocus: event => {
                 this.hasFocus = true;
                 attrs.onfocus && attrs.onfocus(event);
