@@ -12,7 +12,8 @@ const config = {
         all: path.join(__dirname, "material-forms.scss"),
         layout: path.join(__dirname, "theme/layout.scss"),
         typography: path.join(__dirname, "theme/typography.scss"),
-        material: path.join(__dirname, "theme/theme-material.scss"),
+        "theme-material": path.join(__dirname, "theme/theme-material.scss"),
+        "theme-ux": path.join(__dirname, "theme/theme-ux.scss"),
     },
 
     output: {

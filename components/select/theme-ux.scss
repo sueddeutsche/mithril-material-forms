@@ -1,0 +1,24 @@
+@import "../../lib/units";
+@import "../../lib/reset";
+
+
+.mmf-select__wrapper {
+    color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
+    border-radius: $mmf-radius;
+
+    &.is-enabled {
+        &:hover,
+        &.has-focus {
+            border-color: $mmf-color--secondary;
+            &:after {
+                color: $mmf-color--secondary;
+            }
+        }
+    }
+}
+
+.mmf-select {
+    @include reset-select();
+    outline: none;
+}

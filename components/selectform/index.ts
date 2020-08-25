@@ -30,7 +30,7 @@ export default {
                 {
                     "class": "mmf-grow-2",
                     ...attrs,
-                    invertOrder: attrs.invertOrder !== true
+                    invertOrder: attrs.invertOrder
                 },
                 m(Select, attrs)
             ),

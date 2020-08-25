@@ -1,5 +1,6 @@
 @import "./colors";
 @import "./typography";
+@import "./units";
 
 
 @mixin with-input() {
@@ -29,5 +30,21 @@
     &[disabled] {
         color: $mmf-color--dark; // on deactivated state, set color to match labels
         opacity: $mmf-opacity--disabled;
+    }
+}
+
+
+@mixin with-input-ux() {
+    color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
+    border-radius: $mmf-radius;
+    outline: 0;
+
+    &:not([disabled]):focus {
+        border-color: rgba($mmf-color--secondary, 1);
+    }
+
+    &:not([disabled]):hover {
+        border-color: $mmf-color--secondary;
     }
 }

@@ -6,7 +6,7 @@
 @import "../../lib/elevation";
 
 
-button.mmf-button {
+.mmf-button {
     @include reset-button();
 
     border-radius: $mmf-radius;
@@ -39,7 +39,7 @@ button.mmf-button {
     }
 }
 
-button.mmf-button--raised {
+.mmf-button--raised {
     @include elevation(1);
     color: $mmf-color--contrast;
     background-color: $mmf-color--secondary;

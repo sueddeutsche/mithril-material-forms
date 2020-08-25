@@ -1,0 +1,15 @@
+@import "../../lib/colors";
+@import "../../lib/units";
+
+
+.mmf-checkbox {
+    border: 1px solid transparent;
+    outline: 0;
+
+    &:not([disabled]) {
+        &:focus:after,
+        &:hover:after {
+            color: $mmf-color--secondary;
+        }
+    }
+}

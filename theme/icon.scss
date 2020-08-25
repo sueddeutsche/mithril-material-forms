@@ -1,26 +1,22 @@
 @import "../lib/units";
 @import "../lib/interface";
-@import "../lib/export-once";
 @import "../lib/icon";
 
 
-@if export-once("mithril-material-forms/theme/icon") {
+.mmf-icon.interactive {
+    @include clickable();
+    @include material-icon();
 
-    .mmf-icon {
-        @include clickable();
-        @include material-icon();
+    color: inherit;
 
-        color: inherit;
+    text-align: center;
+    width: $mmf-block;
+    height: $mmf-block;
+    line-height: $mmf-block;
 
-        text-align: center;
-        width: $mmf-block;
-        height: $mmf-block;
-        line-height: $mmf-block;
+    transition: color 0.1s linear;
 
-        transition: color 0.1s linear;
-
-        &:hover {
-            color: $mmf-color--secondary;
-        }
+    &:hover {
+        color: $mmf-color--secondary;
     }
 }

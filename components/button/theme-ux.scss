@@ -1,0 +1,39 @@
+@import "../../lib/reset";
+@import "../../lib/colors";
+@import "../../lib/units";
+
+
+.mmf-button {
+    @include reset-button();
+    background-color: inherit;
+    border: $mmf-input-border--width solid $mmf-color--dark;
+    border-radius: 0;
+
+    &[disabled] {
+        border-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+    }
+
+    &.is-enabled {
+        &:hover,
+        &:focus {
+            background-color: darken($mmf-color--light, $mmf-color-distance--focus);
+        }
+    }
+}
+
+.mmf-button--raised {
+    color: $mmf-color--light;
+    background-color: $mmf-color--dark;
+
+    &[disabled] {
+        background-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+        border-color: transparent;
+    }
+
+    &.is-enabled {
+        &:hover,
+        &:focus {
+            background-color: lighten($mmf-color--dark, $mmf-color-distance);
+        }
+    }
+}
