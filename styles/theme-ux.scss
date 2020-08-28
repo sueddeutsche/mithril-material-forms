@@ -11,15 +11,15 @@ $mmf-radius: 4px !default;
 @import "../lib/colors";
 
 
-.mmf-label {
+span.mmf-label {
     @include font-bold();
     font-size: $mmf-text-size--label;
     color: rgba($mmf-color--dark, $mmf-opacity--primary);
 }
 
-.mmf-form--input,
-.mmf-form--textarea {
+div.mmf-form--input,
+div.mmf-form--textarea {
     .mmf-label {
-        padding-bottom: $mmf-unit;
+        line-height: 1.5em;
     }
 }

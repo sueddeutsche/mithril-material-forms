@@ -1,6 +1,12 @@
+@import "../../lib/typography";
+
+
 .mmf-form--textarea {
 
     textarea {
+        @include font-regular();
+        color: inherit;
+        font-size: inherit;
         line-height: 1.4em;
     }
 }

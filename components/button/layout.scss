@@ -5,7 +5,7 @@
 .mmf-button {
     @include clickable();
 
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
     height: 0.75 * $mmf-block;
