@@ -1,0 +1,8 @@
+@import "../../lib/input";
+
+
+@mixin input-material() {
+    &.mmf-input {
+        @include with-input();
+    }
+}

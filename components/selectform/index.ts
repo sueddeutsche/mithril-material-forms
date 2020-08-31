@@ -15,6 +15,7 @@ export default {
             value: "",
             options: [{ title: "-", value: false }],
             errors: [],
+            theme: "the-default",
             invertOrder: false,
             description: "",
             placeholder: "",
@@ -22,9 +23,9 @@ export default {
             ...vnode.attrs
         };
 
-        return m(`.mmf-form.mmf-form--select.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
+        return m(`.mmf-form.mmf-form--select.is-${attrs.disabled ? "disabled" : "enabled"}`,
             {
-                "class": getErrorClass(attrs.errors)
+                "class": `${attrs.theme} ${getErrorClass(attrs.errors)}`
             },
             m(Label,
                 {

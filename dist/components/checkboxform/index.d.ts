@@ -5,6 +5,7 @@ export declare const defaultOptions: {
     id: any;
     title: string;
     disabled: boolean;
+    theme: string;
     value: string;
     errors: any[];
     description: string;

@@ -1,6 +1,9 @@
 import m from "mithril";
 
 
+export const THEME_DEFAULT = "the-default";
+
+
 export type Error = {
     /** error or warning, added to classlist for rendering options */
     severity?: string;
@@ -17,6 +20,8 @@ export type DefaultInputAttrs = {
     disabled?: boolean;
     /** if set, will add an additional placeholder to the input-element */
     placeholder?: string;
+    /** theme class */
+    theme?: string;
 }
 
 

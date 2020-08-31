@@ -10,11 +10,12 @@ const config = {
 
     entry: {
         mmf: path.join(__dirname, "index.ts"),
-        all: path.join(__dirname, "material-forms.scss"),
         layout: path.join(__dirname, "styles/layout.scss"),
         typography: path.join(__dirname, "styles/typography.scss"),
         "theme-material": path.join(__dirname, "styles/theme-material.scss"),
-        "theme-ux": path.join(__dirname, "styles/theme-ux.scss"),
+        "theme-solid": path.join(__dirname, "styles/theme-solid.scss"),
+        "theme-material-as-default": path.join(__dirname, "styles/theme-material-as-default.scss"),
+        "theme-solid-as-default": path.join(__dirname, "styles/theme-solid-as-default.scss"),
     },
 
     output: {
@@ -83,14 +84,6 @@ const config = {
             {
                 loader: "url-loader",
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff\d?$|\.ttf$|\.eot|\.otf|\.wav$|\.mp3$/
-            },
-            {
-                loaders: [
-                    "file-loader?name=index.html",
-                    "extract-loader",
-                    "html-loader"
-                ],
-                include: [path.join(__dirname, "app", "index.html")]
             }
         ]
     },

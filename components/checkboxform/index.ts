@@ -9,6 +9,7 @@ export const defaultOptions = {
     id: null,
     title: "",
     disabled: false,
+    theme: "the-default",
     value: "",
     errors: [],
     description: "",
@@ -27,9 +28,9 @@ export default {
     view(vnode) {
         const attrs = { ...defaultOptions, ...vnode.attrs };
 
-        return m(`.mmf-form.mmf-form--checkbox.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
+        return m(`.mmf-form.mmf-form--checkbox.is-${attrs.disabled ? "disabled" : "enabled"}`,
             {
-                "class": getErrorClass(attrs.errors)
+                "class": `${getErrorClass(attrs.errors)} ${attrs.theme}`
             },
             m(Label,
                 {
@@ -40,6 +41,7 @@ export default {
                     {
                         id: vnode.attrs.id,
                         disabled: attrs.disabled,
+                        theme: attrs.theme,
                         value: vnode.attrs.value,
                         onchange: vnode.attrs.onchange,
                         onfocus: vnode.attrs.onfocus,

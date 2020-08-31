@@ -1,0 +1,75 @@
+@import "../styles/layout";
+@import "../styles/typography";
+@import "../styles/theme-solid";
+@import "../styles/theme-material";
+// @import "../styles/theme-material-as-default";
+
+
+$bg: #333;
+$bg-columns: rgb(242,242,243);
+
+.undefined {
+    color: red;
+    background-color: red;
+    border-color: red;
+}
+
+body {
+    background: $bg;
+    font-family: Roboto;
+}
+
+h1 {
+    color: #fff;
+}
+
+h2 {
+    align-items: flex-end;
+    background: #333;
+    display: flex;
+    height: 96px;
+    justify-content: center;
+    margin: 0;
+
+    span {
+        background-color: $bg-columns;
+        line-height: 1em;
+        margin-bottom: 1px;
+        padding: 12px 24px;
+        text-shadow: 0 1px 0 #fff;
+    }
+}
+
+.columns {
+    background-color: $bg-columns;
+    display: flex;
+    flex-direction: row;
+    padding: 12px 0;
+}
+
+.box {
+    background: #fff;
+    padding: 8px;
+}
+
+
+.theme {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 4px;
+
+    h3 {
+        font-size: 12px;
+        margin: 0;
+        color: #666;
+        text-align: center;
+    }
+
+    h4 {
+        margin: 0;
+        padding: 24px 0 12px 0;
+        font-weight: normal;
+        color: #666;
+        font-size: 14px;
+    }
+}

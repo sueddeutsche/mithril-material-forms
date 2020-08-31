@@ -1,0 +1,32 @@
+@import "../components/button/button-material";
+@import "../components/checkbox/checkbox-material";
+@import "../components/input/input-material";
+@import "../components/inputform/inputform-material";
+@import "../components/select/select-material";
+@import "../components/selectform/selectform-material";
+@import "../components/textarea/textarea-material";
+@import "../components/textareaform/textareaform-material";
+
+
+@import "./colors";
+
+@mixin with-material-theme() {
+    @include button-material();
+    @include checkbox-material();
+    @include input-material();
+    @include inputform-material();
+    @include select-material();
+    @include selectform-material();
+    @include textarea-material();
+    @include textareaform-material();
+
+    &.mmf-form {
+        position: relative;
+        .mmf-label {
+            opacity: $mmf-opacity--secondary;
+        }
+    }
+}
+
+
+

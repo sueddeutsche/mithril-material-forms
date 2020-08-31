@@ -19,6 +19,7 @@ export default {
             {
                 "data-id": attrs.id,
                 type: "checkbox",
+                class: attrs.theme || "the-default",
                 disabled: attrs.disabled === true,
                 checked: attrs.value,
                 onchange: e => attrs.onchange(e.target.checked),

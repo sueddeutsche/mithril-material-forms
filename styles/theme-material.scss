@@ -1,17 +1,6 @@
-@import "../components/button/theme-material";
-@import "../components/checkbox/theme-material";
-@import "../components/input/theme-material";
-@import "../components/inputform/theme-material";
-@import "../components/textarea/theme-material";
-@import "../components/textareaform/theme-material";
-@import "../components/select/theme-material";
-@import "../components/selectform/theme-material";
+@import "../lib/with-material-theme";
 
 
-.mmf-form {
-    position: relative;
-
-    .mmf-label {
-        opacity: $mmf-opacity--secondary;
-    }
+.the-material {
+    @include with-material-theme();
 }

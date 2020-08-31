@@ -27,31 +27,34 @@ export type State = {
 
 export default {
     view(vnode) {
+        const { attrs } = vnode;
+        const { theme = "the-default" } = vnode.attrs;
+
         return m(".mmf-select__wrapper",
             {
-                "class": vnode.attrs.disabled === true ? "is-disabled" : "is-enabled",
+                "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"}`,
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
             m("select.mmf-select",
                 {
-                    "data-id": vnode.attrs.id,
-                    value: vnode.attrs.value,
-                    disabled: vnode.attrs.disabled,
-                    "class": vnode.attrs.class,
+                    "data-id": attrs.id,
+                    value: attrs.value,
+                    disabled: attrs.disabled,
+                    "class": attrs.class,
                     onfocus: () => {
                         this.$wrapper && this.$wrapper.classList.add("has-focus");
-                        vnode.attrs.onfocus && vnode.attrs.onfocus(vnode);
+                        attrs.onfocus && attrs.onfocus(vnode);
                     },
                     onblur: () => {
                         this.$wrapper && this.$wrapper.classList.remove("has-focus");
-                        vnode.attrs.onblur && vnode.attrs.onblur(vnode);
+                        attrs.onblur && attrs.onblur(vnode);
                     },
                     // @reminder will always be string, which must be specified in json-schema or else datatype must
                     // be passed to select-component
-                    onchange: e => vnode.attrs.onchange(e.target.value)
+                    onchange: e => attrs.onchange(e.target.value)
                 },
 
-                vnode.attrs.options.map(value => {
+                attrs.options.map(value => {
                     if (isOptionValue(value)) {
                         // value must be a string or else is discarded
                         return m("option", { value: `${value.value}` }, value.title || value.value);

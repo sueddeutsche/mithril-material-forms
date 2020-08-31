@@ -1,4 +1,5 @@
 import m from "mithril";
+export declare const THEME_DEFAULT = "the-default";
 export declare type Error = {
     /** error or warning, added to classlist for rendering options */
     severity?: string;
@@ -13,6 +14,8 @@ export declare type DefaultInputAttrs = {
     disabled?: boolean;
     /** if set, will add an additional placeholder to the input-element */
     placeholder?: string;
+    /** theme class */
+    theme?: string;
 };
 export declare type DefaultFormAttrs = DefaultInputAttrs & {
     /** Appends additional children within the form */

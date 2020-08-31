@@ -10,7 +10,7 @@
 }
 
 .mmf-select {
-    @include font-regular();
+    font-family: inherit;
     font-size: inherit;
 
     option {

@@ -12,7 +12,7 @@
     margin: 0.125 * $mmf-block;
     padding: 0 $mmf-block-padding;
 
-    .mmf-icon {
-        padding-right: $mmf-unit;
+    .mmf-icon ~ * {
+        padding-left: $mmf-unit;
     }
 }

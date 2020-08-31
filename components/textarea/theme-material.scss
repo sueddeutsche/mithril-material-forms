@@ -1,8 +1,0 @@
-@import "../../lib/input";
-@import "../../lib/units";
-
-
-.mmf-textarea {
-    @include with-input();
-    margin: $mmf-height-label 0 0 0;
-}

@@ -21,7 +21,7 @@
     font-size: $mmf-text-size--meta;
 }
 
-.mmf-form--disabled {
+.mmf-form.is-disabled {
     .mmf-meta,
     .mmf-form__errors,
     span.mmf-label { // be more specific to overwrite form+label combination

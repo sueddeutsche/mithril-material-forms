@@ -1,0 +1,6 @@
+@import "../lib/with-solid-theme";
+
+
+.the-default, .the-solid {
+    @include with-solid-theme();
+}

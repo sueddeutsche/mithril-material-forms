@@ -1,0 +1,34 @@
+$mmf-radius: 4px !default;
+@import "../components/button/button-solid";
+@import "../components/checkbox/checkbox-solid";
+@import "../components/input/input-solid";
+@import "../components/select/select-solid";
+@import "../components/selectform/selectform-solid";
+@import "../components/textarea/textarea-solid";
+
+
+@import "../lib/typography";
+@import "../lib/colors";
+
+@mixin with-solid-theme() {
+    @include button-solid();
+    @include checkbox-solid();
+    @include input-solid();
+    @include select-solid();
+    @include selectform-solid();
+    @include textarea-solid();
+
+    &.mmf-label {
+        @include font-bold();
+        font-size: $mmf-text-size--label;
+        color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    }
+
+    &.mmf-form--input,
+    &.mmf-form--textarea {
+        .mmf-label {
+            line-height: 1.5em;
+        }
+    }
+
+}

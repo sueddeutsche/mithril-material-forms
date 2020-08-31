@@ -9,6 +9,7 @@
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib styles",
     "dist": "rm -rf dist; NODE_ENV=production webpack",
+    "serve": "webpack-dev-server --config webpack.serve.js",
     "release": "npm run dist"
   },
   "repository": {
@@ -52,7 +53,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.0.0",
-    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "4.3.0",
     "jsdom": "16.3.0",
     "mocha": "8.0.1",
     "node-sass": "^4.14.1",

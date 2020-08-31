@@ -54,9 +54,9 @@
     }
 
     &.no-error {}
-    &.isNotEmpty {}
+    &.not-empty {}
 
-    &.hasFocus {
+    &.has-focus {
         .mmf-label {
             color: $mmf-color--primary;
             opacity: $mmf-opacity--primary;
@@ -68,7 +68,7 @@
         input {
             border-color: $mmf-color--error;
         }
-        &.hasFocus {
+        &.has-focus {
             .mmf-label {
                 color: $mmf-color--error;
             }
@@ -80,14 +80,14 @@
         input {
             border-color: $mmf-color--warning;
         }
-        &.hasFocus {
+        &.has-focus {
             .mmf-label {
                 color: $mmf-color--warning;
             }
         }
     }
 
-    &.isEmpty.hasNoFocus {
+    &.is-empty.no-focus {
         .mmf-label {
             transform: translateY($mmf-height-label);
             font-size: 1em;

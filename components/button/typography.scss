@@ -3,7 +3,7 @@
 
 .mmf-button {
     @include font-regular();
-    font-weight: medium;
+    font-family: inherit;
     font-size: inherit;
     line-height: 1em;
 

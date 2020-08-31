@@ -1,10 +1,13 @@
 import m from "mithril";
+import { THEME_DEFAULT } from "../types";
 
 
 export type Attrs = {
     disabled?: boolean;
     raised?: boolean;
     class?: string;
+    /** theme-type, added to classlist */
+    theme?: string;
     onclick?(event: Event): void;
 }
 
@@ -16,9 +19,12 @@ export type State = {
 export default {
 
     getClassNames(attrs: Attrs) {
-        const classNames = [];
-        classNames.push(attrs.raised ? "mmf-button--raised" : "mmf-button--flat");
-        classNames.push(attrs.disabled ? "is-disabled" : "is-enabled");
+        const classNames = [
+            "mmf-button",
+            attrs.theme ?? THEME_DEFAULT,
+            attrs.raised ? "mmf-button--raised" : "mmf-button--flat",
+            attrs.disabled ? "is-disabled" : "is-enabled"
+        ];
         if (attrs.class) {
             classNames.push(attrs.class);
         }
@@ -27,12 +33,12 @@ export default {
 
     view(vnode) {
         const attrs = {
-            disabled: false,
             // onclick is assigned via mithril
             ...vnode.attrs,
+            theme: undefined,
             class: this.getClassNames(vnode.attrs)
         };
-        return m("button.mmf-button", attrs, vnode.children);
+        return m("button", attrs, vnode.children);
     }
 
 } as m.Component<Attrs, State>;

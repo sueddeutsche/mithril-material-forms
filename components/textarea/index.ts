@@ -1,6 +1,6 @@
 import m from "mithril";
 import autosize from "autosize";
-import { DefaultInputAttrs } from "../types";
+import { DefaultInputAttrs, THEME_DEFAULT } from "../types";
 const raf = window.requestAnimationFrame;
 
 
@@ -59,7 +59,7 @@ export default {
         const textareaAttributes = {
             "data-id": attrs.id,
             value: attrs.value,
-            class: attrs.class,
+            class: `${attrs.theme ?? THEME_DEFAULT} ${attrs.class ?? ""}`,
             rows: attrs.rows,
             disabled,
             placeholder: attrs.placeholder,

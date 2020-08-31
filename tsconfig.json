@@ -16,6 +16,7 @@
     },
     "include": [
         "index.ts",
+        "app/**/*",
         "components/**/*",
         "test/**/*",
     ],

@@ -3,7 +3,7 @@ import Input, { Attrs as InputAttrs, InputType } from "../input";
 import Label from "../label";
 import sanitizeValue from "./sanitizeValue";
 import Errors, { getErrorClass } from "../errors";
-import { DefaultFormAttrs } from "../types";
+import { DefaultFormAttrs, THEME_DEFAULT } from "../types";
 
 
 
@@ -40,23 +40,23 @@ const InputForm = {
 
     updateClasses(value) {
         const hasValue = value !== "";
-        this.$form.classList.remove(hasValue ? "isEmpty" : "isNotEmpty");
-        this.$form.classList.add(hasValue === false ? "isEmpty" : "isNotEmpty");
+        this.$form.classList.remove(hasValue ? "is-empty" : "not-empty");
+        this.$form.classList.add(hasValue === false ? "is-empty" : "not-empty");
     },
 
     onfocus() {
-        this.$form.classList.add("hasFocus");
-        this.$form.classList.remove("hasNoFocus");
+        this.$form.classList.add("has-focus");
+        this.$form.classList.remove("no-focus");
     },
 
     onblur(value) {
-        this.$form.classList.add("hasNoFocus");
-        this.$form.classList.remove("hasFocus");
+        this.$form.classList.add("no-focus");
+        this.$form.classList.remove("has-focus");
         this.updateClasses(value);
     },
 
     hasFocus() {
-        return this.$form && this.$form.classList.contains("hasFocus");
+        return this.$form && this.$form.classList.contains("has-focus");
     },
 
     view(vnode) {
@@ -75,13 +75,13 @@ const InputForm = {
             ...vnode.attrs
         };
 
-        const focusClass = this.hasFocus() ? "hasFocus" : "hasNoFocus";
+        const focusClass = this.hasFocus() ? "has-focus" : "no-focus";
         const errorClass = getErrorClass(attrs.errors);
-        const emptyClass = attrs.value === "" ? "isEmpty" : "isNotEmpty";
+        const emptyClass = attrs.value === "" ? "is-empty" : "not-empty";
 
-        const view = m(`.mmf-form.mmf-form--input.mmf-form--${attrs.disabled ? "disabled" : "enabled"}`,
+        const view = m(`.mmf-form.mmf-form--input.is-${attrs.disabled ? "disabled" : "enabled"}`,
             {
-                "class": `${focusClass} ${errorClass} ${emptyClass}`
+                "class": `${focusClass} ${errorClass} ${emptyClass} ${attrs.theme ?? THEME_DEFAULT}`
             },
             m(Label,
                 attrs,
@@ -90,6 +90,7 @@ const InputForm = {
                         type: inputType,
                         id: attrs.id,
                         disabled: attrs.disabled,
+                        theme: attrs.theme,
                         instantUpdate: attrs.instantUpdate,
                         placeholder: attrs.placeholder,
                         onchange: value => attrs.onchange(sanitizeValue(inputType, value)),

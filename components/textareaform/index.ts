@@ -29,20 +29,20 @@ export default {
     },
 
     onfocus() {
-        this.$form.classList.remove("hasNoFocus");
-        this.$form.classList.add("hasFocus");
+        this.$form.classList.remove("no-focus");
+        this.$form.classList.add("has-focus");
     },
 
     onblur(value) {
-        this.$form.classList.remove("hasFocus");
-        this.$form.classList.add("hasNoFocus");
+        this.$form.classList.remove("has-focus");
+        this.$form.classList.add("no-focus");
         this.updateClasses(value);
     },
 
     updateClasses(value) {
         const hasValue = isEmpty(value) === false;
-        this.$form.classList.remove(hasValue ? "isEmpty" : "isNotEmpty");
-        this.$form.classList.add(hasValue === false ? "isEmpty" : "isNotEmpty");
+        this.$form.classList.remove(hasValue ? "is-empty" : "not-empty");
+        this.$form.classList.add(hasValue === false ? "is-empty" : "not-empty");
     },
 
     onupdate(vnode) {
@@ -59,6 +59,7 @@ export default {
             description: "",
             placeholder: "",
             rows: 1,
+            theme: "the-default",
             instantUpdate: false,
             onblur: Function.prototype,
             onfocus: Function.prototype,
@@ -67,9 +68,9 @@ export default {
 
         const disabled = attrs.disabled === true;
 
-        return m(`.mmf-form.mmf-form--textarea.mmf-form--${disabled ? "disabled" : "enabled"}`,
+        return m(`.mmf-form.mmf-form--textarea.is-${disabled ? "disabled" : "enabled"}`,
             {
-                "class": getErrorClass(attrs.errors)
+                "class": `${attrs.theme} ${getErrorClass(attrs.errors)}`
             },
             m(Label,
                 attrs,
@@ -77,6 +78,7 @@ export default {
                     id: attrs.id,
                     value: attrs.value,
                     disabled,
+                    theme: attrs.theme,
                     instantUpdate: attrs.instantUpdate,
                     placeholder: attrs.placeholder,
                     rows: attrs.rows,
