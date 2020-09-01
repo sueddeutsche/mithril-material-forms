@@ -2,7 +2,7 @@ import m from "mithril";
 import Select, { Attrs as SelecAttrs } from "../select";
 import Label, { Attrs as LabelAttrs } from "../label";
 import Errors, { getErrorClass } from "../errors";
-import { DefaultFormAttrs } from "../types";
+import { DefaultFormAttrs, THEME_DEFAULT } from "../types";
 
 
 export type Attrs = DefaultFormAttrs & SelecAttrs & LabelAttrs;
@@ -15,17 +15,15 @@ export default {
             value: "",
             options: [{ title: "-", value: false }],
             errors: [],
-            theme: "the-default",
             invertOrder: false,
             description: "",
-            placeholder: "",
             onchange: Function.prototype,
             ...vnode.attrs
         };
 
         return m(`.mmf-form.mmf-form--select.is-${attrs.disabled ? "disabled" : "enabled"}`,
             {
-                "class": `${attrs.theme} ${getErrorClass(attrs.errors)}`
+                "class": `${attrs.theme ?? THEME_DEFAULT} ${getErrorClass(attrs.errors)}`
             },
             m(Label,
                 {
