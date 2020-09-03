@@ -4,5 +4,8 @@
 @mixin inputform-material() {
     &.mmf-form--input {
         @include with-moving-label("input");
+        .mmf-input {
+            border-color: transparent;
+        }
     }
 }

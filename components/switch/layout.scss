@@ -1,0 +1,66 @@
+@import "../../lib/reset";
+@import "../../lib/interface";
+@import "../../lib/icon";
+@import "../../lib/colors";
+@import "../../lib/units";
+
+
+.mmf-switch.the-material,
+.mmf-switch.the-solid {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.mmf-switch {
+    @include reset-input();
+    $bg-color: rgba(#000, $mmf-opacity--hint);
+    $switch-width: 2em;
+    margin: 0;
+
+    background-color: $bg-color;
+    border-radius: $switch-width/2;
+    border: 1px solid $bg-color;
+    width: $switch-width;
+    height: $switch-width/2;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+        background-color: #fff;
+        border-radius: $switch-width/2;
+        position: relative;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 50%;
+        left: 0;
+        margin: 0;
+        transition:
+            left .3s cubic-bezier(0.175, 0.885, 0.320, 1.275),
+            transform .3s cubic-bezier(0.175, 0.885, 0.320, 1.275),
+            width .3s ease, margin .3s ease;
+    }
+
+    &:checked {
+        background-color: $mmf-color--ok;
+        &:after {
+            left: 100%;
+            transform: translate(-100%, 0);
+        }
+    }
+
+    &[disabled] {
+        opacity: $mmf-opacity--disabled;
+    }
+
+    &:not([disabled]) {
+        @include clickable();
+        &:hover {
+            cursor: pointer;
+        }
+        &:active:after {
+            width: 60%;
+        }
+    };
+}

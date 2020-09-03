@@ -270,6 +270,66 @@ const template = {
         }
     },
 
+    switch: {
+        render: render.bind(null, mmf.Switch),
+        variations: {
+            "switch": {
+                attrs: {
+                    value: false,
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "switch checkbox": {
+                attrs: {
+                    value: false,
+                    disabled: true,
+                    onchange: value => console.log("value", value)
+                }
+            }
+        }
+    },
+    switchForm: {
+        render: render.bind(null, mmf.SwitchForm),
+        variations: {
+            "switch form": {
+                attrs: {
+                    title: "Switch-Form Title",
+                    description: "Switch-Form description text...",
+                    value: true,
+                    onchange: (value) => console.log("value", value)
+                }
+            },
+            "switch form with errors": {
+                attrs: {
+                    title: "Switch-Form Title",
+                    errors: ["This switch has an invalid type"],
+                    description: "Switch-Form description text...",
+                    value: false,
+                    onchange: (value) => console.log("value", value)
+                }
+            },
+            "switch form, disabled": {
+                attrs: {
+                    disabled: true,
+                    title: "Disabled Switch-Form",
+                    errors: ["This switch has an invalid type"],
+                    description: "Switch-Form description text...",
+                    value: false,
+                    onchange: () => console.error("should not log this message")
+                }
+            },
+            "switch form, inverted": {
+                attrs: {
+                    title: "Switch-Form Title",
+                    invertOrder: true,
+                    description: "Switch-Form description text...",
+                    value: true,
+                    onchange: (value) => console.log("value", value)
+                }
+            }
+        }
+    },
+
     textarea: {
         render: render.bind(null, mmf.Textarea),
         variations: {
@@ -375,6 +435,8 @@ m.render(document.body,
         component("checkboxForm"),
         component("select"),
         component("selectForm"),
+        component("switch"),
+        component("switchForm"),
         component("textarea"),
         component("textareaForm")
     )

@@ -9,7 +9,7 @@
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib styles",
     "dist": "rm -rf dist; NODE_ENV=production webpack",
-    "serve": "webpack-dev-server --config webpack.serve.js",
+    "start": "webpack-dev-server --config webpack.serve.js",
     "release": "npm run dist"
   },
   "repository": {

@@ -10,7 +10,8 @@
 
         textarea {
             border: none;
-            border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+            // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+            border-color: transparent;
             background: transparent;
 
             outline: none;

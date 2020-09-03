@@ -7,6 +7,8 @@ export { default as InputForm } from "./components/inputform";
 export { default as Label } from "./components/label";
 export { default as Select } from "./components/select";
 export { default as SelectForm } from "./components/selectform";
+export { default as Switch } from "./components/switch";
+export { default as SwitchForm } from "./components/switchform";
 export { default as Textarea } from "./components/textarea";
 export { default as TextareaForm } from "./components/textareaform";
 export { default as ImagePreview } from "./components/imagepreview";

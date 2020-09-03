@@ -5,6 +5,7 @@
 @mixin textarea-material() {
     &.mmf-textarea {
         @include with-input();
+        @include with-bottom-border();
         margin: $mmf-height-label 0 0 0;
     }
 }

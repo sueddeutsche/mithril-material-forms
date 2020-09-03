@@ -8,8 +8,6 @@
     @include reset-box();
     @include reset-input();
 
-    // ??? border-bottom: none;
-
     &:checked:after {
         content: "check_box";
     }
