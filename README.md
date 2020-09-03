@@ -6,7 +6,7 @@ Lightweight input form components using mithril. Requires material-icon font to 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
-```sass
+```scss
   // include styles are required
   @import "mithril-material-forms/styles/layout";
   @import "mithril-material-forms/styles/typography";
@@ -18,14 +18,15 @@ Lightweight input form components using mithril. Requires material-icon font to 
 
 Use with
 
-```ts
+```typescript
   import m from "mithril";
   import { Switch, SwitchAttrs } from "mithril-material-forms";
-  m(Switch, <SwitchAttrs>{ requiredAttributes });
+  m.render(document.body, 
+    m(Switch, <SwitchAttrs>{ requiredAttributes })
+  );
 ```
 
-For attribute details check each component implementation in _index.js_. For a list of example build this project using
-`npm run build` and checkout the examples page in `/test/index.html`
+For attribute details check each component implementation in _index.js_. For a list of example build checkout the examples page in `/docs/index.html` or goto [mithril-material-forms docs](https://sueddeutsche.github.io/mithril-material-forms/index.html)
 
 
 ## Usage

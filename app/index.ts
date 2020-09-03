@@ -428,6 +428,11 @@ function component(type: string) {
 m.render(document.body,
     m(".page",
         m("h1", "mithril(-material)-forms"),
+        m("p", "seet the docs for details: ",
+            m("a[href=https://github.com/sueddeutsche/mithril-material-forms]",
+                "github/sueddeutsche/mithril-material-forms"
+            )
+        ),
         component("button"),
         component("input"),
         component("inputForm"),
