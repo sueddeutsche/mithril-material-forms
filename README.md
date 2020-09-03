@@ -7,9 +7,10 @@ Lightweight input form components using mithril. Requires material-icon font to 
 ```
 
 ```scss
-  // include styles are required
+  // pick requried styles
   @import "mithril-material-forms/styles/layout";
   @import "mithril-material-forms/styles/typography";
+  // maybe add additional themes
   @import "mithril-material-forms/styles/theme-material";
   @import "mithril-material-forms/styles/theme-solid";
   // and choose a default theme
@@ -27,6 +28,17 @@ Use with
 ```
 
 For attribute details check each component implementation in _index.js_. For a list of example build checkout the examples page in `/docs/index.html` or goto [mithril-material-forms docs](https://sueddeutsche.github.io/mithril-material-forms/index.html)
+
+Change default theme, by including styles and setting the theme through attributes
+
+```typescript
+  import m from "mithril";
+  import "mithril-material-forms/styles/theme-solid";
+  import { Switch, SwitchAttrs } from "mithril-material-forms";
+  m.render(document.body, 
+    m(Switch, <SwitchAttrs>{ theme: "the-solid" })
+  );
+```
 
 
 ## Usage
