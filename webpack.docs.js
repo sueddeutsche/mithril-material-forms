@@ -13,7 +13,7 @@ const config = {
 
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, "testbuild")
+        path: path.resolve(__dirname, "docs")
     },
 
     context: __dirname,

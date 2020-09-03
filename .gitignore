@@ -13,6 +13,5 @@
 /doc-build
 /node_modules
 /package-lock.json
-/testbuild
 npm-debug.log
 Thumbs.db
