@@ -414,7 +414,7 @@ function component(type: string) {
             ),
 
             m(".theme.theme-ux",
-                m("h3", "theme ux"),
+                m("h3", "theme solid"),
                 Object.keys(variations).map(title => {
                     const variation = variations[title];
                     return render(title, { ...variation.attrs, theme: "the-solid" }, ...variation.childNodes || []);
