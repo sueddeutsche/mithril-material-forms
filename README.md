@@ -3,13 +3,25 @@
 Lightweight input form components using mithril. Requires material-icon font to work correctly (checkbox, select). 
 
 ```html
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+```sass
+  // include styles are required
+  @import "mithril-material-forms/styles/layout";
+  @import "mithril-material-forms/styles/typography";
+  @import "mithril-material-forms/styles/theme-material";
+  @import "mithril-material-forms/styles/theme-solid";
+  // and choose a default theme
+  @import "mithril-material-forms/styles/theme-solid-as-default";
 ```
 
 Use with
 
-```js
-    m(Component, { requiredAttributes });
+```ts
+  import m from "mithril";
+  import { Switch, SwitchAttrs } from "mithril-material-forms";
+  m(Switch, <SwitchAttrs>{ requiredAttributes });
 ```
 
 For attribute details check each component implementation in _index.js_. For a list of example build this project using
