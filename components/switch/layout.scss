@@ -3,6 +3,7 @@
 @import "../../lib/icon";
 @import "../../lib/colors";
 @import "../../lib/units";
+@import "../../lib/elevation";
 
 
 .mmf-switch.the-material,
@@ -48,6 +49,10 @@
             left: 100%;
             transform: translate(-100%, 0);
         }
+    }
+
+    &:focus:after {
+        @include elevation(2);
     }
 
     &[disabled] {

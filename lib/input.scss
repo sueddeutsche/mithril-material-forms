@@ -7,10 +7,10 @@
     // border-bottom: $mmf-input-border--width $mmf-style--border transparent;
     border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
     &:not([disabled]):focus {
-        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
     }
     &:not([disabled]):hover {
-        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
     }
 }
 

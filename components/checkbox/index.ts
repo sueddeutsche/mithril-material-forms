@@ -1,5 +1,5 @@
 import m from "mithril";
-import { DefaultInputAttrs } from "../types";
+import { DefaultInputAttrs, THEME_DEFAULT } from "../types";
 
 
 export type Attrs = DefaultInputAttrs & {
@@ -19,7 +19,7 @@ export default {
             {
                 "data-id": attrs.id,
                 type: "checkbox",
-                class: attrs.theme || "the-default",
+                class: attrs.theme || THEME_DEFAULT,
                 disabled: attrs.disabled === true,
                 checked: attrs.value,
                 onchange: e => attrs.onchange(e.target.checked),
