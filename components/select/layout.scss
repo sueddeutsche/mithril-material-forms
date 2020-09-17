@@ -33,7 +33,9 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     // select layout
-    padding: $mmf-unit; // sane base padding, which conflicts with theme-material
+    padding-left: $mmf-unit; // sane base padding, which conflicts with theme-material
+    padding-top: $mmf-unit - 1; // sane base padding, which conflicts with theme-material
+    padding-bottom: $mmf-unit - 1; // sane base padding, which conflicts with theme-material
     padding-right: (0.5 * $mmf-block + 4px);
 
     &:not([disabled]) {
