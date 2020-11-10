@@ -20,7 +20,10 @@ const config = {
 
     output: {
         filename: "[name].js",
-        library: ["MMF"],
+        libraryTarget: "umd",
+        library: "MMF",
+        umdNamedDefine: true,
+        globalObject: `(typeof self !== "undefined" ? self : this)`,
         path: path.resolve(__dirname, PRODUCTION ? "dist" : "build")
     },
 
@@ -35,7 +38,12 @@ const config = {
     },
 
     externals: {
-        mithril: "m"
+        mithril: { // UMD
+            commonjs: "mithril",
+            commonjs2: "mithril",
+            amd: "mithril",
+            root: "m"
+        }
     },
 
     module: {
