@@ -1,7 +1,7 @@
 export { default as Button, Attrs as ButtonAttrs } from "./components/button";
 export { default as Checkbox, Attrs as CheckboxAttrs } from "./components/checkbox";
 export { default as CheckboxForm, Attrs as CheckboxFormAttrs } from "./components/checkboxform";
-export { default as Errors, Attrs as ErroraAttrs } from "./components/errors";
+export { default as Errors, getErrorClass, Attrs as ErroraAttrs } from "./components/errors";
 export { default as Input, Attrs as InputAttrs } from "./components/input";
 export { default as InputForm, Attrs as InputFormAttrs } from "./components/inputform";
 export { default as Label, Attrs as LabelAttrs } from "./components/label";
