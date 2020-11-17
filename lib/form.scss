@@ -7,20 +7,9 @@
 @mixin with-form() {
     position: relative;
 
-    label {
+    .mmf-label {
         color: $mmf-color--dark;
         opacity: $mmf-opacity--secondary;
-    }
-
-    &.mmf-form--disabled {
-        .mmf-meta,
-        .mmf-form__errors,
-        label {
-            opacity: $mmf-opacity--disabled !important;
-            &:hover {
-                cursor: default;
-            }
-        }
     }
 }
 
@@ -34,7 +23,7 @@
  *      ...
  * @param {string} input-type   - associated input selector
  */
-@mixin with-moving-label($input-type:"input") {
+@mixin with-moving-label($input-type: "input") {
 
     // move input down by label height
     @if $input-type == "textarea" {
@@ -47,7 +36,7 @@
         }
     }
 
-    label.mmf-label {
+    .mmf-label {
         // set label to top
         width: 100%;
         position: absolute;
@@ -65,10 +54,10 @@
     }
 
     &.no-error {}
-    &.isNotEmpty {}
+    &.not-empty {}
 
-    &.hasFocus {
-        label.mmf-label {
+    &.has-focus {
+        .mmf-label {
             color: $mmf-color--primary;
             opacity: $mmf-opacity--primary;
         }
@@ -79,8 +68,8 @@
         input {
             border-color: $mmf-color--error;
         }
-        &.hasFocus {
-            label.mmf-label {
+        &.has-focus {
+            .mmf-label {
                 color: $mmf-color--error;
             }
         }
@@ -91,15 +80,15 @@
         input {
             border-color: $mmf-color--warning;
         }
-        &.hasFocus {
-            label.mmf-label {
+        &.has-focus {
+            .mmf-label {
                 color: $mmf-color--warning;
             }
         }
     }
 
-    &.isEmpty.hasNoFocus {
-        label.mmf-label {
+    &.is-empty.no-focus {
+        .mmf-label {
             transform: translateY($mmf-height-label);
             font-size: 1em;
         }

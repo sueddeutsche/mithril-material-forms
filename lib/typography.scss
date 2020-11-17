@@ -1,5 +1,3 @@
-$mmf-font: "Roboto" !default;
-
 $mmf-text-size--meta: 0.8em !default;
 $mmf-text-size--errors: $mmf-text-size--meta !default;
 $mmf-text-size--label: $mmf-text-size--meta !default;
@@ -7,16 +5,13 @@ $mmf-text-size--checkbox: 1.25em !default;
 
 
 @mixin font-light() {
-    font-family: $mmf-font;
     font-weight: 300;
 }
 
 @mixin font-regular() {
-    font-family: $mmf-font;
     font-weight: 400;
 }
 
 @mixin font-bold() {
-    font-family: $mmf-font;
     font-weight: 700;
 }

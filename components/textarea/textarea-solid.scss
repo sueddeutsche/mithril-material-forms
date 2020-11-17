@@ -1,0 +1,14 @@
+@import "../../lib/input";
+@import "../../lib/units";
+
+
+@mixin textarea-solid() {
+    &.mmf-textarea {
+        @include with-input-ux();
+        padding: $mmf-unit;
+
+        &[disabled] {
+            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+        }
+    }
+}

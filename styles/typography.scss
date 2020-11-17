@@ -1,0 +1,30 @@
+@import "../components/button/typography";
+@import "../components/errors/typography";
+@import "../components/input/typography";
+@import "../components/label/typography";
+@import "../components/select/typography";
+@import "../components/textarea/typography";
+@import "../components/textareaform/typography";
+
+@import "../lib/units";
+@import "../lib/colors";
+
+
+.mmf-form__errors {
+    font-size: $mmf-text-size--errors;
+    color: $mmf-color--error;
+}
+
+.mmf-meta {
+    opacity: $mmf-opacity--secondary;
+    font-style: italic;
+    font-size: $mmf-text-size--meta;
+}
+
+.mmf-form.is-disabled {
+    .mmf-meta,
+    .mmf-form__errors,
+    span.mmf-label { // be more specific to overwrite form+label combination
+        opacity: $mmf-opacity--disabled;
+    }
+}

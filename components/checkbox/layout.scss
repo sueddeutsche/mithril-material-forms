@@ -1,0 +1,30 @@
+@import "../../lib/reset";
+@import "../../lib/interface";
+@import "../../lib/icon";
+@import "../../lib/units";
+
+
+@mixin checkbox-with-custom-icon() {
+    @include reset-box();
+    @include reset-input();
+
+    &:checked:after {
+        content: "check_box";
+    }
+
+    &:after {
+        @include clickable();
+        @include material-icon();
+        content: "check_box_outline_blank";
+        transform: translateY(10%); // center
+    }
+}
+
+.mmf-checkbox {
+    @include clickable();
+    @include checkbox-with-custom-icon();
+
+    &[disabled]:after {
+        cursor: default;
+    }
+}

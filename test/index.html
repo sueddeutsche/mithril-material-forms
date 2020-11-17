@@ -8,7 +8,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../build/material-forms.css" rel="stylesheet">
+        <!-- <link href="../build/material-forms.css" rel="stylesheet"> -->
+        <link href="../build/layout.css" rel="stylesheet">
+        <link href="../build/typography.css" rel="stylesheet">
+        <!-- <link href="../build/theme-solid-as-default.css" rel="stylesheet"> -->
+        <link href="../build/theme-material-as-default.css" rel="stylesheet">
 
         <style type="text/css">
 
@@ -39,7 +43,10 @@
         </style>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mithril/2.0.4/mithril.js"></script>
-        <script type="text/javascript" src="../build/mmf.js"></script>
+        <script type="text/javascript" src="../build/mmf.Js"></script>
+        <script type="text/javascript">
+            console.log("MMF", MMF);
+        </script>
 
     </head>
 
@@ -58,10 +65,21 @@
                 <div id="mButton"></div>
                 <script type="text/javascript">
                     m.render(window.mButton,
-                        m(MMF.button, {
+                        m(MMF.Button, {
                             id: "mmf-button",
                             onclick: () => console.log("click")
                         }, "A clickable Button")
+                    );
+                </script>
+
+                <h2>button with icon</h2>
+                <div id="mButtonWithIcon"></div>
+                <script type="text/javascript">
+                    m.render(window.mButtonWithIcon,
+                        m(MMF.Button, {
+                            id: "mmf-button",
+                            onclick: () => console.log("click")
+                        }, m("span.mmf-icon", "delete"), "A clickable Button")
                     );
                 </script>
 
@@ -69,12 +87,12 @@
                 <div id="mButtonDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mButtonDisabled,
-                        m(MMF.button, {
+                        m(MMF.Button, {
                             id: "mmf-button--raised",
                             disabled: true,
                             raised: false,
                             onclick: () => console.error("should not log this message")
-                        }, "A disabled Button")
+                        }, m("span.mmf-icon", "delete"), "A disabled Button")
                     );
                 </script>
 
@@ -82,7 +100,7 @@
                 <div id="mButtonRaised"></div>
                 <script type="text/javascript">
                     m.render(window.mButtonRaised,
-                        m(MMF.button, {
+                        m(MMF.Button, {
                             id: "mmf-button--raised",
                             raised: true,
                             onclick: () => console.log("click")
@@ -90,11 +108,23 @@
                     );
                 </script>
 
+                <h2>button.raised.withIcon</h2>
+                <div id="mButtonRaisedIcon"></div>
+                <script type="text/javascript">
+                    m.render(window.mButtonRaisedIcon,
+                        m(MMF.Button, {
+                            id: "mmf-button--raised",
+                            raised: true,
+                            onclick: () => console.log("click")
+                        }, m("span.mmf-icon", "delete"), "A clickable Button")
+                    );
+                </script>
+
                 <h2>button.raised.disabled</h2>
                 <div id="mButtonRaisedDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mButtonRaisedDisabled,
-                        m(MMF.button, {
+                        m(MMF.Button, {
                             disabled: true,
                             id: "mmf-button--raised",
                             raised: true,
@@ -107,7 +137,7 @@
                 <div id="mCheckbox"></div>
                 <script type="text/javascript">
                     m.render(window.mCheckbox,
-                        m(MMF.checkbox, {
+                        m(MMF.Checkbox, {
                             id: "mmf-checkbox",
                             value: false,
                             onchange: value => console.log("value", value)
@@ -119,7 +149,7 @@
                 <div id="mCheckboxForm"></div>
                 <script type="text/javascript">
                     m.render(window.mCheckboxForm,
-                        m(MMF.checkboxForm, {
+                        m(MMF.CheckboxForm, {
                             id: "mmf-checkbox-form",
                             title: "Checkbox-Form Title",
                             description: "Checkbox-Form description text...",
@@ -133,7 +163,7 @@
                 <div id="mCheckboxFormErrors"></div>
                 <script type="text/javascript">
                     m.render(window.mCheckboxFormErrors,
-                        m(MMF.checkboxForm, {
+                        m(MMF.CheckboxForm, {
                             id: "mmf-checkbox-form-errors",
                             title: "Checkbox-Form Title",
                             errors: ["This checkbox has an invalid type"],
@@ -148,7 +178,7 @@
                 <div id="mCheckboxFormDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mCheckboxFormDisabled,
-                        m(MMF.checkboxForm, {
+                        m(MMF.CheckboxForm, {
                             id: "mmf-checkbox-form-disabled",
                             disabled: true,
                             title: "Disabled Checkbox-Form",
@@ -160,6 +190,21 @@
                     );
                 </script>
 
+                <h2>checkboxForm.invertOrder</h2>
+                <div id="mCheckboxFormInvertOrder"></div>
+                <script type="text/javascript">
+                    m.render(window.mCheckboxFormInvertOrder,
+                        m(MMF.CheckboxForm, {
+                            id: "mmf-checkbox-form",
+                            title: "Checkbox-Form Title",
+                            invertOrder: true,
+                            description: "Checkbox-Form description text...",
+                            value: true,
+                            onchange: (value) => console.log("value", value)
+                        })
+                    );
+                </script>
+
 
 <!-- SELECT -->
 
@@ -167,7 +212,7 @@
                 <div id="mSelect"></div>
                 <script type="text/javascript">
                     m.render(window.mSelect,
-                        m(MMF.select, {
+                        m(MMF.Select, {
                             id: "mmf-select",
                             options: [
                                 "a very nice selection",
@@ -183,7 +228,7 @@
                 <div id="mSelectDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mSelectDisabled,
-                        m(MMF.select, {
+                        m(MMF.Select, {
                             disabled: true,
                             id: "mmf-select",
                             options: [
@@ -200,7 +245,7 @@
                 <div id="mSelectForm"></div>
                 <script type="text/javascript">
                     m.render(window.mSelectForm,
-                        m(MMF.selectForm, {
+                        m(MMF.SelectForm, {
                             id: "mmf-select-form",
                             title: "Select-Form Title",
                             description: "Select-Form description text...",
@@ -218,7 +263,7 @@
                 <div id="mSelectFormErrors"></div>
                 <script type="text/javascript">
                     m.render(window.mSelectFormErrors,
-                        m(MMF.selectForm, {
+                        m(MMF.SelectForm, {
                             id: "mmf-select-form",
                             title: "Select-Form Title",
                             description: "Select-Form description text...",
@@ -237,8 +282,29 @@
                 <div id="mSelectFormDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mSelectFormDisabled,
-                        m(MMF.selectForm, {
+                        m(MMF.SelectForm, {
                             disabled: true,
+                            id: "mmf-select-form",
+                            title: "Select-Form Title",
+                            description: "Select-Form description text...",
+                            errors: ["This selection is invalid"],
+                            options: [
+                                "a very nice selection",
+                                "ignore any niceness"
+                            ],
+                            value: "a very nice selection",
+                            onchange: () => console.error("should not log this message")
+                        })
+                    );
+                </script>
+
+                <h2>selectForm.invertOrder</h2>
+                <div id="mSelectFormInverted"></div>
+                <script type="text/javascript">
+                    m.render(window.mSelectFormInverted,
+                        m(MMF.SelectForm, {
+                            disabled: false,
+                            invertOrder: true,
                             id: "mmf-select-form",
                             title: "Select-Form Title",
                             description: "Select-Form description text...",
@@ -260,7 +326,7 @@
                 <div id="mInput"></div>
                 <script type="text/javascript">
                     m.render(window.mInput,
-                        m(MMF.input, {
+                        m(MMF.Input, {
                             id: "mmf-input",
                             type: "text",
                             value: "input initial text value",
@@ -274,10 +340,11 @@
                 <div id="mInputPlaceholder"></div>
                 <script type="text/javascript">
                     m.render(window.mInputPlaceholder,
-                        m(MMF.input, {
+                        m(MMF.Input, {
                             id: "mmf-input",
                             type: "text",
-                            placeholder: "field placeholder"
+                            placeholder: "field placeholder",
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
@@ -287,7 +354,7 @@
                 <div id="mInputDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mInputDisabled,
-                        m(MMF.input, {
+                        m(MMF.Input, {
                             disabled: true,
                             id: "mmf-input",
                             type: "text",
@@ -302,7 +369,7 @@
                 <div id="mInputForm"></div>
                 <script type="text/javascript">
                     m.render(window.mInputForm,
-                        m(MMF.inputForm, {
+                        m(MMF.InputForm, {
                             id: "mmf-input-form",
                             title: "Input-Form Title",
                             description: "Input-Form with instantUpdate=true...",
@@ -317,7 +384,7 @@
                 <div id="mInputFormErrors"></div>
                 <script type="text/javascript">
                     m.render(window.mInputFormErrors,
-                        m(MMF.inputForm, {
+                        m(MMF.InputForm, {
                             id: "mmf-input-form",
                             title: "Input-Form Title",
                             errors: ["This text could be a little longer"],
@@ -332,7 +399,7 @@
                 <div id="mInputFormErrorsDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mInputFormErrorsDisabled,
-                        m(MMF.inputForm, {
+                        m(MMF.InputForm, {
                             disabled: true,
                             id: "mmf-input-form",
                             title: "Input-Form Title",
@@ -351,7 +418,7 @@
                 <div id="mTextarea"></div>
                 <script type="text/javascript">
                     m.render(window.mTextarea,
-                        m(MMF.textarea, {
+                        m(MMF.Textarea, {
                             id: "mmf-input-textarea",
                             type: "text",
                             value: "textarea initial text value",
@@ -364,10 +431,11 @@
                 <div id="mTextareaPlaceholder"></div>
                 <script type="text/javascript">
                     m.render(window.mTextareaPlaceholder,
-                        m(MMF.textarea, {
+                        m(MMF.Textarea, {
                             id: "mmf-input-placeholder",
                             type: "text",
-                            placeholder: "textarea placeholder"
+                            placeholder: "textarea placeholder",
+                            onchange: value => console.log(`change value to '${value}'`)
                         })
                     );
                 </script>
@@ -376,7 +444,7 @@
                 <div id="mTextareaDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mTextareaDisabled,
-                        m(MMF.textarea, {
+                        m(MMF.Textarea, {
                             disabled: true,
                             id: "mmf-input-textarea",
                             type: "text",
@@ -391,7 +459,7 @@
                 <div id="mTextareaForm"></div>
                 <script type="text/javascript">
                     m.render(window.mTextareaForm,
-                        m(MMF.textareaForm, {
+                        m(MMF.TextareaForm, {
                             id: "mmf-input-textarea",
                             type: "text",
                             title: "Textarea-Form Title",
@@ -405,7 +473,7 @@
                 <div id="mTextareaFormErrors"></div>
                 <script type="text/javascript">
                     m.render(window.mTextareaFormErrors,
-                        m(MMF.textareaForm, {
+                        m(MMF.TextareaForm, {
                             id: "mmf-input-textarea",
                             type: "text",
                             title: "Long Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatus autem esse in maximarum rerum timore nemo potest.",
@@ -420,7 +488,7 @@
                 <div id="mTextareaFormErrorsDisabled"></div>
                 <script type="text/javascript">
                     m.render(window.mTextareaFormErrorsDisabled,
-                        m(MMF.textareaForm, {
+                        m(MMF.TextareaForm, {
                             disabled: true,
                             id: "mmf-input-textarea",
                             type: "text",

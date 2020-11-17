@@ -1,0 +1,12 @@
+@import "../../lib/units";
+
+
+ul.mmf-form__errors {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+
+    li {
+        margin-top: 0.5 * $mmf-unit;
+    }
+}

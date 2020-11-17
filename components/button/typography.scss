@@ -1,0 +1,13 @@
+@import "../../lib/typography";
+
+
+.mmf-button {
+    @include font-regular();
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1em;
+
+    .mmf-icon {
+
+    }
+}

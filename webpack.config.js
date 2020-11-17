@@ -1,17 +1,29 @@
+/* eslint-env node */
 const path = require("path");
 const webpack = require("webpack");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
 
 const config = {
+
     entry: {
-        mmf: path.join(__dirname, "index.js"),
-        styles: path.join(__dirname, "material-forms.scss")
+        mmf: path.join(__dirname, "index.ts"),
+        layout: path.join(__dirname, "styles/layout.scss"),
+        typography: path.join(__dirname, "styles/typography.scss"),
+        "theme-material": path.join(__dirname, "styles/theme-material.scss"),
+        "theme-solid": path.join(__dirname, "styles/theme-solid.scss"),
+        "theme-material-as-default": path.join(__dirname, "styles/theme-material-as-default.scss"),
+        "theme-solid-as-default": path.join(__dirname, "styles/theme-solid-as-default.scss"),
     },
+
     output: {
         filename: "[name].js",
-        library: ["MMF"],
+        libraryTarget: "umd",
+        library: "MMF",
+        umdNamedDefine: true,
+        globalObject: `(typeof self !== "undefined" ? self : this)`,
         path: path.resolve(__dirname, PRODUCTION ? "dist" : "build")
     },
 
@@ -21,35 +33,36 @@ const config = {
     mode: PRODUCTION ? "production" : "development",
 
     resolve: {
+        extensions: [".tsx", ".ts", ".js"],
         modules: [".", "node_modules"]
     },
 
     externals: {
-        mithril: "m"
+        mithril: { // UMD
+            commonjs: "mithril",
+            commonjs2: "mithril",
+            amd: "mithril",
+            root: "m"
+        }
     },
 
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loader: require.resolve("babel-loader"),
-                include: [
-                    path.resolve(__dirname, "components")
-                ],
-                options: {
-                    presets: [
-                        require.resolve("@babel/preset-env")
-                    ],
-                    plugins: [
-                        require.resolve("@babel/plugin-transform-object-assign"),
-                        require.resolve("@babel/plugin-proposal-object-rest-spread") // redux-undo
-                    ],
-                    babelrc: false,
-                    cacheDirectory: true
+                test: /\.tsx?$/,
+                use: {
+                    loader: "ts-loader",
+                    options: {
+                        configFile: path.resolve(__dirname, "tsconfig.json"),
+                        compilerOptions: {
+                            sourceMap: !PRODUCTION,
+                            declaration: PRODUCTION
+                        }
+                    }
                 }
             },
             {
-                test: [/material-forms.scss$/],
+                test: [/\.scss$/],
                 use: [
                     "file-loader?name=[name].css",
                     "extract-loader",
@@ -79,18 +92,6 @@ const config = {
             {
                 loader: "url-loader",
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff\d?$|\.ttf$|\.eot|\.otf|\.wav$|\.mp3$/
-            },
-            {
-                loaders: [
-                    "file-loader?name=index.html",
-                    "extract-loader",
-                    "html-loader"
-                ],
-                include: [path.join(__dirname, "app", "index.html")]
-            },
-            {
-                loaders: "json-loader",
-                test: /\.json$/
             }
         ]
     },
@@ -102,15 +103,22 @@ const config = {
     },
 
     optimization: {
-        minimizer: [
-            new UglifyJsPlugin()
-        ]
+        minimizer: PRODUCTION ? [new TerserPlugin()] : []
     },
 
     plugins: [
         new webpack.DefinePlugin({
             DEBUG: !PRODUCTION
-        })
+        }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessorPluginOptions: {
+                preset: ["default", {
+                    discardComments: { removeAll: true }
+                }]
+            },
+            canPrint: true
+        }),
     ]
 };
 

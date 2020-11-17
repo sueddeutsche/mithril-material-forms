@@ -29,6 +29,7 @@
 }
 
 @mixin reset-input() {
+    background-color: inherit;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

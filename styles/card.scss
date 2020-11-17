@@ -1,0 +1,9 @@
+@import "../lib/units";
+@import "../lib/elevation";
+
+
+.mmf-card {
+    @include elevation(2);
+    width: 100%;
+    border-radius: $mmf-radius;
+}

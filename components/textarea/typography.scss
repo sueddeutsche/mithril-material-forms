@@ -1,0 +1,11 @@
+@import "../../lib/colors";
+
+
+.mmf-textarea {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.mmf-form.hasError .mmf-textarea {
+    border-color: $mmf-color--error;
+}

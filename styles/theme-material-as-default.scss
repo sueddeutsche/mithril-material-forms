@@ -1,0 +1,6 @@
+@import "../lib/with-material-theme";
+
+
+.the-default, .the-material {
+    @include with-material-theme();
+}

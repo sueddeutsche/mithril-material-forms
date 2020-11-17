@@ -1,12 +1,23 @@
 @import "./colors";
 @import "./typography";
+@import "./units";
 
+
+@mixin with-bottom-border() {
+    // border-bottom: $mmf-input-border--width $mmf-style--border transparent;
+    border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+    &:not([disabled]):focus {
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+    }
+    &:not([disabled]):hover {
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+    }
+}
 
 @mixin with-input() {
     color: rgba($mmf-color--dark, $mmf-opacity--primary);
     border: none;
     border-radius: 0;
-    border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
     width: 100%;
     font-size: inherit;
     box-sizing: border-box;
@@ -17,6 +28,30 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     transition: border-color $mmf-transition;
+    // border-bottom: $mmf-input-border--width $mmf-style--border transparent;
+
+    &:not([disabled]):focus {
+        border-color: rgba($mmf-color--secondary, 1);
+        // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+    }
+
+    &:not([disabled]):hover {
+        border-color: $mmf-color--secondary;
+        // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+    }
+
+    &[disabled] {
+        color: $mmf-color--dark; // on deactivated state, set color to match labels
+        opacity: $mmf-opacity--disabled;
+    }
+}
+
+
+@mixin with-input-ux() {
+    color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
+    border-radius: $mmf-radius;
+    outline: 0;
 
     &:not([disabled]):focus {
         border-color: rgba($mmf-color--secondary, 1);
@@ -24,10 +59,5 @@
 
     &:not([disabled]):hover {
         border-color: $mmf-color--secondary;
-    }
-
-    &[disabled] {
-        color: $mmf-color--dark; // on deactivated state, set color to match labels
-        opacity: $mmf-opacity--disabled;
     }
 }

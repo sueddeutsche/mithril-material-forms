@@ -1,0 +1,19 @@
+@import "../../lib/units";
+
+
+.mmf-form--checkbox {
+
+    label {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .order--label-first .mmf-label {
+        padding-right: $mmf-unit;
+    }
+
+    .order--label-last .mmf-label {
+        padding-left: $mmf-unit;
+    }
+}

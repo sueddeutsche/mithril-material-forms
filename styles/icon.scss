@@ -1,0 +1,22 @@
+@import "../lib/units";
+@import "../lib/interface";
+@import "../lib/icon";
+@import "../lib/colors";
+
+
+.mmf-icon.interactive {
+    @include clickable();
+    @include material-icon();
+
+    color: inherit;
+    text-align: center;
+    width: $mmf-block;
+    height: $mmf-block;
+    line-height: $mmf-block;
+    font-size: 1.25rem;
+    transition: color $mmf-transition;
+
+    &:hover {
+        color: $mmf-color--secondary;
+    }
+}
