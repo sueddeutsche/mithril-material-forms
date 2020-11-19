@@ -15,7 +15,7 @@ export type Attrs = {
 
 export default {
     view(vnode) {
-        const { invertOrder, id, title, class: classNames } = vnode.attrs;
+        const { invertOrder, title, class: classNames } = vnode.attrs;
         if (invertOrder === true) {
             return m("label.order--label-last",
                 {

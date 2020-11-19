@@ -5,6 +5,7 @@ export declare type Attrs = {
     class?: string;
     /** theme-type, added to classlist */
     theme?: string;
+    title?: string;
     onclick?(event: Event): void;
 };
 export declare type State = {

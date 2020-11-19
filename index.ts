@@ -12,3 +12,5 @@ export { default as SwitchForm, Attrs as SwitchFormAttrs } from "./components/sw
 export { default as Textarea, Attrs as TextareaAttrs } from "./components/textarea";
 export { default as TextareaForm, Attrs as TextareaFormAttrs } from "./components/textareaform";
 export { default as ImagePreview, Attrs as ImagePreviewAttrs } from "./components/imagepreview";
+
+export type { InputType } from "./components/input";

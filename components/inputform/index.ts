@@ -18,8 +18,8 @@ const TYPES = {
 
 
 export type Attrs = DefaultFormAttrs & InputAttrs & {
-    /** input type */
-    type: string;
+    /** input type, defaults to text */
+    type?: string;
     onchange(value): void;
 }
 
