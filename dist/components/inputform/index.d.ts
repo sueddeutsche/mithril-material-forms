@@ -3,8 +3,8 @@ import { Attrs as InputAttrs, InputType } from "../input";
 import { DefaultFormAttrs } from "../types";
 export { InputType };
 export declare type Attrs = DefaultFormAttrs & InputAttrs & {
-    /** input type */
-    type: string;
+    /** input type, defaults to text */
+    type?: string;
     onchange(value: any): void;
 };
 export declare type State = {
