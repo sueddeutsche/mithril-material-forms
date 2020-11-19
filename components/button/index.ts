@@ -8,6 +8,8 @@ export type Attrs = {
     class?: string;
     /** theme-type, added to classlist */
     theme?: string;
+    /* html hover tooltip */
+    title?: string;
     onclick?(event: Event): void;
 }
 
