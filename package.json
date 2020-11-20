@@ -1,17 +1,21 @@
 {
   "name": "mithril-material-forms",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Basic input form elements as mithril components",
   "main": "dist/mmf.js",
+  "module": "distmodule/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf build; webpack",
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib styles",
-    "dist": "rm -rf dist; NODE_ENV=production webpack",
+    "dist": "rm -rf dist; yarn dist:es5 && yarn dist:es6",
+    "dist:es5": "NODE_ENV=production webpack",
+    "dist:es6": "tsc --outDir distmodule --target ES2019",
     "start": "webpack-dev-server --config webpack.docs.js",
     "docs": "webpack --config webpack.docs.js",
-    "release": "npm run dist"
+    "release": "npm run dist",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",

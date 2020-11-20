@@ -4,6 +4,8 @@
 /test
 /testbuild
 /docs
+/components
+/test
 .*
 *.sublime-*
 webpack.*
