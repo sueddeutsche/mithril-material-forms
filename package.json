@@ -9,11 +9,13 @@
     "build": "rm -rf build; webpack",
     "lint": "eslint components",
     "watch": "watch 'npm run build' components lib styles",
-    "dist": "rm -rf dist; NODE_ENV=production webpack",
-    "dist:module": "tsc --outDir distmodule --target ES2019",
+    "dist": "rm -rf dist; yarn dist:es5 && yarn dist:es6",
+    "dist:es5": "NODE_ENV=production webpack",
+    "dist:es6": "tsc --outDir distmodule --target ES2019",
     "start": "webpack-dev-server --config webpack.docs.js",
     "docs": "webpack --config webpack.docs.js",
-    "release": "npm run dist"
+    "release": "npm run dist",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",
