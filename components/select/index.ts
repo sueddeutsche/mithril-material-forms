@@ -10,16 +10,12 @@ export type OptionValue = {
     color?: string;
 }
 
-export type Option = string|OptionValue;
-
 export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
     onchange: (value: string) => void;
     onfocus?: (event) => void;
-    options: Array<Option>;
+    options: Array<OptionValue>;
     value?: string|number;
-    optionColors?: Array<{value: Option, status: string, color: string}>
-    // status?: string 
 }
 
 export type State = {
@@ -32,13 +28,12 @@ export default {
         const { theme = "the-default" } = vnode.attrs;
 
         // Get status by value 
-        let status = attrs.optionColors?.find(obj => obj.value === attrs.value)?.status;
-        const color = "";
+        const option = attrs.options?.find(o => o.value === attrs.value);
 
         return m(".mmf-select__wrapper",
             {
-                "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"} mmf-select__wrapper--${status}`,
-                // "data-color": color,
+                "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"} ${option?.color ? "with-color": ""}`,
+                "style": option?.color ? `--select-icon-color: ${option?.color}` : "",
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
             m("select.mmf-select",
@@ -58,12 +53,9 @@ export default {
                     // @reminder will always be string, which must be specified in json-schema or else datatype must
                     // be passed to select-component
                     onchange: (e) => {
-                        // Remove old status
-                        this.$wrapper.classList.remove(`mmf-select__wrapper--${status}`);
-                        // Get new status by chosen option value
-                        status = attrs.optionColors?.find(obj  => obj.value === e.target.value)?.status;
-                        // Add new status to classList
-                        this.$wrapper.classList.add(`mmf-select__wrapper--${status}`);
+                        const option = attrs.options?.find(o => o.value === e.target.value);
+                        this.$wrapper.style.setProperty("--select-icon-color", option?.color);
+                        this.$wrapper.classList.toggle("with-color", option?.color != null);
                         attrs.onchange(e.target.value)
                     }
                 },

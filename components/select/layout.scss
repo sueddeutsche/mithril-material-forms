@@ -13,17 +13,9 @@
     border: 2px solid #fff;
 }
 
-// TODO: Remove
-$cms-workflow-status-color: (
-    "first-option": red,
-    "second-option": blue
-);
-
 .mmf-select__wrapper {
     position: relative;
     display: inline-block;
-
-
 
     &:before {
         content: "";
@@ -52,20 +44,18 @@ $cms-workflow-status-color: (
         opacity: $mmf-opacity--disabled;
     }
 
-    @each $status, $color in $cms-workflow-status-color {
-        // only add padding when there is a status
-        &.mmf-select__wrapper--#{$status} {
-            select {
-                padding-left: 3 * $mmf-unit;
-            }
+    &.with-color {
+        select {
+            padding-left: 3 * $mmf-unit;
         }
-        &.mmf-select__wrapper--#{$status}:before {
-            background-color: $color;
+
+        &.mmf-select__wrapper:before {
+            background-color: var(--select-icon-color);
         }
-        
-        &.mmf-select__wrapper--#{$status}.is-disabled:before{
+
+        &.mmf-select__wrapper.is-disabled:before {
             opacity: $mmf-opacity--disabled;
-        }   
+        }
     }
 }
 
