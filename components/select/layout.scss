@@ -1,11 +1,40 @@
 @import "../../lib/reset";
 @import "../../lib/icon";
 @import "../../lib/colors";
+@import "../../lib/units";
 
+// status color icon
+ @mixin status-color-icon($color, $size) {
+    display: inline-block;
+    border-radius: 50%;
+    height: $size;
+    width: $size;
+    background-color: $color;
+    border: 2px solid #fff;
+}
+
+// TODO: Remove
+$cms-workflow-status-color: (
+    "first-option": red,
+    "second-option": blue
+);
 
 .mmf-select__wrapper {
     position: relative;
     display: inline-block;
+
+
+
+    &:before {
+        content: "";
+        @include status-color-icon(inherit, $mmf-unit);
+        position: absolute;
+        left: $mmf-unit;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 12;
+        border:transparent;
+    }
 
     &:after {
         content: "keyboard_arrow_down";
@@ -18,9 +47,25 @@
         right: 4px;
         top: 0;
     }
-
+    
     &.is-disabled:after {
         opacity: $mmf-opacity--disabled;
+    }
+
+    @each $status, $color in $cms-workflow-status-color {
+        // only add padding when there is a status
+        &.mmf-select__wrapper--#{$status} {
+            select {
+                padding-left: 3 * $mmf-unit;
+            }
+        }
+        &.mmf-select__wrapper--#{$status}:before {
+            background-color: $color;
+        }
+        
+        &.mmf-select__wrapper--#{$status}.is-disabled:before{
+            opacity: $mmf-opacity--disabled;
+        }   
     }
 }
 

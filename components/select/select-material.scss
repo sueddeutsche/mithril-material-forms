@@ -4,6 +4,11 @@
 @import "../../lib/colors";
 @import "../../lib/input";
 
+// TODO: Remove
+$cms-workflow-status-color: (
+    "first-option": red,
+    "second-option": blue
+);
 
 @mixin select-material() {
     &.mmf-select__wrapper {
@@ -20,20 +25,29 @@
         }
 
         .mmf-select {
-                @include reset-select();
-                outline: none;
-                padding: 0;
-                padding-right: (0.5 * $mmf-block);
-                border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+            @include reset-select();
+            outline: none;
+            padding: 0;
+            padding-right: (0.5 * $mmf-block);
+            border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
 
-                &:not([disabled]):focus,
-                &:not([disabled]):hover {
-                    border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
-                }
+            &:not([disabled]):focus,
+            &:not([disabled]):hover {
+                border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+            }
 
-                &.is-enabled {
-                    @include with-input();
+            &.is-enabled {
+                @include with-input();
+            }
+        }
+
+        // Add padding when there's an status icon
+        @each $status, $color in $cms-workflow-status-color {
+            &.mmf-select__wrapper--#{$status} {
+                .mmf-select {
+                    padding-left: (3 * $mmf-unit);
                 }
             }
+        }
     }
 }
