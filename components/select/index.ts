@@ -20,6 +20,7 @@ export type Attrs = DefaultInputAttrs & {
 
 export type State = {
     $wrapper: HTMLElement;
+    $icon: HTMLElement;
 }
 
 export default {
@@ -27,17 +28,18 @@ export default {
         const { attrs } = vnode;
         const { theme = "the-default" } = vnode.attrs;
         const option = attrs.options?.find(o => o.value === attrs.value);
+        const activeClass = attrs.disabled === true ? "is-disabled" : "is-enabled";
 
         return m(".mmf-select__wrapper",
             {
-                "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"} ${option?.color ? "with-color": ""}`,
+                "class": `${theme} ${activeClass} ${option?.color ? "with-color": ""}`,
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
             m("span.select-icon",
-                {
-                    style: `background-color: ${option?.color}`
-                }
-            ),
+            {
+                style: `background-color: ${option?.color}`,
+                oncreate: _vnode => ( this.$icon = _vnode.dom as HTMLElement)
+            }),
             m("select.mmf-select",
                 {
                     "data-id": attrs.id,
@@ -52,13 +54,10 @@ export default {
                         this.$wrapper && this.$wrapper.classList.remove("has-focus");
                         attrs.onblur && attrs.onblur(vnode);
                     },
-                    // @reminder will always be string, which must be specified in json-schema or else datatype must
-                    // be passed to select-component
                     onchange: (e) => {
                         const option = attrs.options?.find(o => o.value === e.target.value);
                         this.$wrapper.classList.toggle("with-color", option?.color != null);
-                        /** @ts-ignore */
-                        this.$wrapper.children[0].style.setProperty("background-color", option?.color);
+                        this.$icon.style.setProperty("background-color", option?.color);
                         attrs.onchange(e.target.value)
                     }
                 },
