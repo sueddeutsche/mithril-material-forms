@@ -52,6 +52,7 @@
     border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
     border-radius: $mmf-radius;
     outline: 0;
+    transition: border-color $mmf-transition;
 
     &:not([disabled]):focus {
         border-color: rgba($mmf-color--secondary, 1);
