@@ -293,20 +293,15 @@ const template = {
                 attrs: {
                     disabled: true,
                     options: [
-                        "a very nice selection",
-                        "ignore any niceness"
-                    ],
-                    optionColors: [
-                        { 
+                        {
                             value: "a very nice selection",
-                            status: "first-option",
                             color: "rgb(255, 76, 76)"
                         },
-                        { 
+                        {
                             value: "ignore any niceness",
-                            status: "second-option",
                             color: "rgb(43, 54, 113)"
-                        }
+                        },
+                        
                     ],
                     value: "a very nice selection",
                     onchange: () => console.error("should not log this message")

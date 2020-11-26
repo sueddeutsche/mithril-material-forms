@@ -26,16 +26,18 @@ export default {
     view(vnode) {
         const { attrs } = vnode;
         const { theme = "the-default" } = vnode.attrs;
-
-        // Get status by value 
         const option = attrs.options?.find(o => o.value === attrs.value);
 
         return m(".mmf-select__wrapper",
             {
                 "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"} ${option?.color ? "with-color": ""}`,
-                "style": option?.color ? `--select-icon-color: ${option?.color}` : "",
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
+            m("span.select-icon",
+                {
+                    style: `background-color: ${option?.color}`
+                }
+            ),
             m("select.mmf-select",
                 {
                     "data-id": attrs.id,
@@ -54,12 +56,12 @@ export default {
                     // be passed to select-component
                     onchange: (e) => {
                         const option = attrs.options?.find(o => o.value === e.target.value);
-                        this.$wrapper.style.setProperty("--select-icon-color", option?.color);
                         this.$wrapper.classList.toggle("with-color", option?.color != null);
+                        /** @ts-ignore */
+                        this.$wrapper.children[0].style.setProperty("background-color", option?.color);
                         attrs.onchange(e.target.value)
                     }
                 },
-
                 attrs.options.map(value => {
                     if (isOptionValue(value)) {
                         // value must be a string or else is discarded
