@@ -9,7 +9,7 @@ const transformOptions = (options: Option[]): OptionValue[] => {
 
 export type OptionValue = {
     title?: string;
-    value: string|number;
+    value: string;
     color?: string;
 };
 
@@ -17,10 +17,10 @@ export type Option = OptionValue | string;
 
 export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
-    onchange?: Function | {(value: string): void};
+    onchange?: (value: string) => void;
     onfocus?: (event) => void;
     options: Array<Option>;
-    value?: string|number;
+    value?: string;
 }
 
 export type State = {
@@ -32,8 +32,8 @@ export default {
     view(vnode) {
         const { attrs } = vnode;
         const { theme = "the-default" } = vnode.attrs;
-
-        const option = transformOptions(attrs.options)?.find(o => o.value === attrs.value);
+        const options = transformOptions(attrs.options); 
+        const option = options.find(o => o.value === attrs.value);
         const activeClass = attrs.disabled === true ? "is-disabled" : "is-enabled";
 
         return m(".mmf-select__wrapper",
@@ -61,7 +61,7 @@ export default {
                         attrs.onblur && attrs.onblur(vnode);
                     },
                     onchange: (e) => {
-                        const option = transformOptions(attrs.options)?.find(o => o.value === e.target.value);
+                        const option = options?.find(o => o.value === e.target.value);
                         this.$wrapper.classList.toggle("with-color", option?.color != null);
                         this.$icon.style.setProperty("background-color", option?.color);
                         if (attrs.onchange) attrs.onchange(e.target.value)
