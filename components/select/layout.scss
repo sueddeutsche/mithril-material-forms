@@ -1,7 +1,7 @@
 @import "../../lib/reset";
 @import "../../lib/icon";
 @import "../../lib/colors";
-
+@import "../../lib/units";
 
 .mmf-select__wrapper {
     position: relative;
@@ -18,9 +18,29 @@
         right: 4px;
         top: 0;
     }
-
+    
     &.is-disabled:after {
         opacity: $mmf-opacity--disabled;
+    }
+
+    &.with-color {
+        select {
+            padding-left: 3 * $mmf-unit;
+        }
+
+        .select-icon {
+            display: inline-block;
+            border-radius: 50%;
+            height: $mmf-unit;
+            width: $mmf-unit;
+            border: 2px solid #fff;
+            position: absolute;
+            left: $mmf-unit;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 12;
+            border:transparent;
+        }
     }
 }
 
@@ -42,3 +62,4 @@
         cursor: pointer;
     }
 }
+

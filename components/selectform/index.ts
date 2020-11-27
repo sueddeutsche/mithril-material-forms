@@ -17,7 +17,6 @@ export default {
             errors: [],
             invertOrder: false,
             description: "",
-            onchange: Function.prototype,
             ...vnode.attrs
         };
 
