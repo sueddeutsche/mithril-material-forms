@@ -17,7 +17,7 @@ export type Option = OptionValue | string;
 
 export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
-    onchange: (value: string) => void;
+    onchange?: Function | {(value: string): void};
     onfocus?: (event) => void;
     options: Array<Option>;
     value?: string|number;
@@ -64,7 +64,7 @@ export default {
                         const option = transformOptions(attrs.options)?.find(o => o.value === e.target.value);
                         this.$wrapper.classList.toggle("with-color", option?.color != null);
                         this.$icon.style.setProperty("background-color", option?.color);
-                        attrs.onchange(e.target.value)
+                        if (attrs.onchange) attrs.onchange(e.target.value)
                     }
                 },
                 attrs.options.map(value => {
