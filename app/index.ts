@@ -283,6 +283,7 @@ const template = {
                             value: "ignore any niceness",
                             color: "rgb(43, 54, 113)"
                         },
+                        "Without any color niceness"
                         
                     ],
                     value: "a very nice selection",
