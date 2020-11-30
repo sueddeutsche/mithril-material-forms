@@ -13,7 +13,6 @@ export default {
             errors: [],
             invertOrder: false,
             description: "",
-            onchange: Function.prototype,
             ...vnode.attrs
         };
         return m(`.mmf-form.mmf-form--select.is-${attrs.disabled ? "disabled" : "enabled"}`, {

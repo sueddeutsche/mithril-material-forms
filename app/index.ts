@@ -269,7 +269,47 @@ const template = {
             }
         }
     },
-
+    selectWithColor: {
+        render: render.bind(null, mmf.Select),
+        variations: {
+            "select with status color": {
+                attrs: {
+                    options: [
+                        {
+                            value: "a very nice selection",
+                            color: "rgb(255, 76, 76)"
+                        },
+                        {
+                            value: "ignore any niceness",
+                            color: "rgb(43, 54, 113)"
+                        },
+                        "Without any color niceness"
+                        
+                    ],
+                    value: "a very nice selection",
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+            "disabled select with status color": {
+                attrs: {
+                    disabled: true,
+                    options: [
+                        {
+                            value: "a very nice selection",
+                            color: "rgb(255, 76, 76)"
+                        },
+                        {
+                            value: "ignore any niceness",
+                            color: "rgb(43, 54, 113)"
+                        },
+                        
+                    ],
+                    value: "a very nice selection",
+                    onchange: () => console.error("should not log this message")
+                }
+            }
+        }
+    },
     switch: {
         render: render.bind(null, mmf.Switch),
         variations: {
@@ -440,6 +480,7 @@ m.render(document.body,
         component("checkboxForm"),
         component("select"),
         component("selectForm"),
+        component("selectWithColor"),
         component("switch"),
         component("switchForm"),
         component("textarea"),
