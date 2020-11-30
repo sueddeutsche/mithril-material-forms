@@ -5,10 +5,10 @@ const transformOptions = (options) => {
 };
 export default {
     view(vnode) {
-        var _a;
         const { attrs } = vnode;
         const { theme = "the-default" } = vnode.attrs;
-        const option = (_a = transformOptions(attrs.options)) === null || _a === void 0 ? void 0 : _a.find(o => o.value === attrs.value);
+        const options = transformOptions(attrs.options);
+        const option = options.find(o => o.value === attrs.value);
         const activeClass = attrs.disabled === true ? "is-disabled" : "is-enabled";
         return m(".mmf-select__wrapper", {
             "class": `${theme} ${activeClass} ${(option === null || option === void 0 ? void 0 : option.color) ? "with-color" : ""}`,
@@ -30,8 +30,7 @@ export default {
                 attrs.onblur && attrs.onblur(vnode);
             },
             onchange: (e) => {
-                var _a;
-                const option = (_a = transformOptions(attrs.options)) === null || _a === void 0 ? void 0 : _a.find(o => o.value === e.target.value);
+                const option = options === null || options === void 0 ? void 0 : options.find(o => o.value === e.target.value);
                 this.$wrapper.classList.toggle("with-color", (option === null || option === void 0 ? void 0 : option.color) != null);
                 this.$icon.style.setProperty("background-color", option === null || option === void 0 ? void 0 : option.color);
                 if (attrs.onchange)
