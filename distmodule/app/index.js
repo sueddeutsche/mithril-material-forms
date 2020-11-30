@@ -73,6 +73,61 @@ const template = {
             }
         }
     },
+    radioButtons: {
+        render: render.bind(null, mmf.RadioButtons),
+        variations: {
+            "checkbox": {
+                attrs: {
+                    value: "metered",
+                    title: "pay-options",
+                    disabled: false,
+                    options: [
+                        {
+                            title: "Free",
+                            value: "free",
+                            disabled: false
+                        },
+                        {
+                            title: "Metered",
+                            value: "metered",
+                            disabled: false
+                        },
+                        {
+                            title: "Pay",
+                            value: "pay",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "disabled checkbox": {
+                attrs: {
+                    value: "",
+                    title: "pay-options-disabled",
+                    disabled: true,
+                    options: [
+                        {
+                            title: "Free",
+                            value: "free",
+                            disabled: false
+                        },
+                        {
+                            title: "Metered",
+                            value: "metered",
+                            disabled: false
+                        },
+                        {
+                            title: "Pay",
+                            value: "pay",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            }
+        }
+    },
     checkboxForm: {
         render: render.bind(null, mmf.CheckboxForm),
         variations: {
@@ -393,4 +448,4 @@ function component(type) {
         return render(title, { ...variation.attrs, theme: "the-solid" }, ...variation.childNodes || []);
     }))));
 }
-m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("select"), component("selectForm"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));
+m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("select"), component("selectForm"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));

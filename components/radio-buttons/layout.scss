@@ -1,0 +1,53 @@
+@import "../../lib/interface";
+@import "../../lib/units";
+@import "../../lib/colors";
+
+.mmf-radio-btn-container {
+    height: 0.75 * $mmf-block;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    
+    &[disabled] {
+        opacity: $mmf-opacity--disabled;
+    }
+}
+
+.mmf-radio-btn {
+    @include clickable();
+    border: $mmf-input-border--width solid transparent;
+    border-radius: $mmf-radius;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 $mmf-unit / 2;
+    
+    .mmf-label {
+        @include clickable();
+        display: inline-block;
+        padding: $mmf-unit/2 $mmf-unit;
+    }
+
+    .mmf-input {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+
+    .mmf-icon {
+        padding-left: $mmf-unit;
+    }
+    
+    &:not([disabled]):hover {
+        border: $mmf-input-border--width solid map-get($color-highlight, 5);
+        border-radius: $mmf-radius;
+        background-color:map-get($color-highlight, 5);
+    }
+
+    &.selected {
+        border: $mmf-input-border--width solid map-get($color-highlight, 5);
+        background-color:map-get($color-highlight, 5);
+        border-radius: $mmf-radius;
+        color: map-get($color-highlight, 0);
+    }    
+}

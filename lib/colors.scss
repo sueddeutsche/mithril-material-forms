@@ -42,3 +42,12 @@ $color-elevation-8: darken($color-elevation, 0.125 * $mmf-color-distance); // se
 
 // styling - no colors
 $mmf-style--border: solid !default;
+
+$color-highlight: (
+    0: rgb(0, 153, 144),
+    1: rgb(105, 193, 184),
+    2: rgb(129, 209, 198),
+    3: rgb(178, 223, 217),
+    4: rgb(185, 226, 220),
+    5: rgb(216, 239, 236)
+);
