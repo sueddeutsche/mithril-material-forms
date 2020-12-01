@@ -6,24 +6,5 @@
 @mixin input-solid() {
     &.mmf-input {
         @include with-input-solid();
-        border-color: map-get($color-basic, 4);
-        color: map-get($color-basic, 0);
-        font-size: 14px;
-        padding: $mmf-unit;
-
-        &:not([disabled]):focus {
-            border-color: map-get($color-highlight, 0);
-            @include elevation(1);
-        }
-    
-        &:not([disabled]):hover {
-            border-color: map-get($color-highlight, 0);
-        }
-
-
-        &[disabled] {
-            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
-            border-color: map-get($color-basic, 5);
-        }
     }
 }

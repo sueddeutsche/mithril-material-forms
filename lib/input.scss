@@ -48,17 +48,27 @@
 
 
 @mixin with-input-solid() {
-    color: rgba($mmf-color--dark, $mmf-opacity--primary);
-    border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
+    color: map-get($color-basic, 0);
+    font-size: 14px;
+    line-height: 140.62%;
+    letter-spacing: 0.05em;
+    padding: $mmf-unit;
+    border: $mmf-input-border--width solid map-get($color-basic, 4);
     border-radius: $mmf-radius;
     outline: 0;
     transition: border-color $mmf-transition;
 
     &:not([disabled]):focus {
-        border-color: rgba($mmf-color--secondary, 1);
+        border-color: map-get($color-highlight, 0);
+        @include elevation(1);
     }
 
     &:not([disabled]):hover {
-        border-color: $mmf-color--secondary;
+        border-color: map-get($color-highlight, 0);
+    }
+
+    &[disabled] {
+        color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+        border-color: map-get($color-basic, 5);
     }
 }
