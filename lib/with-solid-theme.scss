@@ -18,22 +18,39 @@ $mmf-radius: 4px !default;
     @include selectform-solid();
     @include textarea-solid();
 
-    /*&.mmf-label {
+    /*what is this? 
+    &.mmf-label {
         @include font-bold();
         font-size: $mmf-text-size--label;
         color: rgba($mmf-color--dark, $mmf-opacity--primary);
     }*/
+
+    .mmf-meta {
+        opacity: 1;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 140.62%;
+        letter-spacing: 0.05em;
+        color: map-get($color-basic, 2);
+        padding-top: 10px;
+    }
+
+    .mmf-form__error--error {
+        font-size: 14px;
+        line-height: 140.62%;
+        letter-spacing: 0.05em;
+    }
 
     // all styles for type-in + dropdown elements that have labels and descriptions
     &.mmf-form--input,
     &.mmf-form--select,
     &.mmf-form--textarea {
         .mmf-label {
-        color: map-get($color-basic, 0);
-        font-size: 12px;
-        line-height: 140.62%;
-        letter-spacing: 0.05em;
-        padding-bottom: 6px;
+            color: map-get($color-basic, 0);
+            font-size: 12px;
+            line-height: 140.62%;
+            letter-spacing: 0.05em;
+            padding-bottom: 6px;
         }
     }
 
