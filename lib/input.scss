@@ -47,7 +47,7 @@
 }
 
 
-@mixin with-input-ux() {
+@mixin with-input-solid() {
     color: rgba($mmf-color--dark, $mmf-opacity--primary);
     border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
     border-radius: $mmf-radius;
