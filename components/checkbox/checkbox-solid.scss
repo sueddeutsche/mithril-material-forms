@@ -24,10 +24,10 @@
                 color: white;   
             }
 
-            &:hover:after{
-                color: map-get($color-highlight, 4);
+            &:not([disabled]):hover {
+                background-color: map-get($color-highlight, 3);
+    
             }
-
 
         }
 
@@ -38,6 +38,7 @@
     
         &:not([disabled]):hover {
             border-color: map-get($color-highlight, 0);
+
         }
     
         &[disabled] {

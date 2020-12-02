@@ -28,6 +28,14 @@
                 border-color: map-get($color-highlight, 0);
                 @include elevation(1);
             }
+
+            &:hover,
+            &.has-focus {
+            &:after {
+                background-color: map-get($color-highlight, 5);
+                color: map-get($color-highlight, 0);
+            }
+        }
         }
 
         &.is-disabled {
@@ -42,13 +50,7 @@
             margin: 4px 0;
         }
 
-        &:hover,
-        &.has-focus {
-            &:after {
-                background-color: map-get($color-highlight, 5);
-                color: map-get($color-highlight, 0);
-            }
-        }
+        
 
         .mmf-select {
             @include reset-select();
