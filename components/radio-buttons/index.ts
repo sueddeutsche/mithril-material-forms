@@ -6,6 +6,7 @@ export type OptionValue = {
     value: string,
     icon?: string,
     disabled?:boolean,
+    id?: string
 }
 
 export type Attrs = {    
@@ -24,12 +25,15 @@ export type State = {
 
 export default {
     view(vnode) {
-        const { value, title, options, disabled } = vnode.attrs;
-        const key = Math.random();
+        const { value, options, disabled } = vnode.attrs;
         const selectToggle = (event) => {
             Array.from(this.$container?.children).forEach(el => el.classList.remove("selected"));
             event.target?.parentNode?.classList?.add("selected");
-            vnode.attrs.onchange(event.target.value ? event.target.value : event.target.getAttribute("value"));
+            vnode.attrs.onchange(
+                event.target.value 
+                ? event.target.value 
+                : event.target.getAttribute("value")
+            );
         };
         return m(".mmf-radio-btn-container", {
                 disabled,
@@ -38,7 +42,7 @@ export default {
             options.map((option: OptionValue) => {
                 const icon = option.icon ? 
                     m("span.mmf-icon", {  
-                        value: `${option.value}-${key}`,
+                        value: option.value,
                         onclick: event => selectToggle(event)
                     }, option.icon) 
                     : undefined;
@@ -51,16 +55,15 @@ export default {
                     icon,
                     m("input.mmf-input", {
                         type: "radio",
-                        name: `${title}-${key}`,
-                        id: `${option.value}-${key}`,
-                        value: `${option.value}-${key}`,
+                        id: option.id || option.value,
+                        value: option.value,
                         checked: `${option.value === value ? "checked": ""}`,
-                        disabled: option.disabled || disabled ? true : false,
+                        disabled: option.disabled || disabled,
                         onclick: event => selectToggle(event)
                     }),
                     m("label.mmf-label", {
-                        for: `${option.value}-${key}`,
-                        disabled: option.disabled || disabled ? true : false, 
+                        for: option.id || option.value,
+                        disabled: option.disabled || disabled, 
                     }, option.title || option.value)
                 );
             })
