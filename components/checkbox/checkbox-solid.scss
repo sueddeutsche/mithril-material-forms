@@ -17,9 +17,8 @@
         }
 
         &:checked{
-            background-color: map-get($color-highlight, 0);
+            background-color: map-get($color-highlight , 2);
             border-color: map-get($color-highlight, 0);
-
             &::after {
                 content: "done";
                 color: white;   
