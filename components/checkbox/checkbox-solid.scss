@@ -12,15 +12,16 @@
         height:24px;
 
         &::after {
-          content: " "; 
-          font-size: 20px; 
+          content: "done";
+          font-size: 18px;
+          transform: translate(10%, 10%); // center 
         }
 
         &:checked{
             background-color: map-get($color-highlight , 2);
             border-color: map-get($color-highlight, 0);
             &::after {
-                content: "done";
+                
                 color: white;   
             }
 
@@ -28,7 +29,10 @@
                 background-color: map-get($color-highlight, 3);
     
             }
+        }
 
+        &:not(:checked):after{
+            opacity: 0;
         }
 
         &:not([disabled]):focus {
