@@ -88,21 +88,21 @@ const template = {
                     disabled: false,
                     options: [
                         {
-                            id: "coffee",
+                            id: "coffee-normal",
                             title: "Coffee", 
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
                         },
                         {
-                            id: "wine",
+                            id: "wine-normal",
                             title: "Wine",
                             icon: "wine_bar", 
                             value: "wine",
                             disabled: false
                         },
                         {
-                            id: "beer",
+                            id: "beer-normal",
                             title: "Beer",
                             value: "beer",
                             icon: "sports_bar",
@@ -119,21 +119,21 @@ const template = {
                     disabled: true,
                     options: [
                         {
-                            id: "coffee",
+                            id: "coffee-disabled",
                             title: "Coffee", 
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
                         },
                         {
-                            id: "wine",
+                            id: "wine-disabled",
                             title: "Wine",
                             icon: "wine_bar", 
                             value: "wine",
                             disabled: false
                         },
                         {
-                            id: "beer",
+                            id: "beer-disabled",
                             title: "Beer",
                             value: "beer",
                             icon: "sports_bar",
@@ -150,19 +150,19 @@ const template = {
                     disabled: false,
                     options: [
                         {
-                            id: "coffee",
+                            id: "coffee-no-icon",
                             title: "Coffee", 
                             value: "coffee",
                             disabled: false
                         },
                         {
-                            id: "wine",
+                            id: "wine-no-icon",
                             title: "Wine",
                             value: "wine",
                             disabled: false
                         },
                         {
-                            id: "beer",
+                            id: "beer-no-icon",
                             title: "Beer",
                             value: "beer",
                             disabled: false
@@ -174,26 +174,22 @@ const template = {
             "disabled radio elements without icons": {
                 attrs: {
                     value: "wine",
-                    title: "drinks",
-                    disabled: true,
                     options: [
                         {
-                            id: "coffee",
+                            id: "coffee-no-icon-disabled",
                             title: "Coffee", 
                             value: "coffee",
-                            disabled: false
+                            disabled: true
                         },
                         {
-                            id: "wine",
+                            id: "wine-no-icon-disabled",
                             title: "Wine",
                             value: "wine",
-                            disabled: false
                         },
                         {
-                            id: "beer",
+                            id: "beer-no-icon-disabled",
                             title: "Beer",
                             value: "beer",
-                            disabled: false
                         }
                     ],
                     onchange: value => console.log("value", value)
@@ -523,6 +519,7 @@ function component(type: string) {
                 m("h3", "layout & typography"),
                 Object.keys(variations).map(title => {
                     const variation = variations[title];
+                    // For radio btns unique id's are needed
                     if (title.includes("radio")) {
                         variation.attrs.options.map(el => el.id = `${el.id}-${title.replace(/\s/g, '-')}`);
                     }

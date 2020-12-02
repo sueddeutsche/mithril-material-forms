@@ -4,9 +4,7 @@
 
 .mmf-radio-btn-container {
     height: 0.75 * $mmf-block;
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
+    display: inline-block;
     
     &[disabled] {
         opacity: $mmf-opacity--disabled;
@@ -21,11 +19,16 @@
     flex-direction: row;
     align-items: center;
     margin: 0 $mmf-unit / 2;
-    
+
+    &[disabled] {
+        opacity: $mmf-opacity--disabled;
+    }
+
     .mmf-label {
         @include clickable();
         display: inline-block;
         padding: $mmf-unit/2 $mmf-unit;
+        color: inherit;
     }
 
     .mmf-input {
@@ -37,11 +40,12 @@
     .mmf-icon {
         padding-left: $mmf-unit;
     }
-    
+
     &:not([disabled]):hover {
         border: $mmf-input-border--width solid map-get($color-highlight, 5);
         border-radius: $mmf-radius;
         background-color:map-get($color-highlight, 5);
+        color: map-get($color-highlight, 0);
     }
 
     &.selected {
@@ -49,5 +53,5 @@
         background-color:map-get($color-highlight, 5);
         border-radius: $mmf-radius;
         color: map-get($color-highlight, 0);
-    }    
+    }
 }

@@ -29,11 +29,7 @@ export default {
         const selectToggle = (event) => {
             Array.from(this.$container?.children).forEach(el => el.classList.remove("selected"));
             event.target?.parentNode?.classList?.add("selected");
-            vnode.attrs.onchange(
-                event.target.value 
-                ? event.target.value 
-                : event.target.getAttribute("value")
-            );
+            vnode.attrs.onchange(event.target.value || event.target.getAttribute("value"));
         };
         return m(".mmf-radio-btn-container", {
                 disabled,
@@ -43,14 +39,20 @@ export default {
                 const icon = option.icon ? 
                     m("span.mmf-icon", {  
                         value: option.value,
-                        onclick: event => selectToggle(event)
+                        onclick: event => { 
+                            if (
+                                (disabled !== undefined && !disabled) ||
+                                (option.disabled !== undefined &&
+                                    !option.disabled)
+                            ) { selectToggle(event); }
+                        },
                     }, option.icon) 
                     : undefined;
 
                 return m(".mmf-radio-btn",
                     {
                         class: `${option.value === value ? "selected" : ""}`,
-                        disabled,
+                        disabled: disabled ? disabled : option.disabled || false,
                     },
                     icon,
                     m("input.mmf-input", {
@@ -58,12 +60,12 @@ export default {
                         id: option.id || option.value,
                         value: option.value,
                         checked: `${option.value === value ? "checked": ""}`,
-                        disabled: option.disabled || disabled,
+                        disabled: disabled ? disabled : option.disabled || false,
                         onclick: event => selectToggle(event)
                     }),
                     m("label.mmf-label", {
                         for: option.id || option.value,
-                        disabled: option.disabled || disabled, 
+                        disabled: disabled ? disabled : option.disabled || false, 
                     }, option.title || option.value)
                 );
             })
