@@ -5,7 +5,9 @@ $mmf-radius: 4px !default;
 @import "../components/input/input-solid";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
+@import "../components/switch/switch-solid";
 @import "../components/textarea/textarea-solid";
+
 
 
 @import "../lib/typography";
@@ -18,6 +20,7 @@ $mmf-radius: 4px !default;
     @include input-solid();
     @include select-solid();
     @include selectform-solid();
+    @include switch-solid();
     @include textarea-solid();
 
     /*what is this? 
