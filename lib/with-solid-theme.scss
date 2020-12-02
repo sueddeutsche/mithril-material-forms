@@ -1,6 +1,7 @@
 $mmf-radius: 4px !default;
 @import "../components/button/button-solid";
 @import "../components/checkbox/checkbox-solid";
+@import "../components/checkboxform/checkboxform-solid";
 @import "../components/input/input-solid";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
@@ -13,6 +14,7 @@ $mmf-radius: 4px !default;
 @mixin with-solid-theme() {
     @include button-solid();
     @include checkbox-solid();
+    @include checkboxform-solid();
     @include input-solid();
     @include select-solid();
     @include selectform-solid();
