@@ -5,19 +5,8 @@
 
 @mixin select-solid() {
     &.mmf-select__wrapper {
-        //styles are similar to input, is there a way to share them?
-        color: map-get($color-basic, 0);
-        font-size: 14px;
-        line-height: 140.62%;
-        letter-spacing: 0.05em;
-        padding: $mmf-unit;
-        border: $mmf-input-border--width solid map-get($color-basic, 4);
-        border-radius: $mmf-radius;
-        outline: 0;
-        transition: border-color $mmf-transition;
-
-        overflow: hidden; // fix capped borders
-        padding:0;
+        @include with-input-solid(false);
+        padding: 0; // reset default input padding from mixin
 
         &.is-enabled {
             &:hover {
@@ -31,11 +20,11 @@
 
             &:hover,
             &.has-focus {
-            &:after {
-                background-color: map-get($color-highlight, 5);
-                color: map-get($color-highlight, 0);
+                &:after {
+                    background-color: map-get($color-highlight, 5);
+                    color: map-get($color-highlight, 0);
+                }
             }
-        }
         }
 
         &.is-disabled {
@@ -49,8 +38,6 @@
             color: map-get($color-basic, 0);
             margin: 4px 0;
         }
-
-        
 
         .mmf-select {
             @include reset-select();
