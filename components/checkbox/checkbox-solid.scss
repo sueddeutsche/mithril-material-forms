@@ -4,14 +4,46 @@
 
 @mixin checkbox-solid() {
     &.mmf-checkbox {
-        border: 1px solid transparent;
         outline: 0;
+        border: $mmf-input-border--width solid map-get($color-basic, 3);
+        border-radius: $mmf-radius;
+        transition: border-color $mmf-transition;
+        width: 24px;
+        height:24px;
 
-        &:not([disabled]) {
-            &:focus:after,
-            &:hover:after {
-                color: $mmf-color--secondary;
+        &::after {
+          content: " "; 
+          font-size: 20px; 
+        }
+
+        &:checked{
+            background-color: map-get($color-highlight, 0);
+            border-color: map-get($color-highlight, 0);
+
+            &::after {
+                content: "done";
+                color: white;   
             }
+
+            &:hover:after{
+                color: map-get($color-highlight, 4);
+            }
+
+
+        }
+
+        &:not([disabled]):focus {
+            border-color: map-get($color-highlight, 0);
+            @include elevation(1);
+        }
+    
+        &:not([disabled]):hover {
+            border-color: map-get($color-highlight, 0);
+        }
+    
+        &[disabled] {
+            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            border-color: map-get($color-basic, 5);
         }
     }
 }
