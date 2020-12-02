@@ -26,11 +26,6 @@ export type State = {
 export default {
     view(vnode) {
         const { value, options, disabled } = vnode.attrs;
-        const selectToggle = (event) => {
-            Array.from(this.$container?.children).forEach(el => el.classList.remove("selected"));
-            event.target?.parentNode?.classList?.add("selected");
-            vnode.attrs.onchange(event.target.value || event.target.getAttribute("value"));
-        };
         return m(".mmf-radio-btn-container", {
                 disabled,
                 oncreate: _vnode => (this.$container = _vnode.dom as HTMLElement),
@@ -39,33 +34,26 @@ export default {
                 const icon = option.icon ? 
                     m("span.mmf-icon", {  
                         value: option.value,
-                        onclick: event => { 
-                            if (
-                                (disabled !== undefined && !disabled) ||
-                                (option.disabled !== undefined &&
-                                    !option.disabled)
-                            ) { selectToggle(event); }
-                        },
                     }, option.icon) 
                     : undefined;
 
                 return m(".mmf-radio-btn",
                     {
                         class: `${option.value === value ? "selected" : ""}`,
+                        value: option.value,
                         disabled: disabled ? disabled : option.disabled || false,
+                        onclick: event => {
+                            event.target.focus();
+                            if ( disabled || option.disabled) return;
+                            Array.from(this.$container?.children).forEach(el => el.classList.remove("selected"));
+                            event.target?.parentNode?.classList?.add("selected");
+                            vnode.attrs.onchange(event.target.value || event.target.getAttribute("value"));
+                        },
                     },
                     icon,
-                    m("input.mmf-input", {
-                        type: "radio",
-                        id: option.id || option.value,
-                        value: option.value,
-                        checked: `${option.value === value ? "checked": ""}`,
-                        disabled: disabled ? disabled : option.disabled || false,
-                        onclick: event => selectToggle(event)
-                    }),
                     m("label.mmf-label", {
-                        for: option.id || option.value,
-                        disabled: disabled ? disabled : option.disabled || false, 
+                        disabled: disabled ? disabled : option.disabled || false,
+                        value: option.value,
                     }, option.title || option.value)
                 );
             })

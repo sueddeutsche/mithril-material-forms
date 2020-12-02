@@ -519,10 +519,6 @@ function component(type: string) {
                 m("h3", "layout & typography"),
                 Object.keys(variations).map(title => {
                     const variation = variations[title];
-                    // For radio btns unique id's are needed
-                    if (title.includes("radio")) {
-                        variation.attrs.options.map(el => el.id = `${el.id}-${title.replace(/\s/g, '-')}`);
-                    }
                     return render(title, variation.attrs, ...variation.childNodes || []);
                 })
             ),
