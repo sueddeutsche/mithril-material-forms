@@ -47,7 +47,7 @@
 }
 
 
-@mixin with-input-solid($with-atrributes: true) {
+@mixin with-input-solid($is-form-element: true) {
     color: map-get($color-basic, 0);
     font-size: 14px;
     line-height: 140.62%;
@@ -58,7 +58,7 @@
     outline: 0;
     transition: border-color $mmf-transition;
 
-    @if $with-atrributes {
+    @if $is-form-element {
         &:not([disabled]):focus {
             border-color: map-get($color-highlight, 0);
             @include elevation(1);
