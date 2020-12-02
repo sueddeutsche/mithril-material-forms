@@ -60,7 +60,6 @@ const template = {
             }
         }
     },
-
     checkbox: {
         render: render.bind(null, mmf.Checkbox),
         variations: {
@@ -75,6 +74,47 @@ const template = {
                     value: false,
                     disabled: true,
                     onchange: value => console.log("value", value)
+                }
+            }
+        }
+    },
+    checkboxForm: {
+        render: render.bind(null, mmf.CheckboxForm),
+        variations: {
+            "checkbox form": {
+                attrs: {
+                    title: "Checkbox-Form Title",
+                    description: "Checkbox-Form description text...",
+                    value: true,
+                    onchange: (value) => console.log("value", value)
+                }
+            },
+            "checkbox form with errors": {
+                attrs: {
+                    title: "Checkbox-Form Title",
+                    errors: ["This checkbox has an invalid type"],
+                    description: "Checkbox-Form description text...",
+                    value: false,
+                    onchange: (value) => console.log("value", value)
+                }
+            },
+            "checkbox form, disabled": {
+                attrs: {
+                    disabled: true,
+                    title: "Disabled Checkbox-Form",
+                    errors: ["This checkbox has an invalid type"],
+                    description: "Checkbox-Form description text...",
+                    value: false,
+                    onchange: () => console.error("should not log this message")
+                }
+            },
+            "checkbox form, inverted": {
+                attrs: {
+                    title: "Checkbox-Form Title",
+                    invertOrder: true,
+                    description: "Checkbox-Form description text...",
+                    value: true,
+                    onchange: (value) => console.log("value", value)
                 }
             }
         }
@@ -197,48 +237,104 @@ const template = {
             }
         }
     },
-
-    checkboxForm: {
-        render: render.bind(null, mmf.CheckboxForm),
+    radioButtonsForm: {
+        render: render.bind(null, mmf.RadioButtonsForm),
         variations: {
-            "checkbox form": {
+            "radio form with description": {
                 attrs: {
-                    title: "Checkbox-Form Title",
+                    value: "wine",
+                    disabled: false,
                     description: "Checkbox-Form description text...",
-                    value: true,
-                    onchange: (value) => console.log("value", value)
+                    options: [
+                        {
+                            id: "coffee-normal",
+                            title: "Coffee", 
+                            value: "coffee",
+                            icon: "local_cafe",
+                            disabled: false
+                        },
+                        {
+                            id: "wine-normal",
+                            title: "Wine",
+                            icon: "wine_bar", 
+                            value: "wine",
+                            disabled: false
+                        },
+                        {
+                            id: "beer-normal",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
                 }
             },
-            "checkbox form with errors": {
+            "radio form with errors": {
                 attrs: {
-                    title: "Checkbox-Form Title",
-                    errors: ["This checkbox has an invalid type"],
+                    value: "wine",
+                    title: "Radio Button Form",
+                    errors: ["This radio button is invalid"],
                     description: "Checkbox-Form description text...",
-                    value: false,
-                    onchange: (value) => console.log("value", value)
+                    disabled: false,
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee", 
+                            value: "coffee",
+                            icon: "local_cafe",
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar", 
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
                 }
             },
-            "checkbox form, disabled": {
+            "radio form with errors, title and description, disabled": {
                 attrs: {
+                    value: "wine",
+                    title: "Radio Button Form",
+                    errors: ["This radio button is invalid"],
+                    description: "Checkbox-Form description text...",
                     disabled: true,
-                    title: "Disabled Checkbox-Form",
-                    errors: ["This checkbox has an invalid type"],
-                    description: "Checkbox-Form description text...",
-                    value: false,
-                    onchange: () => console.error("should not log this message")
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee", 
+                            value: "coffee",
+                            icon: "local_cafe",
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar", 
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
                 }
             },
-            "checkbox form, inverted": {
-                attrs: {
-                    title: "Checkbox-Form Title",
-                    invertOrder: true,
-                    description: "Checkbox-Form description text...",
-                    value: true,
-                    onchange: (value) => console.log("value", value)
-                }
-            }
+
         }
     },
+
 
     input: {
         render: render.bind(null, mmf.Input),
@@ -557,6 +653,7 @@ m.render(document.body,
         component("checkbox"),
         component("checkboxForm"),
         component("radioButtons"),
+        component("radioButtonsForm"),
         component("select"),
         component("selectForm"),
         component("switch"),

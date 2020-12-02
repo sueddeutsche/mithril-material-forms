@@ -1,7 +1,8 @@
 export { default as Button, Attrs as ButtonAttrs } from "./components/button";
 export { default as Checkbox, Attrs as CheckboxAttrs } from "./components/checkbox";
 export { default as CheckboxForm, Attrs as CheckboxFormAttrs } from "./components/checkboxform";
-export { default as RadioButtons, Attrs as RadioButtonsFormAttrs } from "./components/radio-buttons";
+export { default as RadioButtons, Attrs as RadioButtonsAttrs } from "./components/radiobuttons";
+export { default as RadioButtonsForm, Attrs as RadioButtonsFormAttrs } from "./components/radiobuttonsform";
 export { default as Errors, getErrorClass, Attrs as ErroraAttrs } from "./components/errors";
 export { default as Input, Attrs as InputAttrs } from "./components/input";
 export { default as InputForm, Attrs as InputFormAttrs } from "./components/inputform";
