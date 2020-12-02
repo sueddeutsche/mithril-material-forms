@@ -57,19 +57,24 @@ h2 {
     flex-basis: 0;
     flex-grow: 1;
     margin: 4px;
+    background-color: white;
+    
 
     h3 {
         font-size: 12px;
         margin: 0;
-        color: #666;
+        color: #F80EFD;
         text-align: center;
     }
 
     h4 {
         margin: 0;
-        padding: 24px 0 12px 0;
+        padding: 24px 0 12px 8px;
         font-weight: normal;
-        color: #666;
-        font-size: 14px;
+        color: #996E9A;
+        font-size: 12px;
+        border-top: 2px solid $bg-columns;
+        text-align: center;
+        font-style: italic;
     }
 }
