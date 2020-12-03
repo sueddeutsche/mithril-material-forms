@@ -5,10 +5,6 @@
 .mmf-radio-btn-container {
     height: 0.75 * $mmf-block;
     display: inline-block;
-    
-    &[disabled] {
-        opacity: $mmf-opacity--disabled;
-    }
 }
 
 .mmf-radio-btn {

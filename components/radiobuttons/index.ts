@@ -14,7 +14,7 @@ export type Attrs = {
     value?: string, 
     options: Array<OptionValue>
     disabled?: boolean, 
-    onchange?: (event) => void; // TODO?!
+    onchange?: (event) => void;
     onblur?: (event) => void;
     onfocus?: (event) => void;
 }
