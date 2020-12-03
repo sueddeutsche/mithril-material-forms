@@ -1,31 +1,52 @@
 @import "../../lib/units";
 @import "../../lib/reset";
+@import "../../lib/input";
 
 
 @mixin select-solid() {
     &.mmf-select__wrapper {
-        color: rgba($mmf-color--dark, $mmf-opacity--primary);
-        border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
-        border-radius: $mmf-radius;
-        overflow: hidden; // fix capped borders
+        @include with-input-solid(false);
+        padding: 0; // reset default input padding from mixin
+
+        &.is-enabled {
+            &:hover {
+                border-color: map-get($color-highlight, 0);
+            }
+
+            &.has-focus {
+                border-color: map-get($color-highlight, 0);
+                @include elevation(1);
+            }
+
+            &:hover,
+            &.has-focus {
+                &:after {
+                    background-color: map-get($color-highlight, 5);
+                    color: map-get($color-highlight, 0);
+                }
+            }
+        }
+
+        &.is-disabled {
+            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            border-color: map-get($color-basic, 5);
+        }
 
         &:after {
             content: "arrow_drop_down";
-        }
-
-        &.is-enabled {
-            &:hover,
-            &.has-focus {
-                border-color: $mmf-color--secondary;
-                &:after {
-                    color: $mmf-color--secondary;
-                }
-            }
+            font-size: 1.8em;
+            color: map-get($color-basic, 0);
+            margin: $mmf-unit/2 0;
         }
 
         .mmf-select {
             @include reset-select();
             outline: none;
+            padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
+            font-size: $mmf-font-normal;
+            line-height: $mmf-line-height;
+            letter-spacing: $mmf-letter-spacing;
+            color: map-get($color-basic, 0);
         }
     }
 }

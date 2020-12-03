@@ -3,38 +3,49 @@ import { DefaultInputAttrs } from "../types";
 
 
 const isOptionValue = (option): option is OptionValue => option && option.value !== undefined;
-
+const transformOptions = (options: Option[]): OptionValue[] => {
+    return options.map(option => typeof option === "string" ? { value: option} : option);
+}
 
 export type OptionValue = {
     title?: string;
-    value?: string|number;
-}
+    value: string;
+    color?: string;
+};
 
-export type Option = string|OptionValue;
+export type Option = OptionValue | string;
 
 export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
-    onchange: (value: string) => void;
+    onchange?: (value: string) => void;
     onfocus?: (event) => void;
     options: Array<Option>;
-    value?: string|number;
+    value?: string;
 }
 
 export type State = {
     $wrapper: HTMLElement;
+    $icon: HTMLElement;
 }
-
 
 export default {
     view(vnode) {
         const { attrs } = vnode;
         const { theme = "the-default" } = vnode.attrs;
+        const options = transformOptions(attrs.options); 
+        const option = options.find(o => o.value === attrs.value);
+        const activeClass = attrs.disabled === true ? "is-disabled" : "is-enabled";
 
         return m(".mmf-select__wrapper",
             {
-                "class": `${theme} ${attrs.disabled === true ? "is-disabled" : "is-enabled"}`,
+                "class": `${theme} ${activeClass} ${option?.color ? "with-color": ""}`,
                 oncreate: _vnode => (this.$wrapper = _vnode.dom as HTMLElement)
             },
+            m("span.select-icon",
+            {
+                style: `background-color: ${option?.color}`,
+                oncreate: _vnode => ( this.$icon = _vnode.dom as HTMLElement)
+            }),
             m("select.mmf-select",
                 {
                     "data-id": attrs.id,
@@ -49,11 +60,13 @@ export default {
                         this.$wrapper && this.$wrapper.classList.remove("has-focus");
                         attrs.onblur && attrs.onblur(vnode);
                     },
-                    // @reminder will always be string, which must be specified in json-schema or else datatype must
-                    // be passed to select-component
-                    onchange: e => attrs.onchange(e.target.value)
+                    onchange: (e) => {
+                        const option = options?.find(o => o.value === e.target.value);
+                        this.$wrapper.classList.toggle("with-color", option?.color != null);
+                        this.$icon.style.setProperty("background-color", option?.color);
+                        if (attrs.onchange) attrs.onchange(e.target.value)
+                    }
                 },
-
                 attrs.options.map(value => {
                     if (isOptionValue(value)) {
                         // value must be a string or else is discarded

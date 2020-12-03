@@ -2,9 +2,8 @@
 @import "../styles/typography";
 @import "../styles/theme-solid";
 @import "../styles/theme-material";
-
-$bg: #333;
-$bg-columns: rgb(242,242,243);
+@import "../lib/colors.scss";
+@import "../lib/units.scss";
 
 .undefined {
     color: red;
@@ -13,7 +12,7 @@ $bg-columns: rgb(242,242,243);
 }
 
 body {
-    background: $bg;
+    background: map-get($color-demo, 2);
     font-family: Roboto;
 }
 
@@ -23,14 +22,14 @@ h1, p, a {
 
 h2 {
     align-items: flex-end;
-    background: #333;
+    background: map-get($color-demo, 2);
     display: flex;
     height: 96px;
     justify-content: center;
     margin: 0;
 
     span {
-        background-color: $bg-columns;
+        background-color: map-get($color-demo, 4);
         line-height: 1em;
         margin-bottom: 1px;
         padding: 12px 24px;
@@ -39,14 +38,14 @@ h2 {
 }
 
 .columns {
-    background-color: $bg-columns;
+    background-color: map-get($color-demo, 4);
     display: flex;
     flex-direction: row;
     padding: 12px 0;
 }
 
 .box {
-    background: #fff;
+    background: map-get($color-demo, 5);
     padding: 8px;
 }
 
@@ -55,19 +54,24 @@ h2 {
     flex-basis: 0;
     flex-grow: 1;
     margin: 4px;
+    background-color: map-get($color-demo, 5);
+    
 
     h3 {
-        font-size: 12px;
+        font-size: $mmf-font-small;
         margin: 0;
-        color: #666;
+        color: map-get($color-demo, 0);
         text-align: center;
     }
 
     h4 {
         margin: 0;
-        padding: 24px 0 12px 0;
+        padding: 24px 0 12px 8px;
         font-weight: normal;
-        color: #666;
-        font-size: 14px;
+        color: map-get($color-demo, 1);
+        font-size: $mmf-font-small;
+        border-top: 2px solid map-get($color-demo, 4);
+        text-align: center;
+        font-style: italic;
     }
 }

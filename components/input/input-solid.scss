@@ -1,14 +1,10 @@
 @import "../../lib/input";
 @import "../../lib/units";
+@import "../../lib/elevation";
 
 
 @mixin input-solid() {
     &.mmf-input {
-        @include with-input-ux();
-        padding: $mmf-unit;
-
-        &[disabled] {
-            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
-        }
+        @include with-input-solid();
     }
 }

@@ -2,13 +2,50 @@
 // material design colors https://www.materialui.co/flatuicolors
 // https://material.io/color/#!/?view.left=0&view.right=1&secondary.color=90CAF9&primary.color=ECEFF1
 
+
+//Brand Colors
+$color-basic: (
+    0: rgb(41, 41, 58),
+    1: rgb(52, 52, 77), //not used anymore
+    2: rgb(113, 115, 127),
+    3: rgb(192, 193, 198),
+    4: rgb(224, 224, 227),
+    5: rgb(242, 242, 243),
+    6: rgb(255,255,255)
+);
+
+$color-highlight: (
+    0: rgb(0, 153, 144),
+    1: rgb(105, 193, 184),
+    2: rgb(129, 209, 198),
+    3: rgb(178, 223, 217),
+    4: rgb(185, 226, 220),
+    5: rgb(216, 239, 236)
+);
+
+$color-danger: (
+    // red
+    0: rgb(255, 76, 76),
+    1: rgb(216, 104, 104),
+);
+
+// Colors demo page
+$color-demo: (
+    0: rgb(248,14,253),
+    1: rgb(153,110,154),
+    2: rgb(51, 51, 51),
+    3: rgb(78, 75, 75),
+    4: rgb(242,242,243),
+    5: rgb(255, 255, 255)
+);
+
 // control variables: darken, lighten
 $mmf-color-distance: 20%;
 $mmf-color-distance--focus: 10%;
 // control variables: text
 $mmf-opacity--primary: 0.87 !default;
 $mmf-opacity--secondary: 0.54 !default;
-$mmf-opacity--hint: 0.38 !default;
+$mmf-opacity--hint: 0.30 !default;
 $mmf-opacity--disabled: $mmf-opacity--hint !default;
 $mmf-opacity--divider: 0.12 !default;
 

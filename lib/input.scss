@@ -47,17 +47,35 @@
 }
 
 
-@mixin with-input-ux() {
-    color: rgba($mmf-color--dark, $mmf-opacity--primary);
-    border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
+@mixin with-input-solid($is-form-element: true) {
+    color: map-get($color-basic, 0);
+    font-size: $mmf-font-normal;
+    line-height: $mmf-line-height;
+    letter-spacing: $mmf-letter-spacing;
+    padding: $mmf-unit;
+    border: $mmf-input-border--width solid map-get($color-basic, 4);
     border-radius: $mmf-radius;
     outline: 0;
+    transition: border-color $mmf-transition;
 
-    &:not([disabled]):focus {
-        border-color: rgba($mmf-color--secondary, 1);
-    }
+    @if $is-form-element {
+        &:not([disabled]):focus {
+            border-color: map-get($color-highlight, 0);
+            @include elevation(1);
+        }
 
-    &:not([disabled]):hover {
-        border-color: $mmf-color--secondary;
+        &:not([disabled]):hover {
+            border-color: map-get($color-highlight, 0);
+        }
+
+        &[disabled] {
+            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            border-color: map-get($color-basic, 5);
+        }
+
+        &::placeholder {
+            color: map-get($color-basic, 3);
+            font-style: italic;
+        }
     }
 }
