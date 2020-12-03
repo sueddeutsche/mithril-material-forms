@@ -20,11 +20,12 @@
         opacity: $mmf-opacity--disabled;
     }
 
-    .mmf-label {
+    .mmf-radio-label {
         @include clickable();
         display: inline-block;
         padding: $mmf-unit/2 $mmf-unit;
         color: inherit;
+        font-family: inherit;
     }
 
     .mmf-icon {
@@ -32,9 +33,9 @@
     }
 
     &:not([disabled]):hover {
-        border: $mmf-input-border--width solid map-get($color-highlight, 5);
+        border: $mmf-input-border--width solid map-get($color-basic, 5);
         border-radius: $mmf-radius;
-        background-color:map-get($color-highlight, 5);
+        background-color:map-get($color-basic, 5);
         color: map-get($color-highlight, 0);
     }
 

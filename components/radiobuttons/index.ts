@@ -51,7 +51,7 @@ export default {
                         },
                     },
                     icon,
-                    m("label.mmf-label", {
+                    m("label.mmf-radio-label", {
                         disabled: disabled ? disabled : option.disabled || false,
                         value: option.value,
                     }, option.title || option.value)

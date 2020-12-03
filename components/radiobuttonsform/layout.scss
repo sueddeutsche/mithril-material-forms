@@ -3,5 +3,10 @@
         span {
             cursor: default;
         }
+
+        .mmf-label {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
