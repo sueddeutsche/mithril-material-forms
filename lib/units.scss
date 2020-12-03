@@ -1,7 +1,7 @@
 $mmf-unit: 8px !default;
 $mmf-block: 6 * $mmf-unit !default;
 $mmf-block-padding: 2 * $mmf-unit !default;
-$mmf-radius: 2px !default;
+$mmf-radius: 4px !default;
 $mmf-input-border--width: 1px !default;
 
 // forms
@@ -10,3 +10,10 @@ $mmf-height-label: 1.1em !default;
 // animation
 $mmf-transition--time: 0.1s;
 $mmf-transition: $mmf-transition--time linear;
+
+// text & line styles
+$mmf-line-height: 140.62%;
+$mmf-letter-spacing: 0.05em;
+$mmf-font-normal: 14px;
+$mmf-font-small: 12px;
+$mmf-font-big: 18px;

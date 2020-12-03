@@ -4,14 +4,50 @@
 
 @mixin checkbox-solid() {
     &.mmf-checkbox {
-        border: 1px solid transparent;
         outline: 0;
+        border: $mmf-input-border--width solid map-get($color-basic, 3);
+        border-radius: $mmf-radius;
+        transition: border-color $mmf-transition;
+        width: 3 * $mmf-unit;
+        height: 3 * $mmf-unit;
 
-        &:not([disabled]) {
-            &:focus:after,
-            &:hover:after {
-                color: $mmf-color--secondary;
+        &::after {
+          content: "done";
+          font-size: $mmf-font-big;
+          transform: translate(10%, 10%); // center 
+        }
+
+        &:checked{
+            background-color: map-get($color-highlight , 2);
+            border-color: map-get($color-highlight, 0);
+            &::after {
+                
+                color: white;   
             }
+
+            &:not([disabled]):hover {
+                background-color: map-get($color-highlight, 3);
+    
+            }
+        }
+
+        &:not(:checked):after{
+            opacity: 0;
+        }
+
+        &:not([disabled]):focus {
+            border-color: map-get($color-highlight, 0);
+            @include elevation(1);
+        }
+    
+        &:not([disabled]):hover {
+            border-color: map-get($color-highlight, 0);
+
+        }
+    
+        &[disabled] {
+            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            border-color: map-get($color-basic, 5);
         }
     }
 }

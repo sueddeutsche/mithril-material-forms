@@ -1,6 +1,37 @@
+@import "../../lib/colors";
+@import "../../lib/units";
+
 @mixin switch-solid() {
     &.mmf-switch {
         outline: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        width: 4em;
+        height: 2em;
+        border-radius: .5em;
+        overflow: unset;
+        border: $mmf-input-border--width solid map-get($color-basic, 3);
+        border-radius: $mmf-radius;
+        background-color: map-get($color-basic, 4);
+
+        &::after{
+            @include elevation(1);
+            height: 2em;
+            width: 50%;
+            top: -6%;
+            left: -5%;
+            border: $mmf-input-border--width solid map-get($color-basic, 3);
+            border-radius: $mmf-radius;
+        }
+
+        &:checked {
+            background-color: map-get($color-highlight , 2);
+            border-color: map-get($color-highlight, 0);
+            &:after {
+                left: 105%;
+                transform: translate(-100%, 0);
+                border-color: map-get($color-highlight , 0);
+            }
+        }
     }
 }
