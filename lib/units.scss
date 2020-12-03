@@ -12,8 +12,9 @@ $mmf-transition--time: 0.1s;
 $mmf-transition: $mmf-transition--time linear;
 
 // text & line styles
-$mmf-line-height: 140.62%;
+$mmf-line-height: 1.4em;
 $mmf-letter-spacing: 0.05em;
-$mmf-font-normal: 14px;
-$mmf-font-small: 12px;
-$mmf-font-big: 18px;
+
+$mmf-font-small: 0.8em;
+$mmf-font-normal: 0.95em;
+$mmf-font-big: 1em;

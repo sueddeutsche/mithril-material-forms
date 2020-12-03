@@ -1,6 +1,7 @@
 @import "../../lib/units";
 @import "../../lib/reset";
 @import "../../lib/input";
+@import "../../lib/fonts";
 
 
 @mixin select-solid() {
@@ -41,12 +42,16 @@
 
         .mmf-select {
             @include reset-select();
+            @include solid-font-style();
             outline: none;
             padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
-            font-size: $mmf-font-normal;
-            line-height: $mmf-line-height;
-            letter-spacing: $mmf-letter-spacing;
             color: map-get($color-basic, 0);
+        }
+        
+        &.with-color {
+            .mmf-select {
+                padding: $mmf-unit 5*$mmf-unit $mmf-unit 3*$mmf-unit;
+            }
         }
     }
 }
