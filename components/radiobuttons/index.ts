@@ -2,18 +2,18 @@ import m from "mithril";
 
 
 export type OptionValue = {
-    title?: string, 
+    title?: string,
     value: string,
     icon?: string,
     disabled?:boolean,
     id?: string
 }
 
-export type Attrs = {    
+export type Attrs = {
     title: string,
-    value?: string, 
+    value?: string,
     options: Array<OptionValue>
-    disabled?: boolean, 
+    disabled?: boolean,
     onchange?: (event) => void;
     onblur?: (event) => void;
     onfocus?: (event) => void;
@@ -21,9 +21,16 @@ export type Attrs = {
 
 export type State = {
     $container: HTMLElement;
+    buttons: Array<{ value: string; dom: HTMLElement }>;
 }
 
 export default {
+
+    oncreate(vnode) {
+        this.buttons = Array.from(vnode.dom.querySelectorAll("button"))
+            .map(dom => ({ value: dom.value, dom: dom }));
+    },
+
     view(vnode) {
         const { value, options, disabled } = vnode.attrs;
         return m(".mmf-radio-btn-container", {
@@ -31,23 +38,24 @@ export default {
                 oncreate: _vnode => (this.$container = _vnode.dom as HTMLElement),
             },
             options.map((option: OptionValue) => {
-                const icon = option.icon ? 
-                    m("span.mmf-icon", {  
+                const icon = option.icon ?
+                    m("span.mmf-icon", {
                         value: option.value,
-                    }, option.icon) 
+                    }, option.icon)
                     : undefined;
 
-                return m(".mmf-radio-btn",
+                return m("button.mmf-radio-btn",
                     {
                         class: `${option.value === value ? "selected" : ""}`,
                         value: option.value,
                         disabled: disabled ? disabled : option.disabled || false,
-                        onclick: event => {
-                            event.target.focus();
+                        // track button element and value
+                        onclick: () => {
                             if ( disabled || option.disabled) return;
-                            Array.from(this.$container?.children).forEach(el => el.classList.remove("selected"));
-                            event.target?.parentNode?.classList?.add("selected");
-                            vnode.attrs.onchange(event.target.value || event.target.getAttribute("value"));
+                            this.buttons.forEach(button =>
+                                button.dom.classList.toggle("selected", button.value === option.value)
+                            );
+                            vnode.attrs.onchange(option.value);
                         },
                     },
                     icon,
@@ -57,6 +65,6 @@ export default {
                     }, option.title || option.value)
                 );
             })
-        );    
+        );
     }
 } as m.Component<Attrs, State>
