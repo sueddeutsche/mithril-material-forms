@@ -29,6 +29,16 @@ $color-danger: (
     1: rgb(216, 104, 104),
 );
 
+// Colors demo page
+$color-demo: (
+    0: rgb(248,14,253),
+    1: rgb(153,110,154),
+    2: rgb(51, 51, 51),
+    3: rgb(78, 75, 75),
+    4: rgb(242,242,243),
+    5: rgb(255, 255, 255)
+);
+
 // control variables: darken, lighten
 $mmf-color-distance: 20%;
 $mmf-color-distance--focus: 10%;

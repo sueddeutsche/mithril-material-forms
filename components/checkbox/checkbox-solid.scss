@@ -8,12 +8,12 @@
         border: $mmf-input-border--width solid map-get($color-basic, 3);
         border-radius: $mmf-radius;
         transition: border-color $mmf-transition;
-        width: 24px;
-        height:24px;
+        width: 3 * $mmf-unit;
+        height: 3 * $mmf-unit;
 
         &::after {
           content: "done";
-          font-size: 18px;
+          font-size: $mmf-font-big;
           transform: translate(10%, 10%); // center 
         }
 

@@ -36,17 +36,16 @@
             content: "arrow_drop_down";
             font-size: 1.8em;
             color: map-get($color-basic, 0);
-            margin: 4px 0;
+            margin: $mmf-unit/2 0;
         }
 
         .mmf-select {
             @include reset-select();
             outline: none;
-            padding: 8px 40px 8px 8px;
-            letter-spacing: 0.05%;
-            font-size: 14px;
-            line-height: 140.62%;
-            letter-spacing: 0.05em;
+            padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
+            font-size: $mmf-font-normal;
+            line-height: $mmf-line-height;
+            letter-spacing: $mmf-letter-spacing;
             color: map-get($color-basic, 0);
         }
     }
