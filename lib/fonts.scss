@@ -1,0 +1,5 @@
+@mixin solid-font-style() {
+    font-size: $mmf-font-normal;
+    line-height: $mmf-line-height;
+    letter-spacing: $mmf-letter-spacing;
+}

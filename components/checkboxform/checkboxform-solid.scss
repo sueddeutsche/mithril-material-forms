@@ -1,14 +1,13 @@
 @import "../../lib/colors";
 @import "../../lib/units";
+@import "../../lib/fonts";
 
 
 @mixin checkboxform-solid(){
     
 
         label {
-        font-size: $mmf-font-normal;
-        line-height: $mmf-line-height;
-        letter-spacing: $mmf-letter-spacing;
+            @include solid-font-style();
         }
 
         .order--label-first .mmf-label {
