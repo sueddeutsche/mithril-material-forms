@@ -48,5 +48,11 @@
             letter-spacing: $mmf-letter-spacing;
             color: map-get($color-basic, 0);
         }
+        
+        &.with-color {
+            .mmf-select {
+                padding: $mmf-unit 5*$mmf-unit $mmf-unit 3*$mmf-unit;
+            }
+        }
     }
 }
