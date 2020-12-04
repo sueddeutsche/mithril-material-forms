@@ -11,7 +11,7 @@ export const defaultOptions = {
     description: "",
 };
 
-export type Attrs = RadioButtonsAttrs & DefaultFormAttrs & {
+export type Attrs = DefaultFormAttrs & RadioButtonsAttrs & {
     theme?: string, 
     errors?: Array<string>,
     description?: string
