@@ -20,7 +20,7 @@
     }
     
     &.is-disabled:after {
-        opacity: $mmf-opacity--disabled;
+        opacity: map-get($opacity, 2);
     }
 
     &.with-color {
@@ -33,7 +33,7 @@
             border-radius: 50%;
             height: $mmf-unit;
             width: $mmf-unit;
-            border: 2px solid #fff;
+            border: 2px $mmf-style--border #fff;
             position: absolute;
             left: $mmf-unit;
             top: 50%;

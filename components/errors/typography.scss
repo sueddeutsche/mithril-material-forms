@@ -2,9 +2,9 @@
 
 
 .mmf-form__error--warning {
-    color: $mmf-color--warning;
+    color: map-get($color-danger, 3);
 }
 
 .mmf-form__error--error {
-    color: $mmf-color--error;
+    color: map-get($color-danger, 1);
 }

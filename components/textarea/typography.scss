@@ -7,5 +7,5 @@
 }
 
 .mmf-form.hasError .mmf-textarea {
-    border-color: $mmf-color--error;
+    border-color: map-get($color-danger, 1);
 }

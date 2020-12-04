@@ -25,12 +25,12 @@
         }
 
         &:checked {
-            background-color: map-get($color-highlight , 2);
-            border-color: map-get($color-highlight, 0);
+            background-color: map-get($color-solid , 2);
+            border-color: map-get($color-solid, 0);
             &:after {
                 left: 105%;
                 transform: translate(-100%, 0);
-                border-color: map-get($color-highlight , 0);
+                border-color: map-get($color-solid , 0);
             }
         }
     }

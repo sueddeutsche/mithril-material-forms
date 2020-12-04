@@ -6,9 +6,9 @@
 @import "../lib/units.scss";
 
 .undefined {
-    color: red;
-    background-color: red;
-    border-color: red;
+    color: map-get($color-danger, 0);
+    background-color: map-get($color-danger, 0);
+    border-color: map-get($color-danger, 0);
 }
 
 body {
@@ -70,7 +70,7 @@ h2 {
         font-weight: normal;
         color: map-get($color-demo, 1);
         font-size: $mmf-font-small;
-        border-top: 2px solid map-get($color-demo, 4);
+        border-top: 2px $mmf-style--border map-get($color-demo, 4);
         text-align: center;
         font-style: italic;
     }

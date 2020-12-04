@@ -38,8 +38,8 @@
         align-items: center;
         justify-content: center;
         font-size: 160%;
-        color: rgba($mmf-color--light, $mmf-opacity--primary);
-        background-color: rgba($mmf-color--dark, $mmf-opacity--secondary);
+        color: rgba(map-get($color-basic, 6), map-get($opacity, 0));
+        background-color: rgba(map-get($color-basic, 7), map-get($opacity, 1));
     }
 
     .with-overflow .mmf-preview__overflow-indicator {
@@ -62,7 +62,7 @@
         right: $mmf-unit;
 
         font-size: $mmf-text-size--meta;
-        color: rgba($mmf-color--light, $mmf-opacity--primary);
-        background: rgba(darken($mmf-color--dark, $mmf-color-distance), $mmf-opacity--hint);
+        color: rgba(map-get($color-basic, 6), map-get($opacity, 0));
+        background: rgba(darken(map-get($color-basic, 7), map-get($distance, 0)), map-get($opacity, 2));
     }
 }

@@ -11,11 +11,11 @@
 
 .mmf-form__errors {
     font-size: $mmf-text-size--errors;
-    color: $mmf-color--error;
+    color: map-get($color-danger, 1);
 }
 
 .mmf-meta {
-    opacity: $mmf-opacity--secondary;
+    opacity: map-get($opacity, 1);
     font-style: italic;
     font-size: $mmf-text-size--meta;
 }
@@ -24,6 +24,6 @@
     .mmf-meta,
     .mmf-form__errors,
     span.mmf-label { // be more specific to overwrite form+label combination
-        opacity: $mmf-opacity--disabled;
+        opacity: map-get($opacity, 2);
     }
 }

@@ -23,7 +23,7 @@
     &.mmf-form {
         position: relative;
         .mmf-label {
-            opacity: $mmf-opacity--secondary;
+            opacity: map-get($opacity, 1);
         }
     }
 }
