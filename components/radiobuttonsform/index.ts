@@ -6,18 +6,16 @@ import { DefaultFormAttrs } from "../types";
 
 
 export const defaultOptions = {
-    title: "",
-    disabled: false,
     theme: "the-default",
-    value: "",
     errors: [],
     description: "",
-    placeholder: "",
-    onchange: Function.prototype
 };
 
-
-export type Attrs = RadioButtonsAttrs & DefaultFormAttrs
+export type Attrs = RadioButtonsAttrs & DefaultFormAttrs & {
+    theme?: string, 
+    errors?: Array<string>,
+    description?: string
+}
 
 
 export default {
@@ -32,7 +30,6 @@ export default {
             m(Label,
                 {
                     ...attrs,
-                    // invertOrder: attrs.invertOrder !== true
                 },
                 m(RadioButtons,
                     {
