@@ -1,0 +1,67 @@
+@import "../../lib/colors";
+@import "../../lib/units";
+@import "../../lib/fonts";
+
+
+@mixin radiobuttons-solid(){
+    .mmf-radio-btn-container {
+        height: 0.75 * $mmf-block;
+        display: contents;
+    }
+    
+    .mmf-radio-btn {
+        @include solid-font-style();
+        @include clickable();
+        border: $mmf-input-border--width $mmf-style--border transparent;
+        border-radius: $mmf-radius;
+        background: transparent;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        margin: $mmf-unit/2 $mmf-unit / 2;
+        
+        &.is-disabled {
+            border: $mmf-input-border--width $mmf-style--border transparent;
+        }
+    
+        &:focus {
+            outline: none;
+            background-color:map-get($color-basic, 5);
+            color: map-get($color-solid, 0);
+            @include elevation(1);
+        }
+    
+        &:not([disabled]):hover {
+            border: $mmf-input-border--width $mmf-style--border map-get($color-basic, 5);
+            border-radius: $mmf-radius;
+            background-color:map-get($color-basic, 5);
+            color: map-get($color-solid, 0);
+        }
+    
+        &.selected {
+            border: $mmf-input-border--width $mmf-style--border map-get($color-solid, 5);
+            background-color: map-get($color-solid, 5);
+            border-radius: $mmf-radius;
+            color: map-get($color-solid, 0);
+            
+            &.is-disabled {
+                background-color: rgba(map-get($color-solid, 5), map-get($opacity, 2));
+                color: rgba(map-get($color-solid, 0), map-get($opacity, 2));
+                border-color: transparent;
+            }            
+        }
+    
+        &:not([disabled]).selected:hover {
+            opacity: map-get($opacity, 0);
+            border: $mmf-input-border--width solid map-get($color-solid, 5);
+            background-color:map-get($color-solid, 5);
+        }
+
+        &:not([disabled]).selected:focus {
+            opacity: map-get($opacity, 0);
+            border: $mmf-input-border--width solid map-get($color-solid, 5);
+            background-color:map-get($color-solid, 5);
+        }
+    }
+    
+}

@@ -31,9 +31,10 @@ export default {
     },
 
     view(vnode) {
-        const { value, options, disabled } = vnode.attrs;
+        const { value, options, disabled, theme } = vnode.attrs;
         return m(".mmf-radio-btn-container", {
                 disabled,
+                class: theme || "",
                 oncreate: _vnode => (this.$container = _vnode.dom as HTMLElement),
             },
             options.map((option: OptionValue) => {
@@ -46,6 +47,7 @@ export default {
                 const label = m("span", { class:  "mmf-radio-label" }, option.title || option.value);
                
                 const attrs = {
+                    theme,
                     disabled: disabled ? disabled : option.disabled || false,
                     title: option.title || option.value,
                     class: `${option.value === value ? "selected" : ""} mmf-radio-btn`,

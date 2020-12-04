@@ -3,5 +3,5 @@
     font-family: inherit;
     font-size: inherit;
     user-select: none;
-    color: $mmf-color--dark;
+    color: map-get($color-basic, 7);
 }

@@ -12,11 +12,9 @@ export const defaultOptions = {
 };
 
 export type Attrs = DefaultFormAttrs & RadioButtonsAttrs & {
-    theme?: string, 
     errors?: Array<string>,
     description?: string
 }
-
 
 export default {
 
@@ -27,20 +25,8 @@ export default {
             {
                 "class": `${getErrorClass(attrs.errors)} ${attrs.theme}`
             },
-            m(Label,
-                {
-                    ...attrs,
-                },
-                m(RadioButtons,
-                    {
-                        value: vnode.attrs.value,
-                        disabled: vnode.attrs.disabled,
-                        title: vnode.attrs.title,
-                        options: vnode.attrs.options,
-                        onchange: vnode.attrs.onchange
-                    }
-                )
-            ),
+            m(Label, { ...attrs },),
+            m(RadioButtons, { ...attrs }),
             m(Errors, attrs),
             attrs.description && m(".mmf-meta", attrs.description),
             vnode.children

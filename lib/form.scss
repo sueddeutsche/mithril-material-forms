@@ -8,8 +8,8 @@
     position: relative;
 
     .mmf-label {
-        color: $mmf-color--dark;
-        opacity: $mmf-opacity--secondary;
+        color: map-get($color-basic, 7);
+        opacity: map-get($opacity, 1);
     }
 }
 
@@ -44,8 +44,8 @@
         display: inline-block;
         transition: all $mmf-transition--time ease-in-out;
 
-        color: $mmf-color--dark;
-        opacity: $mmf-opacity--secondary;
+        color: map-get($color-basic, 7);
+        opacity: map-get($opacity, 1);
         font-size: $mmf-text-size--label; // small font-size if not currently a placeholder (but title)
 
         white-space: nowrap;
@@ -53,24 +53,21 @@
         overflow: hidden;
     }
 
-    &.no-error {}
-    &.not-empty {}
-
     &.has-focus {
         .mmf-label {
-            color: $mmf-color--primary;
-            opacity: $mmf-opacity--primary;
+            color: map-get($color-material, 0);
+            opacity: map-get($opacity, 0);
         }
     }
 
     &.has-error {
         select,
         input {
-            border-color: $mmf-color--error;
+            border-color: map-get($color-danger, 1);
         }
         &.has-focus {
             .mmf-label {
-                color: $mmf-color--error;
+                color: map-get($color-danger, 1);
             }
         }
     }
@@ -78,11 +75,11 @@
     &.has-warning {
         select,
         input {
-            border-color: $mmf-color--warning;
+            border-color: map-get($color-danger, 3);
         }
         &.has-focus {
             .mmf-label {
-                color: $mmf-color--warning;
+                color: map-get($color-danger, 3);
             }
         }
     }

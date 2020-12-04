@@ -5,7 +5,7 @@
 @mixin checkbox-solid() {
     &.mmf-checkbox {
         outline: 0;
-        border: $mmf-input-border--width solid map-get($color-basic, 3);
+        border: $mmf-input-border--width $mmf-style--border map-get($color-basic, 3);
         border-radius: $mmf-radius;
         transition: border-color $mmf-transition;
         width: 3 * $mmf-unit;
@@ -18,15 +18,14 @@
         }
 
         &:checked{
-            background-color: map-get($color-highlight , 2);
-            border-color: map-get($color-highlight, 0);
+            background-color: map-get($color-solid , 2);
+            border-color: map-get($color-solid, 0);
             &::after {
-                
                 color: white;   
             }
 
             &:not([disabled]):hover {
-                background-color: map-get($color-highlight, 3);
+                background-color: map-get($color-solid, 3);
     
             }
         }
@@ -36,17 +35,16 @@
         }
 
         &:not([disabled]):focus {
-            border-color: map-get($color-highlight, 0);
+            border-color: map-get($color-solid, 0);
             @include elevation(1);
         }
     
         &:not([disabled]):hover {
-            border-color: map-get($color-highlight, 0);
+            border-color: map-get($color-solid, 0);
 
         }
     
         &[disabled] {
-            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
             border-color: map-get($color-basic, 5);
         }
     }

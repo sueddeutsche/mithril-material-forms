@@ -2,15 +2,10 @@
 
 .mmf-form--radio-buttons {
     .order--label-first{
-        span {
-            cursor: default;
-        }
-
         .mmf-label {
             display: flex;
             flex-direction: column;
         }
-
     }
 
     .mmf-form__error {

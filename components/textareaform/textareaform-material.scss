@@ -10,7 +10,6 @@
 
         textarea {
             border: none;
-            // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
             border-color: transparent;
             background: transparent;
 
@@ -18,7 +17,7 @@
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
             &:focus {
-                border-color: $mmf-color--primary;
+                border-color: map-get($color-material, 0);
             }
        }
     }

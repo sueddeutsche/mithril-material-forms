@@ -5,17 +5,17 @@
 
 @mixin with-bottom-border() {
     // border-bottom: $mmf-input-border--width $mmf-style--border transparent;
-    border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+    border-bottom: $mmf-input-border--width $mmf-style--border rgba(map-get($color-basic, 7), map-get($opacity, 1));
     &:not([disabled]):focus {
-        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba(map-get($color-material, 0), map-get($opacity, 1));
     }
     &:not([disabled]):hover {
-        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba(map-get($color-material, 0), map-get($opacity, 1));
     }
 }
 
 @mixin with-input() {
-    color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    color: rgba(map-get($color-basic, 7), map-get($opacity, 0));
     border: none;
     border-radius: 0;
     width: 100%;
@@ -28,21 +28,18 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     transition: border-color $mmf-transition;
-    // border-bottom: $mmf-input-border--width $mmf-style--border transparent;
 
     &:not([disabled]):focus {
-        border-color: rgba($mmf-color--secondary, 1);
-        // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+        border-color: rgba(map-get($color-material, 0), 1);
     }
 
     &:not([disabled]):hover {
-        border-color: $mmf-color--secondary;
-        // border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+        border-color: map-get($color-material, 0);
     }
 
     &[disabled] {
-        color: $mmf-color--dark; // on deactivated state, set color to match labels
-        opacity: $mmf-opacity--disabled;
+        color: map-get($color-basic, 7); // on deactivated state, set color to match labels
+        opacity: map-get($opacity, 2);
     }
 }
 
@@ -53,23 +50,23 @@
     line-height: $mmf-line-height;
     letter-spacing: $mmf-letter-spacing;
     padding: $mmf-unit;
-    border: $mmf-input-border--width solid map-get($color-basic, 4);
+    border: $mmf-input-border--width $mmf-style--border map-get($color-basic, 4);
     border-radius: $mmf-radius;
     outline: 0;
     transition: border-color $mmf-transition;
 
     @if $is-form-element {
         &:not([disabled]):focus {
-            border-color: map-get($color-highlight, 0);
+            border-color: map-get($color-solid, 0);
             @include elevation(1);
         }
 
         &:not([disabled]):hover {
-            border-color: map-get($color-highlight, 0);
+            border-color: map-get($color-solid, 0);
         }
 
         &[disabled] {
-            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            color: rgba(map-get($color-basic, 7), map-get($opacity, 2));
             border-color: map-get($color-basic, 5);
         }
 
