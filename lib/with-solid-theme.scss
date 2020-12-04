@@ -2,6 +2,7 @@
 @import "../components/checkbox/checkbox-solid";
 @import "../components/checkboxform/checkboxform-solid";
 @import "../components/input/input-solid";
+@import "../components/radiobuttons/radiobuttons-solid.scss";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
 @import "../components/switch/switch-solid";
@@ -16,6 +17,7 @@
     @include checkbox-solid();
     @include checkboxform-solid();
     @include input-solid();
+    @include radiobuttons-solid();
     @include select-solid();
     @include selectform-solid();
     @include switch-solid();
