@@ -178,6 +178,34 @@ const template = {
                     onchange: value => console.log("value", value)
                 }
             },
+            "radio elements, one disabled": {
+                attrs: {
+                    value: "wine",
+                    title: "drinks",
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                            disabled: true
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
             "radio elements without icons": {
                 attrs: {
                     value: "wine",
@@ -206,7 +234,32 @@ const template = {
                     onchange: value => console.log("value", value)
                 }
             },
-            "disabled radio elements without icons": {
+            "radio elements without icons, all disabled": {
+                attrs: {
+                    value: "wine",
+                    disabled: true,
+                    options: [
+                        {
+                            id: "coffee-no-icon-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            disabled: true
+                        },
+                        {
+                            id: "wine-no-icon-disabled",
+                            title: "Wine",
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-no-icon-disabled",
+                            title: "Beer",
+                            value: "beer",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "radio elements without icons, one disabled": {
                 attrs: {
                     value: "wine",
                     options: [
@@ -239,7 +292,7 @@ const template = {
                 attrs: {
                     value: "wine",
                     disabled: false,
-                    description: "Checkbox-Form description text...",
+                    description: "Radio-Buttons form description text...",
                     options: [
                         {
                             id: "coffee-normal",
@@ -271,7 +324,7 @@ const template = {
                     value: "wine",
                     title: "Radio Button Form",
                     errors: ["This radio button is invalid"],
-                    description: "Checkbox-Form description text...",
+                    description: "Radio-Buttons form description text...",
                     disabled: false,
                     options: [
                         {
@@ -301,7 +354,7 @@ const template = {
                     value: "wine",
                     title: "Radio Button Form",
                     errors: ["This radio button is invalid"],
-                    description: "Checkbox-Form description text...",
+                    description: "Radio-Buttons form description text...",
                     disabled: true,
                     options: [
                         {

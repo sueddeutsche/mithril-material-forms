@@ -1,9 +1,15 @@
 import m from "mithril";
+import Button from "../button";
 export default {
+    oncreate(vnode) {
+        this.buttons = Array.from(vnode.dom.querySelectorAll("button"))
+            .map(dom => ({ value: dom.value, dom: dom }));
+    },
     view(vnode) {
-        const { value, options, disabled } = vnode.attrs;
+        const { value, options, disabled, theme } = vnode.attrs;
         return m(".mmf-radio-btn-container", {
             disabled,
+            class: theme || "",
             oncreate: _vnode => (this.$container = _vnode.dom),
         }, options.map((option) => {
             const icon = option.icon ?
@@ -11,23 +17,22 @@ export default {
                     value: option.value,
                 }, option.icon)
                 : undefined;
-            return m(".mmf-radio-btn", {
-                class: `${option.value === value ? "selected" : ""}`,
-                value: option.value,
+            const label = m("span", { class: "mmf-radio-label" }, option.title || option.value);
+            const attrs = {
+                theme,
                 disabled: disabled ? disabled : option.disabled || false,
-                onclick: event => {
-                    var _a, _b, _c, _d;
-                    event.target.focus();
+                title: option.title || option.value,
+                class: `${option.value === value ? "selected" : ""} mmf-radio-btn`,
+                value: option.value,
+                // track button element and value
+                onclick: () => {
                     if (disabled || option.disabled)
                         return;
-                    Array.from((_a = this.$container) === null || _a === void 0 ? void 0 : _a.children).forEach(el => el.classList.remove("selected"));
-                    (_d = (_c = (_b = event.target) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.classList) === null || _d === void 0 ? void 0 : _d.add("selected");
-                    vnode.attrs.onchange(event.target.value || event.target.getAttribute("value"));
-                },
-            }, icon, m("label.mmf-label", {
-                disabled: disabled ? disabled : option.disabled || false,
-                value: option.value,
-            }, option.title || option.value));
+                    this.buttons.forEach(button => button.dom.classList.toggle("selected", button.value === option.value));
+                    vnode.attrs.onchange(option.value);
+                }
+            };
+            return m(Button, attrs, icon, label);
         }));
     }
 };

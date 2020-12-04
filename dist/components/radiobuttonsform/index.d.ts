@@ -2,15 +2,13 @@ import m from "mithril";
 import { Attrs as RadioButtonsAttrs } from "../radiobuttons";
 import { DefaultFormAttrs } from "../types";
 export declare const defaultOptions: {
-    title: string;
-    disabled: boolean;
     theme: string;
-    value: string;
     errors: any[];
     description: string;
-    placeholder: string;
-    onchange: Function;
 };
-export declare type Attrs = RadioButtonsAttrs & DefaultFormAttrs;
+export declare type Attrs = DefaultFormAttrs & RadioButtonsAttrs & {
+    errors?: Array<string>;
+    description?: string;
+};
 declare const _default: m.Component<Attrs, {}>;
 export default _default;
