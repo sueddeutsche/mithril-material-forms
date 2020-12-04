@@ -1,4 +1,6 @@
 import m from "mithril";
+import { DefaultInputAttrs } from "../types";
+import Button, { Attrs as ButtonsAttrs } from "../button";
 
 
 export type OptionValue = {
@@ -9,14 +11,11 @@ export type OptionValue = {
     id?: string
 }
 
-export type Attrs = {
-    title: string,
-    value?: string,
-    options: Array<OptionValue>
-    disabled?: boolean,
+export type Attrs = DefaultInputAttrs & ButtonsAttrs & {
+    title: string;
+    value?: string;
+    options: Array<OptionValue>;
     onchange?: (event) => void;
-    onblur?: (event) => void;
-    onfocus?: (event) => void;
 }
 
 export type State = {
@@ -43,27 +42,24 @@ export default {
                         value: option.value,
                     }, option.icon)
                     : undefined;
-
-                return m("button.mmf-radio-btn",
-                    {
-                        class: `${option.value === value ? "selected" : ""}`,
-                        value: option.value,
-                        disabled: disabled ? disabled : option.disabled || false,
-                        // track button element and value
-                        onclick: () => {
-                            if ( disabled || option.disabled) return;
-                            this.buttons.forEach(button =>
-                                button.dom.classList.toggle("selected", button.value === option.value)
-                            );
-                            vnode.attrs.onchange(option.value);
-                        },
-                    },
-                    icon,
-                    m("label.mmf-radio-label", {
-                        disabled: disabled ? disabled : option.disabled || false,
-                        value: option.value,
-                    }, option.title || option.value)
-                );
+                
+                const label = m("span", { class:  "mmf-radio-label" }, option.title || option.value);
+               
+                const attrs = {
+                    disabled: disabled ? disabled : option.disabled || false,
+                    title: option.title || option.value,
+                    class: `${option.value === value ? "selected" : ""} mmf-radio-btn`,
+                    value: option.value,
+                    // track button element and value
+                    onclick: () => {
+                        if ( disabled || option.disabled) return;
+                        this.buttons.forEach(button =>
+                            button.dom.classList.toggle("selected", button.value === option.value)
+                        );
+                        vnode.attrs.onchange(option.value);
+                    }
+                }
+                return m(Button, attrs, icon, label);
             })
         );
     }
