@@ -4,11 +4,11 @@
 
 @mixin textarea-solid() {
     &.mmf-textarea {
-        @include with-input-ux();
+        @include with-input-solid();
         padding: $mmf-unit;
 
         &[disabled] {
-            color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            color: rgba(map-get($color-solid, 7), map-get($opacity, 2));
         }
     }
 }

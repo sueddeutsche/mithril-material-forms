@@ -2,43 +2,71 @@
 // material design colors https://www.materialui.co/flatuicolors
 // https://material.io/color/#!/?view.left=0&view.right=1&secondary.color=90CAF9&primary.color=ECEFF1
 
+
+// Colors for demo page
+$color-demo: (
+    0: rgb(248,14,253),
+    1: rgb(153,110,154),
+    2: rgb(51, 51, 51),
+    3: rgb(78, 75, 75),
+    4: rgb(242,242,243),
+    5: rgb(255, 255, 255)
+);
+
+// General warning colors
+$color-danger: (
+    0: rgb(255, 0, 0),
+    1: rgb(255, 76, 76),
+    2: rgb(216, 104, 104),
+    3: rgb(243, 156, 18),
+);
+
+// Colors for basic theme and basic styles
+$color-basic: (
+    0: rgb(41, 41, 58),
+    1: rgb(52, 52, 77),
+    2: rgb(113, 115, 127),
+    3: rgb(192, 193, 198),
+    4: rgb(224, 224, 227),
+    5: rgb(242, 242, 243),
+    6: rgb(255,255,255),
+    7: rgb(0, 0, 0), // dark
+    8: rgb(46, 204, 113) // color ok
+);
+
+
+// Colors for material theme
+$color-material: (
+    0: rgb(0, 200, 82), // primary
+    1: rgb(29,144,67), // secondary
+    2: rgb(236, 239, 241), // contrast
+    3: rgb(0, 0, 0) 
+);
+
+// Colors for solid theme
+$color-solid: (
+    0: rgb(0, 153, 144),
+    1: rgb(105, 193, 184),
+    2: rgb(129, 209, 198),
+    3: rgb(178, 223, 217),
+    4: rgb(185, 226, 220),
+    5: rgb(216, 239, 236),
+    6: rgb(255,255,255),
+    7: rgb(0, 0, 0)
+);
+    
+$opacity: (
+    0: 0.87, // primary
+    1: 0.54, // secondary
+    2: 0.30, // hint & disabled
+    3: 0.12 // divider
+);
+
 // control variables: darken, lighten
-$mmf-color-distance: 20%;
-$mmf-color-distance--focus: 10%;
-// control variables: text
-$mmf-opacity--primary: 0.87 !default;
-$mmf-opacity--secondary: 0.54 !default;
-$mmf-opacity--hint: 0.38 !default;
-$mmf-opacity--disabled: $mmf-opacity--hint !default;
-$mmf-opacity--divider: 0.12 !default;
-
-// base text colors
-$mmf-color--dark: #000 !default;
-$mmf-color--light: #fff !default;
-$mmf-color--ok: #2ECC71 !default;
-$mmf-color--error: red(700) !default;
-$mmf-color--warning: #F39C12 !default;
-
-// strange variable, used often as card background and light-alternative...
-// this could also be sort if highest elevation (besides 100% bright: #fff)
-// "contrast to bright" (on hover)
-$mmf-color--contrast: #ECEFF1 !default;
-
-// PRIMARY COLOR
-// In Material Design, a primary color refers to a color that appears most frequently in your app
-$mmf-color--primary: green(2) !default;
-
-// SECONDARY COLOR
-// A secondary color refers to a color used to accent key parts of your UI
-$mmf-color--secondary: green(700) !default;
-
-// layers
-// @todo refactor
-$color-elevation: #37474F;
-$color-elevation-0: $color-elevation; // application background
-// $color-elevation-2: #1c313a; // first layer above background (header-bar)
-$color-elevation-4: darken($color-elevation, 0.25 * $mmf-color-distance); // first layer above background (header-bar)
-$color-elevation-8: darken($color-elevation, 0.125 * $mmf-color-distance); // second layer above background (navigation-bar)
+$distance: (
+    0: 20%, // normal
+    1: 10% // focus
+);
 
 // styling - no colors
 $mmf-style--border: solid !default;

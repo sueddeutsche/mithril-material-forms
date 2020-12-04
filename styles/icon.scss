@@ -17,6 +17,6 @@
     transition: color $mmf-transition;
 
     &:hover {
-        color: $mmf-color--secondary;
+        color: map-get($color-material, 0);
     }
 }

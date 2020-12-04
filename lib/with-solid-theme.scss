@@ -1,33 +1,49 @@
-$mmf-radius: 4px !default;
 @import "../components/button/button-solid";
 @import "../components/checkbox/checkbox-solid";
+@import "../components/checkboxform/checkboxform-solid";
 @import "../components/input/input-solid";
+@import "../components/radiobuttons/radiobuttons-solid.scss";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
+@import "../components/switch/switch-solid";
 @import "../components/textarea/textarea-solid";
-
-
 @import "../lib/typography";
 @import "../lib/colors";
+@import "../lib/units";
+@import "../lib/fonts";
 
 @mixin with-solid-theme() {
     @include button-solid();
     @include checkbox-solid();
+    @include checkboxform-solid();
     @include input-solid();
+    @include radiobuttons-solid();
     @include select-solid();
     @include selectform-solid();
+    @include switch-solid();
     @include textarea-solid();
 
-    &.mmf-label {
-        @include font-bold();
-        font-size: $mmf-text-size--label;
-        color: rgba($mmf-color--dark, $mmf-opacity--primary);
+    .mmf-meta {
+        @include solid-font-style();
+        opacity: 1;
+        font-style: normal;
+        color: map-get($color-basic, 2);
+        padding-top: 10px;
+    }
+    
+    .mmf-form__error--error {
+        @include solid-font-style();
     }
 
+    // all styles for type-in + dropdown elements that have labels and descriptions
+    &.mmf-form--radio-buttons,
     &.mmf-form--input,
+    &.mmf-form--select,
     &.mmf-form--textarea {
         .mmf-label {
-            line-height: 1.5em;
+            @include solid-font-style();
+            color: map-get($color-basic, 0);
+            padding-bottom: 6px;
         }
     }
 

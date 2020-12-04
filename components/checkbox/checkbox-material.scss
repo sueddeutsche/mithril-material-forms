@@ -14,7 +14,7 @@
         font-size: $mmf-text-size--checkbox;
 
         &:after {
-            color: rgba($mmf-color--dark, $mmf-opacity--primary);
+            color: rgba(map-get($color-material, 3), map-get($opacity, 0));
             font-size: inherit;
             transition: color $mmf-transition;
         }
@@ -22,7 +22,7 @@
         &:not([disabled]) {
             &:focus:after,
             &:hover:after {
-                color: $mmf-color--secondary;
+                color: map-get($color-material, 0);
             }
         }
     }

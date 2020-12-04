@@ -1,0 +1,20 @@
+@import "../../lib/colors";
+@import "../../lib/units";
+@import "../../lib/fonts";
+
+
+@mixin checkboxform-solid(){
+    
+
+        label {
+            @include solid-font-style();
+        }
+
+        .order--label-first .mmf-label {
+            padding-right: $mmf-unit;
+        }
+
+        .order--label-last .mmf-label {
+            padding-left: $mmf-unit;
+        }
+    }

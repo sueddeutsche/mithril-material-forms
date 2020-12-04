@@ -15,7 +15,7 @@
         &.is-enabled {
             &:hover:after,
             &.has-focus:after {
-                color: $mmf-color--primary;
+                color: map-get($color-material, 0);
             }
         }
 
@@ -24,11 +24,11 @@
             outline: none;
             padding: 0;
             padding-right: (0.5 * $mmf-block);
-            border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+            border-bottom: $mmf-input-border--width $mmf-style--border rgba(map-get($color-material, 3), map-get($opacity, 1));
 
             &:not([disabled]):focus,
             &:not([disabled]):hover {
-                border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--primary, $mmf-opacity--secondary);
+                border-bottom: $mmf-input-border--width $mmf-style--border rgba(map-get($color-material, 0), map-get($opacity, 1));
             }
 
             &.is-enabled {

@@ -1,31 +1,57 @@
 @import "../../lib/units";
 @import "../../lib/reset";
+@import "../../lib/input";
+@import "../../lib/fonts";
 
 
 @mixin select-solid() {
     &.mmf-select__wrapper {
-        color: rgba($mmf-color--dark, $mmf-opacity--primary);
-        border: $mmf-input-border--width solid darken($mmf-color--light, $mmf-color-distance);
-        border-radius: $mmf-radius;
-        overflow: hidden; // fix capped borders
-
-        &:after {
-            content: "arrow_drop_down";
-        }
+        @include with-input-solid(false);
+        padding: 0; // reset default input padding from mixin
 
         &.is-enabled {
+            &:hover {
+                border-color: map-get($color-solid, 0);
+            }
+
+            &.has-focus {
+                border-color: map-get($color-solid, 0);
+                @include elevation(1);
+            }
+
             &:hover,
             &.has-focus {
-                border-color: $mmf-color--secondary;
                 &:after {
-                    color: $mmf-color--secondary;
+                    background-color: map-get($color-solid, 5);
+                    color: map-get($color-solid, 0);
                 }
             }
         }
 
+        &.is-disabled {
+            color: rgba(map-get($color-solid, 7), map-get($opacity, 2));
+            border-color: map-get($color-basic, 5);
+        }
+
+        &:after {
+            content: "arrow_drop_down";
+            font-size: 1.8em;
+            color: map-get($color-basic, 0);
+            margin: $mmf-unit/2 0;
+        }
+
         .mmf-select {
             @include reset-select();
+            @include solid-font-style();
             outline: none;
+            padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
+            color: map-get($color-basic, 0);
+        }
+        
+        &.with-color {
+            .mmf-select {
+                padding: $mmf-unit 5*$mmf-unit $mmf-unit 3*$mmf-unit;
+            }
         }
     }
 }
