@@ -11,7 +11,7 @@
         @include reset-button();
 
         border-radius: $mmf-radius;
-        color: $mmf-color--secondary;
+        color: map-get($color-material, 0);
         // background-color should actually be $mmf-color-secondary__contrast, but inherit is the more conform sane
         // default, since the button should not have any visible background per default
         background-color: inherit;
@@ -21,16 +21,16 @@
         &.is-enabled {
             &:hover,
             &:focus {
-                background-color: $mmf-color--contrast;
+                background-color: map-get($color-material, 2);
             }
         }
 
         &.is-disabled {
-            color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+            color: rgba(map-get($color-material, 0), map-get($opacity, 2));
             &:focus,
             &:hover {
                 background-color: inherit;
-                color: rgba($mmf-color--secondary, $mmf-opacity--disabled);
+                color: rgba(map-get($color-material, 0), map-get($opacity, 2));
                 cursor: default;
             }
         }
@@ -42,21 +42,21 @@
 
     &.mmf-button--raised {
         @include elevation(1);
-        color: $mmf-color--contrast;
-        background-color: $mmf-color--secondary;
+        color: map-get($color-material, 2);
+        background-color: map-get($color-material, 0);
 
         &.is-enabled {
             &:hover,
             &:focus {
-                background-color: darken($mmf-color--secondary, $mmf-color-distance--focus);
+                background-color: darken(map-get($color-material, 0), map-get($distance, 1));
             }
         }
 
         &.is-disabled,
         &.is-disabled:hover,
         &.is-disabled:focus {
-            color: rgba($mmf-color--contrast, $mmf-opacity--disabled);
-            background-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            color: rgba(map-get($color-material, 2), map-get($opacity, 2));
+            background-color: rgba(map-get($color-material, 3), map-get($opacity, 2));
             cursor: default;
         }
     }

@@ -8,34 +8,46 @@
     &.mmf-button {
         @include reset-button();
         background-color: inherit;
-        border: $mmf-input-border--width solid $mmf-color--dark;
-        border-radius: 0;
+        border: $mmf-input-border--width $mmf-style--border map-get($color-solid, 0);
+        border-radius: $mmf-radius;
+        color: map-get($color-solid, 0);
 
         &[disabled] {
-            border-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            border-color: rgba(map-get($color-solid, 0), map-get($opacity, 2));
+            color: rgba(map-get($color-solid, 0), map-get($opacity, 2));
         }
 
         &.is-enabled {
             &:hover,
             &:focus {
-                background-color: darken($mmf-color--light, $mmf-color-distance--focus);
+                background-color: map-get($color-solid, 5);
+            }
+
+            &:focus {
+                @include elevation(1);
             }
         }
     }
 
     &.mmf-button--raised {
-        color: $mmf-color--light;
-        background-color: $mmf-color--dark;
-
+        color: map-get($color-solid, 5);
+        background-color: map-get($color-solid, 0);
+        
         &[disabled] {
-            background-color: rgba($mmf-color--dark, $mmf-opacity--disabled);
+            background-color: rgba(map-get($color-solid, 0), map-get($opacity, 2));
             border-color: transparent;
+            color: map-get($color-solid, 6);
         }
 
         &.is-enabled {
             &:hover,
             &:focus {
-                background-color: lighten($mmf-color--dark, $mmf-color-distance);
+                background-color: map-get($color-solid, 1);
+                border-color: map-get($color-solid, 1);
+            }
+
+            &:focus {
+                @include elevation(1);
             }
         }
     }
