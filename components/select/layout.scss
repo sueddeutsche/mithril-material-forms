@@ -33,7 +33,7 @@
             border-radius: 50%;
             height: $mmf-unit;
             width: $mmf-unit;
-            border: 2px $mmf-style--border #fff;
+            border: 2px $mmf-style--border map-get($color-basic, 6);
             position: absolute;
             left: $mmf-unit;
             top: 50%;
@@ -50,7 +50,7 @@
     -webkit-appearance: none;
 
     // hide touch borders
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: map-get($color-basic, 7);
 
     // select layout
     padding-left: $mmf-unit; // sane base padding, which conflicts with theme-material

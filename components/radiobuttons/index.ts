@@ -34,7 +34,7 @@ export default {
         const { value, options, disabled, theme } = vnode.attrs;
         return m(".mmf-radio-btn-container", {
                 disabled,
-                class: theme ? theme : "",
+                class: theme || "",
                 oncreate: _vnode => (this.$container = _vnode.dom as HTMLElement),
             },
             options.map((option: OptionValue) => {

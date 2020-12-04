@@ -12,10 +12,7 @@
 
         border-radius: $mmf-radius;
         color: map-get($color-material, 0);
-        // background-color should actually be $mmf-color-secondary__contrast, but inherit is the more conform sane
-        // default, since the button should not have any visible background per default
         background-color: inherit;
-
         transition: background-color $mmf-transition;
 
         &.is-enabled {
