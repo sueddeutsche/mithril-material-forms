@@ -114,6 +114,220 @@ const template = {
             }
         }
     },
+    radioButtons: {
+        render: render.bind(null, mmf.RadioButtons),
+        variations: {
+            "radio elements": {
+                attrs: {
+                    value: "wine",
+                    disabled: false,
+                    options: [
+                        {
+                            id: "coffee-normal",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                            disabled: false
+                        },
+                        {
+                            id: "wine-normal",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                            disabled: false
+                        },
+                        {
+                            id: "beer-normal",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "disabled radio elements": {
+                attrs: {
+                    value: "wine",
+                    title: "drinks",
+                    disabled: true,
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                            disabled: false
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                            disabled: false
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "radio elements without icons": {
+                attrs: {
+                    value: "wine",
+                    title: "drinks",
+                    disabled: false,
+                    options: [
+                        {
+                            id: "coffee-no-icon",
+                            title: "Coffee",
+                            value: "coffee",
+                            disabled: false
+                        },
+                        {
+                            id: "wine-no-icon",
+                            title: "Wine",
+                            value: "wine",
+                            disabled: false
+                        },
+                        {
+                            id: "beer-no-icon",
+                            title: "Beer",
+                            value: "beer",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "disabled radio elements without icons": {
+                attrs: {
+                    value: "wine",
+                    options: [
+                        {
+                            id: "coffee-no-icon-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            disabled: true
+                        },
+                        {
+                            id: "wine-no-icon-disabled",
+                            title: "Wine",
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-no-icon-disabled",
+                            title: "Beer",
+                            value: "beer",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            }
+        }
+    },
+    radioButtonsForm: {
+        render: render.bind(null, mmf.RadioButtonsForm),
+        variations: {
+            "radio form with description": {
+                attrs: {
+                    value: "wine",
+                    disabled: false,
+                    description: "Checkbox-Form description text...",
+                    options: [
+                        {
+                            id: "coffee-normal",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                            disabled: false
+                        },
+                        {
+                            id: "wine-normal",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                            disabled: false
+                        },
+                        {
+                            id: "beer-normal",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                            disabled: false
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "radio form with errors": {
+                attrs: {
+                    value: "wine",
+                    title: "Radio Button Form",
+                    errors: ["This radio button is invalid"],
+                    description: "Checkbox-Form description text...",
+                    disabled: false,
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+            "radio form with errors, title and description, disabled": {
+                attrs: {
+                    value: "wine",
+                    title: "Radio Button Form",
+                    errors: ["This radio button is invalid"],
+                    description: "Checkbox-Form description text...",
+                    disabled: true,
+                    options: [
+                        {
+                            id: "coffee-disabled",
+                            title: "Coffee",
+                            value: "coffee",
+                            icon: "local_cafe",
+                        },
+                        {
+                            id: "wine-disabled",
+                            title: "Wine",
+                            icon: "wine_bar",
+                            value: "wine",
+                        },
+                        {
+                            id: "beer-disabled",
+                            title: "Beer",
+                            value: "beer",
+                            icon: "sports_bar",
+                        }
+                    ],
+                    onchange: value => console.log("value", value)
+                }
+            },
+        }
+    },
     input: {
         render: render.bind(null, mmf.Input),
         variations: {
@@ -432,4 +646,4 @@ function component(type) {
         return render(title, { ...variation.attrs, theme: "the-solid" }, ...variation.childNodes || []);
     }))));
 }
-m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));
+m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("radioButtonsForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));

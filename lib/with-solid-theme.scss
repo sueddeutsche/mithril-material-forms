@@ -34,6 +34,7 @@
     }
 
     // all styles for type-in + dropdown elements that have labels and descriptions
+    &.mmf-form--radio-buttons,
     &.mmf-form--input,
     &.mmf-form--select,
     &.mmf-form--textarea {

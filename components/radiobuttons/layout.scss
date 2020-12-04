@@ -1,0 +1,51 @@
+@import "../../lib/interface";
+@import "../../lib/units";
+@import "../../lib/colors";
+@import "../../lib/elevation";
+
+.mmf-radio-btn-container {
+    height: 0.75 * $mmf-block;
+    display: contents;
+}
+
+.mmf-radio-btn {
+    @include clickable();
+    border: $mmf-input-border--width solid transparent;
+    border-radius: $mmf-radius;
+    background: transparent;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: $mmf-unit/2 $mmf-unit / 2;
+
+    &.is-disabled {
+        opacity: $mmf-opacity--disabled;
+    }
+
+    &:focus {
+        outline: none;
+        background-color:map-get($color-basic, 5);
+        color: map-get($color-highlight, 0);
+        @include elevation(1);
+    }
+
+    &:not([disabled]):hover {
+        border: $mmf-input-border--width solid map-get($color-basic, 5);
+        border-radius: $mmf-radius;
+        background-color:map-get($color-basic, 5);
+        color: map-get($color-highlight, 0);
+    }
+
+    &.selected {
+        border: $mmf-input-border--width solid map-get($color-highlight, 5);
+        background-color:map-get($color-highlight, 5);
+        border-radius: $mmf-radius;
+        color: map-get($color-highlight, 0);
+    }
+
+    &:not([disabled]).selected:hover {
+        opacity: $mmf-opacity--primary;
+        border: $mmf-input-border--width solid map-get($color-highlight, 5);
+        background-color:map-get($color-highlight, 5);
+    }
+}
