@@ -11,7 +11,7 @@ export declare type Attrs = DefaultInputAttrs & {
     onchange?: (value: string) => void;
     onfocus?: (event: any) => void;
     options: Array<Option>;
-    value?: string;
+    value?: string | number;
 };
 export declare type State = {
     $wrapper: HTMLElement;

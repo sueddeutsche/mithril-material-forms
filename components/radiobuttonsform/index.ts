@@ -1,6 +1,6 @@
 import m from "mithril";
 import RadioButtons, { Attrs as RadioButtonsAttrs } from "../radiobuttons";
-import Label from "../label";
+import Label, { Attrs as LabelAttrs } from "../label";
 import Errors, { getErrorClass } from "../errors";
 import { DefaultFormAttrs } from "../types";
 
@@ -11,10 +11,7 @@ export const defaultOptions = {
     description: "",
 };
 
-export type Attrs = DefaultFormAttrs & RadioButtonsAttrs & {
-    errors?: Array<string>,
-    description?: string
-}
+export type Attrs = DefaultFormAttrs & RadioButtonsAttrs & LabelAttrs;
 
 export default {
 
