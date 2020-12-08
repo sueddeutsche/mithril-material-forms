@@ -20,7 +20,7 @@ export type Attrs = DefaultInputAttrs & {
     onchange?: (value: string) => void;
     onfocus?: (event) => void;
     options: Array<Option>;
-    value?: string;
+    value?: string | number;
 }
 
 export type State = {
