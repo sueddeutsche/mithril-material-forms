@@ -1,4 +1,5 @@
 export { default as Button } from "./components/button";
+export { default as ButtonForm } from "./components/buttonform";
 export { default as Checkbox } from "./components/checkbox";
 export { default as CheckboxForm } from "./components/checkboxform";
 export { default as RadioButtons } from "./components/radiobuttons";
