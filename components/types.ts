@@ -3,6 +3,11 @@ import m from "mithril";
 
 export const THEME_DEFAULT = "the-default";
 
+export const DefaultFormOptions = {
+    theme: THEME_DEFAULT,
+    errors: [],
+    description: "",
+}
 
 export type Error = {
     /** error or warning, added to classlist for rendering options */
