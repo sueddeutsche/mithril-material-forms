@@ -6,6 +6,8 @@
 .mmf-select__wrapper {
     position: relative;
     display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
 
     &:after {
         content: "keyboard_arrow_down";
@@ -45,6 +47,9 @@
 }
 
 .mmf-select {
+    width: 100%;
+    box-sizing: border-box;
+
     // hide select arrow-icon
     -moz-appearance: window;
     -webkit-appearance: none;
@@ -62,4 +67,3 @@
         cursor: pointer;
     }
 }
-

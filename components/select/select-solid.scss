@@ -8,6 +8,7 @@
     &.mmf-select__wrapper {
         @include with-input-solid(false);
         padding: 0; // reset default input padding from mixin
+        background-color: map-get($color-solid, 6);
 
         &.is-enabled {
             &:hover {
@@ -46,6 +47,7 @@
             outline: none;
             padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
             color: map-get($color-basic, 0);
+            border-radius: $mmf-radius;
         }
         
         &.with-color {
