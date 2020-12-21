@@ -60,6 +60,32 @@ const template = {
             }
         }
     },
+    buttonForm: {
+        render: render.bind(null, mmf.ButtonForm),
+        variations: {
+            "button raised form with error and description": {
+                attrs: {
+                    title: "Button-Form title",
+                    description: "Button-Form description text...",
+                    errors: ["This checkbox has an invalid type"],
+                    disabled: false,
+                    onclick: () => console.log("click")
+                },
+                childNodes: ["A clickable Button"]
+            },
+            "button raised with icon form with error and description": {
+                attrs: {
+                    title: "Button-Form title",
+                    description: "Button-Form description text...",
+                    errors: ["This checkbox has an invalid type"],
+                    raised: true,
+                    disabled: false,
+                    onclick: () => console.log("click")
+                },
+                childNodes: [m("span.mmf-icon", "delete"), m("span", "A clickable Button")]
+            }
+        }
+    },
     checkbox: {
         render: render.bind(null, mmf.Checkbox),
         variations: {
@@ -741,6 +767,7 @@ m.render(document.body,
             )
         ),
         component("button"),
+        component("buttonForm"),
         component("input"),
         component("inputForm"),
         component("checkbox"),

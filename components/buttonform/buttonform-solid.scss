@@ -1,0 +1,14 @@
+@import "../../lib/units";
+
+
+@mixin buttonform-solid(){
+    &.mmf-form--button {
+        
+        .mmf-label {
+            @include solid-font-style();
+            display: block;
+            padding-bottom: $mmf-unit;
+            color: map-get($color-basic, 0);
+        }
+    }
+}
