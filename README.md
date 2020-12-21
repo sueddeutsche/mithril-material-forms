@@ -58,3 +58,18 @@ Change default theme, by including styles and setting the theme through attribut
 - required mithril-dependency `>= v2`
 - all callbacks have mithil-lowercase names `onchange` instead of _onChange_
     - this was inconsistent in `button`, `checkbox` and `input`
+ 
+## Adding a new component
+A set of instructions for creating and adding a new mithril material component. 
+
+1. Add a new folder to `./components/<component-name>`
+2. In this folder, create following files:
+    - Component code:  `./components/<component-name>/index.ts`
+    - General style: `./components/<component-name>/layout.scss`
+    - [Optional] Style for material theme: `./components/<component-name>/<component-name>-material.scss`
+    - [Optional] Style for solid theme: `./components/<component-name>/<component-name>-solid.scss`
+3. Register your component in `./index.ts`
+4. Add your layout file (`./components/<component-name>/layout.scss`) to `./styles/layout.scss`
+5. To add your new to component to the demo page, in `./app/index.ts`...
+    - Add it to the `template` object, in all possible variations (e.g. disabled, with(out) icon, etc.)
+    - Add it to the last render function
