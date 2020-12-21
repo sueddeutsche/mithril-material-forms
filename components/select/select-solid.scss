@@ -7,6 +7,7 @@
 @mixin select-solid() {
     &.mmf-select__wrapper {
         @include with-input-solid(false);
+        border: none;
         padding: 0; // reset default input padding from mixin
         background-color: map-get($color-solid, 6);
 
@@ -44,6 +45,7 @@
         .mmf-select {
             @include reset-select();
             @include solid-font-style();
+            font-size: inherit;
             outline: none;
             padding: $mmf-unit 5*$mmf-unit $mmf-unit $mmf-unit;
             color: map-get($color-basic, 0);

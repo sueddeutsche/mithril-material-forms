@@ -55,6 +55,32 @@ const template = {
             }
         }
     },
+    buttonForm: {
+        render: render.bind(null, mmf.ButtonForm),
+        variations: {
+            "button raised form with error and description": {
+                attrs: {
+                    title: "Button-Form title",
+                    description: "Button-Form description text...",
+                    errors: ["This checkbox has an invalid type"],
+                    disabled: false,
+                    onclick: () => console.log("click")
+                },
+                childNodes: ["A clickable Button"]
+            },
+            "button raised with icon form with error and description": {
+                attrs: {
+                    title: "Button-Form title",
+                    description: "Button-Form description text...",
+                    errors: ["This checkbox has an invalid type"],
+                    raised: true,
+                    disabled: false,
+                    onclick: () => console.log("click")
+                },
+                childNodes: [m("span.mmf-icon", "delete"), m("span", "A clickable Button")]
+            }
+        }
+    },
     checkbox: {
         render: render.bind(null, mmf.Checkbox),
         variations: {
@@ -699,4 +725,4 @@ function component(type) {
         return render(title, { ...variation.attrs, theme: "the-solid" }, ...variation.childNodes || []);
     }))));
 }
-m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("radioButtonsForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));
+m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("buttonForm"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("radioButtonsForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));

@@ -56,8 +56,9 @@ h2 {
     margin: 4px;
     background-color: map-get($color-demo, 5);
     
-
+    
     h3 {
+        background-color: map-get($color-demo, 4);
         font-size: $mmf-font-small;
         margin: 0;
         color: map-get($color-demo, 0);

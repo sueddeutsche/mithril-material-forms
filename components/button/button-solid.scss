@@ -1,30 +1,40 @@
 @import "../../lib/reset";
 @import "../../lib/colors";
 @import "../../lib/units";
+@import "../../lib/fonts";
 
 
 @mixin button-solid() {
 
     &.mmf-button {
         @include reset-button();
-        background-color: inherit;
-        border: $mmf-input-border--width $mmf-style--border map-get($color-solid, 8);
+        @include solid-font-style();
+        background-color: map-get($color-solid, 6);
+        border: $mmf-input-border--width $mmf-style--border transparent;
         border-radius: $mmf-radius;
         color: map-get($color-solid, 8);
+        padding: 0 $mmf-unit;
 
         &[disabled] {
-            border-color: rgba(map-get($color-solid, 8), map-get($opacity, 2));
             color: rgba(map-get($color-solid, 8), map-get($opacity, 2));
         }
 
+        // clickable
         &.is-enabled {
             &:hover,
             &:focus {
-                background-color: map-get($color-solid, 5);
+                background-color: map-get($color-solid, 9);
+                color: map-get($color-solid, 0);
             }
 
             &:focus {
                 @include elevation(1);
+            }
+
+            // activated until deactivated via being clicked again
+            &.activated {
+                background-color: map-get($color-solid, 5);
+                color: map-get($color-solid, 0);
             }
         }
     }
