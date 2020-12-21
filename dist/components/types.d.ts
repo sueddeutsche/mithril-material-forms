@@ -1,10 +1,5 @@
 import m from "mithril";
 export declare const THEME_DEFAULT = "the-default";
-export declare const DefaultFormOptions: {
-    theme: string;
-    errors: any[];
-    description: string;
-};
 export declare type Error = {
     /** error or warning, added to classlist for rendering options */
     severity?: string;
