@@ -1,7 +1,7 @@
 @import "../../lib/reset";
 @import "../../lib/colors";
 @import "../../lib/units";
-@import "../lib/fonts";
+@import "../../lib/fonts";
 
 
 @mixin button-solid() {
@@ -19,6 +19,7 @@
             color: rgba(map-get($color-solid, 8), map-get($opacity, 2));
         }
 
+        // clickable
         &.is-enabled {
             &:hover,
             &:focus {
@@ -30,6 +31,7 @@
                 @include elevation(1);
             }
 
+            // activated until deactivated via being clicked again
             &.activated {
                 background-color: map-get($color-solid, 5);
                 color: map-get($color-solid, 0);

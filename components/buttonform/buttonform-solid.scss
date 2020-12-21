@@ -5,9 +5,9 @@
     &.mmf-form--button {
         
         .mmf-label {
+            @include solid-font-style();
             display: block;
             padding-bottom: $mmf-unit;
-            @include solid-font-style();
             color: map-get($color-basic, 0);
         }
     }
