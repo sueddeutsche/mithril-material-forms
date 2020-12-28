@@ -15,7 +15,7 @@
     "start": "webpack-dev-server --config webpack.docs.js",
     "docs": "webpack --config webpack.docs.js",
     "release": "npm run dist",
-    "prepublish": "npm run dist"
+    "prepublish": "npm run dist; npm run docs"
   },
   "repository": {
     "type": "git",
