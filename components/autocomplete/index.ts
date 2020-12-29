@@ -1,75 +1,13 @@
 import m from "mithril";
 import { DefaultInputAttrs, THEME_DEFAULT } from "../types"
 import list from "./authors.json";
-
-
-interface InlinePanelState {
-    dom: HTMLElement;
-    content: m.Component;
-    show: () => void;
-    hide: () => void;
-}
-
-type InlinePanelAttrs = {
-    onmount;
-    style?: {
-        [p: string]: string|number;
-    }
-}
+import Popover, { State as PopoverState } from "../popover";
 
 
 const raf = window.requestAnimationFrame;
 
 
-class InlinePanel implements m.ClassComponent<InlinePanelAttrs> {
 
-    dom: HTMLElement;
-    content: m.Component;
-
-    oncreate(vnode) {
-        vnode.attrs.onmount(vnode.state);
-    }
-
-    onremove() {
-        const container = document.body;
-        if (container.contains(this.dom)) {
-            m.render(this.dom, null);
-            container.removeChild(this.dom);
-        }
-    }
-
-    hide() {
-        this.dom.style.display = "none";
-    }
-
-    render(content: m.Vnode) {
-        m.render(this.dom, content);
-    }
-
-    show(targetElement: HTMLElement) {
-        this.dom.style.display = "block";
-
-        const bound = targetElement.getBoundingClientRect();
-        if (targetElement.offsetParent === document.body) {
-            const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
-            this.dom.style.left = `${bound.left + scrollX}px`;
-            this.dom.style.top = `${bound.top + scrollY + bound.height}px`;
-            return;
-        }
-
-        const offset = targetElement.offsetParent.getBoundingClientRect();
-        this.dom.style.left = `${bound.left - offset.left}px`;
-        this.dom.style.top = `${bound.top - offset.top + bound.height}px`;
-    }
-
-    view(vnode: m.Vnode<InlinePanelAttrs>) {
-        return m(".mmf-inline-panel", {
-            ...vnode.attrs,
-            oncreate: ({ dom }) => (this.dom = dom as HTMLElement)
-        }, vnode.children);
-    }
-}
 
 
 import search from "./search";
@@ -118,7 +56,7 @@ export type Attrs = DefaultInputAttrs & {
 
 export type State = {
     value: string;
-    panel: InlinePanel;
+    popover: PopoverState;
     input: HTMLElement;
     hasFocus: boolean;
 
@@ -133,7 +71,7 @@ export type State = {
 export default {
     value: null,
     hasFocus: false,
-    panel: null,
+    popover: null,
     input: null,
     currentIndex: 0,
 
@@ -146,7 +84,7 @@ export default {
     updateCompletions() {
         this.currentIndex = this.currentIndex < 0 ? 0 : Math.min(this.list.length - 1, this.currentIndex);
 
-        this.panel.render(m(Completions, {
+        this.popover.render(m(Completions, {
             value: this.value,
             items: this.list,
             index: this.currentIndex,
@@ -208,12 +146,12 @@ export default {
                 this.hasFocus = true;
                 attrs.onfocus && attrs.onfocus(event);
                 this.updateFilter();
-                this.panel?.show(this.input);
+                this.popover?.show(this.input);
             },
             onblur: event => {
                 this.hasFocus = false;
                 attrs.onblur && attrs.onblur(event);
-                raf(() => this.panel?.hide());
+                raf(() => this.popover?.hide());
             },
             onkeydown: event => this.updateSelection(event),
             onkeyup: null,
@@ -233,13 +171,9 @@ export default {
 
         return [
             m(`input.mmf-input`, inputAttributes),
-            m(InlinePanel,
+            m(Popover,
                 {
-                    onmount: panel => (this.panel = panel),
-                    // oncreate: (vnode) => (this.panel = vnode.state),
-                    style: {
-                        "z-index": 999
-                    }
+                    onmount: panel => (this.popover = panel)
                 }
             )
         ];
