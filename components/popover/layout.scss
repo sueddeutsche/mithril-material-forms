@@ -1,8 +1,10 @@
 .mmf-popover {
-    position: absolute;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
     background: inherit;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    position: absolute;
+    transform: translateZ(0);
+    z-index: 1;
 
     &.is-hidden {
         display: none;
