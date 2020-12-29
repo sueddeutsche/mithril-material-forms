@@ -56,11 +56,9 @@ export default {
 
                     onmouseenter: onHover ? event => {
                         const target = event.target as HTMLElement;
-                        if (target.dataset.value) {
-                            const index = items.findIndex(item => item[valueProp] === target.dataset.value);
-                            if (index != null) {
-                                onHover(index);
-                            }
+                        const index = items.findIndex(item => item[valueProp] === target.dataset.value);
+                        if (index != null) {
+                            onHover(index);
                         }
                     } : null
 

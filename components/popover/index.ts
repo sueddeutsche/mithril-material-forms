@@ -80,10 +80,13 @@ const Popover = {
     },
 
     view(vnode) {
-        return m(".mmf-popover.is-hidden", {
-            ...vnode.attrs,
-            oncreate: ({ dom }) => (this.dom = dom as HTMLElement)
-        }, vnode.children);
+        return m(".mmf-popover.is-hidden",
+            {
+                ...vnode.attrs,
+                oncreate: ({ dom }) => (this.dom = dom as HTMLElement)
+            },
+            vnode.children
+        );
     }
 
 } as m.Component<Attrs, State>;
