@@ -1,3 +1,4 @@
+import List from "../list";
 import list from "./authors.json";
 import m from "mithril";
 import Popover, { State as PopoverState } from "../popover";
@@ -7,36 +8,6 @@ import { DefaultInputAttrs, THEME_DEFAULT } from "../types"
 const raf = window.requestAnimationFrame;
 
 
-const Completions = {
-    view(vnode) {
-        const { value, index, items, onSelect, onHover } = vnode.attrs;
-
-        return m("ul.mmf-completions",
-            {
-                onmousedown: event => {
-                    const target = event.target as HTMLElement;
-                    if (target.dataset.value) {
-                        onSelect(target.dataset.value)
-                    }
-                }
-            },
-            items.map((item, i) => m("li.mmf-completions__item", {
-                "data-value": item.name,
-                class: `${item.class ? item.class : ""} ${i === index ? "is-selected" : ""}`,
-                onmouseenter: event => {
-                    const target = event.target as HTMLElement;
-                    if (target.dataset.value) {
-                        const index = items.findIndex(i => i.name === target.dataset.value);
-                        if (index != null) {
-                            onHover(index);
-                        }
-                    }
-                }
-            }, item.name))
-        );
-    }
-}
-
 
 export type Attrs = DefaultInputAttrs & {
     onchange: (value: string) => void;
@@ -45,16 +16,19 @@ export type Attrs = DefaultInputAttrs & {
     onblur?: (event) => void;
     onfocus?: (event) => void;
     type?: "text";
+    /** initial string value */
     value?: string;
 }
 
 export type State = {
+    /** value of current input */
     value: string;
     popover: PopoverState;
     input: HTMLInputElement;
     hasFocus: boolean;
 
     list: Array<any>;
+    /** current index of selection in list */
     currentIndex: number;
 
     updateCompletions;
@@ -78,12 +52,13 @@ export default {
 
     updateCompletions() {
         this.currentIndex = this.currentIndex < 0 ? 0 : Math.min(this.list.length - 1, this.currentIndex);
-
-        this.popover.render(m(Completions, {
-            value: this.value,
+        this.popover.render(m(List, {
             items: this.list,
-            index: this.currentIndex,
-            onSelect: value => {
+            displayProp: "name",
+            valueProp: "value",
+            selectedIndex: this.currentIndex,
+            onSelect: index => {
+                const value = this.list[index].name;
                 this.value = value;
                 this.input.value = value;
             },
@@ -150,9 +125,10 @@ export default {
             },
             onkeydown: event => this.updateSelection(event),
             onchange: () => attrs.onchange(this.value),
-            onkeyup: async () => {
+            onkeyup: async event => {
                 await this.updateFilter();
-                if (attrs.instantUpdate) {
+                const ignoreKeys = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft", "Enter"];
+                if (attrs.instantUpdate && !ignoreKeys.includes(event.key)) {
                     attrs.onchange(this.value);
                 }
             }
@@ -160,11 +136,7 @@ export default {
 
         return [
             m(`input.mmf-input`, inputAttributes),
-            m(Popover,
-                {
-                    onmount: panel => (this.popover = panel)
-                }
-            )
+            m(Popover, { onmount: panel => (this.popover = panel) })
         ];
     }
 
