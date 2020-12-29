@@ -38,7 +38,6 @@ const Completions = {
 }
 
 
-
 export type Attrs = DefaultInputAttrs & {
     onchange: (value: string) => void;
     /** set to true, if each keystroke should trigger a change event */
@@ -52,7 +51,7 @@ export type Attrs = DefaultInputAttrs & {
 export type State = {
     value: string;
     popover: PopoverState;
-    input: HTMLElement;
+    input: HTMLInputElement;
     hasFocus: boolean;
 
     list: Array<any>;
@@ -62,6 +61,7 @@ export type State = {
     updateSelection;
     updateFilter;
 }
+
 
 export default {
     value: null,
@@ -135,7 +135,7 @@ export default {
             placeholder: attrs.placeholder,
             type: "text",
             value,
-            oncreate: ({ dom }) => (this.input = dom as HTMLElement),
+            oncreate: ({ dom }) => (this.input = dom as HTMLInputElement),
             oninput: e => (this.value = e.target.value),
             onfocus: async event => {
                 this.hasFocus = true;
@@ -146,23 +146,17 @@ export default {
             onblur: event => {
                 this.hasFocus = false;
                 attrs.onblur && attrs.onblur(event);
-                raf(() => this.popover?.hide());
+                raf(() => this.popover?.hide()); // delay closing of popover to prevent race conditions
             },
             onkeydown: event => this.updateSelection(event),
-            onkeyup: null,
-            onchange: null
-        };
-
-        if (attrs.instantUpdate === true) {
-            inputAttributes.onkeyup = async () => {
+            onchange: () => attrs.onchange(this.value),
+            onkeyup: async () => {
                 await this.updateFilter();
-                attrs.onchange(this.value);
+                if (attrs.instantUpdate) {
+                    attrs.onchange(this.value);
+                }
             }
-
-        } else {
-            inputAttributes.onkeyup = () => this.updateFilter();
-            inputAttributes.onchange = () => attrs.onchange(this.value);
-        }
+        };
 
         return [
             m(`input.mmf-input`, inputAttributes),

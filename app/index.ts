@@ -421,6 +421,7 @@ const template = {
             "input autocompletion": {
                 attrs: {
                     type: "text",
+                    instantUpdate: true,
                     value: "",
                     datalist: ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
                     onchange: value => console.log(`change value to '${value}'`)
