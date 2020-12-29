@@ -1,5 +1,6 @@
 import m from "mithril";
 import getParentByClassname from "./getParentByClassname";
+import { THEME_DEFAULT } from "../types";
 
 
 export type Item = {
@@ -22,6 +23,7 @@ export type Attrs = {
     onSelect?: (index: number) => void;
     /** get current hovered item index */
     onHover?: (index: number) => void;
+    theme?: string;
 }
 
 
@@ -45,6 +47,7 @@ export default {
 
         return m("ul.mmf-list",
             {
+                class: attrs.theme ?? THEME_DEFAULT,
                 onmousedown: onSelect ? event => {
                     const target = getParentByClassname(event.target, "mmf-list__item");
                     if (!target) {

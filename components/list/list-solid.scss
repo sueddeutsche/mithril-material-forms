@@ -1,0 +1,18 @@
+@import "../../lib/units";
+@import "../../lib/colors";
+@import "../../lib/elevation";
+
+
+@mixin list-solid() {
+    &.mmf-list {
+        .is-value {
+            font-style: italic;
+            &:before { content: "„"; }
+            &:after { content: "“"; }
+        }
+        .is-selected {
+            color: map-get($color-solid, 0);
+            background-color: map-get($color-basic, 5);
+        }
+    }
+}

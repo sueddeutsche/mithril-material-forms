@@ -1,9 +1,12 @@
 import m from "mithril";
+import { THEME_DEFAULT } from "../types";
 
 
 export type Attrs = {
     /** passes the popover instance, on create */
     onmount: (popover: State) => void;
+    theme?: string;
+    class?: string;
 }
 
 export interface State {
@@ -83,6 +86,7 @@ const Popover = {
         return m(".mmf-popover.is-hidden",
             {
                 ...vnode.attrs,
+                "class": `${vnode.attrs.theme ?? THEME_DEFAULT} ${vnode.attrs.class ?? ""}`.trim(),
                 oncreate: ({ dom }) => (this.dom = dom as HTMLElement)
             },
             vnode.children
