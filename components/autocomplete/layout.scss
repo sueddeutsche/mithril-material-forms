@@ -1,0 +1,27 @@
+.mmf-input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.mmf-inline-panel {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background: inherit;
+}
+
+.mmf-completions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mmf-completions__item {
+    padding: 4px 8px;
+
+    &:hover,
+    &.is-selected {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}

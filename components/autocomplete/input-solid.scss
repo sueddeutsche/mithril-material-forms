@@ -1,0 +1,10 @@
+@import "../../lib/input";
+@import "../../lib/units";
+@import "../../lib/elevation";
+
+
+@mixin input-solid() {
+    &.mmf-input {
+        @include with-input-solid();
+    }
+}

@@ -155,7 +155,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-normal",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -163,7 +163,7 @@ const template = {
                         {
                             id: "wine-normal",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -186,7 +186,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -194,7 +194,7 @@ const template = {
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -216,7 +216,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: true
@@ -224,7 +224,7 @@ const template = {
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -245,7 +245,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: false
                         },
@@ -272,7 +272,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: true
                         },
@@ -296,7 +296,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: true
                         },
@@ -327,7 +327,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-normal",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -335,7 +335,7 @@ const template = {
                         {
                             id: "wine-normal",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -360,14 +360,14 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                         },
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -390,14 +390,14 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                         },
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -414,6 +414,20 @@ const template = {
         }
     },
 
+
+    autocomplete: {
+        render: render.bind(null, mmf.Autocomplete),
+        variations: {
+            "input autocompletion": {
+                attrs: {
+                    type: "text",
+                    value: "",
+                    datalist: ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            }
+        }
+    },
 
     input: {
         render: render.bind(null, mmf.Input),
@@ -577,7 +591,7 @@ const template = {
                             color: "rgb(43, 54, 113)"
                         },
                         "Without any color niceness"
-                        
+
                     ],
                     value: "a very nice selection",
                     onchange: value => console.log(`change value to '${value}'`)
@@ -595,7 +609,7 @@ const template = {
                             value: "ignore any niceness",
                             color: "rgb(43, 54, 113)"
                         },
-                        
+
                     ],
                     value: "a very nice selection",
                     onchange: () => console.error("should not log this message")
@@ -768,6 +782,7 @@ m.render(document.body,
         ),
         component("button"),
         component("buttonForm"),
+        component("autocomplete"),
         component("input"),
         component("inputForm"),
         component("checkbox"),
