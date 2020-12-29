@@ -54,8 +54,7 @@ export default {
         this.currentIndex = this.currentIndex < 0 ? 0 : Math.min(this.list.length - 1, this.currentIndex);
         this.popover.render(m(List, {
             items: this.list,
-            displayProp: "name",
-            valueProp: "value",
+            valueProp: "name",
             selectedIndex: this.currentIndex,
             onSelect: index => {
                 const value = this.list[index].name;

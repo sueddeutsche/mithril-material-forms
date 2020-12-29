@@ -11,10 +11,10 @@ export type Item = {
 export type Attrs = {
     /** list of items to display */
     items: Array<Item>;
-    /** property to use as display value. Defaults to "value" */
-    displayProp?: string;
     /** property to use as id, must point to a string-value. Defaults to "value" */
     valueProp?: string;
+    /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
+    displayRenderer?: typeof displayRenderer;
     /** current selected index in list */
     selectedIndex?: number;
     /** get selected (clicked) item index */
@@ -24,13 +24,19 @@ export type Attrs = {
 }
 
 
+/** default render function for item content rendering */
+export function displayRenderer(item: Item, attrs: Attrs): m.Vnode {
+    return m("span", item[attrs.valueProp]);
+}
+
+
 /**
  * standard list component with additional item hover-, highlight- and selection-support
  */
 export default {
 
-    view(vnode) {
-        const { items, displayProp = "value", valueProp = "value", selectedIndex,  onSelect, onHover } = vnode.attrs;
+    view({ attrs }) {
+        const { items, valueProp = "value", selectedIndex,  onSelect, onHover } = attrs;
 
         return m("ul.mmf-list",
             {
@@ -43,21 +49,24 @@ export default {
                 } : null
             },
 
-            items.map((item, index) => m("li.mmf-list__item", {
-                "data-value": item[valueProp],
-                class: `${item.class ? item.class : ""} ${index === selectedIndex ? "is-selected" : ""}`,
+            items.map((item, index) => m("li.mmf-list__item",
+                {
+                    "data-value": item[valueProp],
+                    class: `${item.class ? item.class : ""} ${index === selectedIndex ? "is-selected" : ""}`,
 
-                onmouseenter: onHover ? event => {
-                    const target = event.target as HTMLElement;
-                    if (target.dataset.value) {
-                        const index = items.findIndex(item => item[valueProp] === target.dataset.value);
-                        if (index != null) {
-                            onHover(index);
+                    onmouseenter: onHover ? event => {
+                        const target = event.target as HTMLElement;
+                        if (target.dataset.value) {
+                            const index = items.findIndex(item => item[valueProp] === target.dataset.value);
+                            if (index != null) {
+                                onHover(index);
+                            }
                         }
-                    }
-                } : null
+                    } : null
 
-            }, item[displayProp]))
+                },
+                displayRenderer(item, attrs))
+            )
         );
     }
 
