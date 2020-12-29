@@ -480,12 +480,13 @@ const template = {
     autocomplete: {
         render: render.bind(null, mmf.Autocomplete),
         variations: {
-            "input with suggestions": {
+            "input with suggestions, including input value": {
                 attrs: {
                     type: "text",
                     instantUpdate: true,
                     value: "",
                     valueProp: "name",
+                    showCurrentInput: true,
                     suggestions: list,
                     onchange: value => console.log(`change value to '${value}'`)
                 } as mmf.AutocompleteAttrs

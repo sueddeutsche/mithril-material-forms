@@ -13,6 +13,8 @@ export type Attrs = DefaultInputAttrs & {
     onchange: (value: string) => void;
     /** static list of async query function for available suggestions */
     suggestions: Array<Item>|GetSuggestions;
+    /** if true, will also add current value to list of suggestions. Defaults to false */
+    showCurrentInput?: boolean;
     /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
     displayRenderer?: typeof displayRenderer;
     /** set to true, if each keystroke should trigger a change event */
@@ -43,15 +45,17 @@ export type State = {
     popover: PopoverState;
     input: HTMLInputElement;
     hasFocus: boolean;
+    /** if true, will also add current value to list of suggestions. Defaults to false */
+    showCurrentInput: boolean;
 
     getSuggestions: GetSuggestions;
 
     /** current index of selection in list */
     currentIndex: number;
 
-    updateCompletions;
-    updateSelection;
-    updateFilter;
+    updateCompletions: () => void;
+    updateSelection: (event: KeyboardEvent) => void;
+    updateFilter: () => Promise<void>;
 }
 
 
@@ -60,18 +64,17 @@ const isGetFunction = (suggestions): suggestions is GetSuggestions => typeof sug
 
 
 export default {
-    value: null,
     hasFocus: false,
-    popover: null,
-    input: null,
     currentIndex: 0,
-
+    showCurrentInput: false,
     valueProp: "name",
     displayRenderer,
 
     async updateFilter() {
         this.list = await this.getSuggestions(this.value);
-        this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
+        if (this.showCurrentInput) {
+            this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
+        }
         this.updateCompletions();
     },
 
@@ -105,7 +108,7 @@ export default {
         }));
     },
 
-    updateSelection(e) {
+    updateSelection(e: KeyboardEvent) {
         const { key } = e;
 
         // goto previous suggestion in list
@@ -143,9 +146,10 @@ export default {
         }
         this.value = value;
 
-        const { valueProp, displayRenderer } = attrs;
+        const { valueProp, displayRenderer, showCurrentInput } = attrs;
         this.valueProp = valueProp ?? this.valueProp;
         this.displayRenderer = displayRenderer ?? this.displayRenderer;
+        this.showCurrentInput = showCurrentInput === true;
 
         const inputAttributes = {
             "data-id": attrs.id,
