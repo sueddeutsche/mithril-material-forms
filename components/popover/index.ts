@@ -64,6 +64,8 @@ const Popover = {
         this.dom.classList.remove("is-hidden");
 
         const bound = targetElement.getBoundingClientRect();
+        this.dom.style.setProperty("--target-width", `${bound.width}px`);
+
         if (targetElement.offsetParent === document.body) {
             const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
