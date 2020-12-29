@@ -1,16 +1,11 @@
-import m from "mithril";
-import { DefaultInputAttrs, THEME_DEFAULT } from "../types"
 import list from "./authors.json";
+import m from "mithril";
 import Popover, { State as PopoverState } from "../popover";
-
+import search from "./search";
+import { DefaultInputAttrs, THEME_DEFAULT } from "../types"
 
 const raf = window.requestAnimationFrame;
 
-
-
-
-
-import search from "./search";
 
 const Completions = {
     view(vnode) {
@@ -75,8 +70,8 @@ export default {
     input: null,
     currentIndex: 0,
 
-    updateFilter() {
-        this.list = search(list, this.value, 10, "name");
+    async updateFilter() {
+        this.list = await search(list, this.value, 10, "name");
         this.list.unshift({ name: this.value, class: "is-value" });
         this.updateCompletions();
     },
@@ -142,10 +137,10 @@ export default {
             value,
             oncreate: ({ dom }) => (this.input = dom as HTMLElement),
             oninput: e => (this.value = e.target.value),
-            onfocus: event => {
+            onfocus: async event => {
                 this.hasFocus = true;
                 attrs.onfocus && attrs.onfocus(event);
-                this.updateFilter();
+                await this.updateFilter();
                 this.popover?.show(this.input);
             },
             onblur: event => {
@@ -159,8 +154,8 @@ export default {
         };
 
         if (attrs.instantUpdate === true) {
-            inputAttributes.onkeyup = () => {
-                this.updateFilter();
+            inputAttributes.onkeyup = async () => {
+                await this.updateFilter();
                 attrs.onchange(this.value);
             }
 

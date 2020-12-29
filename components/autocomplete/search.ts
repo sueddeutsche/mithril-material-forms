@@ -17,12 +17,12 @@ export type Suggestion = {
  * @param  limit    - result-limit
  * @return results
  */
-export default function search(haystack: Array<Suggestion>, needle: string, limit = DEFAULT_LIMIT, prop = "value"): Array<Suggestion> {
+export default function search(haystack: Array<Suggestion>, needle: string, limit = DEFAULT_LIMIT, prop = "value"): Promise<Array<Suggestion>> {
     const matches = [];
     const lowerCaseNeedle = needle.toLowerCase();
 
     if (needle === "") {
-        return matches;
+        return Promise.resolve(matches);
     }
 
     function byPosition(a, b) {
@@ -48,7 +48,7 @@ export default function search(haystack: Array<Suggestion>, needle: string, limi
     const regContains = new RegExp(needle.replace(" ", ".*"), "i");
 
     if (matches.length >= limit) {
-        return matches.sort(byPosition);
+        return Promise.resolve(matches.sort(byPosition));
     }
 
     for (let i = 0, l = haystack.length; i < l; i += 1) {
@@ -60,5 +60,5 @@ export default function search(haystack: Array<Suggestion>, needle: string, limi
         }
     }
 
-    return matches.sort(byPosition);
+    return Promise.resolve(matches.sort(byPosition));
 }
