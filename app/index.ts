@@ -1,6 +1,7 @@
 import "./index.scss";
 import m from "mithril";
 import * as mmf from "../index";
+import { countries as list } from "./countries";
 
 
 function render(Component, title, ...args) {
@@ -414,22 +415,6 @@ const template = {
         }
     },
 
-
-    autocomplete: {
-        render: render.bind(null, mmf.Autocomplete),
-        variations: {
-            "input autocompletion": {
-                attrs: {
-                    type: "text",
-                    instantUpdate: true,
-                    value: "",
-                    datalist: ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
-                    onchange: value => console.log(`change value to '${value}'`)
-                }
-            }
-        }
-    },
-
     input: {
         render: render.bind(null, mmf.Input),
         variations: {
@@ -491,6 +476,33 @@ const template = {
             }
         }
     },
+
+    autocomplete: {
+        render: render.bind(null, mmf.Autocomplete),
+        variations: {
+            "input with suggestions": {
+                attrs: {
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+            "input with suggestions and custom rendering": {
+                attrs: {
+                    type: "text",
+                    value: "",
+                    valueProp: "code",
+                    suggestions: list,
+                    displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            }
+        }
+    },
+
     select: {
         render: render.bind(null, mmf.Select),
         variations: {
