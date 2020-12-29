@@ -1,11 +1,5 @@
 const DEFAULT_LIMIT = 12;
 
-export type Suggestion = {
-    /** final exported value */
-    value: string;
-    [p: string]: any;
-}
-
 
 /**
  * @todo Consider using an word based search approach. Possibly using an
@@ -17,7 +11,7 @@ export type Suggestion = {
  * @param  limit    - result-limit
  * @return results
  */
-export default function search(haystack: Array<Suggestion>, needle: string, limit = DEFAULT_LIMIT, prop = "value"): Promise<Array<Suggestion>> {
+export default function search<T>(haystack: Array<T>, needle: string, limit = DEFAULT_LIMIT, prop = "value"): Promise<Array<T>> {
     const matches = [];
     const lowerCaseNeedle = needle.toLowerCase();
 
