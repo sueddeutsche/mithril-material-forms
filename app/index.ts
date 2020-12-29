@@ -477,8 +477,8 @@ const template = {
         }
     },
 
-    autocomplete: {
-        render: render.bind(null, mmf.Autocomplete),
+    queryList: {
+        render: render.bind(null, mmf.QueryList),
         variations: {
             "input with suggestions, including input value": {
                 attrs: {
@@ -489,7 +489,7 @@ const template = {
                     showCurrentInput: true,
                     suggestions: list,
                     onchange: value => console.log(`change value to '${value}'`)
-                } as mmf.AutocompleteAttrs
+                } as mmf.QueryListAttrs
             },
             "input with suggestions and custom rendering": {
                 attrs: {
@@ -504,7 +504,7 @@ const template = {
                     })),
                     displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
                     onchange: value => console.log(`change value to '${value}'`)
-                } as mmf.AutocompleteAttrs
+                } as mmf.QueryListAttrs
             }
         }
     },
@@ -801,9 +801,9 @@ m.render(document.body,
         ),
         component("button"),
         component("buttonForm"),
-        component("autocomplete"),
         component("input"),
         component("inputForm"),
+        component("queryList"),
         component("checkbox"),
         component("checkboxForm"),
         component("radioButtons"),

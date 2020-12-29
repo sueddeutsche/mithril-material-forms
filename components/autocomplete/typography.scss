@@ -1,9 +1,0 @@
-@import "../../lib/typography";
-
-
-.mmf-input {
-    @include font-regular();
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
-}

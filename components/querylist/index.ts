@@ -45,6 +45,7 @@ export type State = {
     popover: PopoverState;
     input: HTMLInputElement;
     hasFocus: boolean;
+    theme: string;
     /** if true, will also add current value to list of suggestions. Defaults to false */
     showCurrentInput: boolean;
 
@@ -69,6 +70,7 @@ export default {
     showCurrentInput: false,
     valueProp: "name",
     displayRenderer,
+    resizeTimer: null,
 
     async updateFilter() {
         this.list = await this.getSuggestions(this.value);
@@ -93,6 +95,7 @@ export default {
         this.currentIndex = this.currentIndex < 0 ? 0 : Math.min(this.list.length - 1, this.currentIndex);
         this.popover.render(m(List, {
             items: this.list,
+            theme: this.theme,
             valueProp: this.valueProp,
             selectedIndex: this.currentIndex,
             displayRenderer: this.displayRenderer,
@@ -146,14 +149,15 @@ export default {
         }
         this.value = value;
 
-        const { valueProp, displayRenderer, showCurrentInput } = attrs;
+        const { valueProp, displayRenderer, showCurrentInput, theme } = attrs;
         this.valueProp = valueProp ?? this.valueProp;
         this.displayRenderer = displayRenderer ?? this.displayRenderer;
         this.showCurrentInput = showCurrentInput === true;
+        this.theme = theme ?? THEME_DEFAULT;
 
         const inputAttributes = {
             "data-id": attrs.id,
-            class: `${attrs.theme ?? THEME_DEFAULT} ${attrs.class ?? ""}`,
+            class: `${this.theme} ${attrs.class ?? ""}`,
             disabled: attrs.disabled,
             placeholder: attrs.placeholder,
             type: "text",
@@ -184,7 +188,10 @@ export default {
 
         return [
             m(`input.mmf-input`, inputAttributes),
-            m(Popover, { onmount: panel => (this.popover = panel) })
+            m(Popover, {
+                onmount: panel => (this.popover = panel),
+                theme: attrs.theme
+            })
         ];
     }
 
