@@ -488,17 +488,22 @@ const template = {
                     valueProp: "name",
                     suggestions: list,
                     onchange: value => console.log(`change value to '${value}'`)
-                }
+                } as mmf.AutocompleteAttrs
             },
             "input with suggestions and custom rendering": {
                 attrs: {
                     type: "text",
                     value: "",
                     valueProp: "code",
-                    suggestions: list,
+                    searchProp: "query",
+                    // add a special query value for search (in both code and name)
+                    suggestions: list.map(value => ({
+                        ...value,
+                        query: `${value.code} ${value.name}` // beginning scores higher
+                    })),
                     displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
                     onchange: value => console.log(`change value to '${value}'`)
-                }
+                } as mmf.AutocompleteAttrs
             }
         }
     },

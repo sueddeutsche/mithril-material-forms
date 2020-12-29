@@ -1,9 +1,9 @@
-import List from "../list";
-import list from "./authors.json";
+import List, { Item, displayRenderer } from "../list";
 import m from "mithril";
 import Popover, { State as PopoverState } from "../popover";
 import search from "./search";
-import { DefaultInputAttrs, THEME_DEFAULT } from "../types"
+import { DefaultInputAttrs, THEME_DEFAULT } from "../types";
+
 
 const raf = window.requestAnimationFrame;
 
@@ -11,23 +11,41 @@ const raf = window.requestAnimationFrame;
 
 export type Attrs = DefaultInputAttrs & {
     onchange: (value: string) => void;
+    /** static list of async query function for available suggestions */
+    suggestions: Array<Item>|GetSuggestions;
+    /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
+    displayRenderer?: typeof displayRenderer;
     /** set to true, if each keystroke should trigger a change event */
     instantUpdate?: boolean;
     onblur?: (event) => void;
     onfocus?: (event) => void;
-    type?: "text";
     /** initial string value */
     value?: string;
+    /** property to use as id, must point to a string-value. Defaults to "value" */
+    valueProp?: string;
+    /**
+     * Configure querying results, by setting the item property to be used for search.
+     * This must point to a string-value. Defaults to `valueProp`. Only used, if suggestions is a static list.
+     */
+    searchProp?: string;
+    type?: "text";
+}
+
+export interface GetSuggestions {
+    (value: string): Promise<Array<Item>>;
 }
 
 export type State = {
     /** value of current input */
     value: string;
+    valueProp: string;
+    displayRenderer: typeof displayRenderer;
     popover: PopoverState;
     input: HTMLInputElement;
     hasFocus: boolean;
 
-    list: Array<any>;
+    getSuggestions: GetSuggestions;
+
     /** current index of selection in list */
     currentIndex: number;
 
@@ -37,6 +55,10 @@ export type State = {
 }
 
 
+const isListOfItems = (suggestions): suggestions is Array<Item> => Array.isArray(suggestions);
+const isGetFunction = (suggestions): suggestions is GetSuggestions => typeof suggestions === "function";
+
+
 export default {
     value: null,
     hasFocus: false,
@@ -44,20 +66,35 @@ export default {
     input: null,
     currentIndex: 0,
 
+    valueProp: "name",
+    displayRenderer,
+
     async updateFilter() {
-        this.list = await search(list, this.value, 10, "name");
-        this.list.unshift({ name: this.value, class: "is-value" });
+        this.list = await this.getSuggestions(this.value);
+        this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
         this.updateCompletions();
+    },
+
+    oncreate({ attrs }) {
+        const { suggestions } = attrs;
+        if (isListOfItems(suggestions)) {
+            this.getSuggestions = value => search<Item>(suggestions, value, 10, attrs.searchProp || this.valueProp);
+        } else if (isGetFunction(suggestions)) {
+            this.getSuggestions = suggestions;
+        } else {
+            this.getSuggestions = () => Promise.resolve([]);
+        }
     },
 
     updateCompletions() {
         this.currentIndex = this.currentIndex < 0 ? 0 : Math.min(this.list.length - 1, this.currentIndex);
         this.popover.render(m(List, {
             items: this.list,
-            valueProp: "name",
+            valueProp: this.valueProp,
             selectedIndex: this.currentIndex,
+            displayRenderer: this.displayRenderer,
             onSelect: index => {
-                const value = this.list[index].name;
+                const value = this.list[index][this.valueProp];
                 this.value = value;
                 this.input.value = value;
             },
@@ -70,6 +107,8 @@ export default {
 
     updateSelection(e) {
         const { key } = e;
+
+        // goto previous suggestion in list
         if (key === "ArrowUp") {
             e.stopPropagation();
             e.preventDefault();
@@ -78,6 +117,7 @@ export default {
                 this.updateCompletions();
             }
 
+        // goto next suggestion in list
         } else if (key === "ArrowDown") {
             e.stopPropagation();
             e.preventDefault();
@@ -86,8 +126,9 @@ export default {
                 this.updateCompletions();
             }
 
+        // get selected suggestion, insert it into input and leave input field
         } else if (key === "Enter") {
-            const value = this.list[this.currentIndex].name;
+            const value = this.list[this.currentIndex][this.valueProp];
             this.value = value;
             this.input.value = value;
             this.input.blur(); // blur input, close panel (consistent with mouse selection)
@@ -101,6 +142,10 @@ export default {
             value = this.value;
         }
         this.value = value;
+
+        const { valueProp, displayRenderer } = attrs;
+        this.valueProp = valueProp ?? this.valueProp;
+        this.displayRenderer = displayRenderer ?? this.displayRenderer;
 
         const inputAttributes = {
             "data-id": attrs.id,
