@@ -39,6 +39,10 @@ export default {
     view({ attrs }) {
         const { items, valueProp = "value", selectedIndex,  onSelect, onHover, displayRenderer } = attrs;
 
+        if (items.length === 0 || (items.length === 1 && items[0][valueProp] === "")) {
+            return m.fragment({}, "");
+        }
+
         return m("ul.mmf-list",
             {
                 onmousedown: onSelect ? event => {
