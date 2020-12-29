@@ -1,4 +1,5 @@
 import m from "mithril";
+import getParentByClassname from "./getParentByClassname";
 
 
 export type Item = {
@@ -36,14 +37,17 @@ export function displayRenderer(item: Item, attrs: Attrs): m.Vnode {
 export default {
 
     view({ attrs }) {
-        const { items, valueProp = "value", selectedIndex,  onSelect, onHover } = attrs;
+        const { items, valueProp = "value", selectedIndex,  onSelect, onHover, displayRenderer } = attrs;
 
         return m("ul.mmf-list",
             {
                 onmousedown: onSelect ? event => {
-                    const target = event.target as HTMLElement;
+                    const target = getParentByClassname(event.target, "mmf-list__item");
+                    if (!target) {
+                        return;
+                    }
                     const index = items.findIndex(item => item[valueProp] === target.dataset.value);
-                    if (index != null) {
+                    if (index >= 0) {
                         onSelect(index);
                     }
                 } : null
@@ -57,7 +61,7 @@ export default {
                     onmouseenter: onHover ? event => {
                         const target = event.target as HTMLElement;
                         const index = items.findIndex(item => item[valueProp] === target.dataset.value);
-                        if (index != null) {
+                        if (index >= 0) {
                             onHover(index);
                         }
                     } : null
