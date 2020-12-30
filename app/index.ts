@@ -505,9 +505,54 @@ const template = {
                     displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
                     onchange: value => console.log(`change value to '${value}'`)
                 } as mmf.QueryListAttrs
-            }
+            },
+            "disabled querylist": {
+                attrs: {
+                    disabled: true,
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListAttrs
+            },
         }
     },
+
+    queryListForm: {
+        render: render.bind(null, mmf.QueryListForm),
+        variations: {
+            "query list with suggestions": {
+                attrs: {
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListFormAttrs
+            },
+            "disable query list": {
+                attrs: {
+                    disabled: true,
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListFormAttrs
+            }
+        }
+   },
 
     select: {
         render: render.bind(null, mmf.Select),
@@ -804,6 +849,7 @@ m.render(document.body,
         component("input"),
         component("inputForm"),
         component("queryList"),
+        component("queryListForm"),
         component("checkbox"),
         component("checkboxForm"),
         component("radioButtons"),
