@@ -69,6 +69,26 @@ const Popover = {
         const bound = targetElement.getBoundingClientRect();
         this.dom.style.setProperty("--target-width", `${bound.width}px`);
 
+        this.placeBelow(targetElement, bound);
+    },
+
+    placeAbove(targetElement, bound = targetElement.getBoundingClientRect()) {
+        if (targetElement.offsetParent === document.body) {
+            const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+            this.dom.style.top = "unset";
+            this.dom.style.left = `${bound.left + scrollX}px`;
+            this.dom.style.bottom = `${document.body.scrollHeight - scrollY - bound.bottom + bound.height}px`;
+            return;
+        }
+
+        const offset = targetElement.offsetParent.getBoundingClientRect();
+        this.dom.style.top = "unset";
+        this.dom.style.left = `${bound.left - offset.left}px`;
+        this.dom.style.bottom = `${offset.bottom - bound.bottom + bound.height}px`;
+    },
+
+    placeBelow(targetElement, bound =  targetElement.getBoundingClientRect()) {
         if (targetElement.offsetParent === document.body) {
             const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
