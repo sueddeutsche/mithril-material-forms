@@ -55,6 +55,14 @@
     outline: 0;
     transition: border-color $mmf-transition;
 
+    .has-error & {
+        border-color: map-get($color-danger, 1);
+        &:not([disabled]):hover,
+        &:not([disabled]):focus{
+            border-color: map-get($color-danger, 2);
+        }
+    }
+
     @if $is-form-element {
         &:not([disabled]):focus {
             border-color: map-get($color-solid, 0);
