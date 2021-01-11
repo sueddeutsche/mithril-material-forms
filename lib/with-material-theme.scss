@@ -2,6 +2,7 @@
 @import "../components/checkbox/checkbox-material";
 @import "../components/input/input-material";
 @import "../components/inputform/inputform-material";
+@import "../components/querylistform/querylistform-material";
 @import "../components/select/select-material";
 @import "../components/selectform/selectform-material";
 @import "../components/textarea/textarea-material";
@@ -15,6 +16,7 @@
     @include checkbox-material();
     @include input-material();
     @include inputform-material();
+    @include querylistform-material();
     @include select-material();
     @include selectform-material();
     @include textarea-material();

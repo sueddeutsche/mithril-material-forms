@@ -3,6 +3,8 @@
 @import "../components/checkbox/checkbox-solid";
 @import "../components/checkboxform/checkboxform-solid";
 @import "../components/input/input-solid";
+@import "../components/list/list-solid";
+@import "../components/popover/popover-solid";
 @import "../components/radiobuttons/radiobuttons-solid.scss";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
@@ -19,6 +21,8 @@
     @include checkbox-solid();
     @include checkboxform-solid();
     @include input-solid();
+    @include list-solid();
+    @include popover-solid();
     @include radiobuttons-solid();
     @include select-solid();
     @include selectform-solid();
@@ -33,7 +37,7 @@
         color: map-get($color-basic, 2);
         padding-top: 10px;
     }
-    
+
     .mmf-form__error--error {
         @include solid-font-style();
     }
@@ -47,6 +51,7 @@
             @include solid-font-style();
             color: map-get($color-basic, 0);
             padding-bottom: 6px;
+            font-size: $mmf-font-small;
         }
     }
 }
