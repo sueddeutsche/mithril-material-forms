@@ -1,6 +1,7 @@
 import "./index.scss";
 import m from "mithril";
 import * as mmf from "../index";
+import { countries as list } from "./countries";
 function render(Component, title, ...args) {
     return [
         m("h4", title),
@@ -468,6 +469,81 @@ const template = {
             }
         }
     },
+    queryList: {
+        render: render.bind(null, mmf.QueryList),
+        variations: {
+            "input with suggestions, including input value": {
+                attrs: {
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+            "input with suggestions and custom rendering": {
+                attrs: {
+                    type: "text",
+                    value: "",
+                    valueProp: "code",
+                    searchProp: "query",
+                    // add a special query value for search (in both code and name)
+                    suggestions: list.map(value => ({
+                        ...value,
+                        query: `${value.code} ${value.name}` // beginning scores higher
+                    })),
+                    displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+            "disabled querylist": {
+                attrs: {
+                    disabled: true,
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+        }
+    },
+    queryListForm: {
+        render: render.bind(null, mmf.QueryListForm),
+        variations: {
+            "query list with suggestions": {
+                attrs: {
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            },
+            "disable query list": {
+                attrs: {
+                    disabled: true,
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                }
+            }
+        }
+    },
     select: {
         render: render.bind(null, mmf.Select),
         variations: {
@@ -725,4 +801,4 @@ function component(type) {
         return render(title, { ...variation.attrs, theme: "the-solid" }, ...variation.childNodes || []);
     }))));
 }
-m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("buttonForm"), component("input"), component("inputForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("radioButtonsForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));
+m.render(document.body, m(".page", m("h1", "mithril(-material)-forms"), m("p", "seet the docs for details: ", m("a[href=https://github.com/sueddeutsche/mithril-material-forms]", "github/sueddeutsche/mithril-material-forms")), component("button"), component("buttonForm"), component("input"), component("inputForm"), component("queryList"), component("queryListForm"), component("checkbox"), component("checkboxForm"), component("radioButtons"), component("radioButtonsForm"), component("select"), component("selectForm"), component("selectWithColor"), component("switch"), component("switchForm"), component("textarea"), component("textareaForm")));

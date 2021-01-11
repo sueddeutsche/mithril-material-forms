@@ -1,6 +1,7 @@
 import "./index.scss";
 import m from "mithril";
 import * as mmf from "../index";
+import { countries as list } from "./countries";
 
 
 function render(Component, title, ...args) {
@@ -155,7 +156,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-normal",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -163,7 +164,7 @@ const template = {
                         {
                             id: "wine-normal",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -186,7 +187,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -194,7 +195,7 @@ const template = {
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -216,7 +217,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: true
@@ -224,7 +225,7 @@ const template = {
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -245,7 +246,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: false
                         },
@@ -272,7 +273,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: true
                         },
@@ -296,7 +297,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-no-icon-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             disabled: true
                         },
@@ -327,7 +328,7 @@ const template = {
                     options: [
                         {
                             id: "coffee-normal",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                             disabled: false
@@ -335,7 +336,7 @@ const template = {
                         {
                             id: "wine-normal",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                             disabled: false
                         },
@@ -360,14 +361,14 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                         },
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -390,14 +391,14 @@ const template = {
                     options: [
                         {
                             id: "coffee-disabled",
-                            title: "Coffee", 
+                            title: "Coffee",
                             value: "coffee",
                             icon: "local_cafe",
                         },
                         {
                             id: "wine-disabled",
                             title: "Wine",
-                            icon: "wine_bar", 
+                            icon: "wine_bar",
                             value: "wine",
                         },
                         {
@@ -413,7 +414,6 @@ const template = {
 
         }
     },
-
 
     input: {
         render: render.bind(null, mmf.Input),
@@ -476,6 +476,84 @@ const template = {
             }
         }
     },
+
+    queryList: {
+        render: render.bind(null, mmf.QueryList),
+        variations: {
+            "input with suggestions, including input value": {
+                attrs: {
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListAttrs
+            },
+            "input with suggestions and custom rendering": {
+                attrs: {
+                    type: "text",
+                    value: "",
+                    valueProp: "code",
+                    searchProp: "query",
+                    // add a special query value for search (in both code and name)
+                    suggestions: list.map(value => ({
+                        ...value,
+                        query: `${value.code} ${value.name}` // beginning scores higher
+                    })),
+                    displayRenderer: (value, attrs) => m("div", m("div", value.name), m("div", value.code)),
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListAttrs
+            },
+            "disabled querylist": {
+                attrs: {
+                    disabled: true,
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListAttrs
+            },
+        }
+    },
+
+    queryListForm: {
+        render: render.bind(null, mmf.QueryListForm),
+        variations: {
+            "query list with suggestions": {
+                attrs: {
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListFormAttrs
+            },
+            "disable query list": {
+                attrs: {
+                    disabled: true,
+                    title: "Select-Form Title",
+                    description: "Select-Form description text...",
+                    type: "text",
+                    instantUpdate: true,
+                    value: "UK",
+                    valueProp: "name",
+                    showCurrentInput: true,
+                    suggestions: list,
+                    onchange: value => console.log(`change value to '${value}'`)
+                } as mmf.QueryListFormAttrs
+            }
+        }
+   },
+
     select: {
         render: render.bind(null, mmf.Select),
         variations: {
@@ -577,7 +655,7 @@ const template = {
                             color: "rgb(43, 54, 113)"
                         },
                         "Without any color niceness"
-                        
+
                     ],
                     value: "a very nice selection",
                     onchange: value => console.log(`change value to '${value}'`)
@@ -595,7 +673,7 @@ const template = {
                             value: "ignore any niceness",
                             color: "rgb(43, 54, 113)"
                         },
-                        
+
                     ],
                     value: "a very nice selection",
                     onchange: () => console.error("should not log this message")
@@ -770,6 +848,8 @@ m.render(document.body,
         component("buttonForm"),
         component("input"),
         component("inputForm"),
+        component("queryList"),
+        component("queryListForm"),
         component("checkbox"),
         component("checkboxForm"),
         component("radioButtons"),

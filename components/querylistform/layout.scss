@@ -1,0 +1,7 @@
+@import "../../lib/colors";
+
+.mmf-form--query-list {
+    .mmf-popover {
+        background-color: map-get($color-basic, 6);
+    }
+}

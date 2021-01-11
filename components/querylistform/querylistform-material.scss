@@ -1,0 +1,11 @@
+@import "../../lib/form";
+
+
+@mixin querylistform-material() {
+    &.mmf-form--query-list {
+        @include with-moving-label("input");
+        .mmf-input {
+            border-color: transparent;
+        }
+    }
+}

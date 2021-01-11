@@ -1,0 +1,18 @@
+@import "../../lib/colors";
+
+
+.mmf-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mmf-list__item {
+    padding: $mmf-unit 2 * $mmf-unit;
+
+    &:hover,
+    &.is-selected {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, map-get($opacity, 3));
+    }
+}

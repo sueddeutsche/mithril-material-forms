@@ -1,0 +1,12 @@
+@import "../../lib/units";
+@import "../../lib/colors";
+@import "../../lib/elevation";
+
+
+@mixin popover-solid() {
+    &.mmf-popover {
+        border-radius: $mmf-radius;
+        background-color: map-get($color-solid, 6);
+        @include elevation(4);
+    }
+}

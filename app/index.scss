@@ -14,6 +14,13 @@
 body {
     background: map-get($color-demo, 2);
     font-family: Roboto;
+    margin: 0;
+    position: relative;
+}
+
+.page {
+    // fix wrong offsets in bounding boxes
+    overflow: hidden;
 }
 
 h1, p, a {
@@ -55,8 +62,8 @@ h2 {
     flex-grow: 1;
     margin: 4px;
     background-color: map-get($color-demo, 5);
-    
-    
+
+
     h3 {
         background-color: map-get($color-demo, 4);
         font-size: $mmf-font-small;
