@@ -51,6 +51,7 @@
             @include solid-font-style();
             color: map-get($color-basic, 0);
             padding-bottom: 6px;
+            font-size: $mmf-font-small;
         }
     }
 }

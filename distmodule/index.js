@@ -8,6 +8,7 @@ export { default as Input } from "./components/input";
 export { default as InputForm } from "./components/inputform";
 export { default as Label } from "./components/label";
 export { default as QueryList } from "./components/querylist";
+export { default as QueryListForm } from "./components/querylistform";
 export { default as RadioButtons } from "./components/radiobuttons";
 export { default as RadioButtonsForm } from "./components/radiobuttonsform";
 export { default as Select } from "./components/select";
