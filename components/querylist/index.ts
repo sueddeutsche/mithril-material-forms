@@ -68,7 +68,7 @@ export default {
     hasFocus: false,
     currentIndex: 0,
     showCurrentInput: false,
-    valueProp: "name",
+    valueProp: "value",
     displayRenderer,
     resizeTimer: null,
 
