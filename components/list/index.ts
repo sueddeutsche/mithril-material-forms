@@ -15,6 +15,7 @@ export type Attrs = {
     items: Array<Item>;
     /** property to use as id, must point to a string-value. Defaults to "value" */
     valueProp?: string;
+    descriptionProp?: string;
     /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
     displayRenderer?: typeof displayRenderer;
     /** current selected index in list */
@@ -29,7 +30,14 @@ export type Attrs = {
 
 /** default render function for item content rendering */
 export function displayRenderer(item: Item, attrs: Attrs): m.Vnode {
-    return m("span", item[attrs.valueProp]);
+    const { descriptionProp } = attrs;
+    if (descriptionProp && item[descriptionProp]) {
+        return m("span",
+            m("span.value", item[attrs.valueProp]),
+            m("span.description", item[descriptionProp])
+        );
+    }
+    return m("span.value", item[attrs.valueProp]);
 }
 
 

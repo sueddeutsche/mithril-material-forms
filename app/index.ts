@@ -487,6 +487,7 @@ const template = {
                     value: "",
                     valueProp: "name",
                     showCurrentInput: true,
+                    currentInputDescription: "add current input",
                     suggestions: list,
                     onchange: value => console.log(`change value to '${value}'`)
                 } as mmf.QueryListAttrs
