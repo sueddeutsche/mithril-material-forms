@@ -3,7 +3,11 @@ import getParentByClassname from "./getParentByClassname";
 import { THEME_DEFAULT } from "../types";
 /** default render function for item content rendering */
 export function displayRenderer(item, attrs) {
-    return m("span", item[attrs.valueProp]);
+    const { descriptionProp } = attrs;
+    if (descriptionProp && item[descriptionProp]) {
+        return m("span", m("span.value", item[attrs.valueProp]), m("span.description", item[descriptionProp]));
+    }
+    return m("span.value", item[attrs.valueProp]);
 }
 /**
  * standard list component with additional item hover-, highlight- and selection-support
