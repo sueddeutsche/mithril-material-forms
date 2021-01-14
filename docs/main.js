@@ -1960,13 +1960,13 @@ const isGetFunction = (suggestions) => typeof suggestions === "function";
             this.list = yield this.getSuggestions(this.value);
             if (this.showCurrentInput) {
                 if (this.currentInputDescription) {
-                    this.list.unshift({
-                        [DESCRIPTION_PROP]: this.currentInputDescription,
-                        [this.valueProp]: this.value, class: "is-value"
-                    });
+                    this.list = [{
+                            [DESCRIPTION_PROP]: this.currentInputDescription,
+                            [this.valueProp]: this.value, class: "is-value"
+                        }, ...this.list];
                 }
                 else {
-                    this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
+                    this.list = [{ [this.valueProp]: this.value, class: "is-value" }, ...this.list];
                 }
             }
             this.updateCompletions();
