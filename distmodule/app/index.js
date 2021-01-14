@@ -741,6 +741,7 @@ const template = {
             "textarea with placeholder": {
                 attrs: {
                     type: "text",
+                    instantUpdate: true,
                     placeholder: "textarea placeholder",
                     onchange: value => console.log(`change value to '${value}'`)
                 }

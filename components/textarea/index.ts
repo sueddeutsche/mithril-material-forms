@@ -4,9 +4,6 @@ import { DefaultInputAttrs, THEME_DEFAULT } from "../types";
 const raf = window.requestAnimationFrame;
 
 
-const emptyFunction = Function.prototype;
-
-
 export type Attrs = DefaultInputAttrs & {
     value?: string;
     instantUpdate?: boolean;
@@ -33,21 +30,7 @@ export default {
     },
 
     view(vnode) {
-        const attrs = {
-            value: "",
-            rows: 1,
-            placeholder: "",
-            disabled: false,
-            instantUpdate: false,
-            onblur: emptyFunction,
-            onfocus: emptyFunction,
-            onchange: emptyFunction,
-            oncreate: emptyFunction,
-            onbeforeremove: emptyFunction,
-            ...vnode.attrs
-        };
-
-        const disabled = attrs.disabled === true;
+        const { attrs } = vnode;
 
         if (this.focus) {
             // keep current value, while input is being active this prevents
@@ -58,11 +41,12 @@ export default {
 
         const textareaAttributes = {
             "data-id": attrs.id,
-            value: attrs.value,
+            value: attrs.value ?? "",
             class: `${attrs.theme ?? THEME_DEFAULT} ${attrs.class ?? ""}`,
-            rows: attrs.rows,
-            disabled,
-            placeholder: attrs.placeholder,
+            rows: attrs.rows ?? 1,
+            disabled: attrs.disabled === true,
+            instantUpdate: attrs.instantUpdate === true,
+            placeholder: attrs.placeholder ?? "",
             onblur: e => {
                 this.focus = false;
                 attrs.onblur && attrs.onblur(e);
@@ -74,7 +58,7 @@ export default {
             onupdate: node => autosize.update(node.dom),
             oncreate: node => {
                 this.textarea = node.dom;
-                attrs.oncreate(node);
+                attrs.oncreate && attrs.oncreate(node);
                 autosize(node.dom);
                 autosize.update(node.dom);
             },
@@ -84,7 +68,7 @@ export default {
             }
         };
 
-        const updateEvent = attrs.instantUpdate === true ? "onkeyup" : "onchange";
+        const updateEvent = textareaAttributes.instantUpdate === true ? "onkeyup" : "onchange";
         textareaAttributes[updateEvent] = e => attrs.onchange(e.target.value);
 
         return m("textarea.mmf-textarea", textareaAttributes);
