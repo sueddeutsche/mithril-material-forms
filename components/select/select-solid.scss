@@ -51,6 +51,10 @@
             color: map-get($color-basic, 0);
             border: $mmf-input-border--width $mmf-style--border map-get($color-basic, 4);
             border-radius: $mmf-radius;
+
+            &:hover {
+                border-color: map-get($color-solid, 0);
+            }
         }
         
         &.with-color {
