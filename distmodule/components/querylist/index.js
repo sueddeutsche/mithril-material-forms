@@ -4,6 +4,7 @@ import Popover from "../popover";
 import search from "./search";
 import { THEME_DEFAULT } from "../types";
 const raf = window.requestAnimationFrame;
+const DESCRIPTION_PROP = "description";
 const isListOfItems = (suggestions) => Array.isArray(suggestions);
 const isGetFunction = (suggestions) => typeof suggestions === "function";
 export default {
@@ -16,7 +17,15 @@ export default {
     async updateFilter() {
         this.list = await this.getSuggestions(this.value);
         if (this.showCurrentInput) {
-            this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
+            if (this.currentInputDescription) {
+                this.list = [{
+                        [DESCRIPTION_PROP]: this.currentInputDescription,
+                        [this.valueProp]: this.value, class: "is-value"
+                    }, ...this.list];
+            }
+            else {
+                this.list = [{ [this.valueProp]: this.value, class: "is-value" }, ...this.list];
+            }
         }
         this.updateCompletions();
     },
@@ -38,6 +47,7 @@ export default {
             items: this.list,
             theme: this.theme,
             valueProp: this.valueProp,
+            descriptionProp: DESCRIPTION_PROP,
             selectedIndex: this.currentIndex,
             displayRenderer: this.displayRenderer,
             onSelect: index => {
@@ -91,6 +101,7 @@ export default {
         this.valueProp = valueProp !== null && valueProp !== void 0 ? valueProp : this.valueProp;
         this.displayRenderer = displayRenderer !== null && displayRenderer !== void 0 ? displayRenderer : this.displayRenderer;
         this.showCurrentInput = showCurrentInput === true;
+        this.currentInputDescription = attrs.currentInputDescription;
         this.theme = theme !== null && theme !== void 0 ? theme : THEME_DEFAULT;
         const inputAttributes = {
             "data-id": attrs.id,

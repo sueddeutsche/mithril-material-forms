@@ -479,6 +479,7 @@ const template = {
                     value: "",
                     valueProp: "name",
                     showCurrentInput: true,
+                    currentInputDescription: "add current input",
                     suggestions: list,
                     onchange: value => console.log(`change value to '${value}'`)
                 }
@@ -741,6 +742,7 @@ const template = {
             "textarea with placeholder": {
                 attrs: {
                     type: "text",
+                    instantUpdate: true,
                     placeholder: "textarea placeholder",
                     onchange: value => console.log(`change value to '${value}'`)
                 }

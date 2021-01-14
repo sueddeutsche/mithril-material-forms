@@ -6,7 +6,7 @@ import { DefaultInputAttrs, THEME_DEFAULT } from "../types";
 
 
 const raf = window.requestAnimationFrame;
-
+const DESCRIPTION_PROP = "description";
 
 
 export type Attrs = DefaultInputAttrs & {
@@ -15,6 +15,8 @@ export type Attrs = DefaultInputAttrs & {
     suggestions: Array<Item>|GetSuggestions;
     /** if true, will also add current value to list of suggestions. Defaults to false */
     showCurrentInput?: boolean;
+    /** adds an additional description below the current input in suggestions */
+    currentInputDescription?: string;
     /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
     displayRenderer?: typeof displayRenderer;
     /** set to true, if each keystroke should trigger a change event */
@@ -48,6 +50,8 @@ export type State = {
     theme: string;
     /** if true, will also add current value to list of suggestions. Defaults to false */
     showCurrentInput: boolean;
+    /** adds an additional description below the current input in suggestions */
+    currentInputDescription?: string;
 
     getSuggestions: GetSuggestions;
 
@@ -75,7 +79,14 @@ export default {
     async updateFilter() {
         this.list = await this.getSuggestions(this.value);
         if (this.showCurrentInput) {
-            this.list.unshift({ [this.valueProp]: this.value, class: "is-value" });
+            if (this.currentInputDescription) {
+                this.list = [{
+                    [DESCRIPTION_PROP]: this.currentInputDescription,
+                    [this.valueProp]: this.value, class: "is-value"
+                }, ...this.list];
+            } else {
+                this.list = [{ [this.valueProp]: this.value, class: "is-value" }, ...this.list];
+            }
         }
         this.updateCompletions();
     },
@@ -97,6 +108,7 @@ export default {
             items: this.list,
             theme: this.theme,
             valueProp: this.valueProp,
+            descriptionProp: DESCRIPTION_PROP,
             selectedIndex: this.currentIndex,
             displayRenderer: this.displayRenderer,
             onSelect: index => {
@@ -153,6 +165,7 @@ export default {
         this.valueProp = valueProp ?? this.valueProp;
         this.displayRenderer = displayRenderer ?? this.displayRenderer;
         this.showCurrentInput = showCurrentInput === true;
+        this.currentInputDescription = attrs.currentInputDescription;
         this.theme = theme ?? THEME_DEFAULT;
 
         const inputAttributes = {
