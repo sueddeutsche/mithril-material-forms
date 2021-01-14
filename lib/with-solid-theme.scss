@@ -5,6 +5,7 @@
 @import "../components/input/input-solid";
 @import "../components/list/list-solid";
 @import "../components/popover/popover-solid";
+@import "../components/querylist/querylist-solid";
 @import "../components/radiobuttons/radiobuttons-solid.scss";
 @import "../components/select/select-solid";
 @import "../components/selectform/selectform-solid";
@@ -23,6 +24,7 @@
     @include input-solid();
     @include list-solid();
     @include popover-solid();
+    @include querylist-solid();
     @include radiobuttons-solid();
     @include select-solid();
     @include selectform-solid();
@@ -46,7 +48,8 @@
     &.mmf-form--radio-buttons,
     &.mmf-form--input,
     &.mmf-form--select,
-    &.mmf-form--textarea {
+    &.mmf-form--textarea,
+    &.mmf-form--query-list{
         .mmf-label {
             @include solid-font-style();
             color: map-get($color-basic, 0);
