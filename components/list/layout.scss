@@ -16,3 +16,10 @@
         background-color: rgba(0, 0, 0, map-get($opacity, 3));
     }
 }
+
+// the input value
+.mmf-list .is-value {
+    span.description {
+        display: block;
+    }
+}

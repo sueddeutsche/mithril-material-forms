@@ -8,6 +8,8 @@ export declare type Attrs = DefaultInputAttrs & {
     suggestions: Array<Item> | GetSuggestions;
     /** if true, will also add current value to list of suggestions. Defaults to false */
     showCurrentInput?: boolean;
+    /** adds an additional description below the current input in suggestions */
+    currentInputDescription?: string;
     /** custom render function for item content rendering. Defaults to span(item[valueProp]) */
     displayRenderer?: typeof displayRenderer;
     /** set to true, if each keystroke should trigger a change event */
@@ -39,6 +41,8 @@ export declare type State = {
     theme: string;
     /** if true, will also add current value to list of suggestions. Defaults to false */
     showCurrentInput: boolean;
+    /** adds an additional description below the current input in suggestions */
+    currentInputDescription?: string;
     getSuggestions: GetSuggestions;
     /** current index of selection in list */
     currentIndex: number;

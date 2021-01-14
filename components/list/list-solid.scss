@@ -6,13 +6,24 @@
 @mixin list-solid() {
     &.mmf-list {
         .is-value {
-            font-style: italic;
-            &:before { content: "„"; }
-            &:after { content: "“"; }
+            span.value {
+                font-style: italic;
+                &:before { content: "„"; }
+                &:after { content: "“"; }
+            }
+
+            span.description {
+                color: map-get($color-basic, 2);
+                font-size: 0.8em;
+                padding-top: 0.2em;
+            }
         }
         .is-selected {
-            color: map-get($color-solid, 0);
             background-color: map-get($color-basic, 5);
+
+            span.value {
+                color: map-get($color-solid, 0);
+            }
         }
     }
 }
