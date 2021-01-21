@@ -9,6 +9,7 @@
 *.tmp
 *.zip
 .DS_Store
+.vscode/
 /build
 /doc-build
 /node_modules
