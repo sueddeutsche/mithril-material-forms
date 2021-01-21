@@ -12,17 +12,19 @@
         background-color: map-get($color-solid, 6);
 
         &.is-enabled {
-            &:hover {
+            
+            &:not([disabled]):hover {
                 border-color: map-get($color-solid, 0);
             }
 
-            &.has-focus {
+            &:not([disabled]).has-focus {
                 border-color: map-get($color-solid, 0);
                 @include elevation(1);
             }
 
-            &:hover,
-            &.has-focus {
+            
+        &:not([disabled]):hover,
+        &:not([disabled]).has-focus {
                 &:after {
                     background-color: map-get($color-solid, 5);
                     color: map-get($color-solid, 0);
@@ -52,8 +54,12 @@
             border: $mmf-input-border--width $mmf-style--border map-get($color-basic, 4);
             border-radius: $mmf-radius;
 
-            &:hover {
+            &:not([disabled]):hover {
                 border-color: map-get($color-solid, 0);
+            }
+
+            &[disabled] {
+                opacity: map-get($opacity, 2);
             }
         }
         
