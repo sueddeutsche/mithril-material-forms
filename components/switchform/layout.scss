@@ -9,6 +9,10 @@
         align-items: center;
     }
 
+    .mmf-label {
+        padding-bottom: 0;
+    }
+
     .order--label-first .mmf-label {
         padding-right: $mmf-unit;
     }
