@@ -1,0 +1,32 @@
+@import "../../lib/colors";
+@import "../../lib/units";
+@import "../../lib/fonts";
+
+
+@mixin radiobuttons-material() {
+    .mmf-radio-btn-container {
+        height: 0.75 * $mmf-block;
+        display: contents;
+    }
+
+    .mmf-radio-btn {
+        @include solid-font-style();
+
+        &.selected {
+            &,
+            &:hover,
+            &:focus {
+                background-color: map-get($color-material, 0);
+                color: map-get($color-material, 2);
+            }
+
+            &:focus {
+                @include elevation(1);
+            }
+        }
+
+        &[disabled].selected {
+            opacity: map-get($opacity, 2);
+        }
+    }
+}
