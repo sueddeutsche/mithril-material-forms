@@ -19,15 +19,16 @@
     align-items: center;
     margin: $mmf-unit/2 $mmf-unit / 2;
 
-    &:not([disabled]):hover {
+    &:not([disabled]):not(.selected):hover {
         background-color:map-get($color-basic, 3);
     }
 
     &.selected {
+        cursor: default;
         background-color:map-get($color-basic, 4);
     }
 
     &.is-disabled {
         border: $mmf-input-border--width $mmf-style--border rgba(map-get($color-basic, 0), map-get($opacity, 2));
-    }  
+    }
 }
